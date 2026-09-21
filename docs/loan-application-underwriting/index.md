@@ -124,9 +124,8 @@ Four components, built in this order:
 
 | | |
 | ---: | :--- |
-| [**What's a Coding Agent?**](what-is-a-coding-agent.md) | Understand the mental model, tools, skills, and how UiPath fits in |
-| [**Installation Guides**](installation-guides.md) | Install Node.js, Python, .NET SDK, UiPath Studio, Git, and a coding agent |
-| [**Install UiPath Skills**](install-skills.md) | Install the UiPath CLI, authenticate, and load the skills into your coding agent |
+| [**Setup**](../setup.md) | Install Node.js, Python, .NET SDK, UiPath Studio, Git, a coding agent, the `uip` CLI, and the UiPath skills |
+| [**What's a Coding Agent?**](../what-is-a-coding-agent.md) | Understand the mental model, tools, skills, and how UiPath fits in |
 
 ## Steps
 

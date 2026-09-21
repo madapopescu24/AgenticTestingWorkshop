@@ -5,9 +5,8 @@ You'll get your environment ready, then build and deploy all four components of 
 
 | Step | Focus | Duration |
 | ---: | :--- | ---: |
-| [**What's a Coding Agent?**](what-is-a-coding-agent.md) | Understand the mental model, tools, skills, and how UiPath fits in | 15 min |
-| [**Installation Guides**](installation-guides.md) | Install Node.js, Python, .NET SDK, UiPath Studio, Git, and a coding agent | 15 min |
-| [**Install UiPath Skills**](install-skills.md) | Install the UiPath CLI, authenticate, and load the skills into your coding agent | 20 min |
+| [**Setup**](../setup.md) | Install the prerequisites, a coding agent, the `uip` CLI, and the UiPath skills | 35 min |
+| [**What's a Coding Agent?**](../what-is-a-coding-agent.md) | Understand the mental model, tools, skills, and how UiPath fits in | 15 min |
 | [**1. AI Underwriting Assessment**](1-underwriting-agent.md) | Build and deploy the Python coded agent that scores a loan application | 70 min |
 | *Break* | | 15 min |
 | [**2. Loan Officer Review Dashboard**](2-loan-officer-app.md) | Build and deploy the React app a loan officer uses to approve or reject a case | 55 min |

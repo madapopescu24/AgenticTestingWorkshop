@@ -239,3 +239,28 @@ img + em {
 .md-typeset table:not([class]) th {
   background-color: #f0f0f0;
 }
+
+/* Tables inside content tabs — fixed column widths so stacked tables in the
+   same tab (e.g. the Day 1 / Day 2 agendas) line up with each other instead
+   of each sizing to its own content. */
+.md-typeset .tabbed-block table:not([class]) {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.md-typeset .tabbed-block table:not([class]) th:nth-child(1),
+.md-typeset .tabbed-block table:not([class]) td:nth-child(1) { width: 22%; }
+
+.md-typeset .tabbed-block table:not([class]) th:nth-child(2),
+.md-typeset .tabbed-block table:not([class]) td:nth-child(2) { width: 47%; }
+
+.md-typeset .tabbed-block table:not([class]) th:nth-child(3),
+.md-typeset .tabbed-block table:not([class]) td:nth-child(3) { width: 13%; }
+
+.md-typeset .tabbed-block table:not([class]) th:nth-child(4),
+.md-typeset .tabbed-block table:not([class]) td:nth-child(4) { width: 18%; }
+
+/* Lab section headings — UiPath Robotic Orange (opt in with { .lab-title }) */
+.md-typeset h2.lab-title {
+  color: var(--md-primary-fg-color);
+}
