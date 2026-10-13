@@ -1,20 +1,39 @@
 # Agenda
-**This exercise runs as a single session of about 6–8 hours, including breaks.**
+**One connected scenario, mostly hands-on. Pick the format that fits your group.**
 
-You'll get your environment ready, then build and deploy all four components of the pipeline — the AI agent, the loan officer app, the Maestro flow that ties them together, and the RPA workflow that drives the whole thing — finishing with a full end-to-end run.
+=== "Two days"
 
-| Step | Focus | Duration |
-| ---: | :--- | ---: |
-| [**Setup**](../setup.md) | Install the prerequisites, a coding agent, the `uip` CLI, and the UiPath skills | 35 min |
-| [**What's a Coding Agent?**](../what-is-a-coding-agent.md) | Understand the mental model, tools, skills, and how UiPath fits in | 15 min |
-| [**1. AI Underwriting Assessment**](1-underwriting-agent.md) | Build and deploy the Python coded agent that scores a loan application | 70 min |
-| *Break* | | 15 min |
-| [**2. Loan Officer Review Dashboard**](2-loan-officer-app.md) | Build and deploy the React app a loan officer uses to approve or reject a case | 55 min |
-| *Lunch* | | 45 min |
-| [**3. Orchestrating with Maestro Flow**](3-maestro-flow.md) | Build the Maestro process that calls the agent and routes by risk band | 75 min |
-| *Break* | | 15 min |
-| [**4. Application Intake & Enrichment**](4-intake-enrichment.md) | Build the Studio RPA workflow that submits applications and kicks off the flow | 65 min |
-| [**You did it!**](you-did-it.md) | Trigger a full end-to-end run and see what's next | 30 min |
+    **Day 1 — Foundations and the agent** · 3h
+
+    | Part | Focus | Duration | Format |
+    | :--- | :--- | ---: | :--- |
+    | 💡 <strong style="color: var(--md-primary-fg-color);">Intro</strong> | Coding agents, skills, tools, plugins. The mental model. | 0.5h | Presentation |
+    | ✅ <strong style="color: var(--md-primary-fg-color);">Environment check</strong> | Confirm the `uip` CLI, the skills, and your tenant login all work | 0.5h | Hands-on |
+    | 🤖 <strong style="color: var(--md-primary-fg-color);">Coded Agent</strong> | Research jobs, generate JDs, match candidates | 1.5h | Hands-on |
+    | 💬 <strong style="color: var(--md-primary-fg-color);">Recap and Q&A</strong> | What the agent does, what breaks, what comes next | 0.5h | Discussion |
+
+    **Day 2 — Automation and the dashboard** · 3.5h + 0.5h optional
+
+    | Part | Focus | Duration | Format |
+    | :--- | :--- | ---: | :--- |
+    | ⚙️ <strong style="color: var(--md-primary-fg-color);">RPA Workflow</strong> | Register candidates on UiBank | 1.5h | Hands-on |
+    | 📊 <strong style="color: var(--md-primary-fg-color);">Coded App</strong> | Dashboard of jobs, matches, and registered candidates | 2h | Hands-on |
+    | 🔗 <strong style="color: var(--md-primary-fg-color);"><a href="../coding-agents-hands-on/#homework-connect-it-all-in-maestro" style="color: inherit;">Integrate in Maestro</a></strong> <em style="color: #6a6a6a; font-weight: 400;">(optional)</em> | Bring the agents, RPA, and apps together end-to-end | 0.5h | Homework |
+
+=== "One day"
+
+    **Five and a half hours**, plus breaks and lunch — the Maestro part is optional on top.
+
+    | Part | Focus | Duration | Format |
+    | :--- | :--- | ---: | :--- |
+    | 💡 <strong style="color: var(--md-primary-fg-color);">Intro</strong> | Coding agents, skills, tools, plugins. The mental model. | 0.5h | Presentation |
+    | 🤖 <strong style="color: var(--md-primary-fg-color);">Coded Agent</strong> | Research jobs, generate JDs, match candidates | 1.5h | Hands-on |
+    | ⚙️ <strong style="color: var(--md-primary-fg-color);">RPA Workflow</strong> | Register candidates on UiBank | 1.5h | Hands-on |
+    | 📊 <strong style="color: var(--md-primary-fg-color);">Coded App</strong> | Dashboard of jobs, matches, and registered candidates | 2h | Hands-on |
+    | 🔗 <strong style="color: var(--md-primary-fg-color);"><a href="../coding-agents-hands-on/#homework-connect-it-all-in-maestro" style="color: inherit;">Integrate in Maestro</a></strong> <em style="color: #6a6a6a; font-weight: 400;">(optional)</em> | Bring the agents, RPA, and apps together end-to-end | 0.5h | Homework |
+
+!!! info "The Maestro integration is optional"
+    The three labs stand on their own — you finish with a working agent, workflow, and app. Wiring them into a single **Maestro** orchestration is a deep dive for anyone who wants to take it further, and it works well as homework after the session.
 
 !!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** and use tenant **{{ training_tenant }}** for this exercise. Everything you deploy goes into the shared **CodingAgentsILT** folder in **Orchestrator**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.

@@ -6,7 +6,7 @@
     Setup takes about 35 minutes on a clean machine, and some downloads are large. Get it done ahead of time so the session stays hands-on.
 
 !!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** and remember using tenant **{{ training_tenant }}**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
 
 ## 1. Prerequisites
 

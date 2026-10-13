@@ -1,5 +1,5 @@
 site_name: UiPath Coding Agents Workshop
-site_url: https://uipath-practice.github.io/CodingAgentsCourse/
+site_url: https://uipath-practice.github.io/CodingAgentsRecruitmentPipeline/
 site_description: Hands-on learner's handbook for building UiPath agents and Maestro orchestrations with coding agents
 site_author: Sergey Shumilov
 
@@ -7,6 +7,14 @@ site_author: Sergey Shumilov
 # Excluded from the build — remove the folder locally when convenient.
 exclude_docs: |
   hello-world-agent/
+  # Loan Application Underwriting lessons — kept in the repo for reference,
+  # excluded from the build so only the Agenda page shows under that tab.
+  loan-application-underwriting/index.md
+  loan-application-underwriting/1-underwriting-agent.md
+  loan-application-underwriting/2-loan-officer-app.md
+  loan-application-underwriting/3-maestro-flow.md
+  loan-application-underwriting/4-intake-enrichment.md
+  loan-application-underwriting/you-did-it.md
 
 theme:
   name: material
@@ -60,14 +68,7 @@ nav:
   - Home: index.md
   - Setup: setup.md
   - What's a Coding Agent?: what-is-a-coding-agent.md
-  - Loan Application Underwriting:
-    - Agenda: loan-application-underwriting/agenda.md
-    - Overview: loan-application-underwriting/index.md
-    - 1. AI Underwriting Assessment: loan-application-underwriting/1-underwriting-agent.md
-    - 2. Loan Officer Review Dashboard: loan-application-underwriting/2-loan-officer-app.md
-    - 3. Orchestrating with Maestro Flow: loan-application-underwriting/3-maestro-flow.md
-    - 4. Application Intake & Enrichment: loan-application-underwriting/4-intake-enrichment.md
-    - You did it!: loan-application-underwriting/you-did-it.md
+  - Agenda: loan-application-underwriting/agenda.md
   - Next Steps: next-steps.md
 
 extra_css:

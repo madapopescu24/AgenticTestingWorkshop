@@ -16,7 +16,7 @@ To keep this exercise self-contained, the agent reads the raw PDF files directly
 | [**Run and Review**](2-run-and-review.md) | Push to Studio Web, run against the sample claims, and read the eligibility result |
 
 !!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
 
 !!! info "Exercise files"
     The agent prompt and output schema are shown inline in the next steps — copy them straight into Claude Code. The sample claim and policy PDFs are linked in **Run and Review**. (Once the course is finalized, all files will be available as a single clonable package.)

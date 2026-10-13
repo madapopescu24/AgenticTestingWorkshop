@@ -3,7 +3,7 @@
 **Build UiPath agents and Maestro orchestrations with coding agents — from installing the tools to shipping a long-running automation.**
 
 !!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
 
 ## What you'll build
 
@@ -15,7 +15,7 @@ The course has two parts:
 
 **Part 2 · Agentic Orchestration** — build Coded Apps, then orchestrate agents and apps into Maestro solutions: Case Management, BPMN, and Flow.
 
-[**Loan Application Underwriting**](loan-application-underwriting/index.md) — Build a complete code-first underwriting pipeline: a Python coded agent, a React coded app, a Maestro flow, and an RPA workflow that assess and route loan applications for UiBank.
+[**Agenda**](loan-application-underwriting/agenda.md) — How the hands-on session runs, in a two-day or a single-day format.
 
 More exercises are being authored and will appear here as they are released.
 

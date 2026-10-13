@@ -1,4 +1,4 @@
-# Loan Application Underwriting (Studio RPA, Coded Agent, Coded App, Maestro)
+# Agenda
 **Use the UiPath coding skills to build a complete code-first underwriting pipeline for UiBank**
 
 ## Overview
@@ -145,4 +145,4 @@ Four components, built in this order:
 - UiPath Studio installed locally (to open and run the generated XAML)
 
 !!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** and use tenant **{{ training_tenant }}** for this exercise.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
