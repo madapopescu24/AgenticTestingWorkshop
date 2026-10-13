@@ -1,37 +1,45 @@
 # Coding Agents + UiPath: Hands-On Session
 
-**Build a Coded Agent, an RPA workflow, and a Coded App — all from your coding agent, all wired into one recruitment pipeline.**
+**Build a Coded Agent and an RPA workflow, then orchestrate them with a human approval in Maestro — the whole recruitment pipeline, in two 90-minute blocks.**
 
 !!! tip "Here is our plan for this session:"
 
+    **Block 1 · 90 min**
+
     1. Get the mental model for coding agents, skills, tools, and plugins —
        see [What's a Coding Agent?](what-is-a-coding-agent.md).
-    2. Build a **Coded Agent** that researches jobs and matches candidates.
-    3. Build an **RPA** workflow that registers those candidates on a web form.
-    4. Build a **Coded App** dashboard that shows the whole pipeline.
-    5. Optionally bring all three together in **Maestro** — a homework deep dive.
+    2. Build a **Coded Agent** that writes a job description and shortlists candidates.
+
+    **Block 2 · 90 min**
+
+    3. Build an **RPA** workflow that registers candidates on a web form.
+    4. Build a **Maestro Flow** that runs the agent, asks a recruiter to approve the shortlist, and hands it to the robot — then run the whole pipeline end to end.
+
+    Finish [Setup](setup.md) before Block 1. See the [Agenda](loan-application-underwriting/agenda.md) for minute-by-minute timing.
 
 ## Overview
 
-Every week a recruiter at a staffing agency does the same four things by hand: search job boards, write a description for each role, read through a candidate pool to find who fits, and register the shortlist in the client's portal. Hours of work, done differently by every recruiter, with nowhere to see where anyone stands.
+Every week a recruiter at a staffing agency does the same three things by hand: write a description for each open role, read through a candidate pool to find who fits, and register the shortlist in the client's portal. Hours of work, done differently by every recruiter, with no record of who approved what.
 
-You'll automate all four — by describing what you want in plain English and letting your coding agent build it. Three components, each handing work to the next through **Data Service**. By the end you'll know exactly when code beats drag-and-drop, and why.
+You'll automate all three — by describing what you want in plain English and letting your coding agent build it. Two components do the work, and one **Maestro** flow connects them, with the recruiter still making the final call.
 
 ## Goal
 
-By the end of the session you'll have three deployed components talking to each other through **Data Service**: a Python agent that finds jobs and scores candidates, an XAML workflow that registers each candidate on a website with no API, and a React dashboard the recruiter actually uses. You'll have generated all three by prompting a coding agent — not by dragging activities onto a canvas or scaffolding React by hand.
+By the end of the session you'll start one Maestro run with a job title and watch it end with approved candidates registered on UiBank. Along the way you'll have generated a Python agent, an XAML workflow, and a Maestro Flow — all by prompting a coding agent, not by dragging activities onto a canvas.
 
 !!! tip "Training Environment"
     Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
 
 ## What You'll Build
 
-Three components in the session, plus a fourth as homework:
+Three labs, one pipeline:
 
-1. **Coded Agent** — a Python LangGraph agent that takes a list of job titles, web-searches current openings, generates a structured job description per role, scores a candidate pool against each one, and writes jobs and top-3 matches to Data Service
-2. **RPA Workflow** — a Studio XAML workflow that reads the matched candidates from Data Service, registers each one on the UiBank web form, and writes the registration status back
-3. **Coded App** — a React Coded App that reads the Jobs, Matches and Candidates entities and presents them to a recruiter, with a button that triggers the agent on demand
-4. **Maestro Process** *(homework)* — a UiPath Flow that runs the agent, pauses for a recruiter to approve the shortlist, triggers the RPA registration, and surfaces the result in the app
+1. **Coded Agent** *(Block 1)* — a Python LangGraph agent that takes a job title, generates a structured job description, scores a candidate pool against it, and returns the top 3 matches
+2. **RPA Workflow** *(Block 2)* — a Studio XAML workflow that takes a list of candidates, registers each one on the UiBank web form, and returns a status per candidate
+3. **Maestro Flow** *(Block 2)* — a UiPath Flow that runs the agent, creates an approval task in **Action Center** for the recruiter, and on approval runs the RPA workflow with the shortlist
+
+!!! info "Why this architecture"
+    **Maestro** passes the data from one step to the next, so there's no database to set up and no custom app to build. The recruiter reviews the shortlist in an **Action Center** task — the review screen comes with the platform. That's what lets the full pipeline, orchestration included, fit in 180 minutes.
 
 ## The scenario
 
@@ -39,7 +47,7 @@ Three components in the session, plus a fourth as homework:
 
   <div style="background: #16213e; border-left: 10px solid #FA4616; padding: 26px 32px; margin-bottom: 22px;">
     <div style="font-size: 20px; font-weight: 700; color: #ffffff; line-height: 1.35;">A staffing agency is digitizing its recruitment pipeline.</div>
-    <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 10px; line-height: 1.45;">Three problems: find jobs, register candidates, and give recruiters a view of everything.</div>
+    <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 10px; line-height: 1.45;">Shortlist candidates, keep a human in the loop, register the approved ones — one process, end to end.</div>
   </div>
 
   <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch;">
@@ -49,8 +57,8 @@ Three components in the session, plus a fourth as homework:
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
     </div>
     <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Coded Agent</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Searches the web for open jobs, generates structured JDs, matches against a candidate pool.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Writes to Data Service</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Turns a job title into a structured JD and scores a candidate pool against it.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Returns the top 3 matches</div>
   </div>
   <div style="flex: 1 1 260px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
@@ -58,29 +66,91 @@ Three components in the session, plus a fourth as homework:
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
     </div>
     <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">RPA Workflow</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Reads candidate CSV, registers each one on <code>uibank.uipath.com/register-account</code>.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Writes status back to Data Service</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Registers each candidate it receives on <code>uibank.uipath.com/register-account</code>.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Returns a status per candidate</div>
   </div>
   <div style="flex: 1 1 260px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
-      <img src="../coding-agents-hands-on.images/icon-dashboard.png" alt="" style="width: 46px; height: 46px; box-shadow: none; border: none;">
+      <span style="font-size: 40px; line-height: 46px;">🔗</span>
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
     </div>
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Coded App</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Recruiter dashboard: open jobs, generated descriptions, matched candidates, registration status.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Reads from Data Service</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Maestro Flow</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Runs the agent, waits for the recruiter's approval in Action Center, then runs the robot.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; One run, end to end</div>
   </div>
   </div>
 
 </div>
 
-One connected story across all three labs — each one hands its output to the next through Data Service.
+How the data moves through one run:
+
+```text
+job_title
+   │
+   ▼
+[ Coded Agent ] ──▶ job + top 3 matches
+                          │
+                          ▼
+              [ Approval task in Action Center ]
+                          │  approved
+                          ▼
+              [ RPA Workflow on UiBank ] ──▶ status per candidate
+                          │
+                          ▼
+                     flow output
+
+  All three steps run inside one Maestro Flow.
+```
+
+## The contract between the components
+
+You build the three pieces in separate labs, so agree on the data shapes first. Every prompt below uses these names — keep them exactly as written and the Maestro lab becomes wiring, not debugging.
+
+| Component | Input | Output |
+| :--- | :--- | :--- |
+| **Coded Agent** | `job_title` (string) | `job` (object) and `matches` (array of 3 candidates, each with all original fields plus `score` and `reason`) |
+| **RPA Workflow** | `in_CandidatesJson` (string — a JSON array of candidates) | `out_ResultsJson` (string — a JSON array of `{ username, status }`) |
+| **Maestro Flow** | `job_title` (string) | the `job` and `out_ResultsJson` |
+
+!!! warning "Why the matches keep every candidate field"
+    The robot needs the date of birth, title, email, and the rest to fill in the UiBank form. If the agent returns only names and scores, Lab 3 breaks. That's why the Lab 1 prompt says it explicitly.
+
+### The candidate pool
+
+Save this as `candidates.json` in an empty folder for Lab 1. The agent scores it, and the robot later registers the candidates the recruiter approves.
+
+```json
+[
+  {"first_name": "Alice", "last_name": "Nguyen", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "1/15/1990", "marital_status": "Single", "num_dependents": 0, "username": "alice.nguyen", "email": "alice.nguyen@example.com", "password": "Welcome2026!", "headline": "Forward Deployed Engineer", "years_experience": 6, "skills": ["Python", "TypeScript", "REST APIs", "UiPath", "customer workshops"]},
+  {"first_name": "Ben", "last_name": "Carter", "middle_name": "J.", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "3/22/1985", "marital_status": "Married", "num_dependents": 2, "username": "ben.carter", "email": "ben.carter@example.com", "password": "Welcome2026!", "headline": "RPA Developer", "years_experience": 8, "skills": ["UiPath Studio", "Orchestrator", "VB.NET", "SQL"]},
+  {"first_name": "Clara", "last_name": "Osei", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "7/4/1992", "marital_status": "Single", "num_dependents": 1, "username": "clara.osei", "email": "clara.osei@example.com", "password": "Welcome2026!", "headline": "AI Engineer", "years_experience": 4, "skills": ["Python", "LangGraph", "LLM evaluation", "AWS"]},
+  {"first_name": "David", "last_name": "Kowalski", "middle_name": "", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "11/2/1981", "marital_status": "Married", "num_dependents": 3, "username": "david.kowalski", "email": "david.kowalski@example.com", "password": "Welcome2026!", "headline": "Solutions Architect", "years_experience": 12, "skills": ["Enterprise architecture", "Azure", "Integrations", "Pre-sales"]},
+  {"first_name": "Elena", "last_name": "Rossi", "middle_name": "M.", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "5/30/1994", "marital_status": "Single", "num_dependents": 0, "username": "elena.rossi", "email": "elena.rossi@example.com", "password": "Welcome2026!", "headline": "Frontend Developer", "years_experience": 5, "skills": ["React", "TypeScript", "Design systems"]},
+  {"first_name": "Farid", "last_name": "Haddad", "middle_name": "", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "9/12/1997", "marital_status": "Single", "num_dependents": 0, "username": "farid.haddad", "email": "farid.haddad@example.com", "password": "Welcome2026!", "headline": "Data Analyst", "years_experience": 3, "skills": ["SQL", "Power BI", "Python"]},
+  {"first_name": "Grace", "last_name": "Kim", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "2/18/1991", "marital_status": "Married", "num_dependents": 1, "username": "grace.kim", "email": "grace.kim@example.com", "password": "Welcome2026!", "headline": "Customer Success Engineer", "years_experience": 5, "skills": ["Python", "APIs", "Customer onboarding", "Troubleshooting"]},
+  {"first_name": "Hugo", "last_name": "Martin", "middle_name": "", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "8/8/1983", "marital_status": "Married", "num_dependents": 2, "username": "hugo.martin", "email": "hugo.martin@example.com", "password": "Welcome2026!", "headline": "Project Manager", "years_experience": 10, "skills": ["Agile", "Stakeholder management", "Budgeting"]}
+]
+```
+
+!!! note "Three things the robot needs to know about this data"
+
+    - An empty `middle_name` is valid. The form should skip the field, not type an empty string.
+    - The date format is `MM/DD/YYYY`, which matches the form's picker.
+    - All test passwords are demo-grade. In production, pull them from a vault.
 
 ## <img src="../coding-agents-hands-on.images/icon-search.png" alt="" style="width: 1.05em; height: 1.05em; vertical-align: -0.12em; margin-right: 0.4em; border: none; box-shadow: none;">Lab 1 — the Coded Agent { .lab-title }
 
-<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Jobs research + candidate matching</div>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Job description + candidate shortlist</div>
 
-**75 min build + 15 min review**
+**Block 1 · 50 min build + 10 min checkpoint**
+
+| Minutes | What you do |
+| :--- | :--- |
+| 0–5 | Save `candidates.json`, start your coding agent in that folder, paste the prompt. |
+| 5–30 | Answer its questions, review the plan, let it build. Read *What's a Coded Agent?* while it works. |
+| 30–40 | Run the agent locally and check the output against the contract. |
+| 40–50 | Publish the agent as a process in the `CodingAgentsILT` folder. |
+| 50–60 | Checkpoint with the group. |
 
 ### What's a Coded Agent?
 
@@ -114,38 +184,38 @@ You pick the framework, use the UiPath SDK, package it with one CLI command, and
 
 ### What the hiring agent does
 
-The four nodes run in order — each one feeds the next, and `Persist` closes the loop by writing to Data Service for Lab 2 to pick up.
+The four steps run in order — each one feeds the next, and `Return` hands the shortlist to whoever called the agent. In Lab 3, that's your Maestro Flow.
 
 <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin: 1.4rem 0 0.8rem;">WHAT THE AGENT DOES</div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
-      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Search</span>
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Input</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Web search for current openings in the target roles</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Take a job title, for example "Forward Deployed Engineer"</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
       <span style="font-size: 17px; font-weight: 700; color: #16213e;">Generate</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Structured job description: title, must-haves, nice-to-haves, level</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Structured job description: title, level, must-haves, nice-to-haves</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
       <span style="font-size: 17px; font-weight: 700; color: #16213e;">Match</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Score the candidate pool against each job description</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Score every candidate in the pool against the JD, with a reason</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
-      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Persist</span>
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Return</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Write jobs and matches to Data Service</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Output the JD and the top 3 matches, in the contract's shape</div>
   </div>
 </div>
 
@@ -158,20 +228,20 @@ The four nodes run in order — each one feeds the next, and `Persist` closes th
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">2</span>
-      <span>Wire the WebSearch tool into the graph.</span>
+      <span>Use the UiPath LLM Gateway for the model calls, so you don't need your own API key.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
-      <span>Add a Data Service write step using the UiPath SDK.</span>
+      <span>Run it locally and check the output matches the contract.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
-      <span>Run an eval set, then deploy to your tenant.</span>
+      <span>Publish it as a process in the <code>CodingAgentsILT</code> folder, so Maestro can call it.</span>
     </li>
   </ul>
   <div style="border-top: 1px solid #eee3dc; padding-top: 12px; margin-top: 4px;">
     <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">WHAT YOU NEED</div>
-    <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">A list of target job titles (for example, "RPA Developer", "AI Engineer").</li><li style="margin-bottom: 5px;"><code>candidates.csv</code> — provided below, see <a href="#the-sample-candidate-data">The sample candidate data</a>.</li><li style="margin-bottom: 5px;">Your Anthropic or OpenAI API key.</li></ul>
+    <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;"><code>candidates.json</code> — see <a href="#the-candidate-pool">The candidate pool</a>.</li><li style="margin-bottom: 5px;">A logged-in <code>uip</code> CLI session. No personal LLM API key needed.</li></ul>
   </div>
 </div>
 
@@ -180,18 +250,25 @@ The four nodes run in order — each one feeds the next, and `Persist` closes th
 This is real text you can paste:
 
 ```text
-Build a UiPath Coded Agent in LangGraph that:
+Build a UiPath Coded Agent in LangGraph called {YourName}JobMatchingAgent.
 
-1. Takes the name of a job as input
-2. For each role, generates a structured JD with must-haves and nice-to-haves
-3. Scores a list of candidates (generate the JSON list locally and use it as
-   part of the solution; it should contain at least one profile for Forward
-   Deployed Engineer) against each JD
-4. Writes jobs and top-3 matches per role to Data Service
+Input:  { "job_title": string }
+Output: { "job": object, "matches": array }
 
-Include an eval set with 5 cases. The name of the agent should be
-{YourName}JobMatchingAgent. Use the UiPath SDK.
+1. Generate a structured JD for the job title: title, level, must_haves,
+   nice_to_haves
+2. Score every candidate in candidates.json (in this folder - bundle it with
+   the agent) against the JD, from 0 to 100, with a one-line reason
+3. Return the JD as "job" and the top 3 candidates as "matches". Each match
+   keeps ALL of the candidate's original fields and adds "score" and "reason"
+
+Use the UiPath SDK and the UiPath LLM Gateway for the model calls - no
+external API keys. Keep the graph small. Include an eval set with 3 cases.
+Show me your plan before you write code.
 ```
+
+!!! tip "Why the prompt is this specific"
+    Fixed input and output names, a provided candidate pool, no database. Every constraint you add removes a question the agent would otherwise ask — or a decision it would make on its own. That's what keeps this lab inside 50 minutes, and what makes Lab 3 plug together.
 
 <div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
   <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 12px;">WHAT THE CODING AGENT DOES WITH THAT</div>
@@ -202,22 +279,18 @@ Include an eval set with 5 cases. The name of the agent should be
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">2</span>
-      <span>Generates <code>agent.py</code> with four nodes.</span>
+      <span>Shows you a plan and waits for your go-ahead.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
-      <span>Builds Pydantic models for jobs and matches.</span>
+      <span>Generates <code>main.py</code> with the graph, and Pydantic models for the input, the JD, and the matches.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
-      <span>Adds the Data Service write via the UiPath SDK.</span>
+      <span>Creates <code>evals/</code> with three cases.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">5</span>
-      <span>Creates <code>evals/</code> with five cases.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">6</span>
       <span>Asks you to review before publishing.</span>
     </li>
   </ul>
@@ -227,32 +300,47 @@ Include an eval set with 5 cases. The name of the agent should be
 
 ```python
 from langgraph.graph import StateGraph
-from uipath import UiPath
+from pydantic import BaseModel
 
-sdk = UiPath()
+class Input(BaseModel):
+    job_title: str
 
-def search_jobs(state):
-    # Built-in WebSearch tool -> recent postings per role
-    state["jobs"] = [web_search(t) for t in state["titles"]]
-    return state
+class Output(BaseModel):
+    job: JobDescription
+    matches: list[Match]          # all candidate fields + score + reason
 
 def generate_jd(state):
-    # LLM call -> structured JD (Pydantic model)
+    # LLM Gateway call -> structured JD
     ...
 
 def match_candidates(state):
-    candidates = sdk.buckets.read("candidates.csv")
-    # LLM scoring -> top-3 per role
+    candidates = load_json("candidates.json")
+    # LLM Gateway call -> score every candidate, keep the top 3
     ...
 
-def persist(state):
-    sdk.entities.bulk_create("Jobs", state["jobs"])
-    sdk.entities.bulk_create("Matches", state["matches"])
+graph = StateGraph(State, input=Input, output=Output)
 ```
+
+Treat this as the shape to expect, not the exact code. Your agent's version will differ — that's fine, as long as the input and output names match the contract.
+
+### While it builds
+
+Your coding agent takes several minutes to plan, write, and check its work. Use that time:
+
+- Read the plan it shows you. Does the output keep every candidate field? Push back now — it's cheaper than after the code exists.
+- Read [What's a Coding Agent?](what-is-a-coding-agent.md#skills-in-practice) and spot the moment it loads the `uipath-agents` skill.
+- When it asks a question, answer briefly and specifically. "Yes, return all original fields" beats "whatever you think".
+
+### Run it locally
+
+Ask your coding agent to run the agent once with `{ "job_title": "Forward Deployed Engineer" }`.
+
+!!! success "Core goal done"
+    You get a JD and three matches. Each match has a `score`, a `reason`, and every field from `candidates.json` — including `date_of_birth` and `password`. Publish next.
 
 ### Publish the agent
 
-Both paths do the same thing. Run the commands yourself if you want to see each step, or hand the whole job to your coding agent.
+Maestro calls processes, not local code, so the agent has to land as a process in the `CodingAgentsILT` folder. Both paths do the same thing. Run the commands yourself if you want to see each step, or hand the whole job to your coding agent.
 
 === "Manually"
 
@@ -276,9 +364,11 @@ Both paths do the same thing. Run the commands yourself if you want to see each 
     uip codedagent deploy --tenant
     ```
 
+    Then, in **Orchestrator**, open the `CodingAgentsILT` folder and add a process from your `{YourName}JobMatchingAgent` package.
+
 === "Using Your Coding Agent"
 
-    Give this prompt to your coding agent — it initializes the project and publishes for you:
+    Give this prompt to your coding agent — it initializes the project, publishes, and creates the process for you:
 
     ```text
     Publish the {YourName}JobMatchingAgent coded agent I just built.
@@ -286,17 +376,38 @@ Both paths do the same thing. Run the commands yourself if you want to see each 
     1. Point the UiPath wrapper at my Python runtime with `uip codedagent setup`.
     2. Switch to the {{ training_tenant }} tenant and confirm `uip login status`
        shows the right org and tenant before going further.
-    3. Initialize the coded agent project, then publish it to the tenant feed.
-    4. Report back the package name and version you published, and stop if any
-       step fails rather than retrying blindly.
+    3. Initialize the coded agent project and publish it.
+    4. Make sure it's available as a process in the CodingAgentsILT folder.
+    5. Report back the package name, version, and process name, and stop if
+       any step fails rather than retrying blindly.
     ```
 
     !!! tip "Watch what it runs"
-        The agent proposes each command before running it. Read them — publishing writes to your tenant feed, and that is the one step you want to see before it happens.
+        The agent proposes each command before running it. Read them — publishing writes to your tenant, and that is the one step you want to see before it happens.
+
+### Checkpoint
+
+Ten minutes, as a group, before the block ends:
+
+- Two or three people show their matches for "Forward Deployed Engineer". Did the agents agree? Why not?
+- Everyone confirms their process shows up in the `CodingAgentsILT` folder.
+- Didn't make it? No problem — in Lab 3 you'll use the trainer's `DemoJobMatchingAgent`, which follows the same contract.
 
 ## <img src="../coding-agents-hands-on.images/icon-register.png" alt="" style="width: 1.05em; height: 1.05em; vertical-align: -0.12em; margin-right: 0.4em; border: none; box-shadow: none;">Lab 2 — the RPA Workflow { .lab-title }
 
-**75 min build + 15 min review**
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Register candidates where there's no API</div>
+
+**Block 2 · 30 min**
+
+| Minutes | What you do |
+| :--- | :--- |
+| 0–5 | Open an empty Studio project folder and paste the prompt. |
+| 5–15 | Let it discover the project and generate the workflow. |
+| 15–25 | Open it in **Studio Desktop**, run it with the sample input, and watch the browser fill in the form. |
+| 25–30 | Publish it as a process in the `CodingAgentsILT` folder. |
+
+!!! info "On a Mac?"
+    Studio Desktop runs on Windows only. Pair with someone on Windows for this lab. In Lab 3 you can use the trainer's `DemoRegisterInUiBank` process, which follows the same contract.
 
 ### Why RPA for this part?
 
@@ -320,25 +431,23 @@ Both paths do the same thing. Run the commands yourself if you want to see each 
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
-      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Connected to Lab 1</span>
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Built for Maestro</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Read candidates from Data Service, write registration status back.</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Takes the shortlist as an argument and returns a status per candidate.</div>
   </div>
 </div>
 
 ### What the workflow does
-
-The four stages run in order — `Read` picks up what Lab 1 wrote, and `Update` hands the status on to the Coded App in Lab 3.
 
 <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin: 1.4rem 0 0.8rem;">WHAT THE WORKFLOW DOES</div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
-      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Read</span>
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Receive</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Pull candidates from Data Service (matched in Lab 1)</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Parse <code>in_CandidatesJson</code> into a list of candidates</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
@@ -356,10 +465,10 @@ The four stages run in order — `Read` picks up what Lab 1 wrote, and `Update` 
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
-      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Update</span>
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Return</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Write registration status back to Data Service</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Output <code>out_ResultsJson</code> with a status per candidate</div>
   </div>
 </div>
 
@@ -376,41 +485,51 @@ The four stages run in order — `Read` picks up what Lab 1 wrote, and `Update` 
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
-      <span>Review the generated workflow in <strong>Studio Desktop</strong>.</span>
+      <span>Run it in <strong>Studio Desktop</strong> with the sample input and check <code>out_ResultsJson</code>.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
-      <span>Run against the sample CSV and verify the registrations.</span>
+      <span>Publish it as a process in the <code>CodingAgentsILT</code> folder.</span>
     </li>
   </ul>
   <div style="font-size: 15px; color: #4a4a4a; border-top: 1px solid #eee3dc; padding-top: 12px;">
-    <strong style="color: #16213e;">Your target:</strong> <code>uibank.uipath.com/register-account</code>, the sample <code>candidates.csv</code> <a href="#the-sample-candidate-data">provided below</a>, and UiPath Studio Desktop with the default packages.
+    <strong style="color: #16213e;">Your target:</strong> <code>uibank.uipath.com/register-account</code>, the sample input <a href="#test-input">below</a>, and UiPath Studio Desktop with the default packages.
   </div>
 </div>
-
-### The sample candidate data
-
-```csv
-first_name,last_name,middle_name,sex,title,employment_status,date_of_birth,marital_status,num_dependents,username,email,password
-Alice,Nguyen,,Female,Ms,Full-time,1/15/1990,Single,0,alice.nguyen,alice.nguyen@example.com,Welcome2026!
-Ben,Carter,J.,Male,Mr,Full-time,3/22/1985,Married,2,ben.carter,ben.carter@example.com,Welcome2026!
-Clara,Osei,,Female,Ms,Full-time,7/4/1992,Single,1,clara.osei,clara.osei@example.com,Welcome2026!
-```
-
-!!! note "Three things to tell the workflow about this data"
-
-    - An empty `middle_name` is valid. The form should skip the field, not type an empty string.
-    - The date format is `MM/DD/YYYY`, which matches the form's picker.
-    - All test passwords are demo-grade. In production, pull them from a vault.
 
 ### The prompt
 
 ```text
-Build a UiPath workflow that registers each candidate from candidates.csv at
-uibank.uipath.com/register-account. The name of the workflow should be
-{YourName}RegisterInUiBank. candidates.csv contains first_name, last_name,
-middle_name, sex, title, employment_status, date_of_birth, marital_status,
-num_dependents, username, email, and password.
+Build a UiPath workflow project called {YourName}RegisterInUiBank that
+registers candidates at uibank.uipath.com/register-account.
+
+Arguments:
+  in_CandidatesJson (In, String): a JSON array of candidates with first_name,
+    last_name, middle_name, sex, title, employment_status, date_of_birth,
+    marital_status, num_dependents, username, email, and password. Other
+    fields may be present - ignore them.
+  out_ResultsJson (Out, String): a JSON array of { username, status } where
+    status is Registered or Failed.
+
+For each candidate: add {yourname} and the current HHmm to the end of the
+username so reruns don't collide, skip middle_name when it's empty, submit,
+and wait for the success message. Wrap each registration in a Try/Catch so
+one failure doesn't stop the run.
+
+Set the default value of in_CandidatesJson to the test input I'll paste
+next. Inspect the project before you write anything.
+```
+
+### Test input
+
+Paste this as the default value for `in_CandidatesJson` — three candidates in the same shape the agent returns:
+
+```json
+[
+  {"first_name": "Alice", "last_name": "Nguyen", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "1/15/1990", "marital_status": "Single", "num_dependents": 0, "username": "alice.nguyen", "email": "alice.nguyen@example.com", "password": "Welcome2026!", "score": 92, "reason": "Customer-facing engineer with Python and UiPath"},
+  {"first_name": "Ben", "last_name": "Carter", "middle_name": "J.", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "3/22/1985", "marital_status": "Married", "num_dependents": 2, "username": "ben.carter", "email": "ben.carter@example.com", "password": "Welcome2026!", "score": 71, "reason": "Strong UiPath delivery, less customer-facing"},
+  {"first_name": "Clara", "last_name": "Osei", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "7/4/1992", "marital_status": "Single", "num_dependents": 1, "username": "clara.osei", "email": "clara.osei@example.com", "password": "Welcome2026!", "score": 68, "reason": "Solid Python and agents, earlier in career"}
+]
 ```
 
 ### How the workflow skill thinks
@@ -421,19 +540,19 @@ The `uipath-rpa` skill is discovery-first. It reads before it writes:
 Let me inspect the project first...
   -> Reading project.json
   -> Found packages: UiPath.UIAutomation.Activities,
-     UiPath.Excel.Activities, UiPath.WebAPI.Activities
-  -> Inspected candidates.csv header
+     UiPath.WebAPI.Activities
 
-I'll create RegisterCandidates.xaml with:
-  - Excel.ReadCsv -> DataTable
-  - For Each Row in candidates
+I'll create Main.xaml with:
+  - Arguments in_CandidatesJson (In) and out_ResultsJson (Out)
+  - Deserialize JSON Array -> candidates
+  - For Each candidate
   - Open browser at registration URL
   - Type Into each form field (skip empty middle name)
   - Click Submit, wait for success element
-  - Write Status back to Data Service (Candidates entity)
-  - Try/Catch with screenshot on failure
+  - Try/Catch per candidate, add { username, status } to results
+  - Serialize results -> out_ResultsJson
 
-Created RegisterCandidates.xaml (validated)
+Created Main.xaml (validated)
 ```
 
 Four things worth noticing in that output:
@@ -444,361 +563,186 @@ Four things worth noticing in that output:
       <span style="font-size: 17px; font-weight: 700; color: #16213e;">Reads first</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Discovers packages and CSV structure before writing any code.</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Discovers packages before writing any code.</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
       <span style="font-size: 17px; font-weight: 700; color: #16213e;">Picks the right activities</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Knows <code>Excel.ReadCsv</code> exists and reaches for UI Automation activities.</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Reaches for JSON and UI Automation activities it knows exist.</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
       <span style="font-size: 17px; font-weight: 700; color: #16213e;">Handles edge cases</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Empty middle name handled, screenshot on failure.</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Empty middle name skipped, one failure doesn't stop the run.</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
-      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Closes the loop</span>
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Honours the contract</span>
       <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
     </div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Writes status back to Data Service for the Coded App to read.</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Arguments named exactly as Maestro will pass them.</div>
   </div>
 </div>
 
-## <img src="../coding-agents-hands-on.images/icon-dashboard.png" alt="" style="width: 1.05em; height: 1.05em; vertical-align: -0.12em; margin-right: 0.4em; border: none; box-shadow: none;">Lab 3 — the Coded App { .lab-title }
+!!! success "Core goal done"
+    The browser registers all three candidates and `out_ResultsJson` shows a status for each one.
 
-**100 min build + 20 min review**
+### Publish the workflow
 
-### What's a Coded App?
+Give this prompt to your coding agent:
+
+```text
+Publish {YourName}RegisterInUiBank to the {{ training_tenant }} tenant and
+make it available as a process in the CodingAgentsILT folder. Confirm
+`uip login status` first. Report the process name, and stop if any step fails.
+```
+
+Then move straight on to Lab 3 — don't polish this workflow past the time box.
+
+## 🔗 Lab 3 — the Maestro Flow { .lab-title }
+
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Agent, human, robot — one process</div>
+
+**Block 2 · 50 min**
+
+| Minutes | What you do |
+| :--- | :--- |
+| 0–5 | Start your coding agent in an empty folder and paste the prompt. |
+| 5–25 | Review the flow it proposes, let it build, validate, and publish. |
+| 25–40 | Run the flow, approve the task in **Action Center**, watch the robot register the candidates. |
+| 40–50 | Fix what broke and run it again. |
+
+### What's a Maestro Flow?
 
 <div style="background: #16213e; border-left: 10px solid #FA4616; padding: 22px 28px; margin: 1.2rem 0 1.4rem;">
-  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">When the canvas-based UiPath Apps builder isn't enough.</div>
-  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">A custom web app in TypeScript and React — built in your IDE, governed by the platform.</div>
+  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">The process that ties agents, robots, and people together.</div>
+  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">You already built the workers. Maestro decides who works when — and waits for the human.</div>
 </div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Your stack</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">TypeScript, React, your design system, your favourite libraries.</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Orchestrates</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Calls your agent and your RPA process, and passes data between them.</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Platform access</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;"><code>@uipath/uipath-typescript</code> gives you Cases, Tasks, Processes, Entities, and Buckets.</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Humans in the loop</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Pauses for an approval in Action Center, then carries on.</div>
   </div>
   <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
-    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Enterprise-grade</div>
-    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">OAuth, IP restrictions, audit logs, and RBAC — all inherited from UiPath.</div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Observable</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Every run, every step, every input and output is visible after the fact.</div>
   </div>
 </div>
 
-### What you'll build
+### What the flow does
 
-A recruiter dashboard that reads the Jobs, Matches, and Candidates entities from Data Service.
+<div style="font-size: 13px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin: 1.4rem 0 0.8rem;">WHAT THE FLOW DOES</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Start</span>
+      <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
+    </div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Manual trigger with one input: <code>job_title</code></div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Shortlist</span>
+      <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
+    </div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">Run the Coded Agent from Lab 1</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Approve</span>
+      <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
+    </div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">The recruiter approves or rejects the shortlist in Action Center</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px;">
+      <span style="font-size: 17px; font-weight: 700; color: #16213e;">Register</span>
+      <span style="font-size: 22px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
+    </div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">On approval, run the RPA workflow from Lab 2</div>
+  </div>
+</div>
 
 <div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
-  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 12px;">WHAT THE DASHBOARD SHOWS</div>
+  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 12px;">YOUR OBJECTIVES</div>
   <ul style="list-style: none; margin: 0 0 16px; padding: 0; font-size: 16px; color: #333; line-height: 1.55;">
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">1</span>
-      <span>Jobs list, sorted by recency.</span>
+      <span>Prompt your coding agent to build the flow — it loads the <code>uipath-maestro-flow</code> skill.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">2</span>
-      <span>Click into any job for the full description.</span>
+      <span>Let it discover your two processes in the folder before it builds anything.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
-      <span>Candidate matches with their scores.</span>
+      <span>Validate and publish the flow.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
-      <span>Registration status badges.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">5</span>
-      <span>A button that triggers the Coded Agent on demand.</span>
+      <span>Run it end to end and approve the shortlist yourself.</span>
     </li>
   </ul>
+  <div style="font-size: 15px; color: #4a4a4a; border-top: 1px solid #eee3dc; padding-top: 12px;">
+    <strong style="color: #16213e;">Your building blocks:</strong> <code>{YourName}JobMatchingAgent</code> and <code>{YourName}RegisterInUiBank</code> in the <code>CodingAgentsILT</code> folder — or the trainer's <code>DemoJobMatchingAgent</code> and <code>DemoRegisterInUiBank</code> if yours didn't make it.
+  </div>
 </div>
 
 ### The prompt
 
 ```text
-Build a Coded App using UiPath TypeScript SDK called recruiter-dashboard.
-It should:
+Build a Maestro Flow called {YourName}RecruitmentPipeline in the
+CodingAgentsILT folder that runs the recruitment pipeline end to end:
 
-1. Read Jobs from the UiPath Data Service Jobs entity
-2. For each job, show the JD and matched candidates
-3. Show registration status from the Candidates entity
-4. Add a button that triggers the Coded Agent
+1. Trigger: manual, with one input job_title (string)
+2. Run the {YourName}JobMatchingAgent process with { job_title }
+3. Create an approval task assigned to me that shows the job title and the
+   three matches with first_name, last_name, score, and reason.
+   Approve continues, Reject ends the flow
+4. On Approve, run the {YourName}RegisterInUiBank process with
+   in_CandidatesJson set to the agent's matches, serialized as a JSON string
+5. End with outputs: the agent's job and the RPA's out_ResultsJson
 
-The name of the app should be {YourName}RecruiterApp. Use uipath-coded-apps
-for the table component.
+Discover both processes in the folder before you start, and ask me before
+creating anything new. Validate the flow, publish it, and tell me how to run it.
 ```
 
-And the structure it generates:
-
-```text
-recruiter-dashboard/
-├── package.json
-├── uipath.json
-├── src/
-│   ├── App.tsx
-│   ├── pages/
-│   │   ├── JobsList.tsx
-│   │   └── JobDetail.tsx
-│   ├── hooks/
-│   │   ├── useJobs.ts
-│   │   └── useCandidates.ts
-│   └── api/uipath.ts
-└── README.md
-```
-
-### The Data Service hook
-
-Here's how the dashboard reads jobs and matches:
-
-```typescript
-import { UiPath } from '@uipath/uipath-typescript/core'
-import { Entities } from '@uipath/uipath-typescript/entities'
-import { useQuery } from '@tanstack/react-query'
-
-const sdk = new UiPath({ /* env-based config */ })
-
-export function useJobs() {
-  return useQuery({
-    queryKey: ['jobs'],
-    queryFn: async () => {
-      const entities = new Entities(sdk)
-      return entities.list('Jobs', { orderBy: 'createdAt desc' })
-    },
-  })
-}
-```
-
-### Publishing the Coded App
-
-Fifteen steps, and most of the pain is in steps 4 to 6. Work through them in order.
-
-#### 1. Prerequisites
-
-```bash
-winget install OpenJS.NodeJS
-npm install -g @uipath/cli
-uip tools install @uipath/codedapp-tool
-uip tools install @uipath/orchestrator-tool
-
-uip login
-uip login status --output json
-```
-
-You also need your UiPath org name, tenant name, workspace folder key, an External App client ID, and the Data Service entity IDs.
-
-#### 2. Create the app
-
-```bash
-npm create vite@latest recruiter-dashboard -- --template react-ts
-cd recruiter-dashboard
-npm install
-npm install @uipath/uipath-typescript --@uipath:registry=https://registry.npmjs.org
-npm install path-browserify tailwindcss@3 postcss autoprefixer
-```
-
-#### 3. Configure Vite
-
-Set `base: './'` in `vite.config.ts`. UiPath hosts coded apps under a mounted path, not the domain root, so an absolute base breaks every asset URL.
-
-#### 4. Create the UiPath app config
-
-Add `uipath.json`:
-
-```json
-{
-  "scope": "DataFabric.Schema.Read DataFabric.Data.Read OR.Execution.Read OR.Jobs.Write",
-  "clientId": "YOUR_EXTERNAL_APP_CLIENT_ID"
-}
-```
-
-Use the External App client ID, and keep the scope string aligned with what the app actually calls. Prefer the narrow scopes you need over broad ones.
-
-#### 5. Create `.env`
-
-```bash
-VITE_UIPATH_CLIENT_ID=YOUR_EXTERNAL_APP_CLIENT_ID
-VITE_UIPATH_SCOPE=DataFabric.Schema.Read DataFabric.Data.Read OR.Execution.Read OR.Jobs.Write
-VITE_UIPATH_ORG_NAME=your-org
-VITE_UIPATH_TENANT_NAME=your-tenant
-VITE_UIPATH_BASE_URL=https://staging.api.uipath.com
-VITE_JOBS_ENTITY_ID=YOUR_JOBS_ENTITY_ID
-VITE_MATCHES_ENTITY_ID=YOUR_MATCHES_ENTITY_ID
-VITE_CANDIDATES_ENTITY_ID=YOUR_CANDIDATES_ENTITY_ID
-VITE_AGENT_PROCESS_NAME=job-matching-agent
-VITE_AGENT_FOLDER_PATH=your.name@example.com's workspace
-```
-
-!!! warning "VITE_UIPATH_BASE_URL must be the API host"
-    Not the portal host. Use `https://staging.api.uipath.com` for staging and `https://api.uipath.com` for production. Pointing it at `staging.uipath.com` is the single most common setup mistake.
-
-#### 6. Create the External App correctly
-
-In UiPath Cloud, create a **Non-Confidential** External App. It must include the exact redirect URIs for local dev — both `http://localhost:5173` and `http://localhost:5173/` — and the scopes your app needs.
-
-For this dashboard, the working scope set is:
-
-- `DataFabric.Schema.Read`
-- `DataFabric.Data.Read`
-- `OR.Execution.Read`
-- `OR.Jobs.Write`
-
-If the External App doesn't allow a requested scope, login fails with UiPath Identity `#200` and `invalid_scope`.
-
-#### 7. Initialize auth in code
-
-Create the SDK client only after validating the config, and keep `sdk` nullable until initialization succeeds. Only construct services like `new Entities(sdk)` or `new Processes(sdk)` when `sdk` is real.
-
-That prevents `Invalid SDK instance` errors and service construction before auth is ready.
-
-#### 8. Read Data Service and Orchestrator data
-
-Use subpath imports. Don't import service classes from the package root:
-
-```typescript
-import { UiPath } from '@uipath/uipath-typescript/core';
-import { Entities } from '@uipath/uipath-typescript/entities';
-import { Processes } from '@uipath/uipath-typescript/processes';
-```
-
-For Data Service, call `entities.getById(entityId)`, then paginate with `getAllRecords({ pageSize, cursor })`. Don't assume one call returns everything.
-
-#### 9. Build locally
-
-```bash
-npm run build
-npm run dev   # if you want to test locally first
-```
-
-Verify that sign-in works, the app returns to `localhost:5173`, and you see no `invalid_scope` or `Invalid SDK instance` errors.
-
-#### 10. Package the coded app
-
-```bash
-uip codedapp pack dist --name recruiter-dashboard --version 0.1.0 --author "Your Name" --description "Recruiter dashboard"
-```
-
-This creates `.uipath/recruiter-dashboard.0.1.0.nupkg`.
-
-#### 11. Publish to UiPath
-
-```bash
-uip codedapp publish --name recruiter-dashboard --version 0.1.0 --tenant-name {{ training_tenant }} --uipath-dir .uipath
-```
-
-Pass `--uipath-dir .uipath` explicitly. The CLI can miss newly packed versions without it.
-
-#### 12. Deploy to a folder
-
-```bash
-uip or folders list --output json
-uip codedapp deploy --name recruiter-dashboard --folder-key YOUR_FOLDER_KEY
-```
-
-#### 13. Verify the deployment
-
-Open the deployed URL and check that login works, the app loads entity data, the trigger buttons call the expected process, and no auth or scope errors appear.
-
-#### 14. The bugfix release flow
-
-When you change config or code: update the files, rebuild, bump the version, repack, republish, redeploy.
-
-```bash
-npm run build
-uip codedapp pack dist --name recruiter-dashboard --version 0.1.1 --author "Your Name" --description "Recruiter dashboard"
-uip codedapp publish --name recruiter-dashboard --version 0.1.1 --tenant-name {{ training_tenant }} --uipath-dir .uipath
-uip codedapp deploy --name recruiter-dashboard --folder-key YOUR_FOLDER_KEY
-```
-
-#### 15. The lessons worth remembering
-
-- Use `base: './'` in Vite.
-- Use `https://staging.api.uipath.com`, not `https://staging.uipath.com`, for SDK API calls.
-- Register the correct `localhost` redirect URIs in the External App.
-- Keep `uipath.json` and `.env` aligned.
-- Keep the External App scopes aligned with `VITE_UIPATH_SCOPE`.
-- Prefer exact scopes like `OR.Execution.Read` and `OR.Jobs.Write` over broader strings.
-- Pass `--uipath-dir .uipath` on publish.
-- Guard SDK initialization so the app fails gracefully instead of crashing.
-
-## 🔗 Homework — Connect it all in Maestro { .lab-title }
-
-<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Optional deep dive · on your own, after the session</div>
-
-<div style="background: #16213e; border-left: 10px solid #FA4616; padding: 22px 28px; margin: 1.2rem 0 1.4rem;">
-  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">Three pieces that work. Now make them run as one process.</div>
-  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">No walkthrough for this one — that's the point. You already have every skill you need.</div>
-</div>
-
-Each lab left you with a deployed component and a Data Service entity. **Maestro** is what turns them into a single orchestrated process: it calls the agent, waits for the result, hands work to the RPA robot, and routes a human into the loop when one is needed.
-
-<div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
-  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 12px;">YOUR OBJECTIVES</div>
-  <ul style="list-style: none; margin: 0; padding: 0; font-size: 16px; color: #333; line-height: 1.55;">
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">1</span>
-      <span>Design a <strong>Maestro</strong> process that runs the three components end to end.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">2</span>
-      <span>Trigger the Coded Agent to research jobs and write matches to Data Service.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
-      <span>Call the RPA workflow to register each matched candidate on UiBank.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
-      <span>Surface the results in the Coded App so a recruiter can review them.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">5</span>
-      <span>Publish the process and run it once, start to finish.</span>
-    </li>
-  </ul>
-</div>
-
-### Which skill to use
-
-`uipath-maestro-flow` — it creates, validates, and debugs UiPath Flow projects in the `.flow` JSON format. You never hand-edit the JSON; you describe the process and let the agent build it, exactly as you did in the three labs.
-
-### A prompt to start from
-
-Treat this as a starting point, not a script. Read what the agent proposes, push back, and iterate.
-
-```text
-Build a Maestro Flow called {YourName}RecruitmentPipeline that orchestrates the
-three components I already deployed:
-
-1. Start by running my {YourName}JobMatchingAgent coded agent, passing in a list
-   of target job titles. Wait for it to finish writing Jobs and Matches to
-   Data Service.
-2. Then run my {YourName}RegisterInUiBank RPA process for the matched candidates,
-   so each one gets registered on UiBank and the status is written back.
-3. Add a human approval step before the RPA runs, so a recruiter can confirm
-   the shortlist first.
-4. Validate the flow, publish it, and tell me the process key.
-
-Discover what's already deployed in my tenant before you start, and ask me
-before creating anything new.
-```
-
-!!! tip "What 'done' looks like"
-    One Maestro run that starts from a list of job titles and ends with registered candidates visible in your Coded App — with no manual step in between except the approval you designed in.
+!!! tip "Using the trainer's processes"
+    Replace `{YourName}JobMatchingAgent` or `{YourName}RegisterInUiBank` with `DemoJobMatchingAgent` or `DemoRegisterInUiBank`. They follow the same contract, so nothing else in the prompt changes.
+
+### Run it end to end
+
+1. Start the flow with `job_title` set to `Forward Deployed Engineer` — ask your coding agent to start it, or start it from **Maestro** in your tenant.
+2. Wait for the agent step to finish. The flow pauses on the approval.
+3. Open **Action Center**, find the task, read the shortlist, and approve it.
+4. Watch the RPA job run in **Orchestrator**. The robot registers the three candidates on UiBank.
+5. Open the finished run in Maestro and check the outputs: the JD and a status for each candidate.
+
+!!! success "What 'done' looks like"
+    One Maestro run that starts from a job title and ends with registered candidates — with no manual step in between except the approval you designed in.
+
+### Where it usually breaks
+
+| Symptom | Likely cause | Ask your coding agent to… |
+| :--- | :--- | :--- |
+| Flow can't find a process | The process isn't in the `CodingAgentsILT` folder yet | List the processes in the folder and fix the name |
+| Robot step fails straight away | `in_CandidatesJson` got an object, not a string | Serialize the matches to a JSON string before passing them |
+| Robot registers people with blank fields | The agent dropped candidate fields from `matches` | Check the agent's output against the contract |
+| No task in Action Center | The task is assigned to someone else | Assign the approval to your user |
+| RPA job stays pending | No robot is free in the folder | Tell the trainer — robots are shared |
 
 !!! info "Stuck? That's expected"
-    This is the part nobody walks you through. Ask your coding agent to explain what it generated, check the run in **Orchestrator**, and send the interesting failures our way with `uip feedback send`.
+    Ask your coding agent to explain what it generated, check the run in **Maestro** and **Orchestrator**, and send the interesting failures our way with `uip feedback send`.
 
 ## Gotchas you'll hit
 
@@ -807,28 +751,29 @@ Things every team learns in the first month.
 | Gotcha | What to do |
 | :--- | :--- |
 | **Trust but verify** | The agent is fast and confident. Always review generated XAML and run the eval set before publishing. |
+| **Agree on the contract first** | Separate components built by separate prompts only fit together if the names and shapes are fixed up front. |
 | **Pin your skill versions** | Skills evolve. Lock to a version in your project so behaviour doesn't shift under you. |
 | **Context window matters** | On large projects the agent can miss context. Tell it which files to focus on, or use an `AGENTS.md`. |
 | **Auth before everything** | Run `uip login` first. Skills can't deploy if the CLI session expired — this is the usual cause of "it just stopped working". |
 
 ## What you built
 
-One end-to-end recruitment pipeline, in three pieces:
+One end-to-end recruitment pipeline:
 
 | # | Component | What it does |
 | ---: | :--- | :--- |
-| 01 | **Coded Agent** | LangGraph agent. Searches the web for jobs, generates job descriptions, matches candidates, writes to Data Service. |
-| 02 | **RPA Workflow** | XAML workflow. Reads matched candidates, registers each on UiBank, updates status. |
-| 03 | **Coded App** | React dashboard. Shows jobs, matches, and registration status, with a trigger button. |
+| 01 | **Coded Agent** | LangGraph agent. Generates a job description and shortlists the top 3 candidates. |
+| 02 | **RPA Workflow** | XAML workflow. Registers each candidate on UiBank and returns a status per candidate. |
+| 03 | **Maestro Flow** | Runs the agent, waits for the recruiter's approval in Action Center, then runs the robot. |
 
-All three talk to each other. All three were built with your coding agent. All in one IDE session.
+All three were built with your coding agent, and they run as one process — in two 90-minute blocks.
 
 ## Next steps
 
 **This week**
 
 - Install the skills on your laptop and actually use them.
-- Do the [Maestro homework](#homework-connect-it-all-in-maestro) — wire the agent, the RPA workflow, and the app into one orchestrated process.
+- Run your pipeline with a different job title and see how the shortlist changes.
 
 **Next 30 days**
 
@@ -848,7 +793,6 @@ All three talk to each other. All three were built with your coding agent. All i
 | :--- | :--- |
 | [**UiPath/skills**](https://github.com/UiPath/skills) | The skill repository. Read each `SKILL.md`. |
 | **Studio + Coding Agents** | Official UiPath page on Studio with Claude Code, Codex, Cursor, and Gemini. |
-| [**uipath-typescript**](https://github.com/UiPath/uipath-typescript) | TypeScript SDK reference and sample Coded Apps. |
 | [**uipath-langchain-python**](https://github.com/UiPath/uipath-langchain-python) | LangGraph SDK for Coded Agents. |
 
 ## Appendix: CLI cheat sheet
@@ -863,4 +807,4 @@ Commands you'll run every day with the `uip` CLI.
 | `uipath run` | Run the agent locally with `input.json` | Testing during development |
 | `uipath eval` | Run the evaluation set, score against expectations | Before deploying |
 | `uipath publish` | Pack and publish to your tenant | Shipping |
-| `uip push` / `uip pull` | Sync a Coded App with Studio Web | Coded App round-trips |
+| `uip feedback send` | Report a bug or a skill that guessed wrong | Whenever something breaks |

@@ -1,5 +1,8 @@
 # UiPath Coding Agents Workshop
 
+!!! warning "Work in progress"
+    This version of the workshop — the recruitment pipeline in two 90-minute blocks — is still being authored and hasn't had a full dry run. Expect content and timings to change.
+
 **Build UiPath agents and Maestro orchestrations with coding agents — from installing the tools to shipping a long-running automation.**
 
 !!! tip "Training Environment"
@@ -15,7 +18,9 @@ The course has two parts:
 
 **Part 2 · Agentic Orchestration** — build Coded Apps, then orchestrate agents and apps into Maestro solutions: Case Management, BPMN, and Flow.
 
-[**Agenda**](loan-application-underwriting/agenda.md) — How the hands-on session runs, in a two-day or a single-day format.
+[**Agenda**](loan-application-underwriting/agenda.md) — How the hands-on session runs, in two 90-minute blocks. Finish [Setup](setup.md) before the first block.
+
+[**Hands-On Session**](coding-agents-hands-on.md) — The recruitment pipeline you'll build: a Coded Agent, an RPA workflow, and a Maestro Flow, step by step.
 
 More exercises are being authored and will appear here as they are released.
 

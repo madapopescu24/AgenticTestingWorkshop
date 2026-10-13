@@ -179,19 +179,18 @@ You should see output similar to this:
 }
 ```
 
-Confirm these four skills appear in the output — the exercises rely on them:
+Confirm these three skills appear in the output — the hands-on session relies on them:
 
-- `uipath-rpa` — Studio XAML workflows
 - `uipath-agents` — Python coded agents
-- `uipath-coded-apps` — React coded apps
+- `uipath-rpa` — Studio XAML workflows
 - `uipath-maestro-flow` — Maestro orchestration
 
 !!! info "What each skill actually knows"
     See [What's a Coding Agent?](what-is-a-coding-agent.md) for the full skill catalog and how skills get discovered.
 
-## 5. Install the Coded Apps Tool
+## 5. Install the Coded Apps Tool (optional)
 
-The Coded Apps skill requires an additional CLI tool:
+The recruitment pipeline session doesn't build a Coded App, so you can skip this step. Install it if you want to try the `uipath-coded-apps` skill on your own — the skill requires an additional CLI tool:
 
 ```bash
 uip tools install @uipath/codedapp-tool

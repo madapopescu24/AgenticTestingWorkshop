@@ -1,5 +1,5 @@
-site_name: UiPath Coding Agents Workshop
-site_url: https://madapopescu24.github.io/CodingAgentsRecruitmentPipeline/
+site_name: UiPath Coding Agents Workshop (WIP)
+site_url: https://madapopescu24.github.io/CodingAgentsRecruitmentPipeline-WIP/
 site_description: Hands-on learner's handbook for building UiPath agents and Maestro orchestrations with coding agents
 site_author: Sergey Shumilov
 
@@ -69,6 +69,7 @@ nav:
   - Setup: setup.md
   - What's a Coding Agent?: what-is-a-coding-agent.md
   - Agenda: loan-application-underwriting/agenda.md
+  - Hands-On Session: coding-agents-hands-on.md
   - Next Steps: next-steps.md
 
 extra_css:
