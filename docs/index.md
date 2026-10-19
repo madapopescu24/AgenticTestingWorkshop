@@ -16,7 +16,7 @@ The course has two parts:
 
 **Part 1 · Coding Agents** — get your environment ready, learn how building UiPath components changes with a coding agent, and build your first agents: a low-code hello-world, a coded agent with context and tools, and a conversational agent.
 
-**Part 2 · Agentic Orchestration** — build Coded Apps, then orchestrate agents and apps into Maestro solutions: Case Management, BPMN, and Flow.
+**Part 2 · Agentic Orchestration** — orchestrate agents, robots, and people into Maestro solutions: Case Management, BPMN, and Flow.
 
 [**Agenda**](loan-application-underwriting/agenda.md) — How the hands-on session runs, in two 90-minute blocks. Finish [Setup](setup.md) before the first block.
 

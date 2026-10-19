@@ -2,21 +2,6 @@
 
 **Build a Coded Agent and an RPA workflow, then orchestrate them with a human approval in Maestro — the whole recruitment pipeline, in two 90-minute blocks.**
 
-!!! tip "Here is our plan for this session:"
-
-    **Block 1 · 90 min**
-
-    1. Get the mental model for coding agents, skills, tools, and plugins —
-       see [What's a Coding Agent?](what-is-a-coding-agent.md).
-    2. Build a **Coded Agent** that writes a job description and shortlists candidates.
-
-    **Block 2 · 90 min**
-
-    3. Build an **RPA** workflow that registers candidates on a web form.
-    4. Build a **Maestro Flow** that runs the agent, asks a recruiter to approve the shortlist, and hands it to the robot — then run the whole pipeline end to end.
-
-    Finish [Setup](setup.md) before Block 1. See the [Agenda](loan-application-underwriting/agenda.md) for minute-by-minute timing.
-
 ## Overview
 
 Every week a recruiter at a staffing agency does the same three things by hand: write a description for each open role, read through a candidate pool to find who fits, and register the shortlist in the client's portal. Hours of work, done differently by every recruiter, with no record of who approved what.
@@ -147,7 +132,7 @@ Save this as `candidates.json` in an empty folder for Lab 1. The agent scores it
 | Minutes | What you do |
 | :--- | :--- |
 | 0–5 | Save `candidates.json`, start your coding agent in that folder, paste the prompt. |
-| 5–30 | Answer its questions, review the plan, let it build. Read *What's a Coded Agent?* while it works. |
+| 5–30 | Answer its questions and let it build. Read *What's a Coded Agent?* while it works. |
 | 30–40 | Run the agent locally and check the output against the contract. |
 | 40–50 | Publish the agent as a process in the `CodingAgentsILT` folder. |
 | 50–60 | Checkpoint with the group. |
@@ -250,25 +235,28 @@ The four steps run in order — each one feeds the next, and `Return` hands the 
 This is real text you can paste:
 
 ```text
-Build a UiPath Coded Agent in LangGraph called {YourName}JobMatchingAgent.
+Build a UiPath Coded Agent in LangGraph called {YourName}JobMatchingAgent,
+in a new folder named {YourName}JobMatchingAgent.
 
-Input:  { "job_title": string }
-Output: { "job": object, "matches": array }
+Input: { "job_title": string }. Output: { "job": object, "matches": array }.
 
-1. Generate a structured JD for the job title: title, level, must_haves,
-   nice_to_haves
-2. Score every candidate in candidates.json (in this folder - bundle it with
-   the agent) against the JD, from 0 to 100, with a one-line reason
-3. Return the JD as "job" and the top 3 candidates as "matches". Each match
-   keeps ALL of the candidate's original fields and adds "score" and "reason"
+1. Write a JD for the job title with 3-5 role-specific must-have skills
+2. Score each candidate in candidates.json (copy it into the project) from
+   0 to 100. A headline matching the job title counts most, then skills
+   matching the must-haves
+3. Return the JD as "job" and the top 3 as "matches", highest first. Each
+   match keeps all original candidate fields, plus "score" and "reason"
 
-Use the UiPath SDK and the UiPath LLM Gateway for the model calls - no
-external API keys. Keep the graph small. Include an eval set with 3 cases.
-Show me your plan before you write code.
+Use the UiPath LLM Gateway at temperature 0, no external API keys. Add 3
+evals that check the candidate whose headline matches the job title ranks
+first.
 ```
 
 !!! tip "Why the prompt is this specific"
     Fixed input and output names, a provided candidate pool, no database. Every constraint you add removes a question the agent would otherwise ask — or a decision it would make on its own. That's what keeps this lab inside 50 minutes, and what makes Lab 3 plug together.
+
+!!! info "Why the prompt sets a scoring rule"
+    Without one, the agent writes a fresh JD on every run — often with generic must-haves like "cloud platforms" — and scores only against that JD. The same candidate can come first in one run and third in the next. The scoring rule ties the score to the job title and to concrete skills, and the evals check who ranks first, so an unstable ranking fails instead of slipping through. Expect small score changes between runs — that's normal for an LLM — but the top candidate should stay put.
 
 <div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
   <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 12px;">WHAT THE CODING AGENT DOES WITH THAT</div>
@@ -279,18 +267,14 @@ Show me your plan before you write code.
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">2</span>
-      <span>Shows you a plan and waits for your go-ahead.</span>
-    </li>
-    <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
       <span>Generates <code>main.py</code> with the graph, and Pydantic models for the input, the JD, and the matches.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
+      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
       <span>Creates <code>evals/</code> with three cases.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
-      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">5</span>
+      <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
       <span>Asks you to review before publishing.</span>
     </li>
   </ul>
@@ -325,18 +309,27 @@ Treat this as the shape to expect, not the exact code. Your agent's version will
 
 ### While it builds
 
-Your coding agent takes several minutes to plan, write, and check its work. Use that time:
+Your coding agent takes several minutes to write and check its work. Use that time:
 
-- Read the plan it shows you. Does the output keep every candidate field? Push back now — it's cheaper than after the code exists.
+- Watch what it writes. Does the output keep every candidate field? Push back early — it's cheaper than after all the code exists.
 - Read [What's a Coding Agent?](what-is-a-coding-agent.md#skills-in-practice) and spot the moment it loads the `uipath-agents` skill.
 - When it asks a question, answer briefly and specifically. "Yes, return all original fields" beats "whatever you think".
 
 ### Run it locally
 
-Ask your coding agent to run the agent once with `{ "job_title": "Forward Deployed Engineer" }`.
+Give this prompt to your coding agent:
+
+```text
+Run the {YourName}JobMatchingAgent coded agent locally with this input:
+{ "job_title": "Forward Deployed Engineer" }
+Show me the output.
+```
 
 !!! success "Core goal done"
-    You get a JD and three matches. Each match has a `score`, a `reason`, and every field from `candidates.json` — including `date_of_birth` and `password`. Publish next.
+    You get a JD and three matches, highest score first, with the candidate whose headline is Forward Deployed Engineer on top. Each match has a `score`, a `reason`, and every field from `candidates.json` — including `date_of_birth` and `password`. Publish next.
+
+!!! tip "Someone else came first?"
+    Read the `reason` for each match, then ask your coding agent why the Forward Deployed Engineer candidate isn't first and to fix the scoring. Run the eval set to check the fix.
 
 ### Publish the agent
 
@@ -348,7 +341,7 @@ Maestro calls processes, not local code, so the agent has to land as a process i
 
     ```bash
     # 1. Go to the agent project
-    cd job-matching-agent
+    cd {YourName}JobMatchingAgent
 
     # 2. Point the UiPath wrapper at the Python runtime
     uip codedagent setup --force
@@ -371,15 +364,8 @@ Maestro calls processes, not local code, so the agent has to land as a process i
     Give this prompt to your coding agent — it initializes the project, publishes, and creates the process for you:
 
     ```text
-    Publish the {YourName}JobMatchingAgent coded agent I just built.
-
-    1. Point the UiPath wrapper at my Python runtime with `uip codedagent setup`.
-    2. Switch to the {{ training_tenant }} tenant and confirm `uip login status`
-       shows the right org and tenant before going further.
-    3. Initialize the coded agent project and publish it.
-    4. Make sure it's available as a process in the CodingAgentsILT folder.
-    5. Report back the package name, version, and process name, and stop if
-       any step fails rather than retrying blindly.
+    Publish the {YourName}JobMatchingAgent coded agent to the CodingAgentsILT
+    folder, and create its process in the CodingAgentsILT folder.
     ```
 
     !!! tip "Watch what it runs"
@@ -401,9 +387,9 @@ Ten minutes, as a group, before the block ends:
 
 | Minutes | What you do |
 | :--- | :--- |
-| 0–5 | Open an empty Studio project folder and paste the prompt. |
+| 0–5 | Start your coding agent in your workshop folder and paste the prompt. |
 | 5–15 | Let it discover the project and generate the workflow. |
-| 15–25 | Open it in **Studio Desktop**, run it with the sample input, and watch the browser fill in the form. |
+| 15–25 | Run it with the test input and watch the browser fill in the form. |
 | 25–30 | Publish it as a process in the `CodingAgentsILT` folder. |
 
 !!! info "On a Mac?"
@@ -485,7 +471,7 @@ Ten minutes, as a group, before the block ends:
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">3</span>
-      <span>Run it in <strong>Studio Desktop</strong> with the sample input and check <code>out_ResultsJson</code>.</span>
+      <span>Run it with the test input and check <code>out_ResultsJson</code>.</span>
     </li>
     <li style="display: flex; gap: 10px; margin-bottom: 9px; align-items: baseline;">
       <span style="flex: 0 0 auto; background: #FA4616; color: #ffffff; border-radius: 50%; width: 23px; height: 23px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">4</span>
@@ -493,15 +479,28 @@ Ten minutes, as a group, before the block ends:
     </li>
   </ul>
   <div style="font-size: 15px; color: #4a4a4a; border-top: 1px solid #eee3dc; padding-top: 12px;">
-    <strong style="color: #16213e;">Your target:</strong> <code>uibank.uipath.com/register-account</code>, the sample input <a href="#test-input">below</a>, and UiPath Studio Desktop with the default packages.
+    <strong style="color: #16213e;">Your target:</strong> <code>uibank.uipath.com/register-account</code>, the test input <a href="#test-input">below</a>, and UiPath Studio Desktop with the default packages.
   </div>
 </div>
+
+### Test input
+
+Save this as `test-input.json` in your workshop folder, next to `candidates.json`. It holds three candidates in the same shape the Coded Agent returns, so you can test the robot without running Lab 1:
+
+```json
+[
+  {"first_name": "Alice", "last_name": "Nguyen", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "1/15/1990", "marital_status": "Single", "num_dependents": 0, "username": "alice.nguyen", "email": "alice.nguyen@example.com", "password": "Welcome2026!", "score": 92, "reason": "Customer-facing engineer with Python and UiPath"},
+  {"first_name": "Ben", "last_name": "Carter", "middle_name": "J.", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "3/22/1985", "marital_status": "Married", "num_dependents": 2, "username": "ben.carter", "email": "ben.carter@example.com", "password": "Welcome2026!", "score": 71, "reason": "Strong UiPath delivery, less customer-facing"},
+  {"first_name": "Clara", "last_name": "Osei", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "7/4/1992", "marital_status": "Single", "num_dependents": 1, "username": "clara.osei", "email": "clara.osei@example.com", "password": "Welcome2026!", "score": 68, "reason": "Solid Python and agents, earlier in career"}
+]
+```
 
 ### The prompt
 
 ```text
-Build a UiPath workflow project called {YourName}RegisterInUiBank that
-registers candidates at uibank.uipath.com/register-account.
+Build a UiPath workflow project called {YourName}RegisterInUiBank, in a new
+folder named {YourName}RegisterInUiBank, that registers candidates at
+uibank.uipath.com/register-account.
 
 Arguments:
   in_CandidatesJson (In, String): a JSON array of candidates with first_name,
@@ -511,25 +510,16 @@ Arguments:
   out_ResultsJson (Out, String): a JSON array of { username, status } where
     status is Registered or Failed.
 
-For each candidate: add {yourname} and the current HHmm to the end of the
-username so reruns don't collide, skip middle_name when it's empty, submit,
-and wait for the success message. Wrap each registration in a Try/Catch so
+UiBank rejects a username or email it has seen before. For each candidate,
+add _{yourname} and the current time (HHmmss) to the end of the username and
+to the part of the email before the @ - for example alice.nguyen_maria143205
+and alice.nguyen_maria143205@example.com. Then skip middle_name when it's
+empty, submit, and wait for the success message. Wrap each registration in a Try/Catch so
 one failure doesn't stop the run.
 
-Set the default value of in_CandidatesJson to the test input I'll paste
-next. Inspect the project before you write anything.
-```
-
-### Test input
-
-Paste this as the default value for `in_CandidatesJson` — three candidates in the same shape the agent returns:
-
-```json
-[
-  {"first_name": "Alice", "last_name": "Nguyen", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "1/15/1990", "marital_status": "Single", "num_dependents": 0, "username": "alice.nguyen", "email": "alice.nguyen@example.com", "password": "Welcome2026!", "score": 92, "reason": "Customer-facing engineer with Python and UiPath"},
-  {"first_name": "Ben", "last_name": "Carter", "middle_name": "J.", "sex": "Male", "title": "Mr", "employment_status": "Full-time", "date_of_birth": "3/22/1985", "marital_status": "Married", "num_dependents": 2, "username": "ben.carter", "email": "ben.carter@example.com", "password": "Welcome2026!", "score": 71, "reason": "Strong UiPath delivery, less customer-facing"},
-  {"first_name": "Clara", "last_name": "Osei", "middle_name": "", "sex": "Female", "title": "Ms", "employment_status": "Full-time", "date_of_birth": "7/4/1992", "marital_status": "Single", "num_dependents": 1, "username": "clara.osei", "email": "clara.osei@example.com", "password": "Welcome2026!", "score": 68, "reason": "Solid Python and agents, earlier in career"}
-]
+Use the contents of test-input.json (in this folder) as the default value
+of in_CandidatesJson, so the workflow runs on its own. Inspect the project
+before you write the workflow.
 ```
 
 ### How the workflow skill thinks
@@ -588,6 +578,17 @@ Four things worth noticing in that output:
   </div>
 </div>
 
+### Run it locally
+
+Give this prompt to your coding agent:
+
+```text
+Run {YourName}RegisterInUiBank locally with its default input and show me
+out_ResultsJson.
+```
+
+Prefer to watch it step by step? Open the project in **Studio Desktop** and press **Run** — the test input is already set as the default.
+
 !!! success "Core goal done"
     The browser registers all three candidates and `out_ResultsJson` shows a status for each one.
 
@@ -611,7 +612,7 @@ Then move straight on to Lab 3 — don't polish this workflow past the time box.
 
 | Minutes | What you do |
 | :--- | :--- |
-| 0–5 | Start your coding agent in an empty folder and paste the prompt. |
+| 0–5 | Start your coding agent in your workshop folder and paste the prompt. |
 | 5–25 | Review the flow it proposes, let it build, validate, and publish. |
 | 25–40 | Run the flow, approve the task in **Action Center**, watch the robot register the candidates. |
 | 40–50 | Fix what broke and run it again. |
@@ -701,8 +702,9 @@ Then move straight on to Lab 3 — don't polish this workflow past the time box.
 ### The prompt
 
 ```text
-Build a Maestro Flow called {YourName}RecruitmentPipeline in the
-CodingAgentsILT folder that runs the recruitment pipeline end to end:
+Build a Maestro Flow called {YourName}RecruitmentPipeline, in a new local
+folder named {YourName}RecruitmentPipeline, that runs the recruitment
+pipeline end to end. Publish it to the CodingAgentsILT folder in Orchestrator.
 
 1. Trigger: manual, with one input job_title (string)
 2. Run the {YourName}JobMatchingAgent process with { job_title }
@@ -713,12 +715,47 @@ CodingAgentsILT folder that runs the recruitment pipeline end to end:
    in_CandidatesJson set to the agent's matches, serialized as a JSON string
 5. End with outputs: the agent's job and the RPA's out_ResultsJson
 
-Discover both processes in the folder before you start, and ask me before
+Discover both processes in the CodingAgentsILT folder before you start, and ask me before
 creating anything new. Validate the flow, publish it, and tell me how to run it.
 ```
 
 !!! tip "Using the trainer's processes"
-    Replace `{YourName}JobMatchingAgent` or `{YourName}RegisterInUiBank` with `DemoJobMatchingAgent` or `DemoRegisterInUiBank`. They follow the same contract, so nothing else in the prompt changes.
+    Use your own agent and workflow whenever you can. Switch to the trainer's only if yours isn't published or doesn't work as expected — for example, it fails when you run it, or its output doesn't match the contract. Replace `{YourName}JobMatchingAgent` with `DemoJobMatchingAgent`, or `{YourName}RegisterInUiBank` with `DemoRegisterInUiBank` — just the one that isn't working. They follow the same contract, so nothing else in the prompt changes.
+
+### See the flow in Studio Web
+
+Your coding agent builds the flow as a `.flow` file on your machine. To see it as a diagram, create a Flow in **Studio Web** and upload that file into it.
+
+1. Go to **[{{ training_url }}]({{ training_url }})**, select the **{{ training_tenant }}** tenant, and open **Studio Web**.
+2. Select **Create New**, and under **MAESTRO AUTOMATE** choose **Flow**. Name it `{YourName}RecruitmentPipeline`.
+3. In the **Explorer**, right-click the **Flow** project and choose **Import**. Select the `.flow` file from your local `{YourName}RecruitmentPipeline` folder and select **Open**.
+4. The imported file opens in a new tab. The canvas shows every node and how they connect.
+
+<video src="../coding-agents-hands-on.images/studio-web-upload-flow.mp4" autoplay loop muted playsinline aria-label="Creating a Flow under Maestro Automate in Studio Web and uploading the local .flow file" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
+
+!!! warning "Flow under Maestro Automate, not Maestro Orchestrate"
+    The menu lists **Flow** twice. Pick the one under **MAESTRO AUTOMATE** — that's the kind of flow your coding agent built. Don't use the one under **MAESTRO ORCHESTRATE**.
+
+### What it builds
+
+The flow your coding agent builds should look like this in **Studio Web**:
+
+![The RecruitmentPipeline Maestro Flow: Manual trigger, Run Job Matching Agent, Prepare Approval Data, Approve Matches with Approve and Reject branches, Register In UiBank, and the Candidates Registered and Matches Rejected end states](coding-agents-hands-on.images/maestro-flow-W.png){ .screenshot style="width: 100%;" }
+*The finished {YourName}RecruitmentPipeline flow*
+
+| Node | What it does |
+| :--- | :--- |
+| **Manual trigger** | Starts the run with your `job_title` |
+| **Run Job Matching Agent** | Calls your Coded Agent and gets back `job` and `matches` |
+| **Prepare Approval Data** | A script step that formats the job title and the three matches for the approval task |
+| **Approve Matches** | Creates the task in **Action Center** and waits. Approve and Reject lead to different branches. |
+| **Register In UiBank** | On Approve, runs your RPA workflow with the matches as `in_CandidatesJson` |
+| **Candidates Registered** / **Matches Rejected** | The two ways the run can end |
+
+Your layout and node names can differ a little — what matters is the same order of steps and the two branches after the approval.
+
+!!! warning "Make changes in one place"
+    The upload is a copy. Changes you make in Studio Web don't reach your local files, and changes your coding agent makes locally don't reach Studio Web. If your coding agent changes the flow, upload the `.flow` file again to see the new version.
 
 ### Run it end to end
 

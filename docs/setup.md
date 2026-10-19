@@ -80,36 +80,81 @@
 
 ## 2. Install a Coding Agent
 
-Pick one — or install both:
+Pick one — or install more than one:
 
-```bash
-# Claude Code (Anthropic)
-npm install -g @anthropic-ai/claude-code
+=== "Claude Code"
 
-# Codex CLI (OpenAI)
-npm install -g @openai/codex
-```
-
-Verify: `claude --version` or `codex --version`
-
-!!! tip "Claude Code installation error?"
-    If the install fails with a scripts permission error, run:
-    ```bash
-    npm config set allow-scripts=@anthropic-ai/claude-code --location=user
-    ```
-    Then run the install command again:
     ```bash
     npm install -g @anthropic-ai/claude-code
     ```
 
-!!! tip "npm permission errors on Mac?"
-    A global install without write permissions is the usual cause. Point npm at a folder you own:
+    Verify: `claude --version`
+
+    !!! tip "Claude Code installation error?"
+        If the install fails with a scripts permission error, run:
+        ```bash
+        npm config set allow-scripts=@anthropic-ai/claude-code --location=user
+        ```
+        Then run the install command again:
+        ```bash
+        npm install -g @anthropic-ai/claude-code
+        ```
+
+    !!! tip "npm permission errors on Mac?"
+        A global install without write permissions is the usual cause. Point npm at a folder you own:
+        ```bash
+        mkdir -p ~/.npm-global
+        npm config set prefix ~/.npm-global
+        echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
+        source ~/.zshrc
+        ```
+
+=== "Codex"
+
     ```bash
-    mkdir -p ~/.npm-global
-    npm config set prefix ~/.npm-global
-    echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
-    source ~/.zshrc
+    npm install -g @openai/codex
     ```
+
+    Verify: `codex --version`
+
+    !!! tip "npm permission errors on Mac?"
+        A global install without write permissions is the usual cause. Point npm at a folder you own:
+        ```bash
+        mkdir -p ~/.npm-global
+        npm config set prefix ~/.npm-global
+        echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
+        source ~/.zshrc
+        ```
+
+=== "Cursor"
+
+    Cursor comes as an editor and as a terminal agent. Install both — you'll review generated files in the editor and run the agent from the terminal.
+
+    1. Download and install the **Cursor** editor from **[cursor.com/downloads](https://cursor.com/downloads)**, then sign in.
+    2. Install the **Cursor CLI**:
+
+        Mac:
+
+        ```bash
+        curl https://cursor.com/install -fsS | bash
+        ```
+
+        Windows (PowerShell):
+
+        ```powershell
+        irm 'https://cursor.com/install?win32=true' | iex
+        ```
+
+    3. Open a new terminal and sign in:
+
+        ```bash
+        cursor-agent login
+        ```
+
+    Verify: `cursor-agent --version`
+
+    !!! tip "`cursor-agent` not found?"
+        The installer puts the CLI in `~/.local/bin`. Open a new terminal, or add that folder to your `PATH`.
 
 ## 3. Install the UiPath CLI
 
@@ -139,6 +184,16 @@ Verify: `uip --version` — you should see `1.195.1` or later.
     uip skills install
     ```
 
+=== "Cursor"
+
+    Cursor reads skills from the project you open, so install them inside your project folder:
+
+    ```bash
+    uip skills install --agent cursor --local
+    ```
+
+    The skills land in `my-project/.cursor/skills/`. Run the command again in every new project folder you use during the session.
+
 You should see output similar to this:
 
 ```json
@@ -150,19 +205,24 @@ You should see output similar to this:
     "Skills": [
       "uipath-admin",
       "uipath-agents",
+      "uipath-aops",
       "uipath-api-workflow",
       "uipath-automation-discovery",
-      "uipath-coded-apps",
-      "uipath-data-fabric",
+      "uipath-automationhub",
+      "uipath-connector-builder",
       "uipath-feedback",
+      "uipath-functions",
       "uipath-governance",
       "uipath-human-in-the-loop",
+      "uipath-insights",
+      "uipath-ixp",
       "uipath-maestro-bpmn",
       "uipath-maestro-case",
       "uipath-maestro-flow",
       "uipath-mcp-servers",
       "uipath-planner",
       "uipath-platform",
+      "uipath-process-mining",
       "uipath-review",
       "uipath-rpa",
       "uipath-solution",
@@ -172,12 +232,17 @@ You should see output similar to this:
     ],
     "Agents": [
       "claude",
-      "codex"
+      "codex",
+      "cursor"
     ],
-    "Installed": 42
+    "Installed": 78,
+    "Shadowed": [],
+    "Conflicts": []
   }
 }
 ```
+
+`Agents` lists the coding agents the skills were installed for. The skill list grows as UiPath adds skills, so yours may be longer than the example.
 
 Confirm these three skills appear in the output — the hands-on session relies on them:
 
@@ -188,21 +253,7 @@ Confirm these three skills appear in the output — the hands-on session relies 
 !!! info "What each skill actually knows"
     See [What's a Coding Agent?](what-is-a-coding-agent.md) for the full skill catalog and how skills get discovered.
 
-## 5. Install the Coded Apps Tool (optional)
-
-The recruitment pipeline session doesn't build a Coded App, so you can skip this step. Install it if you want to try the `uipath-coded-apps` skill on your own — the skill requires an additional CLI tool:
-
-```bash
-uip tools install @uipath/codedapp-tool
-```
-
-Verify the tool is available:
-
-```bash
-uip tools list
-```
-
-## 6. Authenticate with Your Tenant (TBD)
+## 5. Authenticate with Your Tenant (TBD)
 
 ```bash
 uip login --authority https://cloud.uipath.com --organization tpenlabs -t CodingAgentsPractice
@@ -214,13 +265,17 @@ Verify you're pointed at the right place:
 uip login status --output json
 ```
 
-## 7. Open Your Project and Start a Session
+## 6. Open Your Project and Start a Session
 
 ```bash
 cd my-project && claude
 # or
 cd my-project && codex
+# or
+cd my-project && cursor-agent
 ```
+
+Using the Cursor editor instead of the terminal? Open `my-project` in Cursor and use the **Agent** chat — it sees the same skills.
 
 Skills are auto-discovered on session start. Ask the agent to build a coded agent and it will load the right skill automatically.
 

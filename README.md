@@ -84,7 +84,7 @@ org/tenant (`tpenlabs` / `CodingAgentsPractice`):
 - **Folder name:** `CodingAgentsILT`
 - **Folder key:** `c30345cd-5543-46a9-b42b-0354e60b4f15`
 
-Every deployable artifact (agent, coded app, Maestro flow, RPA process) is
+Every deployable artifact (agent, Maestro flow, RPA process) is
 named with a `{YourName}` prefix (e.g. `{YourName}LoanUnderwritingAgent`) so
 participants sharing the same tenant/folder don't collide with each other's
 packages, processes, or Orchestrator entities.
@@ -174,8 +174,9 @@ Architecture changes from the earlier versions (both archived locally under
   participant's.
 - Lab 1: one job title, provided `candidates.json`, no web search, LLM Gateway
   instead of personal API keys, 3 eval cases.
-- Lab 2: candidates come in as an argument instead of a CSV; usernames get a
-  per-participant suffix to avoid UiBank collisions.
+- Lab 2: candidates come in as an argument instead of a CSV; usernames and
+  emails get a per-participant, per-run suffix (`_{yourname}` + the current time as `HHmmss`),
+  because UiBank rejects any username or email it has already seen.
 
 **Time-keeping rule:** when a lab's time box ends, publish what you have and
 move on. Anyone behind switches to the demo processes in Lab 3 and still

@@ -106,7 +106,7 @@ The plugin contains three things:
 
 | What | Details |
 |---|---|
-| **10+ skills** | Domain knowledge for every UiPath product: `uipath-agents`, `uipath-coded-apps`, `uipath-rpa`, `uipath-maestro-flow`, `uipath-platform`, `uipath-test`, and more. |
+| **10+ skills** | Domain knowledge for every UiPath product: `uipath-agents`, `uipath-rpa`, `uipath-maestro-flow`, `uipath-platform`, `uipath-test`, and more. |
 | **1 subagent** | `uipath-project-discovery-agent` — auto-runs on first contact with a UiPath project and builds context for the agent. |
 | **Hooks & references** | Session-start nudges, activity docs, and allowlists for safe read-only commands. |
 
@@ -118,11 +118,10 @@ The plugin includes skills for every part of the UiPath platform. Three of them 
 |---|---|
 | **`uipath-agents`** | Scaffold, build, run, evaluate, and deploy coded agents (LangGraph, LlamaIndex, OpenAI Agents) |
 | **`uipath-rpa`** | Generate and edit RPA workflows (XAML) for Studio Desktop with a discovery-first approach |
-| **`uipath-coded-apps`** | Push/pull TypeScript + React apps to Studio Web, pack & publish to Orchestrator |
+| **`uipath-maestro-flow`** | Create, validate, and debug UiPath Flow projects using the .flow JSON format |
 | `uipath-solution` | Create and deploy solutions |
-| `uipath-maestro-flow` | Create, validate, and debug UiPath Flow projects using the .flow JSON format |
 | `uipath-platform` | Auth, Orchestrator management, solution lifecycle, Integration Service, CLI tools |
 | `uipath-test` | Generate, run, and maintain automated test suites for UiPath projects |
 
 !!! tip "Skills used in this exercise"
-    The three skills in bold — `uipath-agents`, `uipath-rpa`, and `uipath-coded-apps` — are the ones you'll use to build the loan underwriting pipeline.
+    The three skills in bold — `uipath-agents`, `uipath-rpa`, and `uipath-maestro-flow` — are the ones you'll use to build the recruitment pipeline.
