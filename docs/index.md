@@ -1,8 +1,5 @@
 # UiPath Coding Agents Workshop
 
-!!! warning "Work in progress"
-    This version of the workshop — the recruitment pipeline in two 90-minute blocks — is still being authored and hasn't had a full dry run. Expect content and timings to change.
-
 **Build UiPath agents and Maestro orchestrations with coding agents — from installing the tools to shipping a long-running automation.**
 
 !!! tip "Training Environment"
