@@ -76,10 +76,10 @@ against. Treat the `staging` profile in `main.py` as unused/vestigial.
 
 | Organization | URL | Tenant | Used for |
 |---|---|---|---|
-| `tpenlabs` | https://cloud.uipath.com/tpenlabs | `CodingAgentsPractice` | The one real environment — both authoring/testing and the live participant-facing environment (CI builds with `COURSE_ENV=prod`) |
+| `tpenlabs` | https://cloud.uipath.com/tpenlabs | `InvokeWorkshop` | The one real environment — both authoring/testing and the live participant-facing environment (CI builds with `COURSE_ENV=prod`) |
 
 All exercises operate inside a single shared Orchestrator folder in this
-org/tenant (`tpenlabs` / `CodingAgentsPractice`):
+org/tenant (`tpenlabs` / `InvokeWorkshop`):
 
 - **Folder name:** `CodingAgentsILT`
 - **Folder key:** `c30345cd-5543-46a9-b42b-0354e60b4f15`
@@ -98,7 +98,7 @@ can log in with their own email:
 2. Go to **Accounts and Local Groups**.
 3. Invite each participant using their email address.
 4. Make sure each invited participant is added to the **CodingAgentsGroup**
-   local group — this is what grants them access to the `CodingAgentsPractice`
+   local group — this is what grants them access to the `InvokeWorkshop`
    tenant and the `CodingAgentsILT` folder.
 
 ### Before Each Training

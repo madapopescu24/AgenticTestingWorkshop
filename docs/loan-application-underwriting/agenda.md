@@ -28,4 +28,4 @@
     - **Every lab has a fallback.** The trainer publishes `DemoJobMatchingAgent` and `DemoRegisterInUiBank` in the shared folder. If your own component doesn't finish in its time box, use the trainer's in Lab 3 — you still finish the full pipeline.
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.

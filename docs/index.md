@@ -6,7 +6,7 @@
 **Build UiPath agents and Maestro orchestrations with coding agents — from installing the tools to shipping a long-running automation.**
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.
 
 ## What you'll build
 

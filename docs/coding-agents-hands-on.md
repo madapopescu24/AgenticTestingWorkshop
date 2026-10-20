@@ -13,7 +13,7 @@ You'll automate all three — by describing what you want in plain English and l
 By the end of the session you'll start one Maestro run with a job title and watch it end with approved candidates registered on UiBank. Along the way you'll have generated a Python agent, an XAML workflow, and a Maestro Flow — all by prompting a coding agent, not by dragging activities onto a canvas.
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.
 
 ## What You'll Build
 
@@ -317,19 +317,38 @@ Your coding agent takes several minutes to write and check its work. Use that ti
 
 ### Run it locally
 
-Give this prompt to your coding agent:
+=== "When your coding agent asks"
 
-```text
-Run the {YourName}JobMatchingAgent coded agent locally with this input:
-{ "job_title": "Forward Deployed Engineer" }
-Show me the output.
-```
+    Your coding agent may ask if you want to run the agent locally to test it — answer **yes**. It starts the **Developer Console** on your machine and gives you a localhost link to open in your browser, like this:
+
+    ```text
+    http://localhost:8080/?token=••••••••••••••••
+    ```
+
+    Open the full link your coding agent gives you — the token at the end is unique to your session, so don't share it. Then:
+
+    1. Choose **Autonomous**.
+    2. In **Input**, enter `{ "job_title": "Forward Deployed Engineer" }`.
+    3. Select **Execute**, and watch each node run.
+    4. When the run completes, the right-hand panel shows the output: the JD and the three matches.
+
+    <video src="../coding-agents-hands-on.images/run-agent-locally.mp4" autoplay loop muted playsinline controls aria-label="Running the Coded Agent locally: choosing Autonomous, entering the job title, executing, and reading the output" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
+
+=== "Manual run"
+
+    Didn't get asked, or want to run it again? Give this prompt to your coding agent:
+
+    ```text
+    Run the {YourName}JobMatchingAgent coded agent locally with this input:
+    { "job_title": "Forward Deployed Engineer" }
+    Show me the output.
+    ```
 
 !!! success "Core goal done"
     You get a JD and three matches, highest score first, with the candidate whose headline is Forward Deployed Engineer on top. Each match has a `score`, a `reason`, and every field from `candidates.json` — including `date_of_birth` and `password`. Publish next.
 
 !!! tip "Someone else came first?"
-    Read the `reason` for each match, then ask your coding agent why the Forward Deployed Engineer candidate isn't first and to fix the scoring. Run the eval set to check the fix.
+    Based on `candidates.json`, **Alice Nguyen** should be the first result — she's the only candidate whose headline is Forward Deployed Engineer. If she isn't, read the `reason` for each match, then ask your coding agent why Alice Nguyen isn't first and to fix the scoring. Run the eval set to check the fix.
 
 ### Publish the agent
 
@@ -701,26 +720,54 @@ Then move straight on to Lab 3 — don't polish this workflow past the time box.
 
 ### The prompt
 
-```text
-Build a Maestro Flow called {YourName}RecruitmentPipeline, in a new local
-folder named {YourName}RecruitmentPipeline, that runs the recruitment
-pipeline end to end. Publish it to the CodingAgentsILT folder in Orchestrator.
+=== "Your own components"
 
-1. Trigger: manual, with one input job_title (string)
-2. Run the {YourName}JobMatchingAgent process with { job_title }
-3. Create an approval task assigned to me that shows the job title and the
-   three matches with first_name, last_name, score, and reason.
-   Approve continues, Reject ends the flow
-4. On Approve, run the {YourName}RegisterInUiBank process with
-   in_CandidatesJson set to the agent's matches, serialized as a JSON string
-5. End with outputs: the agent's job and the RPA's out_ResultsJson
+    Use this whenever your agent from Lab 1 and your workflow from Lab 2 are published and work as expected.
 
-Discover both processes in the CodingAgentsILT folder before you start, and ask me before
-creating anything new. Validate the flow, publish it, and tell me how to run it.
-```
+    ```text
+    Build a Maestro Flow called {YourName}RecruitmentPipeline, in a new local
+    folder named {YourName}RecruitmentPipeline, that runs the recruitment
+    pipeline end to end. Publish it to the CodingAgentsILT folder in Orchestrator.
 
-!!! tip "Using the trainer's processes"
-    Use your own agent and workflow whenever you can. Switch to the trainer's only if yours isn't published or doesn't work as expected — for example, it fails when you run it, or its output doesn't match the contract. Replace `{YourName}JobMatchingAgent` with `DemoJobMatchingAgent`, or `{YourName}RegisterInUiBank` with `DemoRegisterInUiBank` — just the one that isn't working. They follow the same contract, so nothing else in the prompt changes.
+    1. Trigger: manual, with one input job_title (string)
+    2. Run the {YourName}JobMatchingAgent process with { job_title }
+    3. Create an approval task assigned to me that shows the job title and the
+       three matches with first_name, last_name, score, and reason.
+       Approve continues, Reject ends the flow
+    4. On Approve, run the {YourName}RegisterInUiBank process with
+       in_CandidatesJson set to the agent's matches, serialized as a JSON string
+    5. End with outputs: the agent's job and the RPA's out_ResultsJson
+
+    Discover both processes in the CodingAgentsILT folder before you start, and
+    ask me before creating anything new. Validate the flow, publish it, and tell
+    me how to run it.
+    ```
+
+=== "Trainer's processes"
+
+    Use this only if your own agent or workflow isn't published or doesn't work as expected — for example, it fails when you run it, or its output doesn't match the contract. The trainer's `DemoJobMatchingAgent` and `DemoRegisterInUiBank` follow the same contract — see [Resources](resources.md).
+
+    ```text
+    Build a Maestro Flow called {YourName}RecruitmentPipeline, in a new local
+    folder named {YourName}RecruitmentPipeline, that runs the recruitment
+    pipeline end to end. Publish it to the CodingAgentsILT folder in Orchestrator.
+
+    1. Trigger: manual, with one input job_title (string)
+    2. Run the DemoJobMatchingAgent process with { job_title }
+    3. Create an approval task assigned to me that shows the job title and the
+       three matches with first_name, last_name, score, and reason.
+       Approve continues, Reject ends the flow
+    4. On Approve, run the DemoRegisterInUiBank process with
+       in_CandidatesJson set to the agent's matches, serialized as a JSON string
+    5. End with outputs: the agent's job and the RPA's out_ResultsJson
+
+    Discover both processes in the CodingAgentsILT folder before you start, and
+    ask me before creating anything new. Validate the flow, publish it, and tell
+    me how to run it.
+    ```
+
+    !!! tip "Only one of yours isn't working?"
+        Keep the one that works. For example, if your agent works but your workflow doesn't, use `{YourName}JobMatchingAgent` in step 2 and `DemoRegisterInUiBank` in step 4.
 
 ### See the flow in Studio Web
 
@@ -823,14 +870,6 @@ All three were built with your coding agent, and they run as one process — in 
 - Bring your questions. No question is too basic, especially this early.
 - Tell us when something doesn't work. Run `uip feedback send` the moment a skill guesses wrong, a command fails, or a step takes three tries.
 - Say what you'd want next. The rough edges you report are what shape the next version of the skills and the CLI.
-
-## Resources
-
-| Resource | What's there |
-| :--- | :--- |
-| [**UiPath/skills**](https://github.com/UiPath/skills) | The skill repository. Read each `SKILL.md`. |
-| **Studio + Coding Agents** | Official UiPath page on Studio with Claude Code, Codex, Cursor, and Gemini. |
-| [**uipath-langchain-python**](https://github.com/UiPath/uipath-langchain-python) | LangGraph SDK for Coded Agents. |
 
 ## Appendix: CLI cheat sheet
 

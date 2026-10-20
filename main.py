@@ -29,7 +29,7 @@ ENVIRONMENTS = {
     },
     "prod": {
         "training_url": "https://cloud.uipath.com/tpenlabs",
-        "training_tenant": "CodingAgentsPractice",
+        "training_tenant": "InvokeWorkshop",
         "env_label": "Production",
     },
 }

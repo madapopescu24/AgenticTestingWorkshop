@@ -45,7 +45,7 @@ Testing Automation, Document Understanding / IXP. See `course-outline.md` (one l
 - **Always use these variables in the training-environment callout** — never hardcode
   a URL or tenant. Values:
   - staging: staging.uipath.com/partnersuccess, tenant `Workshops` (authoring)
-  - prod: cloud.uipath.com/tpenlabs, tenant `CodingAgentsPractice` (release)
+  - prod: cloud.uipath.com/tpenlabs, tenant `InvokeWorkshop` (release)
 - Author/preview with `COURSE_ENV=staging`; CI deploys with `COURSE_ENV=prod`.
 
 ---

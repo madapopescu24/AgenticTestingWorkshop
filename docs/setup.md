@@ -6,7 +6,7 @@
     Setup takes about 35 minutes on a clean machine, and some downloads are large. Get it done ahead of time so the session stays hands-on.
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **CodingAgentsPractice**.
+    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.
 
 ## 1. Prerequisites
 
@@ -256,7 +256,7 @@ Confirm these three skills appear in the output — the hands-on session relies 
 ## 5. Authenticate with Your Tenant (TBD)
 
 ```bash
-uip login --authority https://cloud.uipath.com --organization tpenlabs -t CodingAgentsPractice
+uip login --authority https://cloud.uipath.com --organization tpenlabs -t InvokeWorkshop
 ```
 
 Verify you're pointed at the right place:

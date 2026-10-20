@@ -138,7 +138,7 @@ uip codedagent setup --force
 Set your tenant and verify you're logged in:
 
 ```bash
-uip login tenant set CodingAgentsPractice --output json
+uip login tenant set InvokeWorkshop --output json
 ```
 
 ```json
@@ -146,7 +146,7 @@ uip login tenant set CodingAgentsPractice --output json
   "Result": "Success",
   "Code": "TenantSet",
   "Data": {
-    "Name": "CodingAgentsPractice",
+    "Name": "InvokeWorkshop",
     "Id": "30231678-ca53-438f-8258-4ef8c6cfa266"
   }
 }
@@ -163,7 +163,7 @@ uip login status --output json
   "Data": {
     "Status": "Logged in",
     "Organization": "tpenlabs",
-    "Tenant": "CodingAgentsPractice",
+    "Tenant": "InvokeWorkshop",
     "Expiration Date": "2026-06-29T14:08:47.000Z"
   }
 }
