@@ -1,33 +1,51 @@
-# Resources
+Resources
+{: .eyebrow }
 
-**Reference processes and links to keep handy during and after the session.**
+# 📚 Resources
+
+**Reference material and links to keep handy during and after the session.**
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.
+    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
 
-## Trainer's reference processes
+## 📄 The design document
 
-The trainer's `DemoJobMatchingAgent` and `DemoRegisterInUiBank` are working versions of the Lab 1 agent and the Lab 2 workflow. They're already published as processes in the `CodingAgentsILT` folder, so you can use them in Lab 3 without downloading anything — see the **Trainer's processes** tab in [the Lab 3 prompt](coding-agents-hands-on.md#lab-3-the-maestro-flow).
+The whole hands-on part starts from the same document: **E2E UiBank Online Banking**. Download it and save `E2E UiBank Online Banking.docx` in your workshop folder.
 
-The reference solution for Lab 3, `DemoRecruitmentPipeline`, is the Maestro Flow that wires the two together. Download all three to compare with what your coding agent built, or to see a reference solution after the session.
+[Download the design document (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
 
-[Download the trainer materials (.zip, 4.7 MB)](resources.assets/trainer-processes/coding-agents-trainer-materials.zip){ .md-button .md-button--primary }
+[The hands-on page](agentic-testing-hands-on.md#the-design-document) summarises its steps, the requirements they become, and the test data.
 
-The archive holds the three projects, their published packages in `dist/`, and the `candidates.json` and `test-input.json` used in the labs. The Python environment for `DemoJobMatchingAgent` isn't included — run `uv sync` in that folder to recreate it.
+## 🎁 Trainer's reference package
 
-| Process | What it is | Contract | Where |
-| :--- | :--- | :--- | :--- |
-| `DemoJobMatchingAgent` | Coded Agent — reference solution for Lab 1 | `job_title` → `job`, `matches` | In the archive |
-| `DemoRegisterInUiBank` | RPA Workflow — reference solution for Lab 2 | `in_CandidatesJson` → `out_ResultsJson` | In the archive |
-| `DemoRecruitmentPipeline` | Maestro Flow — reference solution for Lab 3 | `job_title` → `job`, `out_ResultsJson` | In the archive |
+The trainer's `DemoUiBankTests` is a working test automation project with all eight test cases automated. It's already published in the `{{ training_folder }}` folder, so you can link it to your Test Manager test cases and run it in [Test Sets](test-sets.md) if your own automations aren't ready.
+
+<div class="feature-grid" markdown>
+
+<div class="feature" markdown>
+<span class="f-icon">🎁</span>
+<span class="f-title" markdown="span">`DemoUiBankTests`</span>
+
+Test automation project, reference solution for the Test Cases part
+
+🧪 `T0_LoginAndInitialAccountState` to `T7_LogoutAndEvidenceCollection`
+
+📁 `{{ training_folder }}` folder
+
+</div>
+
+</div>
 
 !!! info "Reference, not a shortcut"
-    Build your own components first. The point of the session is to see how your coding agent builds them — the reference processes are there for when something blocks you, and for comparing afterwards.
+    Build your own test cases first. The point of the session is to see how Autopilot and your coding agent plan, automate, and run them. The reference package is there for when something blocks you, and for comparing afterwards.
 
-## Useful links
+## 🔗 Useful links
 
-| Resource | What's there |
-| :--- | :--- |
-| [**UiPath/skills**](https://github.com/UiPath/skills) | The skill repository. Read each `SKILL.md`. |
-| **Studio + Coding Agents** | Official UiPath page on Studio with Claude Code, Codex, Cursor, and Gemini. |
-| [**uipath-langchain-python**](https://github.com/UiPath/uipath-langchain-python) | LangGraph SDK for Coded Agents. |
+<div class="link-grid" markdown>
+
+<a class="link-card" href="https://github.com/UiPath/skills" target="_blank" rel="noopener"><span class="f-icon">🧩</span><span class="f-title">UiPath/skills</span><span class="f-text" markdown="span">The skill repository. Read the `SKILL.md` of `uipath-test` and `uipath-rpa`.</span></a>
+<a class="link-card" href="https://uibank.uipath.com" target="_blank" rel="noopener"><span class="f-icon">🏦</span><span class="f-title">UiBank</span><span class="f-text" markdown="span">The demo banking application under test</span></a>
+<a class="link-card" href="https://meera-uipath.github.io/software-testing-ilt-guide" target="_blank" rel="noopener"><span class="f-icon">🎓</span><span class="f-title">Test Cloud & Agentic Testing ILT Guide</span><span class="f-text" markdown="span">The click-by-click Test Manager and Studio course: Object Repository, data-driven testing, publishing, and executing test cases</span></a>
+<a class="link-card" href="https://docs.uipath.com/test-manager" target="_blank" rel="noopener"><span class="f-icon">📋</span><span class="f-title">Test Manager documentation</span><span class="f-text" markdown="span">Requirements, test cases, test sets, executions, and Autopilot for Testers</span></a>
+
+</div>

@@ -1,16 +1,19 @@
-# Setup
+Before the session
+{: .eyebrow }
+
+# 🧰 Setup
 
 **Everything you install before the workshop starts. Work through it top to bottom — each section verifies itself before you move on.**
 
 !!! info "Do this before the session"
-    Setup takes about 35 minutes on a clean machine, and some downloads are large. Get it done ahead of time so the session stays hands-on.
+    Setup takes about 45 minutes on a clean machine, and some downloads are large. Get it done ahead of time so the session stays hands-on.
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.
+    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
 
-## 1. Prerequisites
+## 📦 1. Prerequisites
 
-**Node.js (LTS)** — required for the UiPath CLI and the React app build.
+**Node.js (LTS)** — required for the UiPath CLI.
 
 1. Download the LTS version from **[nodejs.org](https://nodejs.org)**
 2. Verify with `node --version` and `npm --version`
@@ -28,10 +31,11 @@
         npm install -g npm@11
         ```
 
-**Python 3.10+** — required for coded agents.
+**Google Chrome with the UiPath extension** — the test cases drive UiBank in Chrome.
 
-1. Download from **[python.org/downloads](https://www.python.org/downloads/)** — on Windows, check **Add Python to PATH** during install
-2. Verify with `python --version` or `python3 --version`
+1. Install **[Google Chrome](https://www.google.com/chrome/)** if you don't have it
+2. Install the **UiPath Browser Automation** extension from the Chrome Web Store, or from Studio under **Home** > **Tools** > **UiPath Extensions** > **Chrome**
+3. In Chrome, open `chrome://extensions` and check the extension is **enabled**
 
 **.NET SDK 8.0** — required to build and run UiPath Studio projects.
 
@@ -48,7 +52,7 @@
     dotnet --list-sdks
     ```
 
-**UiPath Studio** — required to open, run, and debug generated XAML workflows. Currently supported on Windows only; Mac support is coming soon.
+**UiPath Studio** — required to run and debug the generated test cases, and to capture UI targets with **Indicate** when your coding agent can't. Currently supported on Windows only; Mac support is coming soon.
 
 1. Download from **[uipath.com/start-trial](https://www.uipath.com/start-trial)**
 2. Sign in with your UiPath account and verify Studio launches
@@ -78,7 +82,7 @@
     ```
     You should see something like `git version 2.45.1.windows.1`.
 
-## 2. Install a Coding Agent
+## 🤖 2. Install a Coding Agent
 
 Pick one — or install more than one:
 
@@ -156,7 +160,7 @@ Pick one — or install more than one:
     !!! tip "`cursor-agent` not found?"
         The installer puts the CLI in `~/.local/bin`. Open a new terminal, or add that folder to your `PATH`.
 
-## 3. Install the UiPath CLI
+## ⌨️ 3. Install the UiPath CLI
 
 ```bash
 npm install -g @uipath/cli@latest
@@ -164,7 +168,7 @@ npm install -g @uipath/cli@latest
 
 Verify: `uip --version` — you should see `1.195.1` or later.
 
-## 4. Install UiPath Skills into Your Coding Agent
+## 🧩 4. Install UiPath Skills into Your Coding Agent
 
 === "Claude Code"
 
@@ -192,7 +196,7 @@ Verify: `uip --version` — you should see `1.195.1` or later.
     uip skills install --agent cursor --local
     ```
 
-    The skills land in `my-project/.cursor/skills/`. Run the command again in every new project folder you use during the session.
+    The skills land in `workshop/.cursor/skills/` when you run it in your workshop folder. Run the command again in every new project folder you use during the session.
 
 You should see output similar to this:
 
@@ -246,17 +250,19 @@ You should see output similar to this:
 
 Confirm these three skills appear in the output — the hands-on session relies on them:
 
-- `uipath-agents` — Python coded agents
-- `uipath-rpa` — Studio XAML workflows
-- `uipath-maestro-flow` — Maestro orchestration
+- `uipath-test` — Test Manager: requirements, test cases, test sets, executions, reports
+- `uipath-rpa` — Studio test automation projects and XAML test cases
+- `uipath-platform` — Orchestrator: packages, folders, credential assets
 
 !!! info "What each skill actually knows"
-    See [What's a Coding Agent?](what-is-a-coding-agent.md) for the full skill catalog and how skills get discovered.
+    See [Agentic Testing & Coding Agents](what-is-a-coding-agent.md) for the full skill catalog and how skills get discovered.
 
-## 5. Authenticate with Your Tenant (TBD)
+## 🔐 5. Authenticate with Your Tenant
+
+The workshop runs on **{{ env_label }}**, where the newest Autopilot for Testers and Autopilot for Developers features are available. Point the CLI there:
 
 ```bash
-uip login --authority https://cloud.uipath.com --organization tpenlabs -t InvokeWorkshop
+uip login --authority {{ training_authority }} --organization {{ training_org }} -t {{ training_tenant }}
 ```
 
 Verify you're pointed at the right place:
@@ -265,19 +271,66 @@ Verify you're pointed at the right place:
 uip login status --output json
 ```
 
-## 6. Open Your Project and Start a Session
+Then open **Test Manager** once in the browser at **[{{ training_url }}]({{ training_url }})** and check you can see the **Projects** page. If you can't, ask the trainer to give you access before the session.
 
-```bash
-cd my-project && claude
-# or
-cd my-project && codex
-# or
-cd my-project && cursor-agent
+## 🔗 6. Connect Studio to the Training Tenant
+
+Autopilot in Studio works against the tenant Studio is signed in to. Sign Studio in to the same place as the CLI:
+
+1. Open **Studio**. If you're signed in to another environment, such as `cloud.uipath.com`, sign out.
+2. Before signing in again, change the cloud URL to `{{ training_authority }}`. In **UiPath Assistant**, it's under **Preferences** > **Orchestrator Settings**, as the **Service URL**.
+3. Sign in, then select the organization **{{ training_org }}** and the tenant **{{ training_tenant }}**.
+4. Check that the **Autopilot** panel is available in Studio. If it isn't, ask the trainer before the session — the hands-on part starts with it.
+
+!!! warning "One environment for everything"
+    Studio, the `uip` CLI, and your browser must all point at **{{ training_url }}**. If one of them is still on another environment, Autopilot saves requirements to a project your coding agent can't see.
+
+## 🏦 7. Register Your UiBank Test User
+
+The test cases log in as a registered UiBank user. Create yours now, so they have an account to run against.
+
+1. Go to **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**.
+2. Fill in the form: first, middle, and last name, sex, email, username, and a password. Use a password you don't use anywhere else — UiBank is a public demo site.
+3. Register, then log in at **[uibank.uipath.com/login](https://uibank.uipath.com/login)** to check the account works.
+
+The tests never store your password in the project. It reads it from an Orchestrator **credential asset**. Create an empty workshop folder, start your coding agent in it (see [section 9](#9-start-a-session)), and give it this prompt:
+
+```text
+Create a credential asset named {YourName}_UiBankCredential in the
+{{ training_folder }} folder on the {{ training_tenant }} tenant, with my UiBank username.
+Ask me for the password interactively — don't put it in a command I can see
+in my shell history.
 ```
 
-Using the Cursor editor instead of the terminal? Open `my-project` in Cursor and use the **Agent** chat — it sees the same skills.
+Prefer to do it by hand? In **Orchestrator**, open the `{{ training_folder }}` folder, go to **Assets**, and add a **Credential** asset with that name.
 
-Skills are auto-discovered on session start. Ask the agent to build a coded agent and it will load the right skill automatically.
+!!! warning "Write down your UiBank email"
+    You'll need it as `var_LoanEmail` in the hands-on session — the profile check in Step 6 compares it with the email UiBank shows.
+
+## 📄 8. Download the Design Document
+
+Download the [design document](resources.md#the-design-document) into your workshop folder. It should look like this:
+
+```text
+workshop/
+└── E2E UiBank Online Banking.docx   ← the design document
+```
+
+You'll create your Test Manager project and your Studio project at the start of the session.
+
+## ▶️ 9. Start a Session
+
+```bash
+cd workshop && claude
+# or
+cd workshop && codex
+# or
+cd workshop && cursor-agent
+```
+
+Using the Cursor editor instead of the terminal? Open the `workshop` folder in Cursor and use the **Agent** chat — it sees the same skills.
+
+Skills are auto-discovered on session start. Ask the agent to create a test case in Test Manager and it will load the right skill automatically.
 
 !!! success "You're set up"
-    Node.js, Python, .NET, Studio, Git, a coding agent, the `uip` CLI, the UiPath skills, and an authenticated tenant. Time to build something.
+    Node.js, .NET, Studio signed in to {{ training_tenant }}, Chrome with the UiPath extension, Git, a coding agent, the `uip` CLI, the UiPath skills, an authenticated tenant, a UiBank test user, and the design document. Time to test something.

@@ -1,29 +1,153 @@
-# UiPath Coding Agents Workshop
+UiPath Partner Success · Workshop
+{: .eyebrow }
 
-**Build UiPath agents and Maestro orchestrations with coding agents — from installing the tools to shipping a long-running automation.**
+# 🧪 UiPath Agentic Testing with Coding Agents
+
+**Plan, automate, execute, and report on UiPath tests with Autopilot for Testers, Autopilot for Developers, and a coding agent, from a test case design document to an executed test in Test Cloud.**
 
 !!! tip "Training Environment"
-    Log in at **[https://cloud.uipath.com/tpenlabs](https://cloud.uipath.com/tpenlabs)** using tenant **InvokeWorkshop**.
+    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
 
-## What you'll build
+![The agentic testing lifecycle: Setup, Requirements, Test Cases, Executions, and Test Sets, with who does the work at each stage](assets/images/testing-lifecycle.svg){ .lifecycle }
 
-This workshop takes you from zero to building real automation with coding agents. You start by setting up the **`uip` CLI** and **UiPath skills**, then build agents and orchestrations — letting a coding agent like **Claude Code** do the heavy lifting while you stay in control.
+## 🎯 What you'll build
 
-The course has two parts:
+This workshop shows you how AI agents work across **UiPath Test Cloud** for you, and where a tester still makes the call.
 
-**Part 1 · Coding Agents** — get your environment ready, learn how building UiPath components changes with a coding agent, and build your first agents: a low-code hello-world, a coded agent with context and tools, and a conversational agent.
+- 🤖 **Autopilot** works inside the product. In **Studio** it creates requirements, test cases, and test sets. In **Test Manager** it evaluates requirements, generates test cases, and runs a test case autonomously.
+- 💻 A **coding agent** like **Codex** or **Claude Code** works from your terminal. With the **`uip` CLI** and the **UiPath skills**, it automates test cases in your Studio project and runs test sets.
+- 🏦 You start from a real design document for the **UiBank** demo app.
 
-**Part 2 · Agentic Orchestration** — orchestrate agents, robots, and people into Maestro solutions: Case Management, BPMN, and Flow.
+## 🗺️ The session
 
-[**Agenda**](loan-application-underwriting/agenda.md) — How the hands-on session runs, in two 90-minute blocks. Finish [Setup](setup.md) before the first block.
+The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. After the two parts below, it ends with SAP Testing, Q&A, and feedback. Finish [Setup](setup.md) before it starts.
 
-[**Hands-On Session**](coding-agents-hands-on.md) — The recruitment pipeline you'll build: a Coded Agent, an RPA workflow, and a Maestro Flow, step by step.
+<div class="grid cards" markdown>
 
-More exercises are being authored and will appear here as they are released.
+-   :material-lightbulb-on-outline:{ .lg .middle } **1. Intro + Theoretical Aspects**
 
-## Key concepts
+    ---
 
-- **Coding agent** — an AI assistant (e.g., Claude Code) that builds UiPath components from your instructions, using the `uip` CLI and UiPath skills. UiPath is the automation platform that coding agents operate natively.
-- **`uip` CLI** — the command-line interface coding agents use to talk to the UiPath platform.
-- **UiPath skills** — curated instruction packs that teach a coding agent how to build UiPath automations correctly.
-- **Maestro** — UiPath's orchestration platform for coordinating humans, robots, and AI agents across long-running processes.
+    Test Cloud, Test Manager, Autopilot for Testers, Autopilot for Developers, and coding agents: what each one does, and when to use which.
+
+    [:octicons-arrow-right-24: Agentic Testing & Coding Agents](what-is-a-coding-agent.md)
+
+-   :material-hand-back-right-outline:{ .lg .middle } **2. Hands-on**
+
+    ---
+
+    Five parts, each in its own tab, from an empty project to an executed test set. The Agenda shows how the session runs, step by step.
+
+    [:octicons-arrow-right-24: Agenda](agenda.md)
+
+</div>
+
+### The hands-on parts
+
+<div class="grid cards" markdown>
+
+-   :material-cog-outline:{ .lg .middle } **Testing Setup**
+
+    ---
+
+    The scenario, the design document, and the in-session setup: your Test Manager project, and a new test automation project in Studio connected to it.
+
+    [:octicons-arrow-right-24: Testing Setup](agentic-testing-hands-on.md)
+
+-   :material-clipboard-text-outline:{ .lg .middle } **Requirements**
+
+    ---
+
+    Autopilot in Studio creates them from the design document, and Autopilot in Test Manager evaluates them.
+
+    [:octicons-arrow-right-24: Requirements](requirements.md)
+
+-   :material-test-tube:{ .lg .middle } **Test Cases**
+
+    ---
+
+    Autopilot in Test Manager generates them. You automate the Login test case by hand, then Autopilot in Studio or a coding agent automates the next ones, and Autopilot runs one autonomously.
+
+    [:octicons-arrow-right-24: Test Cases](test-cases.md)
+
+-   :material-play-circle-outline:{ .lg .middle } **Executions**
+
+    ---
+
+    Every run, manual, automated, or autonomous, with its results and screenshots.
+
+    [:octicons-arrow-right-24: Executions](executions.md)
+
+-   :material-package-variant-closed:{ .lg .middle } **Test Sets**
+
+    ---
+
+    Autopilot groups your test cases, you run them, and you read the results.
+
+    [:octicons-arrow-right-24: Test Sets](test-sets.md)
+
+-   :material-rocket-launch-outline:{ .lg .middle } **Before you start**
+
+    ---
+
+    The Setup page: the tools, the UiPath skills, your login, and your UiBank test user.
+
+    [:octicons-arrow-right-24: Setup](setup.md)
+
+</div>
+
+Each part comes with the prompts you'll use.
+
+## 🔑 Key concepts
+
+<div class="feature-grid" markdown>
+
+<div class="feature" markdown>
+<span class="f-icon">💻</span>
+<span class="f-title" markdown="span">Coding agent</span>
+
+An AI assistant (e.g., Claude Code) that builds and runs UiPath components from your instructions, using the `uip` CLI and UiPath skills.
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">⌨️</span>
+<span class="f-title" markdown="span">`uip` CLI</span>
+
+The command-line interface coding agents use to talk to the UiPath platform, including Test Manager (`uip tm`) and Studio projects (`uip rpa`).
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🧩</span>
+<span class="f-title" markdown="span">UiPath skills</span>
+
+Curated instruction packs that teach a coding agent how to work with UiPath correctly. This workshop uses `uipath-test`, `uipath-rpa`, and `uipath-platform`.
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">📋</span>
+<span class="f-title" markdown="span">Test Manager</span>
+
+The Test Cloud hub for requirements, test cases, test sets, executions, and results.
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🤖</span>
+<span class="f-title" markdown="span">Autopilot for Testers</span>
+
+UiPath's built-in testing agents in Studio and Test Manager. They generate and evaluate requirements, generate test cases and test sets, run test cases autonomously, and explain test results.
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🪄</span>
+<span class="f-title" markdown="span">Autopilot for Developers</span>
+
+Autopilot in Studio for building and fixing automations: it generates and fixes expressions from the workflow's context.
+
+</div>
+
+</div>

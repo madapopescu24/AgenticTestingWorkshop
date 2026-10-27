@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Build & deploy (production environment)
+      - name: Build & deploy (staging environment — Autopilot features)
         env:
-          COURSE_ENV: prod
+          COURSE_ENV: staging
         run: mkdocs gh-deploy --force

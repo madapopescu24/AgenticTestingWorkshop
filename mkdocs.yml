@@ -1,20 +1,15 @@
-site_name: UiPath Coding Agents Workshop
-site_url: https://madapopescu24.github.io/CodingAgentsRecruitmentPipeline/
-site_description: Hands-on learner's handbook for building UiPath agents and Maestro orchestrations with coding agents
+site_name: UiPath Agentic Testing with Coding Agents
+site_url: https://madapopescu24.github.io/AgenticTestingWorkshop/
+site_description: Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents
 site_author: Sergey Shumilov
 
 # hello-world-agent/ is a retired folder the sandbox mount couldn't delete.
 # Excluded from the build — remove the folder locally when convenient.
 exclude_docs: |
   hello-world-agent/
-  # Loan Application Underwriting lessons — kept in the repo for reference,
-  # excluded from the build so only the Agenda page shows under that tab.
-  loan-application-underwriting/index.md
-  loan-application-underwriting/1-underwriting-agent.md
-  loan-application-underwriting/2-loan-officer-app.md
-  loan-application-underwriting/3-maestro-flow.md
-  loan-application-underwriting/4-intake-enrichment.md
-  loan-application-underwriting/you-did-it.md
+  # Loan Application Underwriting and recruitment pipeline pages — retired when
+  # the course moved to Agentic Testing. Kept in the repo for reference.
+  loan-application-underwriting/
 
 theme:
   name: material
@@ -39,6 +34,7 @@ theme:
 
 hooks:
   - hooks/split_cols.py
+  - hooks/toc_no_emoji.py
 
 # main.py provides environment variables (training_url, training_tenant, env_label)
 # driven by the COURSE_ENV env var (staging | prod). See main.py.
@@ -62,14 +58,22 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # Published navigation only. Work-in-progress pages live in mkdocs.local.yml.
 nav:
   - Home: index.md
   - Setup: setup.md
-  - What's a Coding Agent?: what-is-a-coding-agent.md
-  - Agenda: loan-application-underwriting/agenda.md
-  - Hands-On Session: coding-agents-hands-on.md
+  - Agenda: agenda.md
+  - Agentic Testing & Coding Agents: what-is-a-coding-agent.md
+  - Testing Setup: agentic-testing-hands-on.md
+  - Requirements: requirements.md
+  - Test Cases: test-cases.md
+  - Executions: executions.md
+  - Test Sets: test-sets.md
+  - SAP Testing: sap-testing.md
   - Resources: resources.md
   - Next Steps: next-steps.md
 

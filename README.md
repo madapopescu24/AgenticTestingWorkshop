@@ -1,7 +1,9 @@
-# UiPath Coding Agents Workshop — Site
+# UiPath Agentic Testing with Coding Agents — Site
 
-Hands-on course teaching clients & partners to build UiPath agents and Maestro
-orchestrations with coding agents (Claude Code) and the `uip` CLI.
+Hands-on course teaching clients & partners UiPath Agentic Testing with coding agents
+(Claude Code) and the `uip` CLI: plan a test case in Test Manager, automate it in
+Studio, execute it, and report on it. The scenario is the UiBank test case design
+document E2E UiBank Online Banking, which becomes eight requirements and eight independent test cases.
 
 Built on the same MkDocs framework as the
 [Agentic Practice Workshop](https://github.com/uipath-practice/AgenticPracticeCourse),
@@ -43,8 +45,8 @@ pip install -r requirements.txt
 COURSE_ENV=staging mkdocs serve -f mkdocs.local.yml
 # open http://127.0.0.1:8000
 
-# 4. Release-equivalent build check
-COURSE_ENV=prod mkdocs build
+# 4. Release-equivalent build check (CI deploys the staging profile)
+COURSE_ENV=staging mkdocs build
 ```
 
 ## Publishing to GitHub
@@ -52,9 +54,9 @@ COURSE_ENV=prod mkdocs build
 This repo is scaffolded locally. To create the remote and deploy:
 
 ```bash
-cd coding-agents-course
+cd AgenticTestingWorkshop
 git init && git add . && git commit -m "Initial scaffold"
-gh repo create uipath-practice/CodingAgentsCourse --public --source=. --push
+gh repo create madapopescu24/AgenticTestingWorkshop --public --source=. --push
 # then enable GitHub Pages on the gh-pages branch (created by the deploy workflow)
 ```
 
@@ -69,118 +71,143 @@ Do not move this content into `docs/` or reference it from
 ### Environment & Tenant Setup
 
 The site's `main.py` defines a `COURSE_ENV` switch with two profiles (`staging`
-and `prod`) driving the `{{ training_url }}` / `{{ training_tenant }}` macros
-used throughout the lessons. In practice, only the cloud environment below is
-real — there is no separate staging UiPath org/tenant to author or test
-against. Treat the `staging` profile in `main.py` as unused/vestigial.
+and `prod`) driving the `{{ training_url }}`, `{{ training_org }}`,
+`{{ training_tenant }}`, and `{{ training_folder }}` macros used throughout the
+lessons. **The workshop runs on staging**: the newest Autopilot for Testers and
+Autopilot for Developers features it showcases are only available there. CI
+deploys with `COURSE_ENV=staging`, and that is also the default.
 
-| Organization | URL | Tenant | Used for |
-|---|---|---|---|
-| `tpenlabs` | https://cloud.uipath.com/tpenlabs | `InvokeWorkshop` | The one real environment — both authoring/testing and the live participant-facing environment (CI builds with `COURSE_ENV=prod`) |
+| Profile | Organization | URL | Tenant | Used for |
+|---|---|---|---|---|
+| `staging` | `partnersuccess` | https://staging.uipath.com/partnersuccess | `MadalinaTest` | **The participant environment.** Studio, the `uip` CLI, Test Manager, and Orchestrator all point here. |
+| `prod` | `tpenlabs` | https://cloud.uipath.com/tpenlabs | `AgenticTesting` | Not used in the session. Kept for when the Autopilot features reach Automation Cloud. |
 
-All exercises operate inside a single shared Orchestrator folder in this
-org/tenant (`tpenlabs` / `InvokeWorkshop`):
+Confirmed: `partnersuccess` / `MadalinaTest` on staging has Test Manager, Autopilot
+for Testers, and Autopilot for Developers enabled. To run the session on another
+tenant, change `training_tenant` (and, if needed, `training_org`) for the `staging`
+profile in `main.py`.
 
-- **Folder name:** `CodingAgentsILT`
-- **Folder key:** `c30345cd-5543-46a9-b42b-0354e60b4f15`
+All exercises operate inside a single shared Orchestrator folder on staging.
+Test Manager for the tenant is at
+`https://staging.uipath.com/partnersuccess/MadalinaTest/testmanager_`.
 
-Every deployable artifact (agent, Maestro flow, RPA process) is
-named with a `{YourName}` prefix (e.g. `{YourName}LoanUnderwritingAgent`) so
+- **Folder name:** `AgenticTesting` (the `training_folder` macro in `main.py`). It's
+  the default Orchestrator folder of every participant's Test Manager project, and
+  holds the test packages and the credential assets.
+- **Folder key:** _TODO — create or confirm the `AgenticTesting` folder on staging
+  and record its key here._
+
+Every deployable artifact (test package, credential asset, Test Manager project) is
+named with a `{YourName}` prefix (e.g. `{YourName}UiBankTests`) so
 participants sharing the same tenant/folder don't collide with each other's
 packages, processes, or Orchestrator entities.
 
 ### Inviting Participants
 
-Before a cohort starts, invite each participant to the `tpenlabs` org so they
-can log in with their own email:
+Before a cohort starts, invite each participant to the staging org
+(`partnersuccess` on `staging.uipath.com`) so they can log in with their own email:
 
-1. In the `tpenlabs` org, go to the **Admin** tab.
+1. In the staging org, go to the **Admin** tab.
 2. Go to **Accounts and Local Groups**.
 3. Invite each participant using their email address.
 4. Make sure each invited participant is added to the **CodingAgentsGroup**
-   local group — this is what grants them access to the `InvokeWorkshop`
-   tenant and the `CodingAgentsILT` folder.
+   local group (create it on staging if it doesn't exist) — this is what grants
+   them access to the `MadalinaTest` tenant, Test Manager, and the `AgenticTesting`
+   folder.
 
 ### Before Each Training
 
-- [ ] Confirm the **LoanUnderwriting** storage bucket exists in the
-      **CodingAgentsILT** folder in Orchestrator — the RPA lesson (Application
-      Intake & Enrichment) uploads results there, and the run fails if it's
-      missing.
+The agentic testing session (about 8 hours) only works if the platform
+prerequisites are ready before it starts:
 
-For the **recruitment pipeline** session (two 90-minute blocks), the time
-budget only works if the platform prerequisites are ready before the session:
-
-- [ ] Build and publish the two fallback processes in the **CodingAgentsILT**
-      folder, following the contract on the hands-on page:
-      `DemoJobMatchingAgent` (input `job_title`, output `job` + `matches`) and
-      `DemoRegisterInUiBank` (`in_CandidatesJson` → `out_ResultsJson`).
-      Anyone whose Lab 1 or Lab 2 doesn't finish uses these in Lab 3.
-- [ ] Do one full dry run of the `{YourName}RecruitmentPipeline` flow with the
-      demo processes, including the Action Center approval.
-- [ ] Make sure **unattended robots** that can run browser automation are
-      available to the **CodingAgentsILT** folder, with enough capacity for
-      the whole group to run the RPA step in the same 15 minutes. This is the
-      most likely bottleneck in Lab 3.
-- [ ] Confirm participants can use the **LLM Gateway** from coded agents in
-      the tenant — Lab 1 doesn't ask for a personal Anthropic/OpenAI key.
-- [ ] Confirm the **CodingAgentsGroup** has rights to create Maestro flows and
-      receive Action Center tasks in the folder.
-- [ ] Send the [Setup](docs/setup.md) page at least two days ahead. Setup is
-      not part of the 180 minutes. Ask Mac users to pair with a Windows user
-      for Lab 2.
+- [ ] Build and publish the fallback test package `DemoUiBankTests` in the
+      **AgenticTesting** folder. Its test entry points `T0_LoginAndInitialAccountState`
+      to `T7_LogoutAndEvidenceCollection` automate the eight test cases, one each,
+      and pass in any order. Anyone whose own automations from Test Cases
+      aren't ready links this one to their test cases in Test Sets.
+- [ ] Create a credential asset for the demo package's UiBank user in the folder,
+      and do one full dry run: link `DemoUiBankTests` to a Test Manager test case,
+      run its test set as automated, and check the screenshots arrive.
+- [ ] Make sure **unattended robots** that can run Chrome browser automation are
+      available to the **AgenticTesting** folder — automated test sets AND every
+      participant's **Run Autonomously** execution run there. Serverless (the
+      "Default Serverless" template has no runtime slots) and participants'
+      personal-workspace robots don't pick these jobs up: they stay Pending with
+      no error. Stop and re-run any job that went Pending before a robot was
+      available. Plan enough capacity for the whole group to run their
+      autonomous executions and test sets in the same 10 minutes. This is the most
+      likely bottleneck in Test Sets.
+- [ ] Confirm **Autopilot** is enabled on the staging tenant for everyone in the
+      group: the Autopilot panel in Studio (the hands-on part starts with it
+      generating the requirements, and uses it again to create test sets), **Generate Test Case with
+      Autopilot** in Test Explorer, the Evaluation Agent, Test Case Generation,
+      Prompt Library, **Run Autonomously**, and Generate Insights in Test Manager,
+      and Fix / generate in Studio's Expression Editor. Do one dry run of the
+      requirements prompt and check it produces eight requirements named
+      after the steps. Run one test case autonomously end to end, and check
+      the live stream and the per-step screenshots work for participants.
+- [ ] Confirm the **CodingAgentsGroup** can create Test Manager projects (the
+      hands-on Setup creates one per participant), create credential assets, and upload packages
+      in the folder.
+- [ ] Check participants can sign Studio in to `staging.uipath.com`. Studio signed
+      in to Automation Cloud is the most likely Setup failure.
+- [ ] The design document is published on the site as
+      `docs/resources.assets/E2E UiBank Online Banking.docx` (download buttons on
+      the hands-on page and Resources). It's a cleaned copy: leftover images from
+      another project, author metadata, and a real username/email were removed.
+      If you update the original, clean it the same way before replacing it.
+- [ ] Send the [Setup](docs/setup.md) page at least two days ahead, including
+      the UiBank registration and the credential asset. Setup is not part of the
+      8 hours. Ask Mac users to pair with a Windows user from the Login test case on.
 
 ### TODO — fill in before the next cohort
 
-- [ ] Is there a reset/cleanup step needed between cohorts (stale processes,
-      packages, jobs, Action Center tasks left in the shared folder from the
-      previous run)? Document the steps or the script here.
-- [ ] Any UiBank API seed-data reset needed, or is `https://uibank-api.uipath.com`
-      stable/shared indefinitely across cohorts?
+- [ ] Is there a reset/cleanup step needed between cohorts (Test Manager projects,
+      packages, credential assets, executions left from the previous run)? Document
+      the steps or the script here.
+- [ ] UiBank data can be reset at any time. Do participants need to re-register
+      before each cohort?
 - [ ] Who to contact if a participant needs their credentials/tenant access
       re-issued mid-workshop?
 
 ### Timing & Agenda
 
-The recruitment pipeline session runs in **two 90-minute blocks with no
-breaks**, and the full use case — including the Maestro orchestration — is
-built inside them. There is no homework. The participant-facing schedule is on
-the Agenda page; the trainer view:
+The session runs for **about 8 hours** (9:00 to 17:00), with a 15-minute break after
+Requirements, a 45-minute lunch (12:30) in the middle of Test Cases,
+and a 10-minute break before Executions. It ends with SAP Testing, Q&A, and feedback.
+The timings are approximate: adapt them during the workshop, including the breaks.
+There is no homework. The
+participant-facing schedule is on the Agenda page; the trainer view:
 
-| Block | Time | Part | Trainer focus |
-|---|---|---|---|
-| 1 | 0:00–0:20 | Intro | Present *What's a Coding Agent?*; demo one skill loading live |
-| 1 | 0:20–0:25 | Ready check | `uip login status`; anyone failing pairs up — don't debug setup live |
-| 1 | 0:25–0:30 | Scenario and contract | Walk the data-flow diagram and the contract table — it's what makes Lab 3 work |
-| 1 | 0:30–1:20 | Lab 1 — Coded Agent | Everyone pastes the prompt at the same time; narrate the plan the agent shows |
-| 1 | 1:20–1:30 | Checkpoint | Compare shortlists; confirm processes exist; point stragglers at `DemoJobMatchingAgent` |
-| 2 | 0:00–0:30 | Lab 2 — RPA | Mac users pair; at 0:25 everyone publishes, finished or not |
-| 2 | 0:30–1:20 | Lab 3 — Maestro Flow | Watch robot capacity; show one approval in Action Center on screen |
-| 2 | 1:20–1:30 | Wrap-up | *What you built*, *Gotchas*, next steps |
+| Time | Agenda item | Trainer focus |
+|---|---|---|
+| 0:00–0:30 | Welcome | Introductions and the plan for the day |
+| 0:30–1:45 | 1. Intro + Theoretical Aspects | Present *Agentic Testing & Coding Agents*: Test Cloud, Autopilot for Testers, Autopilot for Developers, coding agents; when to use which. Check Studio is signed in to staging for everyone. |
+| 1:45–2:00 | Setup | Everyone creates a Test Manager project (name `{YourName}_UIB_Test`, prefix `UIB`) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
+| 2:00–2:15 | Autopilot in Studio creates requirements | Demo the prompt on screen first; check everyone gets eight requirements named after the steps |
+| 2:15–2:25 | Discuss the requirements | Traceability, testability, gaps; did Autopilot invent rules? |
+| 2:25–2:45 | Evaluate, improve, re-evaluate | Demo the Evaluation Agent on one requirement before people try |
+| 2:45–3:00 | Break | |
+| 3:00–3:30 | Autopilot in Test Manager creates test cases | Login requirement; show the Prompt Library |
+| 3:30–4:15 | Lunch | Help stragglers who are still creating test cases |
+| 4:15–4:45 | Implement the Login test case manually | Walk Given / When / Then; make sure targets go into the Object Repository |
+| 4:45–5:15 | Autopilot in Studio / Codex generates a test case | Split the room between Autopilot and coding agent; compare results at the end |
+| 5:15–5:30 | Run Autonomously | Everyone runs a negative login test case autonomously; point out the live stream and the per-step screenshots |
+| 5:30–6:05 | Implement a few more test cases | Point people at the *Given* column: transfer and lookup set up their own data |
+| 6:05–6:15 | Break | |
+| 6:15–6:25 | Executions tab | Everyone explores their own executions: the autonomous run, its test case log, and the screenshots |
+| 6:25–6:35 | Test Sets | Everyone publishes the testing project to the Orchestrator Tenant Process Feed first; then Autopilot creates smoke + regression sets; run; watch robot capacity; Generate Insights |
+| 6:35–6:45 | Next Steps | *What you built*, *Gotchas* |
+| 6:45–7:45 | SAP Testing | |
+| 7:45–7:55 | Q&A | |
+| 7:55–8:00 | Feedback | |
 
-Architecture changes from the earlier versions (both archived locally under
-`Archive/`):
+The previous recruitment pipeline session (Coded Agent → RPA → Maestro Flow) is
+archived locally under `Archive/recruitment-pipeline/`.
 
-- **Coded App and Data Service removed.** The Coded App needed an External
-  App, OAuth scopes, entity IDs, and a 15-step publish — it didn't fit next to
-  the orchestration. The recruiter now reviews the shortlist in an **Action
-  Center** approval task, and Maestro passes data between steps, so no
-  entities are needed.
-- **Maestro moved from homework into Lab 3.** It's the step that turns the
-  components into the full use case.
-- **A fixed data contract** between components (`job_title` → `job` +
-  `matches` → `in_CandidatesJson` → `out_ResultsJson`) so components built in
-  separate prompts plug together, and the demo processes can stand in for any
-  participant's.
-- Lab 1: one job title, provided `candidates.json`, no web search, LLM Gateway
-  instead of personal API keys, 3 eval cases.
-- Lab 2: candidates come in as an argument instead of a CSV; usernames and
-  emails get a per-participant, per-run suffix (`_{yourname}` + the current time as `HHmmss`),
-  because UiBank rejects any username or email it has already seen.
-
-**Time-keeping rule:** when a lab's time box ends, publish what you have and
-move on. Anyone behind switches to the demo processes in Lab 3 and still
-finishes the pipeline.
+**Time-keeping rule:** when a step's time box ends, move on with what you have.
+Anyone behind links `DemoUiBankTests` in Test Sets and still runs a test set and reads
+its executions.
 
 ### Answer Keys / Expected Outputs
 

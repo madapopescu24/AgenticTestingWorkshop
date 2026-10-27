@@ -169,7 +169,7 @@ Your coding agent should return something like:
     For example:
 
     ```bash
-    uip or packages upload /tmp/dist/MadalinaLoanUnderwritingProcess.flow.Flow.1.0.0.nupkg --output json
+    uip or packages upload /tmp/dist/{YourName}LoanUnderwritingProcess.flow.Flow.1.0.0.nupkg --output json
     ```
 
     If you get a command not found error, the maestro tool may not be installed or on your PATH:
@@ -197,7 +197,7 @@ Your coding agent should return something like:
     For example:
 
     ```bash
-    uip or processes create --name "MadalinaLoanUnderwritingProcess" --package-key "MadalinaLoanUnderwritingProcess.flow.Flow" --package-version "1.0.0" --folder-key "c30345cd-5543-46a9-b42b-0354e60b4f15" --output json
+    uip or processes create --name "{YourName}LoanUnderwritingProcess" --package-key "{YourName}LoanUnderwritingProcess.flow.Flow" --package-version "1.0.0" --folder-key "c30345cd-5543-46a9-b42b-0354e60b4f15" --output json
     ```
 
 === "Using Your Coding Agent"
