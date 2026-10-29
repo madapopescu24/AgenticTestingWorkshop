@@ -72,13 +72,11 @@ duplicating it.
 ### 3. Environment is configurable (not hardcoded)
 - `main.py` (mkdocs-macros) provides `{{ training_url }}`, `{{ training_authority }}`,
   `{{ training_org }}`, `{{ training_tenant }}`, `{{ training_folder }}`, and
-  `{{ env_label }}`, switched by the `COURSE_ENV` variable (`staging` | `prod`).
+  `{{ env_label }}`, selected by the `COURSE_ENV` variable (`prod`).
 - **Always use these variables in the training-environment callout** — never hardcode
   a URL or tenant. Values:
   - prod: cloud.uipath.com/tpenlabs, tenant `AgenticTestingWorkshop` — **the
     participant environment**. CI deploys with `COURSE_ENV=prod`.
-  - staging: staging.uipath.com/partnersuccess, tenant `MadalinaTest` — kept as a
-    fallback.
 - Author, preview, and release with `COURSE_ENV=prod` (also the default).
 
 ---

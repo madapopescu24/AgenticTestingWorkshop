@@ -376,7 +376,7 @@ Use this exact text in exercise overview pages. Always use macros — never hard
     Log in at **[{{ training_url }}]({{ training_url }})** and remember using tenant **{{ training_tenant }}** for this exercise.
 ```
 
-Values resolve from the `COURSE_ENV` environment variable via `main.py`. Author with `COURSE_ENV=staging`; CI deploys with `COURSE_ENV=prod`.
+Values resolve from the `COURSE_ENV` environment variable via `main.py`. Author with `COURSE_ENV=prod`; CI deploys with `COURSE_ENV=prod`.
 
 ### Standard prerequisites callout
 

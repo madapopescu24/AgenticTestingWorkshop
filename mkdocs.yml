@@ -37,7 +37,7 @@ hooks:
   - hooks/toc_no_emoji.py
 
 # main.py provides environment variables (training_url, training_tenant, env_label)
-# driven by the COURSE_ENV env var (staging | prod). See main.py.
+# driven by the COURSE_ENV env var (prod). See main.py.
 plugins:
   - search
   - macros:

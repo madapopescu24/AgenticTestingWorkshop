@@ -227,7 +227,7 @@ You can run load, spike, stress, and endurance tests, in the cloud or on-premise
 ## 🎬 Demo
 
 !!! note "Demo coming soon"
-    The demo for this part will be added here once the staging environment is running again.
+    The demo for this part will be added here soon.
 
 ## 📏 Measure processes, not test cases
 

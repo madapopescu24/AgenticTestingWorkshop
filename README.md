@@ -23,7 +23,7 @@ docs/*.md  →  MkDocs builds HTML  →  GitHub Actions  →  gh-pages  →  Git
 | `docs/` | Published page content — one `.md` per page |
 | `mkdocs.yml` | Site config + **published** nav |
 | `mkdocs.local.yml` | Local-only nav incl. work-in-progress (gitignored) |
-| `main.py` | Environment variables (staging vs prod) for the training callout |
+| `main.py` | Environment variables for the training callout |
 | `Master/` | Authoring rules & templates (copied from base framework) |
 | `.claude/commands/` | Authoring slash commands (copied from base framework) |
 | `hooks/`, `scripts/` | Two-column hook; screenshot metadata pipeline (copied) |
@@ -70,8 +70,8 @@ Do not move this content into `docs/` or reference it from
 
 ### Environment & Tenant Setup
 
-The site's `main.py` defines a `COURSE_ENV` switch with two profiles (`staging`
-and `prod`) driving the `{{ training_url }}`, `{{ training_org }}`,
+The site's `main.py` defines a `COURSE_ENV` switch with one profile (`prod`)
+driving the `{{ training_url }}`, `{{ training_org }}`,
 `{{ training_tenant }}`, and `{{ training_folder }}` macros used throughout the
 lessons. **The workshop runs on Automation Cloud**, organization `tpenlabs`,
 tenant `AgenticTestingWorkshop`. CI deploys with `COURSE_ENV=prod`, and that is
@@ -80,7 +80,6 @@ also the default.
 | Profile | Organization | URL | Tenant | Used for |
 |---|---|---|---|---|
 | `prod` | `tpenlabs` | https://cloud.uipath.com/tpenlabs | `AgenticTestingWorkshop` | **The participant environment.** Studio, the `uip` CLI, Test Manager, and Orchestrator all point here. |
-| `staging` | `partnersuccess` | https://staging.uipath.com/partnersuccess | `MadalinaTest` | Not used in the session. Kept as a fallback. |
 
 _TODO — confirm `tpenlabs` / `AgenticTestingWorkshop` has Test Manager delivered
 through Test Cloud, Autopilot for Testers, and Autopilot for Developers enabled._
