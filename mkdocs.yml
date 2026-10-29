@@ -65,8 +65,8 @@ markdown_extensions:
 # Published navigation only. Work-in-progress pages live in mkdocs.local.yml.
 nav:
   - Home: index.md
-  - Setup: setup.md
   - Agenda: agenda.md
+  - Setup: setup.md
   - Agentic Testing & Coding Agents: what-is-a-coding-agent.md
   - Testing Setup: agentic-testing-hands-on.md
   - Requirements: requirements.md

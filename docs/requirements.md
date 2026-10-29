@@ -12,25 +12,46 @@ Hands-on · Part 1 of 4
 
 ## 🪄 Ask Autopilot in Studio to create the requirements
 
-The design document goes in, requirements come out, and nobody types them.
+The design document goes in, requirements come out, and nobody types them. Every later part builds on these requirements, so if one route fails, use the next.
 
-1. In Studio, open the **Autopilot** panel.
-2. Attach `E2E UiBank Online Banking.docx` to the conversation, then give Autopilot this prompt:
+=== "Autopilot in Studio"
+
+    1. In Studio, open the **Autopilot** panel.
+    2. Attach `E2E UiBank Online Banking.docx` to the conversation, then give Autopilot this prompt:
+
+        ```text
+        Generate the requirements for the UiBank web application from the
+        attached design document. Create one requirement per step in section 3,
+        Step 0 to Step 7, in that order.
+        ```
+
+    3. Review what Autopilot proposes, then accept the requirements so they're saved to your Test Manager project.
+
+    Creating requirements from a document isn't among the documented Autopilot test tools in Studio yet. If Autopilot can't save them, use your coding agent.
+
+=== "With your coding agent"
+
+    Start your coding agent in your workshop folder and give it this prompt:
 
     ```text
-    Generate the requirements for the UiBank web application from the
-    attached design document. Create one requirement per step in section 3,
-    Step 0 to Step 7, in that order.
+    Read ./E2E UiBank Online Banking.docx and create one requirement per step
+    in section 3, Step 0 to Step 7, in order, in my {YourName}_UIB_Test
+    Test Manager project, with the step's acceptance criteria in the
+    description. Confirm `uip login status` first.
     ```
 
-3. Review what Autopilot proposes, then accept the requirements so they're saved to your Test Manager project.
+    The coding agent loads the `uipath-test` skill. There's no import command, so it runs `uip tm requirements create` once per step, eight times.
+
+=== "By hand"
+
+    In Test Manager, open **Requirements** and select **Create** for each step. Name each requirement after the step title, and copy the step's validation into the description. It's slower, but it unblocks the rest of the day.
 
 !!! warning "Autopilot missing, or can't save the requirements?"
     Two usual causes. Studio is signed in to the wrong environment: the Autopilot features in this session are on **{{ env_label }}**, so sign Studio in to **{{ training_authority }}**, org **{{ training_org }}**, tenant **{{ training_tenant }}**. Or the project isn't connected to your Test Manager project: check the Test Manager settings in Studio, or ask your coding agent to run `uip rpa tm status` in the project folder.
 
 ## 💬 Discuss the requirements in Test Manager
 
-In Test Manager, refresh **Requirements**. You should see eight requirements, one per step of the design document, with keys `UIB:1` to `UIB:8`. Autopilot's names and wording may differ from this:
+In Test Manager, refresh **Requirements**. You should see eight requirements, one per step of the design document, with keys `{YourPrefix}:1` to `{YourPrefix}:8`. Autopilot's names and wording may differ from this:
 
 <div class="circles" markdown>
 
@@ -40,7 +61,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Login and Initial Account State**
 
-`UIB:1` · Step 0
+`{YourPrefix}:1` · Step 0
 
 </div>
 </div>
@@ -51,7 +72,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Checking Account Creation**
 
-`UIB:2` · Step 1
+`{YourPrefix}:2` · Step 1
 
 </div>
 </div>
@@ -62,7 +83,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Savings Account Creation**
 
-`UIB:3` · Step 2
+`{YourPrefix}:3` · Step 2
 
 </div>
 </div>
@@ -73,7 +94,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Funds Transfer Between Accounts**
 
-`UIB:4` · Step 3
+`{YourPrefix}:4` · Step 3
 
 </div>
 </div>
@@ -84,7 +105,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Loan Application Submission**
 
-`UIB:5` · Step 4
+`{YourPrefix}:5` · Step 4
 
 </div>
 </div>
@@ -95,7 +116,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Loan Status Lookup**
 
-`UIB:6` · Step 5
+`{YourPrefix}:6` · Step 5
 
 </div>
 </div>
@@ -106,7 +127,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **User Profile Identity Verification**
 
-`UIB:7` · Step 6
+`{YourPrefix}:7` · Step 6
 
 </div>
 </div>
@@ -117,7 +138,7 @@ In Test Manager, refresh **Requirements**. You should see eight requirements, on
 
 **Logout and Evidence Collection**
 
-`UIB:8` · Step 7
+`{YourPrefix}:8` · Step 7
 
 </div>
 </div>

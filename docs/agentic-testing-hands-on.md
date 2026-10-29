@@ -201,7 +201,7 @@ The document describes the customer journey in eight steps. You won't test it as
 
 **Login and Initial Account State**
 
-`/login`, `/welcome`, `/accounts`
+`/login`, `/accounts`
 
 ✅ Login succeeds; initial account state captured
 
@@ -367,14 +367,14 @@ Requirements, test cases, test sets, and executions all live in a Test Manager p
 2. On the **Projects** page, select **Create new project**.
 3. In the **Create new project** dialog, fill in:
     - **Name:** `{YourName}_UIB_Test`
-    - **Prefix:** `UIB`. It must be at least 3 characters, letters and numbers only.
+    - **Prefix:** `{YourPrefix}`, a unique code of 3 to 5 letters and numbers: your initials plus a digit, for example `VC1`. Everyone works in the same tenant, and each prefix can be used only once in it. You can't change it later.
     - **Description:** optional, for example *UiBank online banking tests*.
 
-    ![The Create new project dialog in Test Manager, with the name {YourName}_UIB_Test, the prefix UIB, an empty description, and the Create button](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
-    *The Create new project dialog, filled in as `{YourName}_UIB_Test` with the prefix `UIB`.*
+    ![The Create new project dialog in Test Manager, with a project name, the example prefix UIB, an empty description, and the Create button](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
+    *The Create new project dialog. The screenshot uses the prefix UIB: use your own.*
 
     !!! info "What the prefix is for"
-        Every object in the project gets a key that starts with the prefix: the first requirement becomes `UIB:1`, the next `UIB:2`, and so on, across requirements, test cases, and test sets. Short and recognisable beats descriptive.
+        Every object in the project gets a key that starts with the prefix: with the prefix `VC1`, the first requirement becomes `VC1:1`, the next `VC1:2`, and so on, across requirements, test cases, and test sets. Short and recognisable beats descriptive.
 
 4. Select **Create**, then open the project. It's empty for now.
 5. Set the project's default Orchestrator folder. Test sets need it to run automated test cases later.
@@ -412,7 +412,7 @@ The project needs to know which Test Manager project its requirements, test case
     1. In the **Explorer** panel, right-click your project name and select **Project Settings**.
     2. Select **Test Manager Configuration**.
     3. Under **Test Manager Settings**, enter the Test Manager URL `{{ training_url }}/{{ training_tenant }}/testmanager_`, then select **Connect**. The status changes to **Connected**.
-    4. In **Default Project**, type the prefix `UIB` and select **{YourName}_UIB_Test (UIB)**.
+    4. In **Default Project**, type your prefix and select **{YourName}_UIB_Test ({YourPrefix})**.
     5. Select **OK**.
 
     <video src="../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="Connecting the Studio project to Test Manager: Project Settings, Test Manager Configuration, entering the Test Manager URL, Connect, selecting the default project, and OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
@@ -424,7 +424,7 @@ The project needs to know which Test Manager project its requirements, test case
     ```text
     Connect the Studio project in ./{YourName}UiBankTests to Test Manager at
     {{ training_url }}/{{ training_tenant }}/testmanager_ with my {YourName}_UIB_Test project
-    (prefix UIB) as the default project, and show me uip rpa tm status.
+    (prefix {YourPrefix}) as the default project, and show me uip rpa tm status.
     ```
 
     Then reopen the project in Studio. The connection is stored in the project's `.tmh/config.json`, so Studio, Autopilot, and the CLI all use the same one.
@@ -557,21 +557,3 @@ Studio, the CLI, and the browser on the same tenant. Most "Autopilot can't find 
 </div>
 
 </div>
-
-## ⌨️ Appendix: CLI cheat sheet
-
-Commands you'll see a coding agent run with the `uip` CLI, if you use one to generate a test case or run test sets. Add `--output json` to each one.
-
-| Command | What it does | When you'll see it |
-| :--- | :--- | :--- |
-| `uip skills install` | Install UiPath skills into your coding agent | First-time setup |
-| `uip login` / `uip login status` | Authenticate with your tenant / check the session | Start of each session |
-| `uip tm project list --filter <key>` | Find a Test Manager project | Before any Test Manager work |
-| `uip tm requirements list` / `uip tm testcases list` | List requirements and test cases | Checking coverage |
-| `uip rpa tm connect` / `set-default-project` | Connect a Studio project to Test Manager | Setup |
-| `uip rpa validate` / `uip rpa build` | Check and build the project | After every change |
-| `uip rpa pack` + `uip or packages upload` | Package and publish to Orchestrator | Before running test sets |
-| `uip tm testcases link-automation` | Bind an automation to a Test Manager test case | After publishing |
-| `uip tm testsets run` + `uip tm wait` | Execute a test set and wait for the result | Running test sets |
-| `uip tm report get` / `uip tm result download` | Summarise an execution / download JUnit XML | Reporting |
-| `uip feedback send` | Report a bug or a skill that guessed wrong | Whenever something breaks |

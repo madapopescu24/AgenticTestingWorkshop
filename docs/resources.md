@@ -39,6 +39,24 @@ Test automation project, reference solution for the Test Cases part
 !!! info "Reference, not a shortcut"
     Build your own test cases first. The point of the session is to see how Autopilot and your coding agent plan, automate, and run them. The reference package is there for when something blocks you, and for comparing afterwards.
 
+## ⌨️ CLI cheat sheet
+
+Commands you'll see a coding agent run with the `uip` CLI, if you use one to generate a test case or run test sets. Add `--output json` to each one.
+
+| Command | What it does | When you'll see it |
+| :--- | :--- | :--- |
+| `uip skills install` | Install UiPath skills into your coding agent | First-time setup |
+| `uip login` / `uip login status` | Authenticate with your tenant / check the session | Start of each session |
+| `uip tm project list --filter <key>` | Find a Test Manager project | Before any Test Manager work |
+| `uip tm requirements list` / `uip tm testcases list` | List requirements and test cases | Checking coverage |
+| `uip rpa tm connect` / `set-default-project` | Connect a Studio project to Test Manager | Setup |
+| `uip rpa validate` / `uip rpa build` | Check and build the project | After every change |
+| `uip rpa pack` + `uip or packages upload` | Package and publish to Orchestrator | Before running test sets |
+| `uip tm testcases link-automation` | Bind an automation to a Test Manager test case | After publishing |
+| `uip tm testsets run` + `uip tm wait` | Execute a test set and wait for the result | Running test sets |
+| `uip tm report get` / `uip tm result download` | Summarise an execution / download JUnit XML | Reporting |
+| `uip feedback send` | Report a bug or a skill that guessed wrong | Whenever something breaks |
+
 ## 🔗 Useful links
 
 <div class="link-grid" markdown>

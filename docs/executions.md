@@ -37,7 +37,7 @@ Every run in Test Manager is an **execution**, and every execution has a type. Y
 
 👤 Autopilot, following the manual steps on the application
 
-▶️ **Run Autonomously** on a test case
+▶️ **Run autonomously** on a test case's **Manual Steps** tab
 
 </div>
 
@@ -87,17 +87,22 @@ Add a manual execution next to your autonomous one, so you can compare how a per
     executions with failed test cases this week
     ```
 
-3. **Re-execute.** Open an execution, select **More Options** or **Tasks**, then **Re-execute manually** or **Re-execute automated**. Test Manager runs the same test cases again without you setting anything up. Re-executions don't show activity coverage.
+3. **Re-execute.** Open an execution, select **More Options** or **Tasks**, then **Execute Manually** or **Execute Automated**. Test Manager runs the same test cases again without you setting anything up. Re-executions don't show activity coverage.
+
+!!! warning "Re-executing replaces the previous results"
+    A re-execution deletes the earlier results of that execution and replaces them, including the autonomous and manual runs you just compared. To keep them, run the test set again instead, which creates a new execution.
 
 ## ⏳ Why does my execution stay Pending?
 
 An execution you started as **Pending** shows *None* for every test case by design. Nothing runs until you execute it. An **automated** or **autonomous** execution that stays Pending is different: nothing has picked it up.
 
 !!! warning "Automated and autonomous runs need an unattended robot in the folder"
-    Test Manager runs automated and autonomous executions as jobs in Orchestrator, in the project's default folder, **{{ training_folder }}**. A job starts only when an **unattended robot** connected to Orchestrator has access to that folder. Two setups look connected but don't pick it up:
+    Test Manager runs automated and autonomous executions as jobs in Orchestrator, in the project's default folder, **{{ training_folder }}**. A job starts only when an **unattended robot** connected to Orchestrator has access to that folder. Setups that look connected but don't pick it up:
 
     - **Serverless.** A run sent to the **Default Serverless** machine template, with no runtime slots, stays Pending without any error.
     - **Your personal workspace robot.** The robot Studio signs in with serves your personal workspace, not **{{ training_folder }}**.
+    - **No robot credentials.** The runtime shows Connected and Available, but no robot account with stored credentials is assigned to the folder. The job stays Pending with the reason `RobotNoCredentials`.
+    - **No Windows robot, for autonomous runs.** Autonomous test execution is supported on Windows only. With only a macOS robot, an autonomous run stays Pending and no Orchestrator job is created.
 
     **What to do:**
 
@@ -109,7 +114,7 @@ An execution you started as **Pending** shows *None* for every test case by desi
 Your coding agent can read the same executions through the `uip` CLI, and turn them into a summary or a file for a CI pipeline. In Studio's **Terminal** panel, start your coding agent and give it this prompt:
 
 ```text
-In my {YourName}_UIB_Test Test Manager project (prefix UIB), summarise the
+In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarise the
 latest execution: its type, the result per test case, and which steps
 failed, with links to their screenshots. Then download its JUnit XML
 results into ./results. Confirm `uip login status` first.

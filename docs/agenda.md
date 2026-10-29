@@ -4,9 +4,6 @@ Agenda
 # 🗓️ Agenda
 **From one design document to requirements, test cases, test sets, and executions, with Autopilot and a coding agent. With two breaks and lunch.**
 
-!!! warning "Setup is not part of the session"
-    Complete the [Setup](setup.md) page before the session starts, including Studio signed in to **{{ env_label }}**, and your UiBank test user. There's no time to install Studio or the skills during the session.
-
 ## 👋 Welcome
 
 <div class="timeline" markdown>
@@ -30,7 +27,7 @@ Agenda
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-💡 <strong style="color: var(--md-primary-fg-color);"><a href="../what-is-a-coding-agent/" style="color: inherit;">Intro + theoretical aspects</a></strong>: UiPath Test Cloud and Test Manager, Autopilot for Testers, Autopilot for Developers, coding agents with the `uip` CLI and UiPath skills, and when to use which <span class="pill navy">Presentation + live demo</span>
+💡 <strong style="color: var(--md-primary-fg-color);"><a href="../what-is-a-coding-agent/" style="color: inherit;">Intro + theoretical aspects</a></strong>: UiPath Test Cloud and Test Manager, Autopilot for Testers, Autopilot for Developers, coding agents with the `uip` CLI and UiPath skills, and when to use which <span class="pill navy">Presentation</span>
 
 </div>
 </div>
@@ -39,7 +36,7 @@ Agenda
 
 ## 🙌 2. Hands-on
 
-Open Studio and Test Manager: the hands-on part starts right after the intro.
+The hands-on part starts right after the intro, with Setup: you get your VM, your sign-in, and your tenant ready together.
 
 ### ⚙️ Setup
 
@@ -49,7 +46,79 @@ Open Studio and Test Manager: the hands-on part starts right after the intro.
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../agentic-testing-hands-on/#create-a-new-project-in-test-manager">Create a new project in Test Manager</a> (for example, project name `{YourName}_UIB_Test`, prefix `UIB`) <span class="pill orange">Hands-on</span>
+<a href="../setup/#1-connect-to-your-vm">Connect to your VM</a> through Azure Bastion <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#2-sign-in-to-the-training-environment">Sign in to the training environment</a> with your workshop account <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#3-confirm-the-tenant">Confirm the tenant</a> in Studio Web <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#4-open-the-terminal">Open the terminal</a> on your VM <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#5-authenticate-with-your-tenant">Authenticate the `uip` CLI</a> with your tenant, and check a robot can run your tests <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#6-connect-studio-to-the-training-tenant">Connect Studio</a> to the training tenant, and check the Autopilot panel <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#7-register-your-uibank-test-user">Register your UiBank test user</a> and create your credential asset <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../setup/#8-download-the-design-document">Download the design document</a> into your workshop folder <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../agentic-testing-hands-on/#create-a-new-project-in-test-manager">Create a new project in Test Manager</a> (for example, project name `{YourName}_UIB_Test`, and a unique prefix of your own, such as your initials plus a digit) <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -245,7 +314,7 @@ Step away from the screen. If your coding agent is still building, let it carry 
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-🧩 <a href="../sap-testing/">SAP Testing</a> <span class="pill navy">Presentation + live demo</span>
+🧩 <a href="../sap-testing/">SAP Testing</a> <span class="pill navy">Presentation + demo</span>
 
 </div>
 </div>

@@ -1,261 +1,60 @@
-Before the session
+Hands-on · First step
 {: .eyebrow }
 
 # 🧰 Setup
 
-**Everything you install before the workshop starts. Work through it top to bottom — each section verifies itself before you move on.**
+**The first thing you do in the hands-on part: your VM, your sign-in, your tenant, and your test data. Work through it top to bottom — each section verifies itself before you move on.**
 
-!!! info "Do this before the session"
-    Setup takes about 45 minutes on a clean machine, and some downloads are large. Get it done ahead of time so the session stays hands-on.
+!!! info "We do this together"
+    Setup is part of the session: the trainer walks the room through it at the start of the hands-on part, right after the intro. If a step fails, raise your hand before you move on.
 
 !!! tip "Training Environment"
     Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
 
-## 📦 1. Prerequisites
+## 🖥️ 1. Connect to Your VM
 
-**Node.js (LTS)** — required for the UiPath CLI.
+Each participant gets a virtual machine (VM) with the tools already installed. You'll do the rest of this page, and the whole session, inside it.
 
-1. Download the LTS version from **[nodejs.org](https://nodejs.org)**
-2. Verify with `node --version` and `npm --version`
+1. Open the VM details you received. They show the VM's **Username** and **Password**, with copy buttons.
+2. Select **Connect via Azure Bastion**. It opens the VM in a browser tab, so you don't need an RDP client.
 
-!!! tip "npm version must be 11.x.x"
-    If `npm --version` returns a different version, upgrade it:
+    ![The VM details: a Username and a masked Password with copy buttons, and the Download RDP File and Connect via Azure Bastion buttons](setup.images/vm-connect-options.png){ .screenshot width="320" }
 
-    === "Windows"
-        ```bash
-        npm install --global npm@11
-        ```
+3. In the **Azure Bastion** form, keep **Protocol** on **RDP** and **Port** on **3389**. Enter the VM's username and password, pick your **Keyboard Language**, and select **Login**.
 
-    === "Mac"
-        ```bash
-        npm install -g npm@11
-        ```
+    ![The Azure Bastion login form with Protocol RDP, Port 3389, Username, Password, Keyboard Language, and the Login button](setup.images/azure-bastion-login.png){ .screenshot width="420" }
 
-**Google Chrome with the UiPath extension** — the test cases drive UiBank in Chrome.
+4. When your browser asks whether to allow clipboard access, accept it. You'll paste prompts into the VM all day.
+5. Wait for the VM's Windows desktop to load in the browser tab.
 
-1. Install **[Google Chrome](https://www.google.com/chrome/)** if you don't have it
-2. Install the **UiPath Browser Automation** extension from the Chrome Web Store, or from Studio under **Home** > **Tools** > **UiPath Extensions** > **Chrome**
-3. In Chrome, open `chrome://extensions` and check the extension is **enabled**
+!!! tip "Can't paste into the VM with Ctrl+V?"
+    In the Chrome browser on your own machine, open `chrome://settings/content/clipboard` and make sure the Bastion site isn't under **Not allowed to see your clipboard**.
 
-**.NET SDK 8.0** — required to build and run UiPath Studio projects.
+## 🔑 2. Sign In to the Training Environment
 
-1. Download from **[dotnet.microsoft.com/download/dotnet/8.0](https://dotnet.microsoft.com/download/dotnet/8.0)** — or on Mac, install via Homebrew:
-   ```bash
-   brew install --cask dotnet-sdk
-   ```
-2. Verify with `dotnet --list-sdks` — you should see `8.x.x` in the output
+From here on, work **inside the VM**.
 
-!!! tip "Windows — make sure .NET is on your PATH"
-    If `dotnet` is not recognised after install, add it to the PATH manually in PowerShell:
-    ```bash
-    $env:Path = "C:\Program Files\dotnet;$env:Path"
-    dotnet --list-sdks
-    ```
+1. Open **Google Chrome** in the VM and go to **[{{ training_url }}]({{ training_url }})**.
+2. Select **Continue with Microsoft**.
 
-**UiPath Studio** — required to run and debug the generated test cases, and to capture UI targets with **Indicate** when your coding agent can't. Currently supported on Windows only; Mac support is coming soon.
+    ![The UiPath sign-in page with Continue with Google, Continue with Microsoft, Continue with LinkedIn, and Continue with Email](setup.images/uipath-sign-in.png){ .screenshot width="420" }
 
-1. Download from **[uipath.com/start-trial](https://www.uipath.com/start-trial)**
-2. Sign in with your UiPath account and verify Studio launches
+3. Sign in with the username and password from the **Your Workshop Account** area of your workshop details, not with your own account. Enter the username, select **Next**, then enter the password and select **Sign in**.
 
-**Git** — required for the UiPath skills marketplace. Try Method 1 first; if it doesn't work, use Method 2.
+    ![The Microsoft Sign in page with the Email, phone, or Skype field and the Next button](setup.images/microsoft-sign-in.png){ .screenshot width="420" }
 
-=== "Method 1: winget (quickest)"
+## ✅ 3. Confirm the Tenant
 
-    1. Open a terminal and run:
-       ```bash
-       winget install --id Git.Git -e --source winget
-       ```
-    2. If prompted to accept terms, type `Y` and press Enter.
-    3. Wait for "Successfully installed", then close the window.
+Once you're in, open **Studio Web**. In the upper-right corner, check that the tenant picker shows **{{ training_tenant }}**. If it shows another tenant, switch to **{{ training_tenant }}** before you go on.
 
-=== "Method 2: Download the installer"
+## 💻 4. Open the Terminal
 
-    1. Go to **[git-scm.com/download/win](https://git-scm.com/download/win)** — the 64-bit installer should download automatically.
-    2. Run the downloaded file (e.g. `Git-2.xx.x-64-bit.exe`). Click Yes if Windows asks for admin permission.
-    3. Click through the installer accepting all defaults. On the **"Adjusting your PATH environment"** screen, make sure the middle option is selected: *"Git from the command line and also from 3rd-party software"* — this is the default.
-    4. Click Finish when done.
+1. In the VM, open the Windows search and type `terminal`.
+2. Select the **Terminal** app.
 
-!!! warning "Required for both methods"
-    PATH changes only take effect in new windows. Close every open terminal, then open a fresh Command Prompt and verify:
-    ```bash
-    git --version
-    ```
-    You should see something like `git version 2.45.1.windows.1`.
+    ![Windows search with terminal typed in, and the Terminal app as the best match](setup.images/windows-terminal-search.png){ .screenshot width="500" }
 
-## 🤖 2. Install a Coding Agent
-
-Pick one — or install more than one:
-
-=== "Claude Code"
-
-    ```bash
-    npm install -g @anthropic-ai/claude-code
-    ```
-
-    Verify: `claude --version`
-
-    !!! tip "Claude Code installation error?"
-        If the install fails with a scripts permission error, run:
-        ```bash
-        npm config set allow-scripts=@anthropic-ai/claude-code --location=user
-        ```
-        Then run the install command again:
-        ```bash
-        npm install -g @anthropic-ai/claude-code
-        ```
-
-    !!! tip "npm permission errors on Mac?"
-        A global install without write permissions is the usual cause. Point npm at a folder you own:
-        ```bash
-        mkdir -p ~/.npm-global
-        npm config set prefix ~/.npm-global
-        echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
-        source ~/.zshrc
-        ```
-
-=== "Codex"
-
-    ```bash
-    npm install -g @openai/codex
-    ```
-
-    Verify: `codex --version`
-
-    !!! tip "npm permission errors on Mac?"
-        A global install without write permissions is the usual cause. Point npm at a folder you own:
-        ```bash
-        mkdir -p ~/.npm-global
-        npm config set prefix ~/.npm-global
-        echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
-        source ~/.zshrc
-        ```
-
-=== "Cursor"
-
-    Cursor comes as an editor and as a terminal agent. Install both — you'll review generated files in the editor and run the agent from the terminal.
-
-    1. Download and install the **Cursor** editor from **[cursor.com/downloads](https://cursor.com/downloads)**, then sign in.
-    2. Install the **Cursor CLI**:
-
-        Mac:
-
-        ```bash
-        curl https://cursor.com/install -fsS | bash
-        ```
-
-        Windows (PowerShell):
-
-        ```powershell
-        irm 'https://cursor.com/install?win32=true' | iex
-        ```
-
-    3. Open a new terminal and sign in:
-
-        ```bash
-        cursor-agent login
-        ```
-
-    Verify: `cursor-agent --version`
-
-    !!! tip "`cursor-agent` not found?"
-        The installer puts the CLI in `~/.local/bin`. Open a new terminal, or add that folder to your `PATH`.
-
-## ⌨️ 3. Install the UiPath CLI
-
-```bash
-npm install -g @uipath/cli@latest
-```
-
-Verify: `uip --version` — you should see `1.195.1` or later.
-
-## 🧩 4. Install UiPath Skills into Your Coding Agent
-
-=== "Claude Code"
-
-    ```bash
-    # 1. Add the marketplace (once)
-    claude plugin marketplace add https://github.com/UiPath/skills
-    # 2. Install the plugin from it
-    claude plugin install uipath@uipath-marketplace
-    uip skills install
-    ```
-
-=== "Codex"
-
-    ```bash
-    # 1. Add the marketplace (once)
-    codex plugin marketplace add UiPath/skills --ref main
-    uip skills install
-    ```
-
-=== "Cursor"
-
-    Cursor reads skills from the project you open, so install them inside your project folder:
-
-    ```bash
-    uip skills install --agent cursor --local
-    ```
-
-    The skills land in `workshop/.cursor/skills/` when you run it in your workshop folder. Run the command again in every new project folder you use during the session.
-
-You should see output similar to this:
-
-```json
-{
-  "Result": "Success",
-  "Code": "SkillsInstall",
-  "Data": {
-    "RootDir": "/Users/YourUser",
-    "Skills": [
-      "uipath-admin",
-      "uipath-agents",
-      "uipath-aops",
-      "uipath-api-workflow",
-      "uipath-automation-discovery",
-      "uipath-automationhub",
-      "uipath-connector-builder",
-      "uipath-feedback",
-      "uipath-functions",
-      "uipath-governance",
-      "uipath-human-in-the-loop",
-      "uipath-insights",
-      "uipath-ixp",
-      "uipath-maestro-bpmn",
-      "uipath-maestro-case",
-      "uipath-maestro-flow",
-      "uipath-mcp-servers",
-      "uipath-planner",
-      "uipath-platform",
-      "uipath-process-mining",
-      "uipath-review",
-      "uipath-rpa",
-      "uipath-solution",
-      "uipath-tasks",
-      "uipath-test",
-      "uipath-troubleshoot"
-    ],
-    "Agents": [
-      "claude",
-      "codex",
-      "cursor"
-    ],
-    "Installed": 78,
-    "Shadowed": [],
-    "Conflicts": []
-  }
-}
-```
-
-`Agents` lists the coding agents the skills were installed for. The skill list grows as UiPath adds skills, so yours may be longer than the example.
-
-Confirm these three skills appear in the output — the hands-on session relies on them:
-
-- `uipath-test` — Test Manager: requirements, test cases, test sets, executions, reports
-- `uipath-rpa` — Studio test automation projects and XAML test cases
-- `uipath-platform` — Orchestrator: packages, folders, credential assets
-
-!!! info "What each skill actually knows"
-    See [Agentic Testing & Coding Agents](what-is-a-coding-agent.md) for the full skill catalog and how skills get discovered.
+The VM already has your coding agent, the `uip` CLI, and the UiPath skills installed, so there's nothing else to install. You'll use this terminal in the next sections.
 
 ## 🔐 5. Authenticate with Your Tenant
 
@@ -271,7 +70,24 @@ Verify you're pointed at the right place:
 uip login status --output json
 ```
 
-Then open **Test Manager** once in the browser at **[{{ training_url }}]({{ training_url }})** and check you can see the **Projects** page. If you can't, ask the trainer to give you access before the session.
+Then open **Test Manager** once in the browser at **[{{ training_url }}]({{ training_url }})** and check you can see the **Projects** page. If you can't, ask the trainer to give you access.
+
+Check that a robot can run your tests in the `{{ training_folder }}` folder. Ask your coding agent to run:
+
+```bash
+uip or folders runtimes {{ training_folder }}
+```
+
+It must show a runtime that's **Available**. Later, a test job must not stay Pending with the reason `RobotNoCredentials`. If either check fails, tell the trainer.
+
+!!! info "Trainer checklist: the tenant side"
+    The trainer sets these up before the session. Participants can't fix them themselves:
+
+    - An **App Test Developer** licence for every participant.
+    - An **AI Trust Layer** policy that allows Autopilot.
+    - The **{{ training_folder }}** folder, with rights to create assets and to run test sets.
+    - A robot in that folder with a **Testing** or **Production** runtime, and a **robot account with stored credentials** assigned to the folder. Without the credentials, a test set job stays Pending with `RobotNoCredentials`, even when the runtime shows Connected and Available.
+    - A **Windows** robot in the folder for **Run autonomously**: autonomous runs are supported on Windows only.
 
 ## 🔗 6. Connect Studio to the Training Tenant
 
@@ -280,7 +96,7 @@ Autopilot in Studio works against the tenant Studio is signed in to. Sign Studio
 1. Open **Studio**. If you're signed in to another environment, such as `cloud.uipath.com`, sign out.
 2. Before signing in again, change the cloud URL to `{{ training_authority }}`. In **UiPath Assistant**, it's under **Preferences** > **Orchestrator Settings**, as the **Service URL**.
 3. Sign in, then select the organization **{{ training_org }}** and the tenant **{{ training_tenant }}**.
-4. Check that the **Autopilot** panel is available in Studio. If it isn't, ask the trainer before the session — the hands-on part starts with it.
+4. Check that the **Autopilot** panel is available in Studio. If it isn't, ask the trainer before you go on — the hands-on part starts with it.
 
 !!! warning "One environment for everything"
     Studio, the `uip` CLI, and your browser must all point at **{{ training_url }}**. If one of them is still on another environment, Autopilot saves requirements to a project your coding agent can't see.
@@ -293,23 +109,23 @@ The test cases log in as a registered UiBank user. Create yours now, so they hav
 2. Fill in the form: first, middle, and last name, sex, email, username, and a password. Use a password you don't use anywhere else — UiBank is a public demo site.
 3. Register, then log in at **[uibank.uipath.com/login](https://uibank.uipath.com/login)** to check the account works.
 
-The tests never store your password in the project. It reads it from an Orchestrator **credential asset**. Create an empty workshop folder, start your coding agent in it (see [section 9](#9-start-a-session)), and give it this prompt:
+4. If UiBank shows an **Important Notice** dialog after you sign in, select **I agree to the Privacy Policy**. Closing it with ✕ leaves you logged out. Accept it now, by hand, before you automate anything.
 
-```text
-Create a credential asset named {YourName}_UiBankCredential in the
-{{ training_folder }} folder on the {{ training_tenant }} tenant, with my UiBank username.
-Ask me for the password interactively — don't put it in a command I can see
-in my shell history.
-```
+The tests never store your password in the project. They read it from an Orchestrator **credential asset**. Create it by hand:
 
-Prefer to do it by hand? In **Orchestrator**, open the `{{ training_folder }}` folder, go to **Assets**, and add a **Credential** asset with that name.
+1. In **Orchestrator**, open the `{{ training_folder }}` folder and go to **Assets**.
+2. Select **Add** > **Credential**, and name it `{YourName}_UiBankCredential`.
+3. Type your UiBank username and password there, then save.
+
+!!! warning "Don't give the password to your coding agent"
+    The `uip` CLI takes a credential only as `username:password` on the command line, so a coding agent asks for it in the chat. The password then ends up in the transcript and in a command. Type it in Orchestrator instead.
 
 !!! warning "Write down your UiBank email"
     You'll need it as `var_LoanEmail` in the hands-on session — the profile check in Step 6 compares it with the email UiBank shows.
 
 ## 📄 8. Download the Design Document
 
-Download the [design document](resources.md#the-design-document) into your workshop folder. It should look like this:
+Create a folder named `workshop`, and download the [design document](resources.md#the-design-document) into it. It should look like this:
 
 ```text
 workshop/
@@ -318,19 +134,5 @@ workshop/
 
 You'll create your Test Manager project and your Studio project at the start of the session.
 
-## ▶️ 9. Start a Session
-
-```bash
-cd workshop && claude
-# or
-cd workshop && codex
-# or
-cd workshop && cursor-agent
-```
-
-Using the Cursor editor instead of the terminal? Open the `workshop` folder in Cursor and use the **Agent** chat — it sees the same skills.
-
-Skills are auto-discovered on session start. Ask the agent to create a test case in Test Manager and it will load the right skill automatically.
-
 !!! success "You're set up"
-    Node.js, .NET, Studio signed in to {{ training_tenant }}, Chrome with the UiPath extension, Git, a coding agent, the `uip` CLI, the UiPath skills, an authenticated tenant, a UiBank test user, and the design document. Time to test something.
+    Your VM, signed in to {{ training_tenant }} in the browser, in Studio, and in the `uip` CLI, with a UiBank test user and the design document. Time to test something.

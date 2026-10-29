@@ -28,38 +28,46 @@ Before any agent automates a test for you, build one yourself. It takes longer, 
 
 **Create the test case**
 
-1. In **Studio**, find **Login and Initial Account State** among your Test Manager test cases, and create a Studio test case linked to it. Name the file `T0_LoginTC.xaml`.
+1. In **Studio**, find **Login and Initial Account State** among your Test Manager test cases, and create a Studio test case linked to it. Name the file `T0_LoginAndInitialAccountState.xaml`, the same name as in the trainer's reference package.
 2. The new test case opens with three sequences: **Given**, **When**, and **Then**.
 
 **Given: set up**
 
-3. Add a **Get Credential** activity. Set the asset name to `{YourName}_UiBankCredential` and the folder to `{{ training_folder }}`. Store the outputs in `var_Username` (String) and `var_Password` (SecureString).
+3. Nothing to add for this test: it needs only your registered UiBank user and your credential asset. Leave **Given** empty. The credential is read in **When**, inside the browser card that types it.
 
 **When: log in and open Accounts**
 
 4. Open `https://uibank.uipath.com/login` in Chrome.
 5. Add a **Use Application/Browser** activity and indicate the UiBank login page.
-6. Inside it, add **Type Into** for the **Enter username** field with `var_Username`, and **Type Into** for the **Enter password** field with `var_Password` as secure text.
-7. Add **Click** on **Sign In**.
-8. Add **Check App State** and indicate the Welcome banner. It checks that the banner appears after you sign in. Store the result in `var_WelcomeBannerShown` (Boolean).
-9. Add **Click** on **Accounts**, then **Get Text** on the account summary area, and store it in `var_AccountSummary`.
+6. Inside the **Use Application/Browser** card, before any **Type Into**, add a **Get Credential** activity. Set the asset name to `{YourName}_UiBankCredential` and the folder to `{{ training_folder }}`. Store the outputs in `var_Username` (String) and `var_Password` (SecureString).
+7. Add **Type Into** for the **Enter username** field with `var_Username`, and **Type Into** for the **Enter password** field with `var_Password` as secure text.
+8. Add **Click** on **Sign In**.
+9. Add **Check App State** on the **I agree to the Privacy Policy** button of UiBank's **Important Notice** dialog, with a short timeout. If it appears, **Click** it. If it doesn't, carry on.
+10. Add **Check App State** on the **Welcome!** heading above *"Here is your account summary"*. UiBank opens **Accounts** right after Sign In, so this heading proves the login worked. Store the result in `var_WelcomeShown` (Boolean).
+11. Add **Get Text** on the account summary area, and store it in `var_AccountSummary`.
 
 **Then: verify**
 
-10. Add **Verify Expression** with `var_WelcomeBannerShown`.
-11. Add **Verify Expression** that checks `var_AccountSummary` either contains *"No accounts at this time"* or lists at least one account.
-12. On each verification, turn on the screenshot option, so the evidence is attached to the result.
+12. Add **Verify Expression** with `var_WelcomeShown`.
+13. Add **Verify Expression** that checks `var_AccountSummary` either contains *"No accounts at this time"* or lists at least one account.
+14. On each verification, turn on the screenshot option, so the evidence is attached to the result.
 
 **Run it**
 
-13. In **Test Explorer**, run the test case. Both verifications must pass.
-14. Run it a second time. It must pass again.
+15. In **Test Explorer**, run the test case. Both verifications must pass.
+16. Run it a second time. It must pass again.
+
+!!! warning "Keep the password inside the browser card"
+    Workflow Analyzer rule **ST-SEC-008** fails the build when a SecureString is used outside the scope that created it. If **Get Credential** sits in **Given**, or the password is passed to another workflow as an argument, `uip rpa validate` may still pass, but Studio's build and `uip rpa build` fail with *"SecureString variable used outside of the creation scope"*. Read the credential inside the **Use Application/Browser** card that types it.
+
+!!! info "The Important Notice dialog"
+    From the second sign-in on, UiBank may show an **Important Notice** with **I agree to the Privacy Policy →** and ✕. Closing it with ✕ leaves you logged out, and every later step fails. Accept it once by hand before you automate, and keep step 9 in every test that logs in.
 
 !!! tip "Use the Object Repository"
     When you indicate a target, save it to the **Object Repository**. The agents you use for the next test case reuse those targets, so the login fields you capture by hand are the ones Autopilot and your coding agent build on.
 
 !!! success "Login test case done"
-    `T0_LoginTC.xaml` is linked to its Test Manager test case and passes twice, with a screenshot on each verification. Note how long it took. You'll compare with the next test case.
+    `T0_LoginAndInitialAccountState.xaml` is linked to its Test Manager test case and passes twice, with a screenshot on each verification. Note how long it took. You'll compare with the next test case.
 
 ## 🪄 Generate the next test case with Autopilot or a coding agent
 
@@ -76,13 +84,17 @@ In this test automation project, which is connected to my
 case "Checking Account Creation" as T1_CheckingAccountCreation.xaml,
 linked to that test case.
 
-Use Given / When / Then. Given logs in: read var_Username and var_Password
-from the credential asset {YourName}_UiBankCredential in the
-{{ training_folder }} folder, and reuse the login steps and Object Repository
-targets from T0_LoginTC.xaml. When applies for a Checking account with the
-nickname AutoChecking_<yyyyMMddHHmmss>. Then verifies the account is
-listed with its nickname and type, with a screenshot on every
-verification.
+Use Given / When / Then. Given logs in, reusing the login steps and Object
+Repository targets from T0_LoginAndInitialAccountState.xaml. Read the
+credential asset {YourName}_UiBankCredential from the {{ training_folder }}
+folder inside the browser scope that types it, and don't pass the password
+as an argument. After Sign In, click "I agree to the Privacy Policy" only
+if UiBank's Important Notice appears. When applies for a Checking account
+with the nickname AutoChecking_<yyyyMMddHHmmss>. Then verifies that the
+confirmation page shows that nickname, and that the account is listed in
+the account summary with its nickname, with a screenshot on every
+verification. UiBank doesn't display the account type after creation, so
+don't check it.
 
 Capture any new UI targets from the live UiBank site into the Object
 Repository. Don't write selectors by hand. Inspect the project before you
@@ -93,7 +105,7 @@ edit it, then validate and build it. Ask me before you run it.
 
     1. In **Studio**, with your `{YourName}UiBankTests` project open, open the **Autopilot** panel.
     2. Paste the prompt into **Ask Autopilot anything** and send it.
-    3. Review what Autopilot proposes before you accept it: does **Given** log in first? Does **Then** check the new account appears with its nickname and type?
+    3. Review what Autopilot proposes before you accept it: does **Given** log in first? Does **Then** check the confirmation page and the account summary show the new nickname?
     4. Accept the changes, then run the test case from **Test Explorer**, twice.
 
 === "Coding agent (Codex, Claude Code)"
@@ -142,9 +154,16 @@ Not every test case needs an automation before it can run. In Test Manager, Auto
 Try it on one of the negative login test cases you kept when Autopilot generated them:
 
 1. In Test Manager, under **Test Cases**, open a test case that has manual steps but no automation.
-2. Select **Run Autonomously**.
-3. Open the **live stream** to watch the test case run as it happens: Autopilot works through the manual steps on UiBank in front of you.
-4. When it finishes, open the result. Every step's execution is documented with a screenshot of what Autopilot saw, next to the step's outcome.
+2. If a step logs in, write the password as `{{ '{{' }}credential:{YourName}_UiBankCredential{{ '}}' }}` instead of typing it into the step.
+3. Open the **Manual Steps** tab and select **Run autonomously**. Depending on the release, the button may be labeled **Run with Autopilot**.
+4. Enter the target URL `https://uibank.uipath.com/login`. **Run** stays disabled until you do.
+5. Pick the model the trainer names.
+6. Turn on **live streaming** now, before you select **Run**, if you want to watch the test case run as it happens.
+7. Select **Run**.
+8. When it finishes, open the result. Every step's execution is documented with a screenshot of what Autopilot saw, next to the step's outcome.
+
+!!! warning "Autonomous runs need Test Cloud and a Windows robot"
+    Autonomous test execution is available only when Test Manager is delivered through **Test Cloud**, and it's supported on **Windows** environments only. It runs as a job on a Windows robot in the `{{ training_folder }}` folder. With only a macOS robot connected, the run stays **Pending** and no Orchestrator job is created. If yours stays Pending, tell the trainer, and start a new run once a Windows robot is available. See [Why does my execution stay Pending?](executions.md#why-does-my-execution-stay-pending)
 
 Discuss as a group:
 
@@ -165,7 +184,7 @@ Pick two or three more requirements and repeat the cycle: generate the test case
 
 **Given:** Log in
 
-**Then:** Savings account listed with its nickname and type
+**Then:** Confirmation page and account summary show the Savings nickname
 
 </div>
 
@@ -239,3 +258,6 @@ Pick two or three more requirements and repeat the cycle: generate the test case
 
 !!! success "Test cases done"
     At least four automated test cases, each linked to its Test Manager test case and passing on its own: Login built by hand, the rest built by Autopilot or your coding agent. Plus a few manual-only test cases from Autopilot, and one autonomous run.
+
+!!! tip "Your automations don't build yet?"
+    You can still do the Test Sets part. Link the trainer's `DemoUiBankTests` package to your test cases, one per step from T0 to T7. See [Not enough automated test cases?](test-sets.md#run-the-test-sets) in Test Sets.

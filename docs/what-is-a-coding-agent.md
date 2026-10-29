@@ -121,7 +121,7 @@ Build those custom agents. Included with the App Tester license
 
 The container for everything below
 
-💡 Every object key starts with the project's **prefix**, for example `UIB:1`. Its **default folder** in Orchestrator is where automated and autonomous runs happen.
+💡 Every object key starts with the project's **prefix**, for example `VC1:1`. The prefix must be unique in the tenant. Its **default folder** in Orchestrator is where automated and autonomous runs happen.
 
 </div>
 
@@ -219,7 +219,7 @@ Running automated tests unattended, on a robot
 
 ## ✨ Agentic Testing in UiPath Test Cloud
 
-**UiPath Test Cloud** covers the whole test lifecycle: you plan and design tests in **Test Manager**, automate them in **Studio**, and run them at scale through **Orchestrator**. Agentic testing adds AI agents at each of those steps. They extend what a tester does. They don't replace the tester.
+**UiPath Test Cloud** covers the whole test lifecycle: you plan and design tests in **Test Manager**, automate them in **Studio**, and execute them from **Test Manager**, manually, automated, or both in the same test set. Agentic testing adds AI agents at each of those steps. They extend what a tester does. They don't replace the tester.
 
 <div class="circles" markdown>
 
@@ -249,9 +249,9 @@ Test automation projects, Given / When / Then test cases, the Object Repository
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Execute <span class="pill">Test Manager + Orchestrator</span>**
+**Execute <span class="pill">Test Manager</span>**
 
-Run test sets manually or automated, on robots
+Run test sets manually, automated, or mixed
 
 </div>
 </div>
@@ -268,6 +268,8 @@ Results, test case logs, assertions, screenshots, reports
 </div>
 
 </div>
+
+Autopilot is UiPath's native coding agent: see [What's a coding agent?](#whats-a-coding-agent). The next two sections show which capability sets it offers, and where each set is available across UiPath products.
 
 ### 🤖 Autopilot for Testers
 
@@ -295,7 +297,7 @@ Checks a requirement for clarity, completeness, and testability
 <span class="f-icon">🧪</span>
 <span class="f-title" markdown="span">Test Case Generation Agent <span class="pill ">Test Manager</span></span>
 
-Generates test cases from a requirement, steered by the **Prompt Library**: Valid E2E Scenario Testing, End-to-End Flow Verification, Rapid Test Idea Generation, Elusive Issue Detection, Boundary-Value Testing, and your own saved prompts
+Generates structured test cases from a requirement's details, user documents, or a prompt, steered by the **Prompt Library**: Valid E2E Scenario Testing, End-to-End Flow Verification, Rapid Test Idea Generation, Elusive Issue Detection, Boundary-Value Testing, and your own saved prompts
 
 </div>
 
@@ -341,11 +343,137 @@ In **Test Explorer**, turns a manual test case into an automated one, using the 
 
 </div>
 
-You can also build your own agents for the parts of your test process that are specific to your team.
+Autopilot in Test Manager can also draw on more connected sources, all enabled by default:
 
-### 🪄 Autopilot for Developers
+<div class="feature-grid" markdown>
 
-Autopilot for Developers lives in Studio, where you build and fix automations. It uses the workflow's context — variables, data types, and the current expression — to suggest or apply changes:
+<div class="feature" markdown>
+<span class="f-icon">🧹</span>
+<span class="f-title" markdown="span">Obsolete Test Detection</span>
+
+Finds outdated or redundant test cases linked to a requirement
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">📈</span>
+<span class="f-title" markdown="span">Autopilot Chart</span>
+
+Creates bar, line, and pie charts from your data
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">📚</span>
+<span class="f-title" markdown="span">Documentation Search</span>
+
+Retrieves content from the UiPath documentation
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">Web Reader and Web Search</span>
+
+Summarizes public web pages, and answers questions that need current information from outside sources
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🔌</span>
+<span class="f-title" markdown="span">Custom MCP servers</span>
+
+Run commands, and external automation processes and agents, through a custom MCP server integration
+
+</div>
+
+</div>
+
+You can also build your own agents for the parts of your test process that are specific to your team. See [Autopilot in Test Manager](https://docs.uipath.com/autopilot/other/latest/user-guide/autopilot-agent-test-manager#connected-sources).
+
+### 🪄 Autopilot in Studio Desktop
+
+Autopilot in Studio Desktop, also called Autopilot for Developers, is the coding agent built into Studio. You give it a task in its chat, and it works on your project:
+
+<div class="feature-grid" markdown>
+
+<div class="feature" markdown>
+<span class="f-icon">🏗️</span>
+<span class="f-title" markdown="span">Build and edit workflows</span>
+
+Creates XAML workflows from a plain-language description, and adds, removes, replaces, or restructures activities in existing ones
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">💻</span>
+<span class="f-title" markdown="span">Generate code</span>
+
+Writes C# coded workflows, coded test cases, and utility source files
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">⚙️</span>
+<span class="f-title" markdown="span">Configure activities</span>
+
+Sets activity properties, variables, arguments, and control flow
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">💬</span>
+<span class="f-title" markdown="span">Explain and improve</span>
+
+Explains or summarizes what activities and code do, and improves the workflow's structure and error handling
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">▶️</span>
+<span class="f-title" markdown="span">Run, debug, and fix</span>
+
+Runs, debugs, and validates workflows from the chat, analyzes files for linting errors, and applies fixes
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">📦</span>
+<span class="f-title" markdown="span">Packages and activities</span>
+
+Finds and installs the NuGet packages a workflow needs, and discovers the UiPath activities to use
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Automate test cases</span>
+
+Automates manual test cases it retrieves from Test Manager, and creates and manages test cases
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🔎</span>
+<span class="f-title" markdown="span">Search, plan, and delegate</span>
+
+Searches the documentation and the web for best practices, asks you to clarify when it needs to, makes a plan, and hands isolated tasks to subagents
+
+</div>
+
+<div class="feature" markdown>
+<span class="f-icon">🔌</span>
+<span class="f-title" markdown="span">MCP tools</span>
+
+Calls tools on MCP servers that are already configured and connected in Studio
+
+</div>
+
+</div>
+
+See [Autopilot in Studio Desktop](https://docs.uipath.com/autopilot/other/latest/user-guide/autopilot-in-studio-desktop) for the full list.
+
+For single expressions, Autopilot also works inside the **Expression Editor**, using the workflow's context — variables, data types, and the current expression:
 
 <div class="feature-grid" markdown>
 
@@ -390,7 +518,8 @@ A coding agent is an AI assistant that reads, writes, and reasons about code —
 
 Several coding agents are available today, each with their own strengths:
 
-- **Claude Code** — Anthropic's CLI-based agent, runs in your terminal, deeply integrated with the file system. This is the one used in this exercise.
+- **Autopilot** — UiPath's native coding agent, built on the UiPath for Coding Agents infrastructure. Rather than a fixed pipeline, Autopilot runs on skills, tools, and commands. UiPath's official skills are included out of the box. You can also author your own skills and reference UiPath's skills inside them — use the built-in skills, your own, or a combination of both.
+- **Claude Code** — Anthropic's CLI-based agent, runs in your terminal, deeply integrated with the file system
 - **Codex CLI** — OpenAI's command-line coding agent, similar terminal-first approach
 - **Cursor** — an IDE built around AI, tight editor integration with inline generation and multi-file context
 - **Gemini CLI** — Google's terminal agent, strong on reasoning and long context

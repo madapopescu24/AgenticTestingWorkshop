@@ -4,11 +4,9 @@ MkDocs-macros module: injects the training-environment values into pages.
 Why this exists
 ---------------
 Two environment profiles:
-  - staging  -> staging.uipath.com. The participant environment: the newest
-                Autopilot for Testers / Autopilot for Developers features are
-                only available here. CI deploys with this profile.
-  - prod     -> cloud.uipath.com. Kept for when those features reach
-                Automation Cloud.
+  - prod     -> cloud.uipath.com/tpenlabs, tenant AgenticTestingWorkshop. The
+                participant environment. CI deploys with this profile.
+  - staging  -> staging.uipath.com/partnersuccess. Kept as a fallback.
 
 Pages reference the variables instead of hardcoding URLs/tenants, e.g.:
 
@@ -16,10 +14,10 @@ Pages reference the variables instead of hardcoding URLs/tenants, e.g.:
         Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
 
 Switch environments at build time with the COURSE_ENV variable:
-    COURSE_ENV=staging mkdocs serve     # author/preview (and release: CI uses this)
-    COURSE_ENV=prod    mkdocs build     # Automation Cloud variant
+    COURSE_ENV=prod    mkdocs serve     # author/preview (and release: CI uses this)
+    COURSE_ENV=staging mkdocs build     # staging variant
 
-Default is "staging" so a plain build matches the release.
+Default is "prod" so a plain build matches the release.
 """
 
 import os
@@ -37,7 +35,7 @@ ENVIRONMENTS = {
         "training_url": "https://cloud.uipath.com/tpenlabs",
         "training_authority": "https://cloud.uipath.com",
         "training_org": "tpenlabs",
-        "training_tenant": "AgenticTesting",
+        "training_tenant": "AgenticTestingWorkshop",
         "training_folder": "AgenticTesting",
         "env_label": "UiPath Automation Cloud",
     },
@@ -45,8 +43,8 @@ ENVIRONMENTS = {
 
 
 def define_env(env):
-    profile = os.getenv("COURSE_ENV", "staging").lower()
-    cfg = ENVIRONMENTS.get(profile, ENVIRONMENTS["staging"])
+    profile = os.getenv("COURSE_ENV", "prod").lower()
+    cfg = ENVIRONMENTS.get(profile, ENVIRONMENTS["prod"])
     for key, value in cfg.items():
         env.variables[key] = value
     env.variables["course_env"] = profile

@@ -20,7 +20,7 @@ This workshop shows you how AI agents work across **UiPath Test Cloud** for you,
 
 ## 🗺️ The session
 
-The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. After the two parts below, it ends with SAP Testing, Q&A, and feedback. Finish [Setup](setup.md) before it starts.
+The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. After the two parts below, it ends with SAP Testing, Q&A, and feedback. The hands-on part starts with [Setup](setup.md), together in the room.
 
 <div class="grid cards" markdown>
 
@@ -45,6 +45,14 @@ The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. A
 ### The hands-on parts
 
 <div class="grid cards" markdown>
+
+-   :material-rocket-launch-outline:{ .lg .middle } **Setup**
+
+    ---
+
+    The first hands-on step: your VM, your sign-in, the `uip` CLI, Studio, and your UiBank test user.
+
+    [:octicons-arrow-right-24: Setup](setup.md)
 
 -   :material-cog-outline:{ .lg .middle } **Testing Setup**
 
@@ -85,14 +93,6 @@ The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. A
     Autopilot groups your test cases, you run them, and you read the results.
 
     [:octicons-arrow-right-24: Test Sets](test-sets.md)
-
--   :material-rocket-launch-outline:{ .lg .middle } **Before you start**
-
-    ---
-
-    The Setup page: the tools, the UiPath skills, your login, and your UiBank test user.
-
-    [:octicons-arrow-right-24: Setup](setup.md)
 
 </div>
 

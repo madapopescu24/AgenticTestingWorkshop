@@ -42,11 +42,11 @@ so internal material is never published.
 pip install -r requirements.txt
 
 # 3. Preview locally (authoring environment + WIP nav)
-COURSE_ENV=staging mkdocs serve -f mkdocs.local.yml
+COURSE_ENV=prod mkdocs serve -f mkdocs.local.yml
 # open http://127.0.0.1:8000
 
-# 4. Release-equivalent build check (CI deploys the staging profile)
-COURSE_ENV=staging mkdocs build
+# 4. Release-equivalent build check (CI deploys the prod profile)
+COURSE_ENV=prod mkdocs build
 ```
 
 ## Publishing to GitHub
@@ -73,28 +73,28 @@ Do not move this content into `docs/` or reference it from
 The site's `main.py` defines a `COURSE_ENV` switch with two profiles (`staging`
 and `prod`) driving the `{{ training_url }}`, `{{ training_org }}`,
 `{{ training_tenant }}`, and `{{ training_folder }}` macros used throughout the
-lessons. **The workshop runs on staging**: the newest Autopilot for Testers and
-Autopilot for Developers features it showcases are only available there. CI
-deploys with `COURSE_ENV=staging`, and that is also the default.
+lessons. **The workshop runs on Automation Cloud**, organization `tpenlabs`,
+tenant `AgenticTestingWorkshop`. CI deploys with `COURSE_ENV=prod`, and that is
+also the default.
 
 | Profile | Organization | URL | Tenant | Used for |
 |---|---|---|---|---|
-| `staging` | `partnersuccess` | https://staging.uipath.com/partnersuccess | `MadalinaTest` | **The participant environment.** Studio, the `uip` CLI, Test Manager, and Orchestrator all point here. |
-| `prod` | `tpenlabs` | https://cloud.uipath.com/tpenlabs | `AgenticTesting` | Not used in the session. Kept for when the Autopilot features reach Automation Cloud. |
+| `prod` | `tpenlabs` | https://cloud.uipath.com/tpenlabs | `AgenticTestingWorkshop` | **The participant environment.** Studio, the `uip` CLI, Test Manager, and Orchestrator all point here. |
+| `staging` | `partnersuccess` | https://staging.uipath.com/partnersuccess | `MadalinaTest` | Not used in the session. Kept as a fallback. |
 
-Confirmed: `partnersuccess` / `MadalinaTest` on staging has Test Manager, Autopilot
-for Testers, and Autopilot for Developers enabled. To run the session on another
-tenant, change `training_tenant` (and, if needed, `training_org`) for the `staging`
-profile in `main.py`.
+_TODO — confirm `tpenlabs` / `AgenticTestingWorkshop` has Test Manager delivered
+through Test Cloud, Autopilot for Testers, and Autopilot for Developers enabled._
+To run the session on another tenant, change `training_tenant` (and, if needed,
+`training_org`) for the `prod` profile in `main.py`.
 
-All exercises operate inside a single shared Orchestrator folder on staging.
+All exercises operate inside a single shared Orchestrator folder on that tenant.
 Test Manager for the tenant is at
-`https://staging.uipath.com/partnersuccess/MadalinaTest/testmanager_`.
+`https://cloud.uipath.com/tpenlabs/AgenticTestingWorkshop/testmanager_`.
 
 - **Folder name:** `AgenticTesting` (the `training_folder` macro in `main.py`). It's
   the default Orchestrator folder of every participant's Test Manager project, and
   holds the test packages and the credential assets.
-- **Folder key:** _TODO — create or confirm the `AgenticTesting` folder on staging
+- **Folder key:** _TODO — create or confirm the `AgenticTesting` folder in `AgenticTestingWorkshop`
   and record its key here._
 
 Every deployable artifact (test package, credential asset, Test Manager project) is
@@ -104,15 +104,15 @@ packages, processes, or Orchestrator entities.
 
 ### Inviting Participants
 
-Before a cohort starts, invite each participant to the staging org
-(`partnersuccess` on `staging.uipath.com`) so they can log in with their own email:
+Before a cohort starts, invite each participant to the org
+(`tpenlabs` on `cloud.uipath.com`) so they can log in with their own email:
 
-1. In the staging org, go to the **Admin** tab.
+1. In the `tpenlabs` org, go to the **Admin** tab.
 2. Go to **Accounts and Local Groups**.
 3. Invite each participant using their email address.
 4. Make sure each invited participant is added to the **CodingAgentsGroup**
-   local group (create it on staging if it doesn't exist) — this is what grants
-   them access to the `MadalinaTest` tenant, Test Manager, and the `AgenticTesting`
+   local group (create it if it doesn't exist) — this is what grants
+   them access to the `AgenticTestingWorkshop` tenant, Test Manager, and the `AgenticTesting`
    folder.
 
 ### Before Each Training
@@ -128,6 +128,19 @@ prerequisites are ready before it starts:
 - [ ] Create a credential asset for the demo package's UiBank user in the folder,
       and do one full dry run: link `DemoUiBankTests` to a Test Manager test case,
       run its test set as automated, and check the screenshots arrive.
+- [ ] Give every participant an **App Test Developer** licence, and check an
+      **AI Trust Layer** policy allows Autopilot on the tenant.
+- [ ] Assign a **robot account with stored credentials** to the **AgenticTesting**
+      folder, with a **Testing** or **Production** runtime. Without credentials,
+      test set jobs stay Pending with `RobotNoCredentials`, even when the runtime
+      shows Connected and Available.
+- [ ] Have at least one **Windows** robot in the folder: autonomous test execution
+      is supported on Windows only, and needs Test Manager delivered through
+      Test Cloud. With only a macOS robot, autonomous runs stay Pending with no
+      Orchestrator job.
+- [ ] Ask the UiBank owners whether the **Important Notice** privacy dialog can
+      show once per user. Today it appears from the second sign-in on, and closing
+      it with ✕ logs the user out.
 - [ ] Make sure **unattended robots** that can run Chrome browser automation are
       available to the **AgenticTesting** folder — automated test sets AND every
       participant's **Run Autonomously** execution run there. Serverless (the
@@ -137,7 +150,7 @@ prerequisites are ready before it starts:
       available. Plan enough capacity for the whole group to run their
       autonomous executions and test sets in the same 10 minutes. This is the most
       likely bottleneck in Test Sets.
-- [ ] Confirm **Autopilot** is enabled on the staging tenant for everyone in the
+- [ ] Confirm **Autopilot** is enabled on the `AgenticTestingWorkshop` tenant for everyone in the
       group: the Autopilot panel in Studio (the hands-on part starts with it
       generating the requirements, and uses it again to create test sets), **Generate Test Case with
       Autopilot** in Test Explorer, the Evaluation Agent, Test Case Generation,
@@ -149,15 +162,16 @@ prerequisites are ready before it starts:
 - [ ] Confirm the **CodingAgentsGroup** can create Test Manager projects (the
       hands-on Setup creates one per participant), create credential assets, and upload packages
       in the folder.
-- [ ] Check participants can sign Studio in to `staging.uipath.com`. Studio signed
-      in to Automation Cloud is the most likely Setup failure.
+- [ ] Check participants can sign Studio in to `cloud.uipath.com/tpenlabs`. Studio signed
+      in to another organization or tenant is the most likely Setup failure.
 - [ ] The design document is published on the site as
       `docs/resources.assets/E2E UiBank Online Banking.docx` (download buttons on
       the hands-on page and Resources). It's a cleaned copy: leftover images from
       another project, author metadata, and a real username/email were removed.
       If you update the original, clean it the same way before replacing it.
-- [ ] Send the [Setup](docs/setup.md) page at least two days ahead, including
-      the UiBank registration and the credential asset. Setup is not part of the
+- [ ] Plan time for the [Setup](docs/setup.md) page at the start of the hands-on
+      part, right after the intro: participants do it during the session, including the UiBank
+      registration and the credential asset. Setup is part of the
       8 hours. Ask Mac users to pair with a Windows user from the Login test case on.
 
 ### TODO — fill in before the next cohort
@@ -182,8 +196,8 @@ participant-facing schedule is on the Agenda page; the trainer view:
 | Time | Agenda item | Trainer focus |
 |---|---|---|
 | 0:00–0:30 | Welcome | Introductions and the plan for the day |
-| 0:30–1:45 | 1. Intro + Theoretical Aspects | Present *Agentic Testing & Coding Agents*: Test Cloud, Autopilot for Testers, Autopilot for Developers, coding agents; when to use which. Check Studio is signed in to staging for everyone. |
-| 1:45–2:00 | Setup | Everyone creates a Test Manager project (name `{YourName}_UIB_Test`, prefix `UIB`) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
+| 0:30–1:45 | 1. Intro + Theoretical Aspects | Present *Agentic Testing & Coding Agents*: Test Cloud, Autopilot for Testers, Autopilot for Developers, coding agents; when to use which. Check Studio is signed in to `tpenlabs` / `AgenticTestingWorkshop` for everyone. |
+| 1:45–2:00 | Setup | Everyone works through the Setup page (VM, sign-in, tenant, `uip login`, Studio, UiBank user, credential asset, design document), then creates a Test Manager project (name `{YourName}_UIB_Test`, a unique prefix of 3–5 characters, such as their initials plus a digit: prefixes must be free in the tenant and can't be changed) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
 | 2:00–2:15 | Autopilot in Studio creates requirements | Demo the prompt on screen first; check everyone gets eight requirements named after the steps |
 | 2:15–2:25 | Discuss the requirements | Traceability, testability, gaps; did Autopilot invent rules? |
 | 2:25–2:45 | Evaluate, improve, re-evaluate | Demo the Evaluation Agent on one requirement before people try |

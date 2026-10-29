@@ -1,4 +1,4 @@
-Presentation + live demo
+Presentation + demo
 {: .eyebrow }
 
 # 🧩 SAP Testing
@@ -224,7 +224,7 @@ You can run load, spike, stress, and endurance tests, in the cloud or on-premise
 ![Test Manager with Performance Scenarios in the left menu, next to Requirements, Test Cases, and Test Sets](sap-testing.images/performance-testing-test-manager-W.png){ .screenshot width="900" }
 *Performance Scenarios in Test Manager, next to the Test Cases you know.*
 
-## 🎬 Live demo
+## 🎬 Demo
 
 !!! note "Demo coming soon"
     The demo for this part will be added here once the staging environment is running again.
