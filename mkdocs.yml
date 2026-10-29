@@ -40,6 +40,35 @@ hooks:
 # driven by the COURSE_ENV env var (prod). See main.py.
 plugins:
   - search
+  # Content languages. English pages are page.md; Simplified Chinese pages are
+  # page.zh.md, served under /zh/. A page without a .zh.md falls back to English.
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: zh
+          name: 简体中文
+          site_name: UiPath Agentic Testing 与编码智能体
+          build: true
+          nav_translations:
+            Home: 首页
+            Agenda: 议程
+            Setup: 环境准备
+            Agentic Testing & Coding Agents: 智能体测试与编码智能体
+            Testing Setup: 测试环境准备
+            Requirements: 需求
+            Test Cases: 测试用例
+            Executions: 执行
+            Test Sets: 测试集
+            SAP Testing: SAP 测试
+            Resources: 资源
+            Next Steps: 后续步骤
   - macros:
       module_name: main
 

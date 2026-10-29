@@ -79,6 +79,21 @@ duplicating it.
     participant environment**. CI deploys with `COURSE_ENV=prod`.
 - Author, preview, and release with `COURSE_ENV=prod` (also the default).
 
+### 4. Two content languages: English and Simplified Chinese
+- The `i18n` plugin (`mkdocs-static-i18n`, suffix structure) builds English at the
+  site root and Simplified Chinese under `/zh/`, with a language switcher in the header.
+- English is `docs/<page>.md`; Chinese is `docs/<page>.zh.md`. A page without a
+  `.zh.md` falls back to English. Chinese tab names are `nav_translations` in
+  `mkdocs.yml` and `mkdocs.local.yml`.
+- **When you change an English page, make the same change in its `.zh.md`.**
+  Keep the same headings in the same order. Every Chinese heading ends with the
+  English anchor, e.g. `## 🖥️ 1. 连接到你的虚拟机 { #1-connect-to-your-vm }`, so
+  links work in both languages.
+- In Chinese pages, raw-HTML asset paths need one more `../`
+  (`<video src="../../requirements.images/…">`); Markdown images and links don't.
+- Translate prose; keep code blocks, the English prompts, UI labels, product names,
+  test case names, and macros as they are.
+
 ---
 
 ## Master reference files (copied from base framework)
