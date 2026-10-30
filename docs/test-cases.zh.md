@@ -37,7 +37,7 @@
 
 **When：登录并打开 Accounts**
 
-4. 在 Chrome 中打开 `https://uibank.uipath.com/login`。
+4. 在 Chrome 中打开 `https://uibank.uipath.com/login`。如果无法打开，请使用[备用地址](setup.md#7-register-your-uibank-test-user)：`https://purple-dune-0af054403.6.azurestaticapps.net/login`。
 5. 添加一个 **Use Application/Browser** 活动，并指定 UiBank 登录页面。
 6. 在 **Use Application/Browser** 卡片内、任何 **Type Into** 之前，添加一个 **Get Credential** 活动。将资产名称设为 `{YourName}_UiBankCredential`，文件夹设为 `{{ training_folder }}`。把输出保存到 `var_Username`（String）和 `var_Password`（SecureString）。
 7. 为 **Enter username** 字段添加 **Type Into**，使用 `var_Username`；为 **Enter password** 字段添加 **Type Into**，以安全文本方式使用 `var_Password`。
@@ -76,7 +76,7 @@
 !!! warning "使用 Autopilot 实际生成的测试用例名称"
     Autopilot in Test Manager 给测试用例命名的方式并不总是一样。你的可能叫 **Open a Checking Account**、**Step 1: Open a Checking Account** 或其他名称。请在 Test Manager 的 **Test Cases** 下查看确切名称，并在下面提示词中所有出现 **Checking Account Creation** 的地方使用它。否则 Studio、Autopilot 或你的编码智能体会把自动化关联到错误的测试用例，或者找不到测试用例。
 
-然后用这个提示词来自动化它。你可以把它交给 Autopilot in Studio，也可以交给编码智能体。提示词相同，只是输入的位置不同：
+然后用这个提示词来自动化它。你可以把它交给 Autopilot in Studio Desktop，也可以交给编码智能体。提示词相同，只是输入的位置不同：
 
 ```text
 In this test automation project, which is connected to my
@@ -101,7 +101,7 @@ Repository. Don't write selectors by hand. Inspect the project before you
 edit it, then validate and build it. Ask me before you run it.
 ```
 
-=== "Autopilot in Studio"
+=== "Autopilot in Studio Desktop"
 
     1. 在 **Studio** 中打开你的 `{YourName}UiBankTests` 项目，然后打开 **Autopilot** 面板。
     2. 把提示词粘贴到 **Ask Autopilot anything** 中并发送。
@@ -156,7 +156,7 @@ edit it, then validate and build it. Ask me before you run it.
 1. 在 Test Manager 的 **Test Cases** 下，打开一个有手动步骤但没有自动化的测试用例。
 2. 如果某一步需要登录，把密码写成 `{{ '{{' }}credential:{YourName}_UiBankCredential{{ '}}' }}`，而不是直接在步骤中输入密码。
 3. 打开 **Manual Steps** 选项卡，选择 **Run autonomously**。根据版本不同，该按钮可能显示为 **Run with Autopilot**。
-4. 输入目标 URL `https://uibank.uipath.com/login`。在你输入之前，**Run** 一直不可用。
+4. 输入目标 URL `https://uibank.uipath.com/login`；如果你使用备用地址，则输入 `https://purple-dune-0af054403.6.azurestaticapps.net/login`。在你输入之前，**Run** 一直不可用。
 5. 选择讲师指定的模型。
 6. 如果你想实时观看测试用例的运行过程，请在选择 **Run** 之前打开 **live streaming**。
 7. 选择 **Run**。
@@ -172,7 +172,7 @@ edit it, then validate and build it. Ask me before you run it.
 
 ## ➕ 再实现几个测试用例 { #implement-a-few-more-test-cases }
 
-再选两三个需求，重复这个循环：在 Test Manager 中生成测试用例，保留正常路径，用 Autopilot in Studio 或你的编码智能体将其自动化。建议顺序如下，并列出每个测试用例的 **Given** 必须准备的内容，以便它独立运行：
+再选两三个需求，重复这个循环：在 Test Manager 中生成测试用例，保留正常路径，用 Autopilot in Studio Desktop 或你的编码智能体将其自动化。建议顺序如下，并列出每个测试用例的 **Given** 必须准备的内容，以便它独立运行：
 
 <div class="feature-grid" markdown>
 

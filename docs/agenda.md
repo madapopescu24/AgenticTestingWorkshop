@@ -142,7 +142,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../requirements/#ask-autopilot-in-studio-to-create-the-requirements">Open Studio and Test Manager, and ask Autopilot in Studio Desktop to create the requirements</a> from the .docx <span class="pill orange">Hands-on</span>
+<a href="../requirements/#ask-autopilot-in-studio-desktop-to-create-the-requirements">Open Studio and Test Manager, and ask Autopilot in Studio Desktop to create the requirements</a> from the .docx <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -266,7 +266,7 @@ Step away from the screen. If your coding agent is still building, let it carry 
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../test-sets/#ask-autopilot-in-studio-to-create-test-sets">Ask Autopilot in Studio Desktop to create test sets</a> from the test cases <span class="pill orange">Hands-on</span>
+<a href="../test-sets/#ask-autopilot-in-studio-desktop-to-create-test-sets">Ask Autopilot in Studio Desktop to create test sets</a> from the test cases <span class="pill orange">Hands-on</span>
 
 </div>
 </div>

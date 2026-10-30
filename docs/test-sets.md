@@ -18,7 +18,7 @@ Autopilot builds the test sets from the automated test cases it can find in Orch
 !!! info "Why the tenant feed"
     Automated runs of test sets include only the test cases published to the **Orchestrator Tenant Process Feed**, in the latest package version. A package published to your personal workspace feed, or an older version, isn't picked up. Republish after every change to your test cases.
 
-## 🪄 Ask Autopilot in Studio to create test sets
+## 🪄 Ask Autopilot in Studio Desktop to create test sets
 
 1. In **Studio**, open the **Autopilot** panel in your `{YourName}UiBankTests` project.
 2. Give Autopilot this prompt:

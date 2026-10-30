@@ -197,14 +197,14 @@ participant-facing schedule is on the Agenda page; the trainer view:
 | 0:00–0:30 | Welcome | Introductions and the plan for the day |
 | 0:30–1:45 | 1. Intro + Theoretical Aspects | Present *Agentic Testing & Coding Agents*: Test Cloud, Autopilot for Testers, Autopilot for Developers, coding agents; when to use which. Check Studio is signed in to `tpenlabs` / `AgenticTestingWorkshop` for everyone. |
 | 1:45–2:00 | Setup | Everyone works through the Setup page (VM, sign-in, tenant, `uip login`, Studio, UiBank user, credential asset, design document), then creates a Test Manager project (name `{YourName}_UIB_Test`, a unique prefix of 3–5 characters, such as their initials plus a digit: prefixes must be free in the tenant and can't be changed) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
-| 2:00–2:15 | Autopilot in Studio creates requirements | Demo the prompt on screen first; check everyone gets eight requirements named after the steps |
+| 2:00–2:15 | Autopilot in Studio Desktop creates requirements | Demo the prompt on screen first; check everyone gets eight requirements named after the steps |
 | 2:15–2:25 | Discuss the requirements | Traceability, testability, gaps; did Autopilot invent rules? |
 | 2:25–2:45 | Evaluate, improve, re-evaluate | Demo the Evaluation Agent on one requirement before people try |
 | 2:45–3:00 | Break | |
 | 3:00–3:30 | Autopilot in Test Manager creates test cases | Login requirement; show the Prompt Library |
 | 3:30–4:15 | Lunch | Help stragglers who are still creating test cases |
 | 4:15–4:45 | Implement the Login test case manually | Walk Given / When / Then; make sure targets go into the Object Repository |
-| 4:45–5:15 | Autopilot in Studio / Codex generates a test case | Split the room between Autopilot and coding agent; compare results at the end |
+| 4:45–5:15 | Autopilot in Studio Desktop / Codex generates a test case | Split the room between Autopilot and coding agent; compare results at the end |
 | 5:15–5:30 | Run Autonomously | Everyone runs a negative login test case autonomously; point out the live stream and the per-step screenshots |
 | 5:30–6:05 | Implement a few more test cases | Point people at the *Given* column: transfer and lookup set up their own data |
 | 6:05–6:15 | Break | |

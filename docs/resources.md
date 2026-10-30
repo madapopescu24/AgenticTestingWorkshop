@@ -14,7 +14,7 @@ The whole hands-on part starts from the same document: **E2E UiBank Online Banki
 
 [Download the design document (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
 
-[The hands-on page](agentic-testing-hands-on.md#the-design-document) summarises its steps, the requirements they become, and the test data.
+[The hands-on page](agentic-testing-hands-on.md#the-design-document) summarizes its steps, the requirements they become, and the test data.
 
 ## 🎁 Trainer's reference package
 
@@ -54,7 +54,7 @@ Commands you'll see a coding agent run with the `uip` CLI, if you use one to gen
 | `uip rpa pack` + `uip or packages upload` | Package and publish to Orchestrator | Before running test sets |
 | `uip tm testcases link-automation` | Bind an automation to a Test Manager test case | After publishing |
 | `uip tm testsets run` + `uip tm wait` | Execute a test set and wait for the result | Running test sets |
-| `uip tm report get` / `uip tm result download` | Summarise an execution / download JUnit XML | Reporting |
+| `uip tm report get` / `uip tm result download` | Summarize an execution / download JUnit XML | Reporting |
 | `uip feedback send` | Report a bug or a skill that guessed wrong | Whenever something breaks |
 
 ## 🔗 Useful links
@@ -63,6 +63,7 @@ Commands you'll see a coding agent run with the `uip` CLI, if you use one to gen
 
 <a class="link-card" href="https://github.com/UiPath/skills" target="_blank" rel="noopener"><span class="f-icon">🧩</span><span class="f-title">UiPath/skills</span><span class="f-text" markdown="span">The skill repository. Read the `SKILL.md` of `uipath-test` and `uipath-rpa`.</span></a>
 <a class="link-card" href="https://uibank.uipath.com" target="_blank" rel="noopener"><span class="f-icon">🏦</span><span class="f-title">UiBank</span><span class="f-text" markdown="span">The demo banking application under test</span></a>
+<a class="link-card" href="https://purple-dune-0af054403.6.azurestaticapps.net" target="_blank" rel="noopener"><span class="f-icon">🏦</span><span class="f-title">UiBank (fallback)</span><span class="f-text" markdown="span">The same UiBank application, if uibank.uipath.com doesn't load</span></a>
 <a class="link-card" href="https://meera-uipath.github.io/software-testing-ilt-guide" target="_blank" rel="noopener"><span class="f-icon">🎓</span><span class="f-title">Test Cloud & Agentic Testing ILT Guide</span><span class="f-text" markdown="span">The click-by-click Test Manager and Studio course: Object Repository, data-driven testing, publishing, and executing test cases</span></a>
 <a class="link-card" href="https://docs.uipath.com/test-manager" target="_blank" rel="noopener"><span class="f-icon">📋</span><span class="f-title">Test Manager documentation</span><span class="f-text" markdown="span">Requirements, test cases, test sets, executions, and Autopilot for Testers</span></a>
 

@@ -9,7 +9,7 @@ Hands-on · Part 3 of 4
 
 Every run in Test Manager is an **execution**, and every execution has a type. You'll see all of them in this session:
 
-<div class="feature-grid" markdown>
+<div class="feature-grid cols-4" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">✋</span>
@@ -81,10 +81,11 @@ Add a manual execution next to your autonomous one, so you can compare how a per
 ## 🧭 Filter, find, and re-execute
 
 1. **Filter.** In the **Execution** tab, filter the list by result, for example failed only.
-2. **Find with Autopilot Search.** Ask for executions in plain English, for example:
+2. **Find with Autopilot.** Open the **Autopilot** panel in Test Manager and ask for executions in plain English, for example:
 
     ```text
-    executions with failed test cases this week
+    Show me the executions in my {YourName}_UIB_Test project that have
+    failed test cases this week.
     ```
 
 3. **Re-execute.** Open an execution, select **More Options** or **Tasks**, then **Execute Manually** or **Execute Automated**. Test Manager runs the same test cases again without you setting anything up. Re-executions don't show activity coverage.
@@ -114,7 +115,7 @@ An execution you started as **Pending** shows *None* for every test case by desi
 Your coding agent can read the same executions through the `uip` CLI, and turn them into a summary or a file for a CI pipeline. In Studio's **Terminal** panel, start your coding agent and give it this prompt:
 
 ```text
-In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarise the
+In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarize the
 latest execution: its type, the result per test case, and which steps
 failed, with links to their screenshots. Then download its JUnit XML
 results into ./results. Confirm `uip login status` first.

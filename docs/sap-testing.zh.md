@@ -224,10 +224,58 @@ Test Cloud 可以连接 **SAP Cloud ALM**：Cloud ALM 管理需求，Test Cloud 
 ![Test Manager 左侧菜单中的 Performance Scenarios，位于 Requirements、Test Cases 和 Test Sets 旁边](sap-testing.images/performance-testing-test-manager-W.png){ .screenshot width="900" }
 *Test Manager 中的 Performance Scenarios，就在你熟悉的 Test Cases 旁边。*
 
-## 🎬 演示 { #demo }
+## 🎬 演示时间 { #demo-time }
 
-!!! note "演示即将上线"
-    这一部分的演示很快会添加到这里。
+讲师会在 Test Manager 中演示 **SAP Heatmap**，使用从 CSV 文件上传的演示用使用数据，而不是真实的 SAP 系统：
+
+<div class="circles cols-5" markdown>
+
+<div class="circle-item" markdown>
+<span class="num">1</span>
+<div class="ci-body" markdown>
+
+**加载使用数据**到一个 Heatmap 连接中
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">2</span>
+<div class="ci-body" markdown>
+
+**解读 Heatmap**：方块大小表示测试相关性，颜色表示覆盖率
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">3</span>
+<div class="ci-body" markdown>
+
+**确定优先级**：排名前 10 的事务，例如 Change Purchase Order (ME22N)
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">4</span>
+<div class="ci-body" markdown>
+
+**让方块变绿**：为事务创建测试用例，放进测试集并运行
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">5</span>
+<div class="ci-body" markdown>
+
+**找出测试缺口**：仍然没有测试用例的重要事务
+
+</div>
+</div>
+
+</div>
 
 ## 📏 衡量流程，而不是测试用例 { #measure-processes-not-test-cases }
 

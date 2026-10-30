@@ -311,7 +311,7 @@ Runs a test case from its manual steps, without an automation. You can watch it 
 
 <div class="feature" markdown>
 <span class="f-icon">🔎</span>
-<span class="f-title" markdown="span">Autopilot Search <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Find with Autopilot <span class="pill ">Test Manager</span></span>
 
 Finds requirements, test cases, and other objects from a plain-English question
 
@@ -887,4 +887,4 @@ Autopilot works inside one product at a time, on what's in front of you. A codin
 </div>
 </div>
 
-In the hands-on session, Autopilot leads. Autopilot in Studio writes the requirements and the test sets, and Autopilot in Test Manager evaluates the requirements, generates the test cases, and runs one autonomously. You automate the Login test case by hand, so you know what good looks like. Then you automate the next one with Autopilot in Studio or a coding agent, and compare the two.
+In the hands-on session, Autopilot leads. Autopilot in Studio Desktop writes the requirements and the test sets, and Autopilot in Test Manager evaluates the requirements, generates the test cases, and runs one autonomously. You automate the Login test case by hand, so you know what good looks like. Then you automate the next one with Autopilot in Studio Desktop or a coding agent, and compare the two.

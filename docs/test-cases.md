@@ -37,7 +37,7 @@ Before any agent automates a test for you, build one yourself. It takes longer, 
 
 **When: log in and open Accounts**
 
-4. Open `https://uibank.uipath.com/login` in Chrome.
+4. Open `https://uibank.uipath.com/login` in Chrome. If it doesn't load, use the [fallback](setup.md#7-register-your-uibank-test-user): `https://purple-dune-0af054403.6.azurestaticapps.net/login`.
 5. Add a **Use Application/Browser** activity and indicate the UiBank login page.
 6. Inside the **Use Application/Browser** card, before any **Type Into**, add a **Get Credential** activity. Set the asset name to `{YourName}_UiBankCredential` and the folder to `{{ training_folder }}`. Store the outputs in `var_Username` (String) and `var_Password` (SecureString).
 7. Add **Type Into** for the **Enter username** field with `var_Username`, and **Type Into** for the **Enter password** field with `var_Password` as secure text.
@@ -76,7 +76,7 @@ Now let an agent automate the next one. Pick a requirement after Login, for exam
 !!! warning "Use the test case name Autopilot actually generated"
     Autopilot in Test Manager doesn't always name test cases the same way. Yours may be called **Open a Checking Account**, **Step 1: Open a Checking Account**, or something else. Check the exact name in Test Manager under **Test Cases**, and use it in the prompt below wherever it says **Checking Account Creation**. Otherwise Studio, Autopilot, or your coding agent links the automation to the wrong test case, or doesn't find one.
 
-Then automate it with this prompt. You can give it to Autopilot in Studio or to a coding agent. The prompt is the same, only where you type it changes:
+Then automate it with this prompt. You can give it to Autopilot in Studio Desktop or to a coding agent. The prompt is the same, only where you type it changes:
 
 ```text
 In this test automation project, which is connected to my
@@ -101,7 +101,7 @@ Repository. Don't write selectors by hand. Inspect the project before you
 edit it, then validate and build it. Ask me before you run it.
 ```
 
-=== "Autopilot in Studio"
+=== "Autopilot in Studio Desktop"
 
     1. In **Studio**, with your `{YourName}UiBankTests` project open, open the **Autopilot** panel.
     2. Paste the prompt into **Ask Autopilot anything** and send it.
@@ -156,7 +156,7 @@ Try it on one of the negative login test cases you kept when Autopilot generated
 1. In Test Manager, under **Test Cases**, open a test case that has manual steps but no automation.
 2. If a step logs in, write the password as `{{ '{{' }}credential:{YourName}_UiBankCredential{{ '}}' }}` instead of typing it into the step.
 3. Open the **Manual Steps** tab and select **Run autonomously**. Depending on the release, the button may be labeled **Run with Autopilot**.
-4. Enter the target URL `https://uibank.uipath.com/login`. **Run** stays disabled until you do.
+4. Enter the target URL `https://uibank.uipath.com/login`, or `https://purple-dune-0af054403.6.azurestaticapps.net/login` if you use the fallback. **Run** stays disabled until you do.
 5. Pick the model the trainer names.
 6. Turn on **live streaming** now, before you select **Run**, if you want to watch the test case run as it happens.
 7. Select **Run**.
@@ -172,7 +172,7 @@ Discuss as a group:
 
 ## ➕ Implement a few more test cases
 
-Pick two or three more requirements and repeat the cycle: generate the test cases in Test Manager, keep the happy path, and automate it with Autopilot in Studio or your coding agent. Suggested order, with what each test case's **Given** must set up so it runs on its own:
+Pick two or three more requirements and repeat the cycle: generate the test cases in Test Manager, keep the happy path, and automate it with Autopilot in Studio Desktop or your coding agent. Suggested order, with what each test case's **Given** must set up so it runs on its own:
 
 <div class="feature-grid" markdown>
 

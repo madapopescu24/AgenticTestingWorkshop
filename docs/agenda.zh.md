@@ -142,7 +142,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../requirements/#ask-autopilot-in-studio-to-create-the-requirements">打开 Studio 和 Test Manager，让 Autopilot in Studio Desktop 创建需求</a>，来源为 .docx 文件 <span class="pill orange">动手实践</span>
+<a href="../requirements/#ask-autopilot-in-studio-desktop-to-create-the-requirements">打开 Studio 和 Test Manager，让 Autopilot in Studio Desktop 创建需求</a>，来源为 .docx 文件 <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -266,7 +266,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../test-sets/#ask-autopilot-in-studio-to-create-test-sets">让 Autopilot in Studio Desktop 根据测试用例创建测试集</a> <span class="pill orange">动手实践</span>
+<a href="../test-sets/#ask-autopilot-in-studio-desktop-to-create-test-sets">让 Autopilot in Studio Desktop 根据测试用例创建测试集</a> <span class="pill orange">动手实践</span>
 
 </div>
 </div>

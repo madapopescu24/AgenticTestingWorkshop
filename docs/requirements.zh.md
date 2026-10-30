@@ -10,24 +10,28 @@
   <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">在 <strong>Studio</strong> 中打开你的 <code>{YourName}UiBankTests</code> 项目，并已连接到你的 <strong>{YourName}_UIB_Test</strong> Test Manager 项目。参见<a href="../agentic-testing-hands-on/#setup">环境准备</a>。</li><li style="margin-bottom: 5px;">在浏览器中打开同一租户上的 <strong>Test Manager</strong>。</li></ul>
 </div>
 
-## 🪄 让 Autopilot in Studio 创建需求 { #ask-autopilot-in-studio-to-create-the-requirements }
+## 🪄 让 Autopilot in Studio Desktop 创建需求 { #ask-autopilot-in-studio-desktop-to-create-the-requirements }
 
 输入设计文档，输出需求，没人需要手动输入。后面的每个部分都基于这些需求，所以如果一种方式失败，就换下一种。
 
-=== "Autopilot in Studio"
+=== "Autopilot in Studio Desktop"
 
     1. 在 Studio 中打开 **Autopilot** 面板。
     2. 把 `E2E UiBank Online Banking.docx` 附加到对话中，然后给 Autopilot 这个提示词：
 
         ```text
         Generate the requirements for the UiBank web application from the
-        attached design document. Create one requirement per step in section 3,
-        Step 0 to Step 7, in that order.
+        attached design document, in my {YourName}_UIB_Test Test Manager
+        project. Create one requirement per step in section 3, Step 0 to
+        Step 7, in that order.
         ```
 
     3. 检查 Autopilot 提出的内容，然后接受这些需求，让它们保存到你的 Test Manager 项目中。
 
     从文档创建需求目前还不在 Studio 中已记录的 Autopilot 测试工具之列。如果 Autopilot 无法保存它们，请使用你的编码智能体。
+
+    !!! warning "Autopilot 不见了，或者无法保存需求？"
+        通常有两个原因。一是 Studio 登录到了错误的环境：本课程中的 Autopilot 功能在 **{{ env_label }}** 上，所以请让 Studio 登录到 **{{ training_authority }}**、组织 **{{ training_org }}**、租户 **{{ training_tenant }}**。二是项目没有连接到你的 Test Manager 项目：检查 Studio 中的 Test Manager 设置，或者让你的编码智能体在项目文件夹中运行 `uip rpa tm status`。
 
 === "使用你的编码智能体"
 
@@ -45,9 +49,6 @@
 === "手动创建"
 
     在 Test Manager 中打开 **Requirements**，为每个步骤选择 **Create**。用步骤标题为每个需求命名，并把该步骤的验证内容复制到描述中。这样更慢，但能让当天剩下的内容继续进行。
-
-!!! warning "Autopilot 不见了，或者无法保存需求？"
-    通常有两个原因。一是 Studio 登录到了错误的环境：本课程中的 Autopilot 功能在 **{{ env_label }}** 上，所以请让 Studio 登录到 **{{ training_authority }}**、组织 **{{ training_org }}**、租户 **{{ training_tenant }}**。二是项目没有连接到你的 Test Manager 项目：检查 Studio 中的 Test Manager 设置，或者让你的编码智能体在项目文件夹中运行 `uip rpa tm status`。
 
 ## 💬 在 Test Manager 中讨论需求 { #discuss-the-requirements-in-test-manager }
 

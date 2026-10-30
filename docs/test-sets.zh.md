@@ -18,7 +18,7 @@ Autopilot 根据它在 Orchestrator 中能找到的自动化测试用例来构�
 !!! info "为什么用租户源"
     测试集的自动化运行只包含发布到 **Orchestrator Tenant Process Feed** 的最新包版本中的测试用例。发布到你个人工作区源的包，或者旧版本，都不会被使用。每次修改测试用例后都要重新发布。
 
-## 🪄 让 Autopilot in Studio 创建测试集 { #ask-autopilot-in-studio-to-create-test-sets }
+## 🪄 让 Autopilot in Studio Desktop 创建测试集 { #ask-autopilot-in-studio-desktop-to-create-test-sets }
 
 1. 在 **Studio** 中，在你的 `{YourName}UiBankTests` 项目里打开 **Autopilot** 面板。
 2. 给 Autopilot 这个提示词：

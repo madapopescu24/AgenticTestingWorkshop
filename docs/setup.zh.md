@@ -91,7 +91,7 @@ uip or folders runtimes {{ training_folder }}
 
 ## 🔗 6. 将 Studio 连接到培训租户 { #6-connect-studio-to-the-training-tenant }
 
-Autopilot in Studio 作用于 Studio 当前登录的租户。让 Studio 登录到与 CLI 相同的位置：
+Autopilot in Studio Desktop 作用于 Studio 当前登录的租户。让 Studio 登录到与 CLI 相同的位置：
 
 1. 打开 **Studio**。如果你已登录到其他环境（例如 `cloud.uipath.com`），请先退出登录。
 2. 重新登录之前，把云端 URL 改为 `{{ training_authority }}`。在 **UiPath Assistant** 中，它位于 **Preferences** > **Orchestrator Settings** 下，名为 **Service URL**。
@@ -105,11 +105,14 @@ Autopilot in Studio 作用于 Studio 当前登录的租户。让 Studio 登录�
 
 测试用例会以已注册的 UiBank 用户身份登录。现在就创建你的用户，让测试有账号可用。
 
-1. 访问 **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**。
+1. 访问 **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**；如果无法打开，请访问[备用地址](https://purple-dune-0af054403.6.azurestaticapps.net/register-account)。
 2. 填写表单：名、中间名和姓，性别，邮箱，用户名和密码。请使用一个你在其他地方都没用过的密码，因为 UiBank 是一个公开的演示网站。
-3. 注册后，在 **[uibank.uipath.com/login](https://uibank.uipath.com/login)** 登录，确认账号可以使用。
+3. 注册后，在 **[uibank.uipath.com/login](https://uibank.uipath.com/login)**（或[备用地址](https://purple-dune-0af054403.6.azurestaticapps.net/login)）登录，确认账号可以使用。
 
 4. 如果登录后 UiBank 显示 **Important Notice** 对话框，请选择 **I agree to the Privacy Policy**。用 ✕ 关闭它会让你处于未登录状态。请在自动化任何操作之前，现在就手动接受它。
+
+!!! tip "如果 uibank.uipath.com 无法打开"
+    请使用备用地址 **[purple-dune-0af054403.6.azurestaticapps.net](https://purple-dune-0af054403.6.azurestaticapps.net)**。它提供相同的 UiBank 应用和相同的页面：在后面加上 `/register-account` 或 `/login` 即可。切换后，请确认你的用户可以在那里登录，如果不能，就重新注册。之后，凡是课程中写 `uibank.uipath.com` 的地方，包括测试用例中的目标 URL，都请改用备用地址。
 
 测试不会在项目中存储你的密码，而是从 Orchestrator 的**凭据资产**中读取。请手动创建它：
 

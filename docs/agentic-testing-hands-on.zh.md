@@ -36,7 +36,7 @@
 
 把 UiBank 设计文档变成需求，讨论这些需求，评估其质量，改进后再次评估
 
-👤 **Autopilot in Studio**、**Autopilot in Test Manager**、你
+👤 **Autopilot in Studio Desktop**、**Autopilot in Test Manager**、你
 
 </div>
 
@@ -46,7 +46,7 @@
 
 根据需求生成测试用例，手动自动化 Login 测试用例，生成下一个测试用例，观看测试用例自主运行，再添加几个
 
-👤 **Autopilot in Test Manager**、你、**Autopilot in Studio** 或**编码智能体**
+👤 **Autopilot in Test Manager**、你、**Autopilot in Studio Desktop** 或**编码智能体**
 
 </div>
 
@@ -66,7 +66,7 @@
 
 用你的测试用例创建测试集，运行它们，并查看其执行
 
-👤 **Autopilot in Studio**、你
+👤 **Autopilot in Studio Desktop**、你
 
 </div>
 
@@ -98,7 +98,7 @@
       <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
     </div>
     <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">需求</div>
-    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio 根据文档编写需求，Autopilot in Test Manager 为其评分。</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio Desktop 根据文档编写需求，Autopilot in Test Manager 为其评分。</div>
     <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 个已评估的需求</div>
   </div>
   <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
@@ -141,12 +141,12 @@ UiBank design document (.docx)
 Setup          New {YourName}_UIB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
    │
    ▼
-Requirements   Autopilot in Studio ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
+Requirements   Autopilot in Studio Desktop ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
    │
    ▼
 Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
                  ├─ Login: you automate it by hand in Studio
-                 ├─ Next one: Autopilot in Studio, or your coding agent, automates it
+                 ├─ Next one: Autopilot in Studio Desktop, or your coding agent, automates it
                  ├─ Run Autonomously: Autopilot runs a manual test case itself
                  └─ A few more
    │
@@ -154,7 +154,7 @@ Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
 Executions     Executions tab ──▶ every run so far
    │
    ▼
-Test Sets      Autopilot in Studio ──▶ Test sets ──▶ publish ──▶ run ──▶ executions
+Test Sets      Autopilot in Studio Desktop ──▶ Test sets ──▶ publish ──▶ run ──▶ executions
 ```
 
 ## 📄 设计文档 { #the-design-document }
@@ -177,7 +177,7 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="f-icon">🌐</span>
 <span class="f-title" markdown="span">环境</span>
 
-在 Google Chrome 中打开 `https://uibank.uipath.com`
+在 Google Chrome 中打开 `https://uibank.uipath.com`。备用地址：`https://purple-dune-0af054403.6.azurestaticapps.net`
 
 </div>
 
@@ -456,7 +456,7 @@ workshop/
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">需求</span>
 
-由 Autopilot in Studio 根据一份设计文档生成的八个需求，并借助 Autopilot in Test Manager 完成评估和改进
+由 Autopilot in Studio Desktop 根据一份设计文档生成的八个需求，并借助 Autopilot in Test Manager 完成评估和改进
 
 </div>
 
@@ -464,7 +464,7 @@ workshop/
 <span class="f-icon">🧪</span>
 <span class="f-title" markdown="span">测试用例</span>
 
-由 Autopilot in Test Manager 生成的测试用例；手动自动化的 Login；由 Autopilot in Studio 或编码智能体自动化的更多用例；一次自主运行
+由 Autopilot in Test Manager 生成的测试用例；手动自动化的 Login；由 Autopilot in Studio Desktop 或编码智能体自动化的更多用例；一次自主运行
 
 </div>
 
@@ -485,17 +485,6 @@ workshop/
 </div>
 
 </div>
-
-**本周**
-
-- 明天再运行一次你的回归测试集。它还能通过吗？如果不能，问题出在测试上还是 UiBank 上？
-- 自动化 Autopilot 生成的一个反向测试用例，例如转账金额大于 Checking 账户余额。
-
-**未来 30 天**
-
-- 拿一份你团队的真实设计文档，按同样的部分走一遍：需求、测试用例、测试集。
-- 试试另一种智能体：如果你的第二个测试用例用的是 Autopilot，就用编码智能体自动化下一个，反之亦然。
-- 把一个测试用例改为数据驱动，让它用多组值运行。
 
 **持续进行**
 

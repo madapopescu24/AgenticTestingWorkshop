@@ -10,24 +10,28 @@ Hands-on · Part 1 of 4
   <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">Your <code>{YourName}UiBankTests</code> project open in <strong>Studio</strong>, connected to your <strong>{YourName}_UIB_Test</strong> Test Manager project. See <a href="../agentic-testing-hands-on/#setup">Setup</a>.</li><li style="margin-bottom: 5px;"><strong>Test Manager</strong> open in your browser on the same tenant.</li></ul>
 </div>
 
-## 🪄 Ask Autopilot in Studio to create the requirements
+## 🪄 Ask Autopilot in Studio Desktop to create the requirements
 
 The design document goes in, requirements come out, and nobody types them. Every later part builds on these requirements, so if one route fails, use the next.
 
-=== "Autopilot in Studio"
+=== "Autopilot in Studio Desktop"
 
     1. In Studio, open the **Autopilot** panel.
     2. Attach `E2E UiBank Online Banking.docx` to the conversation, then give Autopilot this prompt:
 
         ```text
         Generate the requirements for the UiBank web application from the
-        attached design document. Create one requirement per step in section 3,
-        Step 0 to Step 7, in that order.
+        attached design document, in my {YourName}_UIB_Test Test Manager
+        project. Create one requirement per step in section 3, Step 0 to
+        Step 7, in that order.
         ```
 
     3. Review what Autopilot proposes, then accept the requirements so they're saved to your Test Manager project.
 
     Creating requirements from a document isn't among the documented Autopilot test tools in Studio yet. If Autopilot can't save them, use your coding agent.
+
+    !!! warning "Autopilot missing, or can't save the requirements?"
+        Two usual causes. Studio is signed in to the wrong environment: the Autopilot features in this session are on **{{ env_label }}**, so sign Studio in to **{{ training_authority }}**, org **{{ training_org }}**, tenant **{{ training_tenant }}**. Or the project isn't connected to your Test Manager project: check the Test Manager settings in Studio, or ask your coding agent to run `uip rpa tm status` in the project folder.
 
 === "With your coding agent"
 
@@ -45,9 +49,6 @@ The design document goes in, requirements come out, and nobody types them. Every
 === "By hand"
 
     In Test Manager, open **Requirements** and select **Create** for each step. Name each requirement after the step title, and copy the step's validation into the description. It's slower, but it unblocks the rest of the day.
-
-!!! warning "Autopilot missing, or can't save the requirements?"
-    Two usual causes. Studio is signed in to the wrong environment: the Autopilot features in this session are on **{{ env_label }}**, so sign Studio in to **{{ training_authority }}**, org **{{ training_org }}**, tenant **{{ training_tenant }}**. Or the project isn't connected to your Test Manager project: check the Test Manager settings in Studio, or ask your coding agent to run `uip rpa tm status` in the project folder.
 
 ## 💬 Discuss the requirements in Test Manager
 

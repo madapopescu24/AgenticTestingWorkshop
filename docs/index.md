@@ -66,7 +66,7 @@ The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. A
 
     ---
 
-    Autopilot in Studio creates them from the design document, and Autopilot in Test Manager evaluates them.
+    Autopilot in Studio Desktop creates them from the design document, and Autopilot in Test Manager evaluates them.
 
     [:octicons-arrow-right-24: Requirements](requirements.md)
 
@@ -74,7 +74,7 @@ The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. A
 
     ---
 
-    Autopilot in Test Manager generates them. You automate the Login test case by hand, then Autopilot in Studio or a coding agent automates the next ones, and Autopilot runs one autonomously.
+    Autopilot in Test Manager generates them. You automate the Login test case by hand, then Autopilot in Studio Desktop or a coding agent automates the next ones, and Autopilot runs one autonomously.
 
     [:octicons-arrow-right-24: Test Cases](test-cases.md)
 
@@ -146,7 +146,7 @@ UiPath's built-in testing agents in Studio and Test Manager. They generate and e
 <span class="f-icon">🪄</span>
 <span class="f-title" markdown="span">Autopilot for Developers</span>
 
-Autopilot in Studio for building and fixing automations: it generates and fixes expressions from the workflow's context.
+Autopilot in Studio Desktop for building and fixing automations: it generates and fixes expressions from the workflow's context.
 
 </div>
 

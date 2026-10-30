@@ -311,7 +311,7 @@ UiPath 提供开箱即用的测试智能体，内置于 Studio 和 Test Manager 
 
 <div class="feature" markdown>
 <span class="f-icon">🔎</span>
-<span class="f-title" markdown="span">Autopilot Search <span class="pill ">Test Manager</span></span>
+<span class="f-title" markdown="span">Find with Autopilot <span class="pill ">Test Manager</span></span>
 
 根据用自然语言提出的问题查找需求、测试用例和其他对象
 

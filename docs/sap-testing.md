@@ -224,10 +224,58 @@ You can run load, spike, stress, and endurance tests, in the cloud or on-premise
 ![Test Manager with Performance Scenarios in the left menu, next to Requirements, Test Cases, and Test Sets](sap-testing.images/performance-testing-test-manager-W.png){ .screenshot width="900" }
 *Performance Scenarios in Test Manager, next to the Test Cases you know.*
 
-## 🎬 Demo
+## 🎬 Demo Time
 
-!!! note "Demo coming soon"
-    The demo for this part will be added here soon.
+The trainer shows the **SAP Heatmap** in Test Manager, with demo usage data uploaded from a CSV file instead of a live SAP system:
+
+<div class="circles cols-5" markdown>
+
+<div class="circle-item" markdown>
+<span class="num">1</span>
+<div class="ci-body" markdown>
+
+**Load the usage data** into a Heatmap connection
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">2</span>
+<div class="ci-body" markdown>
+
+**Read the Heatmap**: tile size is test relevance, color is coverage
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">3</span>
+<div class="ci-body" markdown>
+
+**Pick the priorities**: the top 10 transactions, such as Change Purchase Order (ME22N)
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">4</span>
+<div class="ci-body" markdown>
+
+**Turn a tile green**: create a test case for the transaction, put it in a test set, and run it
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">5</span>
+<div class="ci-body" markdown>
+
+**Find the test gap**: the big transactions that still have no test case
+
+</div>
+</div>
+
+</div>
 
 ## 📏 Measure processes, not test cases
 
@@ -255,7 +303,7 @@ Generated tests, self-healing, and orchestrated runs make them the baseline of e
 <span class="f-icon">🛡️</span>
 <span class="f-title" markdown="span">QA governs, agents execute</span>
 
-Agents generate, run, and analyse the tests. Testers decide which processes must stay green and which risks are acceptable.
+Agents generate, run, and analyze the tests. Testers decide which processes must stay green and which risks are acceptable.
 
 </div>
 

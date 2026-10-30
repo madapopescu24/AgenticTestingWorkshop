@@ -9,7 +9,7 @@
 
 Test Manager 中的每次运行都是一次**执行**，每次执行都有一个类型。在本课程中你会见到所有类型：
 
-<div class="feature-grid" markdown>
+<div class="feature-grid cols-4" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">✋</span>
@@ -81,10 +81,11 @@ Test Manager 中的每次运行都是一次**执行**，每次执行都有一个
 ## 🧭 筛选、查找和重新执行 { #filter-find-and-re-execute }
 
 1. **筛选。** 在 **Execution** 选项卡中按结果筛选列表，例如只看失败的。
-2. **用 Autopilot Search 查找。** 用自然语言查询执行，例如：
+2. **用 Autopilot 查找。** 在 Test Manager 中打开 **Autopilot** 面板，用自然语言查询执行，例如：
 
     ```text
-    executions with failed test cases this week
+    Show me the executions in my {YourName}_UIB_Test project that have
+    failed test cases this week.
     ```
 
 3. **重新执行。** 打开一次执行，选择 **More Options** 或 **Tasks**，然后选择 **Execute Manually** 或 **Execute Automated**。Test Manager 会再次运行相同的测试用例，无需你做任何设置。重新执行不显示活动覆盖率。
@@ -114,7 +115,7 @@ Test Manager 中的每次运行都是一次**执行**，每次执行都有一个
 你的编码智能体可以通过 `uip` CLI 读取同样的执行，并把它们整理成摘要或供 CI 流水线使用的文件。在 Studio 的 **Terminal** 面板中启动你的编码智能体，并给它这个提示词：
 
 ```text
-In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarise the
+In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarize the
 latest execution: its type, the result per test case, and which steps
 failed, with links to their screenshots. Then download its JUnit XML
 results into ./results. Confirm `uip login status` first.

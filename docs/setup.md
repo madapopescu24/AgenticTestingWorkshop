@@ -91,7 +91,7 @@ It must show a runtime that's **Available**. Later, a test job must not stay Pen
 
 ## 🔗 6. Connect Studio to the Training Tenant
 
-Autopilot in Studio works against the tenant Studio is signed in to. Sign Studio in to the same place as the CLI:
+Autopilot in Studio Desktop works against the tenant Studio is signed in to. Sign Studio in to the same place as the CLI:
 
 1. Open **Studio**. If you're signed in to another environment, such as `cloud.uipath.com`, sign out.
 2. Before signing in again, change the cloud URL to `{{ training_authority }}`. In **UiPath Assistant**, it's under **Preferences** > **Orchestrator Settings**, as the **Service URL**.
@@ -105,11 +105,14 @@ Autopilot in Studio works against the tenant Studio is signed in to. Sign Studio
 
 The test cases log in as a registered UiBank user. Create yours now, so they have an account to run against.
 
-1. Go to **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**.
+1. Go to **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**, or [the fallback](https://purple-dune-0af054403.6.azurestaticapps.net/register-account) if it doesn't load.
 2. Fill in the form: first, middle, and last name, sex, email, username, and a password. Use a password you don't use anywhere else — UiBank is a public demo site.
-3. Register, then log in at **[uibank.uipath.com/login](https://uibank.uipath.com/login)** to check the account works.
+3. Register, then log in at **[uibank.uipath.com/login](https://uibank.uipath.com/login)**, or [the fallback](https://purple-dune-0af054403.6.azurestaticapps.net/login), to check the account works.
 
 4. If UiBank shows an **Important Notice** dialog after you sign in, select **I agree to the Privacy Policy**. Closing it with ✕ leaves you logged out. Accept it now, by hand, before you automate anything.
+
+!!! tip "If uibank.uipath.com doesn't load"
+    Use the fallback, **[purple-dune-0af054403.6.azurestaticapps.net](https://purple-dune-0af054403.6.azurestaticapps.net)**. It serves the same UiBank application, with the same pages: add `/register-account` or `/login` to it. If you switch, check that your user can log in there, and register it again if it can't. Then use the fallback everywhere the course says `uibank.uipath.com`, including the target URL in your test cases.
 
 The tests never store your password in the project. They read it from an Orchestrator **credential asset**. Create it by hand:
 
