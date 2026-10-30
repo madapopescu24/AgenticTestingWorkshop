@@ -1,0 +1,1155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/test-sets/">
+      
+      
+        <link rel="prev" href="../executions/">
+      
+      
+        <link rel="next" href="../sap-testing/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../zh/test-sets/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Test Sets - UiPath Agentic Testing with Coding Agents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#test-sets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-header__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing with Coding Agents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Test Sets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../zh/test-sets/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agenda
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agentic Testing & Coding Agents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agentic-testing-hands-on/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requirements
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Cases
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Executions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Sets
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Next Steps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing with Coding Agents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Testing & Coding Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-testing-hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Sets
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#publish-your-testing-project-to-the-tenant-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publish your testing project to the tenant feed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-autopilot-in-studio-desktop-to-create-test-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask Autopilot in Studio Desktop to create test sets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-test-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the test sets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#look-into-the-executions-of-the-test-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Look into the executions of the test sets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-usually-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it usually breaks
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">Hands-on · Part 4 of 4</p>
+<h1 id="test-sets">📦 Test Sets<a class="headerlink" href="#test-sets" title="Permanent link">&para;</a></h1>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Group, run, and read the results</div>
+
+<h2 id="publish-your-testing-project-to-the-tenant-feed">📤 Publish your testing project to the tenant feed<a class="headerlink" href="#publish-your-testing-project-to-the-tenant-feed" title="Permanent link">&para;</a></h2>
+<p>Autopilot builds the test sets from the automated test cases it can find in Orchestrator, and Test Manager runs them from the published package. So publish first.</p>
+<ol>
+<li>In <strong>Studio</strong>, with your <code>{YourName}UiBankTests</code> project open, mark your test cases as publishable. Studio creates test cases as drafts, and only publishable ones go into the package. In the <strong>Project</strong> panel, right-click each test case you automated and select <strong>Set as Publishable</strong>. Its icon turns blue.</li>
+<li>Select <strong>Publish</strong>.</li>
+<li>In <strong>Publish to</strong>, select <strong>Orchestrator Tenant Process Feed</strong>.</li>
+<li>Bump the version if you published before, then select <strong>Publish</strong>.</li>
+<li>Wait for the confirmation that the package was published.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Why the tenant feed</p>
+<p>Automated runs of test sets include only the test cases published to the <strong>Orchestrator Tenant Process Feed</strong>, in the latest package version. A package published to your personal workspace feed, or an older version, isn't picked up. Republish after every change to your test cases.</p>
+</div>
+<h2 id="ask-autopilot-in-studio-desktop-to-create-test-sets">🪄 Ask Autopilot in Studio Desktop to create test sets<a class="headerlink" href="#ask-autopilot-in-studio-desktop-to-create-test-sets" title="Permanent link">&para;</a></h2>
+<ol>
+<li>In <strong>Studio</strong>, open the <strong>Autopilot</strong> panel in your <code>{YourName}UiBankTests</code> project.</li>
+<li>
+<p>Give Autopilot this prompt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>In my {YourName}_UIB_Test Test Manager project, create two test sets from the
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>existing test cases:
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- "UiBank Smoke" with Login and Initial Account State only.
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- "UiBank Regression" with every test case that is automated
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  in this Studio project.
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Show me the test cases you'll put in each set before you create them.
+</code></pre></div>
+</li>
+<li>
+<p>Check the proposal, then accept it. In Test Manager, open <strong>Test Sets</strong> and confirm both sets exist with the right test cases.</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Why a smoke set?</p>
+<p>A smoke set answers one question fast: is the application up and can I log in? Run it first. If it fails, there's no point waiting for the full regression set.</p>
+</div>
+<h2 id="run-the-test-sets">▶️ Run the test sets<a class="headerlink" href="#run-the-test-sets" title="Permanent link">&para;</a></h2>
+<p>Test Manager runs automated test cases on a robot in the <code>AgenticTesting</code> folder, from the package you published to the tenant feed.</p>
+<ol>
+<li>In Test Manager, open <strong>Test Sets</strong>, select <strong>UiBank Smoke</strong>, then <strong>Execute</strong> &gt; <strong>Automated</strong>.</li>
+<li>When it passes, run <strong>UiBank Regression</strong> the same way.</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Or ask your coding agent</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Set every automated test case in {YourName}UiBankTests as Publishable, then
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>publish the project to the tenant feed of the AgenticTestingWorkshop
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tenant if the latest version isn't there yet, check that each automated
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>test case is linked to its
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Test Manager test case in my {YourName}_UIB_Test project, then run my
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>"UiBank Smoke" and "UiBank Regression" test sets as
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>automated executions, wait for them to finish, and give me a report.
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Confirm `uip login status` first, and stop if any step fails.
+</code></pre></div>
+<p>The coding agent loads the <code>uipath-test</code> skill and runs <code>uip rpa pack</code>, <code>uip or packages upload</code>, <code>uip tm testcases link-automation</code>, <code>uip tm testsets run</code>, and <code>uip tm wait</code>.</p>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Not enough automated test cases?</p>
+<p>Use the trainer's <code>DemoUiBankTests</code> package, already published in the <code>AgenticTesting</code> folder. Its tests are <code>T0_LoginAndInitialAccountState</code> to <code>T7_LogoutAndEvidenceCollection</code>, one per step. Your test case names come from Autopilot and won't match them exactly, so link them by step:</p>
+<ol>
+<li>In Test Manager, open each of your test cases, then its <strong>Automation</strong> section.</li>
+<li>Select <strong>Select Automation</strong> &gt; <strong>Tenant Package Feed</strong>.</li>
+<li>Pick the <code>DemoUiBankTests</code> test for the same step, from T0 to T7.</li>
+</ol>
+<p>Or ask your coding agent to link them by test case key, for example <em>"Link my test case {YourPrefix}:12 to the test T3_FundsTransferBetweenAccounts in the DemoUiBankTests package."</em> It runs <code>uip tm testcases link-automation</code> with <code>--test-case-key</code> and <code>--test-name</code>. Then run the test sets. See <a href="../resources/#trainers-reference-package">Resources</a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">The robot uses your credential asset</p>
+<p>The robot reads <code>{YourName}_UiBankCredential</code> from the <code>AgenticTesting</code> folder, just like your local runs did. If the asset lives somewhere else, every test fails in <strong>Given</strong>, before it opens a browser.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">What about manual-only test cases?</p>
+<p>An automated execution skips test cases without an automation. To include them, execute the test set <strong>Manually</strong>, or run them autonomously.</p>
+</div>
+<h2 id="look-into-the-executions-of-the-test-sets">🔎 Look into the executions of the test sets<a class="headerlink" href="#look-into-the-executions-of-the-test-sets" title="Permanent link">&para;</a></h2>
+<ol>
+<li>In Test Manager, open the <strong>Execution</strong> tab and find the two executions you just started.</li>
+<li>Open <strong>UiBank Regression</strong>. Check the result of each test case.</li>
+<li>Open a failed test case log, if there is one. Read the failed assertion and its screenshot. Is it the test or UiBank?</li>
+<li>Select the results, then select <strong>Generate Insights</strong>. Autopilot builds a report with an <strong>Overview</strong>, <strong>Top Failing Tests</strong>, <strong>Common Errors</strong>, <strong>Error Patterns</strong>, and <strong>Recommendations</strong>.</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Test sets done</p>
+<p>Two test sets created by Autopilot, executed from Test Manager on a robot, with a result and evidence for every automated test case.</p>
+</div>
+<h2 id="where-it-usually-breaks">🛠️ Where it usually breaks<a class="headerlink" href="#where-it-usually-breaks" title="Permanent link">&para;</a></h2>
+<div class="fix-grid">
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Run fails with <em>"Please assign folder to project level"</em></span></p>
+<p><span class="lbl">Cause</span> Your Test Manager project has no default folder</p>
+<p><span class="lbl">Fix</span> Set the project's default folder to <code>AgenticTesting</code>, then run again</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Autopilot finds no automated test cases for <strong>UiBank Regression</strong></span></p>
+<p><span class="lbl">Cause</span> The project isn't published to the tenant feed yet</p>
+<p><span class="lbl">Fix</span> Publish it to the <strong>Orchestrator Tenant Process Feed</strong>, then ask Autopilot again</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Some test cases have no result</span></p>
+<p><span class="lbl">Cause</span> They aren't automated, or aren't in the latest published package</p>
+<p><span class="lbl">Fix</span> Publish again to the <strong>Orchestrator Tenant Process Feed</strong>, and check each Studio test case is linked to its Test Manager test case</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Every test fails in <strong>Given</strong></span></p>
+<p><span class="lbl">Cause</span> The robot can't read the credential asset</p>
+<p><span class="lbl">Fix</span> Check the asset name and folder</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 A test passes alone but fails in the test set</span></p>
+<p><span class="lbl">Cause</span> It depends on data another test left behind</p>
+<p><span class="lbl">Fix</span> Make its <strong>Given</strong> set up everything it needs</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Upload fails with <em>"A testing project should contain at least one entry point"</em> (error 2006)</span></p>
+<p><span class="lbl">Cause</span> No test case is marked publishable</p>
+<p><span class="lbl">Fix</span> In the <strong>Project</strong> panel, right-click each test case &gt; <strong>Set as Publishable</strong>, then publish again</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Upload rejected</span></p>
+<p><span class="lbl">Cause</span> That package version already exists</p>
+<p><span class="lbl">Fix</span> Bump the project version and publish again</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Execution stays pending</span></p>
+<p><span class="lbl">Cause</span> No robot is free in the folder</p>
+<p><span class="lbl">Fix</span> Tell the trainer. Robots are shared.</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../executions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Executions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Executions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../sap-testing/" class="md-footer__link md-footer__link--next" aria-label="Next: SAP Testing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                SAP Testing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 230" role="img" aria-labelledby="t d">
+  <title id="t">The agentic testing lifecycle in this workshop</title>
+  <desc id="d">Five stages from left to right: Setup, Requirements, Test Cases, Executions, and Test Sets, each with who does the work.</desc>
+  <defs>
+    <linearGradient id="barGrad" x1="0" x2="1"><stop offset="0" stop-color="#FA4616"/><stop offset="1" stop-color="#0BA2B3"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FA4616"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#182126" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <style>
+    .card { fill: #ffffff; stroke: #e8e8e8; }
+    .bar { fill: url(#barGrad); }
+    .num { fill: #FA4616; }
+    .numtxt { fill: #ffffff; font: 700 15px Inter, Arial, sans-serif; }
+    .title { fill: #182126; font: 700 16px Inter, Arial, sans-serif; }
+    .sub { fill: #4a4a4a; font: 400 12px Inter, Arial, sans-serif; }
+    .who { fill: #0B8A99; font: 600 11.5px Inter, Arial, sans-serif; }
+    .line { stroke: #FA4616; stroke-width: 2.5; fill: none; }
+  </style>
+
+  <!-- 1 Setup -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="10" y="30" width="164" height="170" rx="8"/>
+    <rect class="bar" x="10" y="30" width="164" height="6" rx="3"/>
+  </g>
+  <circle class="num" cx="40" cy="66" r="16"/>
+  <text class="numtxt" x="40" y="71" text-anchor="middle">1</text>
+  <text class="title" x="22" y="110">Setup</text>
+  <text class="sub" x="22" y="132">Test Manager project</text>
+  <text class="sub" x="22" y="149">+ Studio test project</text>
+  <text class="who" x="22" y="182">YOU</text>
+
+  <!-- 2 Requirements -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="204" y="30" width="164" height="170" rx="8"/>
+    <rect class="bar" x="204" y="30" width="164" height="6" rx="3"/>
+  </g>
+  <circle class="num" cx="234" cy="66" r="16"/>
+  <text class="numtxt" x="234" y="71" text-anchor="middle">2</text>
+  <text class="title" x="216" y="110">Requirements</text>
+  <text class="sub" x="216" y="132">Generated from the .docx,</text>
+  <text class="sub" x="216" y="149">evaluated, improved</text>
+  <text class="who" x="216" y="182">AUTOPILOT</text>
+
+  <!-- 3 Test Cases -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="398" y="30" width="164" height="170" rx="8"/>
+    <rect class="bar" x="398" y="30" width="164" height="6" rx="3"/>
+  </g>
+  <circle class="num" cx="428" cy="66" r="16"/>
+  <text class="numtxt" x="428" y="71" text-anchor="middle">3</text>
+  <text class="title" x="410" y="110">Test Cases</text>
+  <text class="sub" x="410" y="132">Generated, automated,</text>
+  <text class="sub" x="410" y="149">run autonomously</text>
+  <text class="who" x="410" y="176">AUTOPILOT</text>
+  <text class="who" x="410" y="192">CODING AGENT</text>
+
+  <!-- 4 Executions -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="592" y="30" width="164" height="170" rx="8"/>
+    <rect class="bar" x="592" y="30" width="164" height="6" rx="3"/>
+  </g>
+  <circle class="num" cx="622" cy="66" r="16"/>
+  <text class="numtxt" x="622" y="71" text-anchor="middle">4</text>
+  <text class="title" x="604" y="110">Executions</text>
+  <text class="sub" x="604" y="132">Every run, with results</text>
+  <text class="sub" x="604" y="149">and screenshots</text>
+  <text class="who" x="604" y="182">YOU</text>
+
+  <!-- 5 Test Sets -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="786" y="30" width="164" height="170" rx="8"/>
+    <rect class="bar" x="786" y="30" width="164" height="6" rx="3"/>
+  </g>
+  <circle class="num" cx="816" cy="66" r="16"/>
+  <text class="numtxt" x="816" y="71" text-anchor="middle">5</text>
+  <text class="title" x="798" y="110">Test Sets</text>
+  <text class="sub" x="798" y="132">Grouped, published,</text>
+  <text class="sub" x="798" y="149">run on a robot</text>
+  <text class="who" x="798" y="182">AUTOPILOT · YOU</text>
+
+  <!-- arrows -->
+  <line class="line" x1="176" y1="115" x2="200" y2="115" marker-end="url(#arrow)"/>
+  <line class="line" x1="370" y1="115" x2="394" y2="115" marker-end="url(#arrow)"/>
+  <line class="line" x1="564" y1="115" x2="588" y2="115" marker-end="url(#arrow)"/>
+  <line class="line" x1="758" y1="115" x2="782" y2="115" marker-end="url(#arrow)"/>
+</svg>

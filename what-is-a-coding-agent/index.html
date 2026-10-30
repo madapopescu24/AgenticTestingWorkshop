@@ -1,0 +1,1758 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/what-is-a-coding-agent/">
+      
+      
+        <link rel="prev" href="../setup/">
+      
+      
+        <link rel="next" href="../agentic-testing-hands-on/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../zh/what-is-a-coding-agent/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Agentic Testing & Coding Agents - UiPath Agentic Testing with Coding Agents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#agentic-testing-coding-agents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-header__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing with Coding Agents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Agentic Testing & Coding Agents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../zh/what-is-a-coding-agent/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agenda
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agentic Testing & Coding Agents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agentic-testing-hands-on/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requirements
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Cases
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Executions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-sets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Sets
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Next Steps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing with Coding Agents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Testing & Coding Agents
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Testing & Coding Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#testing-and-uipath-test-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing and UiPath Test Cloud
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing and UiPath Test Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-in-a-nutshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing in a nutshell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-uipath-test-cloud-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What UiPath Test Cloud is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-building-blocks-in-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The building blocks in Test Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-automation-projects-in-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test automation projects in Studio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#licenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Licenses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-test-cloud-connects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Test Cloud connects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agentic-testing-in-uipath-test-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agentic Testing in UiPath Test Cloud
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agentic Testing in UiPath Test Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autopilot-for-testers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autopilot for Testers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autopilot-in-studio-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autopilot in Studio Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-a-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's a coding agent?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools, in practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills, in practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skills, in practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-in-a-skillmd-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's in a SKILL.md file
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-uipath-fits-in-this-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where UiPath fits in this picture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-uipath-skill-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The UiPath skill catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-coding-agent-fits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the coding agent fits
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-testing-hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">Intro + theoretical aspects</p>
+<h1 id="agentic-testing-coding-agents">🤝 Agentic Testing &amp; Coding Agents<a class="headerlink" href="#agentic-testing-coding-agents" title="Permanent link">&para;</a></h1>
+<p>Learn what testing with UiPath Test Cloud looks like, what Agentic Testing adds, how coding agents work, and where the two meet in your test lifecycle.</p>
+<h2 id="testing-and-uipath-test-cloud">🧪 Testing and UiPath Test Cloud<a class="headerlink" href="#testing-and-uipath-test-cloud" title="Permanent link">&para;</a></h2>
+<h3 id="testing-in-a-nutshell">🔬 Testing in a nutshell<a class="headerlink" href="#testing-in-a-nutshell" title="Permanent link">&para;</a></h3>
+<p>Testing is an investigation that gives stakeholders information about the quality of the product under test. It happens at four levels:</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Unit</strong></p>
+<p>Individual units of the system, to confirm each one's code behaves as expected. Created and run by developers.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Integration</strong></p>
+<p>Units combined and tested as a group, to find faults in how they interact</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>System / End-to-End</strong></p>
+<p>The complete, integrated system, against its end-to-end specification</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>Acceptance</strong></p>
+<p>The system against the business requirements, to judge whether it's ready for delivery</p>
+</div>
+</div>
+</div>
+<p>UiPath Test Cloud brings the most value in the middle: <strong>integration</strong> and <strong>end-to-end</strong> testing, which is exactly what the UiBank test cases in this session are. Two more ideas you'll use all day:</p>
+<ul>
+<li><strong>Black-box testing.</strong> Application testing checks that the software meets its requirements from the outside, through inputs and expected outputs, without access to its code. That's how every UiBank test works.</li>
+<li><strong>Test early.</strong> A defect found while testing costs far less than a hot-fix after it reaches production. Automation doesn't replace people: it takes the repetitive checks, so testers can focus on exploratory and usability testing.</li>
+</ul>
+<h3 id="what-uipath-test-cloud-is">☁️ What UiPath Test Cloud is<a class="headerlink" href="#what-uipath-test-cloud-is" title="Permanent link">&para;</a></h3>
+<p><strong>UiPath Test Cloud</strong> is UiPath's offering for application testers: a dedicated interface of Automation Cloud, focused on application testing, and available in the cloud and on-premises.</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">📋</span>
+<span class="f-title" markdown="span">Test Manager</span></p>
+<p>Plan, run, manage, and analyze testing: requirements, test cases, test sets, executions, results</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🛠️</span>
+<span class="f-title" markdown="span">Studio</span></p>
+<p>Build automated test cases with a visual designer, or as code</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">⚙️</span>
+<span class="f-title" markdown="span">Orchestrator</span></p>
+<p>Execute and manage test automation at scale, on robots</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">✨</span>
+<span class="f-title" markdown="span">Agentic Testing</span></p>
+<p>AI agents that speed up test design and execution: Autopilot for Testers, and agents you build yourself</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span">Agent Builder</span></p>
+<p>Build those custom agents. Included with the App Tester license</p>
+</div>
+</div>
+<h3 id="the-building-blocks-in-test-manager">🧱 The building blocks in Test Manager<a class="headerlink" href="#the-building-blocks-in-test-manager" title="Permanent link">&para;</a></h3>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">📁</span>
+<span class="f-title" markdown="span">Project</span></p>
+<p>The container for everything below</p>
+<p>💡 Every object key starts with the project's <strong>prefix</strong>, for example <code>VC1:1</code>. The prefix must be unique in the tenant. Its <strong>default folder</strong> in Orchestrator is where automated and autonomous runs happen.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📋</span>
+<span class="f-title" markdown="span">Requirement</span></p>
+<p>What the application must do, and its acceptance criteria</p>
+<p>💡 Requirements can also come from <strong>Jira</strong>, <strong>ServiceNow</strong>, or <strong>Redmine</strong></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Test case</span></p>
+<p>A scenario with manual steps, linked to the requirement it covers</p>
+<p>💡 It can be linked to an automation in Studio, or run autonomously by Autopilot</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span">Test set</span></p>
+<p>The test cases you execute together</p>
+<p>💡 Test cases are assigned <strong>statically</strong> (picked by hand) or <strong>dynamically</strong> (by label). You can enforce an order only for statically assigned ones.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">▶️</span>
+<span class="f-title" markdown="span">Execution</span></p>
+<p>One run of a test case or test set</p>
+<p>💡 <strong>Manual</strong>, <strong>Automated</strong>, <strong>Autonomous</strong>, or <strong>Pending</strong>, each with a log, a result, and evidence per test case. See <a href="../executions/">Executions</a>.</p>
+</div>
+</div>
+<p>The links between them are what Test Manager calls <strong>traceability</strong>: from a requirement you can see which test cases cover it and how they did in their latest run.</p>
+<h3 id="test-automation-projects-in-studio">🛠️ Test automation projects in Studio<a class="headerlink" href="#test-automation-projects-in-studio" title="Permanent link">&para;</a></h3>
+<p>A <strong>test automation project</strong> is the Studio project type for application testing. Only users with the <strong>App Tester Developer</strong> license create and publish them.</p>
+<ul>
+<li><strong>Test cases and data-driven test cases.</strong> A project holds many test cases. A data-driven test case runs once per row of test data.</li>
+<li><strong>Given / When / Then.</strong> Every test case has three parts: set up, act, and verify. Verifications go in <strong>Then</strong>.</li>
+<li><strong>Testing activities included.</strong> <strong>Verify Expression</strong>, <strong>Verify Expression With Operator</strong>, and <strong>Verify Control Attribute</strong> check the expected results, and can attach a screenshot to each result.</li>
+<li><strong>Object Repository.</strong> UI targets captured from the application, shared by every test case in the project.</li>
+<li><strong>Test Explorer.</strong> Runs and debugs test cases while you build. Its results last only for your Studio session.</li>
+<li><strong>VB or C#.</strong> Both expression languages are supported, and test cases can also be written as code.</li>
+<li><strong>Publishing.</strong> Publishing the project to the <strong>Orchestrator Tenant Process Feed</strong> creates the matching process in Orchestrator. Test Manager runs the latest published version.</li>
+</ul>
+<h3 id="licenses">🎫 Licenses<a class="headerlink" href="#licenses" title="Permanent link">&para;</a></h3>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🎫</span>
+<span class="f-title" markdown="span">App Tester</span></p>
+<p>Manual testing, test management, and running (not building) automations. Includes Agent Builder.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">👩‍💻</span>
+<span class="f-title" markdown="span">App Tester Developer</span></p>
+<p>Building automated test cases and testing automations, including agents</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🤖</span>
+<span class="f-title" markdown="span">App Test Robot</span></p>
+<p>Running automated tests unattended, on a robot</p>
+</div>
+</div>
+<h3 id="where-test-cloud-connects">🔌 Where Test Cloud connects<a class="headerlink" href="#where-test-cloud-connects" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Requirements:</strong> Jira, ServiceNow, Redmine, and other ALM tools through <strong>Test Manager Connect</strong>, which keeps traceability between tests and requirements.</li>
+<li><strong>Version control:</strong> Git and TFS, through Studio.</li>
+<li><strong>CI/CD:</strong> Jenkins, Azure DevOps, and GitHub Actions, so test sets run as part of your pipeline.</li>
+</ul>
+<h2 id="agentic-testing-in-uipath-test-cloud">✨ Agentic Testing in UiPath Test Cloud<a class="headerlink" href="#agentic-testing-in-uipath-test-cloud" title="Permanent link">&para;</a></h2>
+<p><strong>UiPath Test Cloud</strong> covers the whole test lifecycle: you plan and design tests in <strong>Test Manager</strong>, automate them in <strong>Studio</strong>, and execute them from <strong>Test Manager</strong>, manually, automated, or both in the same test set. Agentic testing adds AI agents at each of those steps. They extend what a tester does. They don't replace the tester.</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Plan <span class="pill">Test Manager</span></strong></p>
+<p>Requirements, test cases with manual steps, test sets</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Automate <span class="pill">Studio</span></strong></p>
+<p>Test automation projects, Given / When / Then test cases, the Object Repository</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>Execute <span class="pill">Test Manager</span></strong></p>
+<p>Run test sets manually, automated, or mixed</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>Analyze <span class="pill">Test Manager</span></strong></p>
+<p>Results, test case logs, assertions, screenshots, reports</p>
+</div>
+</div>
+</div>
+<p>Autopilot is UiPath's native coding agent: see <a href="#whats-a-coding-agent">What's a coding agent?</a>. The next two sections show which capability sets it offers, and where each set is available across UiPath products.</p>
+<h3 id="autopilot-for-testers">🤖 Autopilot for Testers<a class="headerlink" href="#autopilot-for-testers" title="Permanent link">&para;</a></h3>
+<p>UiPath ships testing agents out of the box, built into Studio and Test Manager. These are the ones you'll use in the session:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">📝</span>
+<span class="f-title" markdown="span">Autopilot panel <span class="pill ">Studio</span></span></p>
+<p>Generates requirements from a document you give it, and test sets from your test cases, and saves them to the Test Manager project your Studio project is connected to</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔍</span>
+<span class="f-title" markdown="span">Evaluation Agent <span class="pill ">Test Manager</span></span></p>
+<p>Checks a requirement for clarity, completeness, and testability</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Test Case Generation Agent <span class="pill ">Test Manager</span></span></p>
+<p>Generates structured test cases from a requirement's details, user documents, or a prompt, steered by the <strong>Prompt Library</strong>: Valid E2E Scenario Testing, End-to-End Flow Verification, Rapid Test Idea Generation, Elusive Issue Detection, Boundary-Value Testing, and your own saved prompts</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🎬</span>
+<span class="f-title" markdown="span">Run Autonomously <span class="pill ">Test Manager</span></span></p>
+<p>Runs a test case from its manual steps, without an automation. You can watch it live, and each step's execution is documented with a screenshot</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔎</span>
+<span class="f-title" markdown="span">Find with Autopilot <span class="pill ">Test Manager</span></span></p>
+<p>Finds requirements, test cases, and other objects from a plain-English question</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📥</span>
+<span class="f-title" markdown="span">Import Test Cases <span class="pill ">Test Manager</span></span></p>
+<p>Imports manual test cases from an Excel file, with a prompt that tells Autopilot how to read it</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📊</span>
+<span class="f-title" markdown="span">Generate Insights <span class="pill ">Test Manager</span></span></p>
+<p>Builds a report from selected test results: overview, top failing tests, common errors, error patterns, and recommendations</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🪄</span>
+<span class="f-title" markdown="span">Generate Test Case with Autopilot <span class="pill ">Studio</span></span></p>
+<p>In <strong>Test Explorer</strong>, turns a manual test case into an automated one, using the project's Object Repository to find the UI elements</p>
+</div>
+</div>
+<p>Autopilot in Test Manager can also draw on more connected sources, all enabled by default:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🧹</span>
+<span class="f-title" markdown="span">Obsolete Test Detection</span></p>
+<p>Finds outdated or redundant test cases linked to a requirement</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📈</span>
+<span class="f-title" markdown="span">Autopilot Chart</span></p>
+<p>Creates bar, line, and pie charts from your data</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📚</span>
+<span class="f-title" markdown="span">Documentation Search</span></p>
+<p>Retrieves content from the UiPath documentation</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">Web Reader and Web Search</span></p>
+<p>Summarizes public web pages, and answers questions that need current information from outside sources</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔌</span>
+<span class="f-title" markdown="span">Custom MCP servers</span></p>
+<p>Run commands, and external automation processes and agents, through a custom MCP server integration</p>
+</div>
+</div>
+<p>You can also build your own agents for the parts of your test process that are specific to your team. See <a href="https://docs.uipath.com/autopilot/other/latest/user-guide/autopilot-agent-test-manager#connected-sources">Autopilot in Test Manager</a>.</p>
+<h3 id="autopilot-in-studio-desktop">🪄 Autopilot in Studio Desktop<a class="headerlink" href="#autopilot-in-studio-desktop" title="Permanent link">&para;</a></h3>
+<p>Autopilot in Studio Desktop, also called Autopilot for Developers, is the coding agent built into Studio. You give it a task in its chat, and it works on your project:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🏗️</span>
+<span class="f-title" markdown="span">Build and edit workflows</span></p>
+<p>Creates XAML workflows from a plain-language description, and adds, removes, replaces, or restructures activities in existing ones</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">💻</span>
+<span class="f-title" markdown="span">Generate code</span></p>
+<p>Writes C# coded workflows, coded test cases, and utility source files</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">⚙️</span>
+<span class="f-title" markdown="span">Configure activities</span></p>
+<p>Sets activity properties, variables, arguments, and control flow</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">💬</span>
+<span class="f-title" markdown="span">Explain and improve</span></p>
+<p>Explains or summarizes what activities and code do, and improves the workflow's structure and error handling</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">▶️</span>
+<span class="f-title" markdown="span">Run, debug, and fix</span></p>
+<p>Runs, debugs, and validates workflows from the chat, analyzes files for linting errors, and applies fixes</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span">Packages and activities</span></p>
+<p>Finds and installs the NuGet packages a workflow needs, and discovers the UiPath activities to use</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Automate test cases</span></p>
+<p>Automates manual test cases it retrieves from Test Manager, and creates and manages test cases</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔎</span>
+<span class="f-title" markdown="span">Search, plan, and delegate</span></p>
+<p>Searches the documentation and the web for best practices, asks you to clarify when it needs to, makes a plan, and hands isolated tasks to subagents</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔌</span>
+<span class="f-title" markdown="span">MCP tools</span></p>
+<p>Calls tools on MCP servers that are already configured and connected in Studio</p>
+</div>
+</div>
+<p>See <a href="https://docs.uipath.com/autopilot/other/latest/user-guide/autopilot-in-studio-desktop">Autopilot in Studio Desktop</a> for the full list.</p>
+<p>For single expressions, Autopilot also works inside the <strong>Expression Editor</strong>, using the workflow's context — variables, data types, and the current expression:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🪄</span>
+<span class="f-title" markdown="span">Fix</span></p>
+<p>📍 The magic wand at the top of the <strong>Expression Editor</strong></p>
+<p>Corrects an expression with a validation error</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">✍️</span>
+<span class="f-title" markdown="span">Generate or change an expression</span></p>
+<p>📍 The Autopilot box at the bottom of the <strong>Expression Editor</strong></p>
+<p>Writes or rewrites the expression from a plain-English instruction, such as <em>"Change the result of this expression to String"</em></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📝</span>
+<span class="f-title" markdown="span">Generate from an annotation</span></p>
+<p>📍 The Autopilot options next to a workflow annotation</p>
+<p>Generates the activities the annotation describes</p>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Prompting Autopilot</p>
+<p>Be clear, specific, and concise. Say what output you expect and in what format, and set limits where you need them. <em>"Summarize this."</em> gets a vague answer. <em>"Summarize the following text in 100 words, highlighting key findings."</em> gets a useful one.</p>
+</div>
+<h2 id="whats-a-coding-agent">💻 What's a coding agent?<a class="headerlink" href="#whats-a-coding-agent" title="Permanent link">&para;</a></h2>
+<p>A coding agent is an AI assistant that reads, writes, and reasons about code — not just autocompletes it. Instead of suggesting the next line, it understands a goal described in plain English, explores the codebase, makes decisions, and generates entire working components. You stay in control: you review what it builds, ask it to adjust, and iterate until it's right.</p>
+<p>Several coding agents are available today, each with their own strengths:</p>
+<ul>
+<li><strong>Autopilot</strong> — UiPath's native coding agent, built on the UiPath for Coding Agents infrastructure. Rather than a fixed pipeline, Autopilot runs on skills, tools, and commands. UiPath's official skills are included out of the box. You can also author your own skills and reference UiPath's skills inside them — use the built-in skills, your own, or a combination of both.</li>
+<li><strong>Claude Code</strong> — Anthropic's CLI-based agent, runs in your terminal, deeply integrated with the file system</li>
+<li><strong>Codex CLI</strong> — OpenAI's command-line coding agent, similar terminal-first approach</li>
+<li><strong>Cursor</strong> — an IDE built around AI, tight editor integration with inline generation and multi-file context</li>
+<li><strong>Gemini CLI</strong> — Google's terminal agent, strong on reasoning and long context</li>
+<li><strong>GitHub Copilot Agent</strong> — embedded in VS Code and JetBrains, well suited for in-editor workflows</li>
+</ul>
+<p>What makes coding agents especially powerful for UiPath work is the skill layer: by loading domain-specific knowledge about UiPath activities, APIs, and project conventions, the agent can generate production-ready test automation — not generic boilerplate. That's exactly what the UiPath skills in this exercise do.</p>
+<h2 id="the-mental-model">🧠 The Mental Model<a class="headerlink" href="#the-mental-model" title="Permanent link">&para;</a></h2>
+<p>Five concepts show up in every coding agent:</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Tools</strong></p>
+<p>Built-in actions the agent can take: read a file, run a bash command, search the web, edit code, etc.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Skills</strong></p>
+<p>Domain knowledge bundles the agent loads when it sees a matching task. Like a playbook for one thing.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>Commands</strong></p>
+<p>Manual shortcuts you type: <code>/commit</code>, <code>/test</code>, <code>/deploy</code>. Triggered by you, not the agent.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>Hooks</strong></p>
+<p>Run automatically at lifecycle events: before an edit, after a commit, on session start. Used for guardrails.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">5</span></p>
+<div class="ci-body">
+<p><strong>Subagents</strong></p>
+<p>Specialised workers spawned by the main agent. Used to parallelise or isolate complex tasks.</p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Plugins</p>
+<p>A plugin is a package that bundles any of these together — like a Marketplace app for your coding agent. The UiPath skills used in this exercise are plugins.</p>
+</div>
+<h2 id="tools-in-practice">🔧 Tools, in practice<a class="headerlink" href="#tools-in-practice" title="Permanent link">&para;</a></h2>
+<p>Claude Code's built-in tools are always available — no setup required:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">📖</span>
+<span class="f-title" markdown="span">Read</span></p>
+<p>Read any file in your project</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">✏️</span>
+<span class="f-title" markdown="span">Edit / Write</span></p>
+<p>Modify or create files</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">⌨️</span>
+<span class="f-title" markdown="span">Bash</span></p>
+<p>Execute shell commands</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔍</span>
+<span class="f-title" markdown="span">Glob / Grep</span></p>
+<p>Search across the codebase</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">WebSearch / WebFetch</span></p>
+<p>Look things up online</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">👥</span>
+<span class="f-title" markdown="span">Task</span></p>
+<p>Spawn a subagent</p>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Extension Tools (MCP)</p>
+<p>MCP (Model Context Protocol) is the standard way to give your coding agent new tools without changing the agent itself.</p>
+<ul>
+<li><strong>GitHub MCP</strong> — read issues, open PRs</li>
+<li><strong>Atlassian MCP</strong> — Jira, Confluence</li>
+<li><strong>Slack MCP</strong> — read channels, post messages</li>
+<li><strong>Custom UiPath MCP</strong> — call Orchestrator, Maestro</li>
+</ul>
+</div>
+<h2 id="skills-in-practice">🧩 Skills, in practice<a class="headerlink" href="#skills-in-practice" title="Permanent link">&para;</a></h2>
+<p>A skill is a folder — sitting in <code>.claude/skills/</code> (or equivalent), with a <code>SKILL.md</code> inside.</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🔎</span>
+<span class="f-title" markdown="span">Discovered automatically</span></p>
+<p>The agent reads each <code>SKILL.md</code>'s description. When your prompt matches, it loads the full skill on demand.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span">More than just text</span></p>
+<p>Skills can bundle reference docs, code patterns, helper scripts, even compiled binaries the agent can run.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔒</span>
+<span class="f-title" markdown="span">Scoped permissions</span></p>
+<p>A skill declares which tools it's allowed to use. Bash access can be tightly controlled.</p>
+</div>
+</div>
+<h3 id="whats-in-a-skillmd-file">📄 What's in a SKILL.md file<a class="headerlink" href="#whats-in-a-skillmd-file" title="Permanent link">&para;</a></h3>
+<p>Every skill is built around a single <code>SKILL.md</code> file. Here's what one looks like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uipath-test</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UiPath Test Manager — manage test projects, cases, sets, executions; generate reports...</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">allowed-tools</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bash, Read, Write, Glob, Grep</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nn">---</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># UiPath Test Assistant</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">When the user asks to work with Test Manager</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="l l-Scalar l-Scalar-Plain">1. Run `uip login status` and stop if the session isn't valid</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="l l-Scalar l-Scalar-Plain">2. Ask for the project name or key, then resolve it with `uip tm project list`</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="l l-Scalar l-Scalar-Plain">3. Use `uip tm` commands, always with `--output json`</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="l l-Scalar l-Scalar-Plain">4. If a command fails or a name matches more than one object, stop and ask</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1">## References</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references/publish-and-link-guide.md</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references/failure-triage-guide.md</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references/test-result-report-guide.md</span>
+</code></pre></div>
+<p>The file has four parts:</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Frontmatter</strong></p>
+<p>Declares the skill's name, description, and which tools it's allowed to use.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Discovery prompt</strong></p>
+<p>The <code>description</code> field is what the agent matches against your request — this is how the skill gets loaded automatically.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>Instructions</strong></p>
+<p>The body of the file: a step-by-step prompt the agent follows when the skill is active.</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>References</strong></p>
+<p>Paths to files in the skill folder the agent can read for deeper context — API docs, code patterns, example projects.</p>
+</div>
+</div>
+</div>
+<h2 id="where-uipath-fits-in-this-picture">🔗 Where UiPath fits in this picture<a class="headerlink" href="#where-uipath-fits-in-this-picture" title="Permanent link">&para;</a></h2>
+<p>UiPath ships a plugin for Claude Code. It bundles skills, hooks, and references — giving the agent domain knowledge about UiPath products out of the box.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>-g<span class="w"> </span>install<span class="w"> </span>@uipath/cli
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>uip<span class="w"> </span>skills<span class="w"> </span>install
+</code></pre></div>
+<p>The plugin contains three things:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span">20+ skills</span></p>
+<p>Domain knowledge for every UiPath product: <code>uipath-test</code>, <code>uipath-rpa</code>, <code>uipath-platform</code>, <code>uipath-agents</code>, <code>uipath-maestro-flow</code>, and more.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🤖</span>
+<span class="f-title" markdown="span">1 subagent</span></p>
+<p><code>uipath-project-discovery-agent</code> — auto-runs on first contact with a UiPath project and builds context for the agent.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🪝</span>
+<span class="f-title" markdown="span">Hooks &amp; references</span></p>
+<p>Session-start nudges, activity docs, and allowlists for safe read-only commands.</p>
+</div>
+</div>
+<h2 id="the-uipath-skill-catalog">📚 The UiPath skill catalog<a class="headerlink" href="#the-uipath-skill-catalog" title="Permanent link">&para;</a></h2>
+<p>The plugin includes skills for every part of the UiPath platform. Three of them drive the labs in this exercise:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span"><code>uipath-test</code> <span class="pill ">Used today</span></span></p>
+<p>Test Manager: projects, requirements, test cases and steps, test sets, executions, failure triage, and reports. Also links Studio automations to test cases.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span"><code>uipath-rpa</code> <span class="pill ">Used today</span></span></p>
+<p>Generate and edit Studio projects with a discovery-first approach, including test automation projects, Given / When / Then test cases, and data-driven tests</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span"><code>uipath-platform</code> <span class="pill ">Used today</span></span></p>
+<p>Auth, Orchestrator management (folders, packages, assets), Integration Service, CLI tools</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span"><code>uipath-troubleshoot</code></span></p>
+<p>Root-cause investigation when a job or a run behaves unexpectedly</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span"><code>uipath-agents</code></span></p>
+<p>Scaffold, build, run, evaluate, and deploy coded and low-code agents</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span"><code>uipath-maestro-flow</code></span></p>
+<p>Create, validate, and debug UiPath Flow projects</p>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Skills used in this exercise</p>
+<p>The three skills in bold — <code>uipath-test</code>, <code>uipath-rpa</code>, and <code>uipath-platform</code> — are the ones a coding agent uses if you pick it to automate a test case or run test sets in the hands-on session.</p>
+</div>
+<h2 id="where-the-coding-agent-fits">⚖️ Where the coding agent fits<a class="headerlink" href="#where-the-coding-agent-fits" title="Permanent link">&para;</a></h2>
+<p>Autopilot works inside one product at a time, on what's in front of you. A coding agent works from your terminal, across products, through the <code>uip</code> CLI:</p>
+<div class="vs">
+<div class="vs-side">
+<p><span class="f-title" markdown="span">🤖 Autopilot for Testers and for Developers</span></p>
+<ul>
+<li><strong>Where you use it:</strong> Inside Studio or Test Manager</li>
+<li><strong>What it sees:</strong> The requirement, expression, or results in front of you</li>
+<li><strong>Best for:</strong> Requirements and test cases from a document, requirement quality, test case suggestions, fixing an expression, explaining results</li>
+</ul>
+</div>
+<div class="vs-mid">VS</div>
+<div class="vs-side alt">
+<p><span class="f-title" markdown="span">💻 Coding agent + UiPath skills</span></p>
+<ul>
+<li><strong>Where you use it:</strong> Your terminal or editor</li>
+<li><strong>What it sees:</strong> Files on your machine, your Studio project, Test Manager, and Orchestrator in one session</li>
+<li><strong>Best for:</strong> Work that spans files and products: checking coverage against a document, a suite of Given / When / Then automations, publish, link, run, and report</li>
+</ul>
+</div>
+</div>
+<p>In the hands-on session, Autopilot leads. Autopilot in Studio Desktop writes the requirements and the test sets, and Autopilot in Test Manager evaluates the requirements, generates the test cases, and runs one autonomously. You automate the Login test case by hand, so you know what good looks like. Then you automate the next one with Autopilot in Studio Desktop or a coding agent, and compare the two.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Setup
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../agentic-testing-hands-on/" class="md-footer__link md-footer__link--next" aria-label="Next: Testing Setup">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Testing Setup
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

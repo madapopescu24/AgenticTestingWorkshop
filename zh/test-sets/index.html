@@ -1,0 +1,1155 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/zh/test-sets/">
+      
+      
+        <link rel="prev" href="../executions/">
+      
+      
+        <link rel="next" href="../sap-testing/">
+      
+      
+        
+          <link rel="alternate" href="../../test-sets/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>测试集 - UiPath Agentic Testing 与编码智能体</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#test-sets" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-header__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing 与编码智能体
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              测试集
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../test-sets/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  议程
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  智能体测试与编码智能体
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agentic-testing-hands-on/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  需求
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试用例
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  执行
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试集
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP 测试
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  资源
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  后续步骤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing 与编码智能体
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    议程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能体测试与编码智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-testing-hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    执行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试集
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#publish-your-testing-project-to-the-tenant-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将你的测试项目发布到租户源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-autopilot-in-studio-desktop-to-create-test-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让 Autopilot in Studio Desktop 创建测试集
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-test-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行测试集
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#look-into-the-executions-of-the-test-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看测试集的执行
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-usually-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见问题出在哪里
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP 测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后续步骤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">动手实践 · 第 4 部分，共 4 部分</p>
+<h1 id="test-sets">📦 测试集<a class="headerlink" href="#test-sets" title="Permanent link">&para;</a></h1>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">分组、运行并阅读结果</div>
+
+<h2 id="publish-your-testing-project-to-the-tenant-feed">📤 将你的测试项目发布到租户源<a class="headerlink" href="#publish-your-testing-project-to-the-tenant-feed" title="Permanent link">&para;</a></h2>
+<p>Autopilot 根据它在 Orchestrator 中能找到的自动化测试用例来构建测试集，而 Test Manager 从已发布的包中运行它们。所以先发布。</p>
+<ol>
+<li>在 <strong>Studio</strong> 中打开你的 <code>{YourName}UiBankTests</code> 项目，把测试用例标记为可发布。Studio 创建的测试用例默认是草稿，只有可发布的测试用例才会进入包中。在 <strong>Project</strong> 面板中，右键单击你自动化过的每个测试用例，选择 <strong>Set as Publishable</strong>。它的图标会变成蓝色。</li>
+<li>选择 <strong>Publish</strong>。</li>
+<li>在 <strong>Publish to</strong> 中选择 <strong>Orchestrator Tenant Process Feed</strong>。</li>
+<li>如果之前发布过，请提升版本号，然后选择 <strong>Publish</strong>。</li>
+<li>等待包已发布的确认消息。</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">为什么用租户源</p>
+<p>测试集的自动化运行只包含发布到 <strong>Orchestrator Tenant Process Feed</strong> 的最新包版本中的测试用例。发布到你个人工作区源的包，或者旧版本，都不会被使用。每次修改测试用例后都要重新发布。</p>
+</div>
+<h2 id="ask-autopilot-in-studio-desktop-to-create-test-sets">🪄 让 Autopilot in Studio Desktop 创建测试集<a class="headerlink" href="#ask-autopilot-in-studio-desktop-to-create-test-sets" title="Permanent link">&para;</a></h2>
+<ol>
+<li>在 <strong>Studio</strong> 中，在你的 <code>{YourName}UiBankTests</code> 项目里打开 <strong>Autopilot</strong> 面板。</li>
+<li>
+<p>给 Autopilot 这个提示词：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>In my {YourName}_UIB_Test Test Manager project, create two test sets from the
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>existing test cases:
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- "UiBank Smoke" with Login and Initial Account State only.
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- "UiBank Regression" with every test case that is automated
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  in this Studio project.
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Show me the test cases you'll put in each set before you create them.
+</code></pre></div>
+</li>
+<li>
+<p>检查它的提议，然后接受。在 Test Manager 中打开 <strong>Test Sets</strong>，确认两个测试集都已存在，并包含正确的测试用例。</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">为什么需要冒烟测试集？</p>
+<p>冒烟测试集能快速回答一个问题：应用是否可用，我能否登录？先运行它。如果它失败了，就没必要再等完整的回归测试集了。</p>
+</div>
+<h2 id="run-the-test-sets">▶️ 运行测试集<a class="headerlink" href="#run-the-test-sets" title="Permanent link">&para;</a></h2>
+<p>Test Manager 使用你发布到租户源的包，在 <code>AgenticTesting</code> 文件夹中的机器人上运行自动化测试用例。</p>
+<ol>
+<li>在 Test Manager 中打开 <strong>Test Sets</strong>，选择 <strong>UiBank Smoke</strong>，然后选择 <strong>Execute</strong> &gt; <strong>Automated</strong>。</li>
+<li>它通过后，用同样的方式运行 <strong>UiBank Regression</strong>。</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">或者让你的编码智能体来做</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Set every automated test case in {YourName}UiBankTests as Publishable, then
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>publish the project to the tenant feed of the AgenticTestingWorkshop
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tenant if the latest version isn't there yet, check that each automated
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>test case is linked to its
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Test Manager test case in my {YourName}_UIB_Test project, then run my
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>"UiBank Smoke" and "UiBank Regression" test sets as
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>automated executions, wait for them to finish, and give me a report.
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Confirm `uip login status` first, and stop if any step fails.
+</code></pre></div>
+<p>编码智能体会加载 <code>uipath-test</code> 技能，并运行 <code>uip rpa pack</code>、<code>uip or packages upload</code>、<code>uip tm testcases link-automation</code>、<code>uip tm testsets run</code> 和 <code>uip tm wait</code>。</p>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">自动化测试用例不够？</p>
+<p>使用讲师的 <code>DemoUiBankTests</code> 包，它已经发布在 <code>AgenticTesting</code> 文件夹中。它的测试是 <code>T0_LoginAndInitialAccountState</code> 到 <code>T7_LogoutAndEvidenceCollection</code>，每个步骤一个。你的测试用例名称来自 Autopilot，不会与它们完全一致，所以请按步骤关联：</p>
+<ol>
+<li>在 Test Manager 中打开你的每个测试用例，然后打开它的 <strong>Automation</strong> 部分。</li>
+<li>选择 <strong>Select Automation</strong> &gt; <strong>Tenant Package Feed</strong>。</li>
+<li>从 T0 到 T7 中，选择同一步骤对应的 <code>DemoUiBankTests</code> 测试。</li>
+</ol>
+<p>或者让你的编码智能体按测试用例键来关联，例如 <em>"Link my test case {YourPrefix}:12 to the test T3_FundsTransferBetweenAccounts in the DemoUiBankTests package."</em> 它会使用 <code>--test-case-key</code> 和 <code>--test-name</code> 运行 <code>uip tm testcases link-automation</code>。然后运行测试集。参见<a href="../resources/#trainers-reference-package">资源</a>。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">机器人使用你的凭据资产</p>
+<p>机器人会从 <code>AgenticTesting</code> 文件夹读取 <code>{YourName}_UiBankCredential</code>，和你的本地运行一样。如果资产在其他位置，每个测试都会在 <strong>Given</strong> 中失败，甚至在打开浏览器之前。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">仅手动的测试用例怎么办？</p>
+<p>自动化执行会跳过没有自动化的测试用例。要包含它们，请以 <strong>Manually</strong> 方式执行测试集，或者自主运行它们。</p>
+</div>
+<h2 id="look-into-the-executions-of-the-test-sets">🔎 查看测试集的执行<a class="headerlink" href="#look-into-the-executions-of-the-test-sets" title="Permanent link">&para;</a></h2>
+<ol>
+<li>在 Test Manager 中打开 <strong>Execution</strong> 选项卡，找到你刚刚启动的两次执行。</li>
+<li>打开 <strong>UiBank Regression</strong>。查看每个测试用例的结果。</li>
+<li>如果有失败的测试用例日志，打开它。阅读失败的断言及其截图。问题出在测试上还是 UiBank 上？</li>
+<li>选择结果，然后选择 <strong>Generate Insights</strong>。Autopilot 会生成一份报告，包含 <strong>Overview</strong>、<strong>Top Failing Tests</strong>、<strong>Common Errors</strong>、<strong>Error Patterns</strong> 和 <strong>Recommendations</strong>。</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">测试集完成</p>
+<p>Autopilot 创建了两个测试集，并从 Test Manager 在机器人上执行，每个自动化测试用例都有结果和证据。</p>
+</div>
+<h2 id="where-it-usually-breaks">🛠️ 常见问题出在哪里<a class="headerlink" href="#where-it-usually-breaks" title="Permanent link">&para;</a></h2>
+<div class="fix-grid">
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 运行失败，提示 <em>"Please assign folder to project level"</em></span></p>
+<p><span class="lbl">原因</span> 你的 Test Manager 项目没有默认文件夹</p>
+<p><span class="lbl">解决</span> 把项目的默认文件夹设为 <code>AgenticTesting</code>，然后重新运行</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 Autopilot 找不到 <strong>UiBank Regression</strong> 的自动化测试用例</span></p>
+<p><span class="lbl">原因</span> 项目还没有发布到租户源</p>
+<p><span class="lbl">解决</span> 把它发布到 <strong>Orchestrator Tenant Process Feed</strong>，然后再问一次 Autopilot</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 部分测试用例没有结果</span></p>
+<p><span class="lbl">原因</span> 它们没有自动化，或者不在最新发布的包中</p>
+<p><span class="lbl">解决</span> 重新发布到 <strong>Orchestrator Tenant Process Feed</strong>，并检查每个 Studio 测试用例都已关联到对应的 Test Manager 测试用例</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 每个测试都在 <strong>Given</strong> 中失败</span></p>
+<p><span class="lbl">原因</span> 机器人无法读取凭据资产</p>
+<p><span class="lbl">解决</span> 检查资产名称和文件夹</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 测试单独运行能通过，但在测试集中失败</span></p>
+<p><span class="lbl">原因</span> 它依赖另一个测试留下的数据</p>
+<p><span class="lbl">解决</span> 让它的 <strong>Given</strong> 准备好所需的一切</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 上传失败，提示 <em>"A testing project should contain at least one entry point"</em>（错误 2006）</span></p>
+<p><span class="lbl">原因</span> 没有测试用例被标记为可发布</p>
+<p><span class="lbl">解决</span> 在 <strong>Project</strong> 面板中右键单击每个测试用例 &gt; <strong>Set as Publishable</strong>，然后重新发布</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 上传被拒绝</span></p>
+<p><span class="lbl">原因</span> 该包版本已存在</p>
+<p><span class="lbl">解决</span> 提升项目版本号，然后重新发布</p>
+</div>
+<div class="fix">
+<p><span class="f-title" markdown="span">🚨 执行一直处于 Pending</span></p>
+<p><span class="lbl">原因</span> 文件夹中没有空闲的机器人</p>
+<p><span class="lbl">解决</span> 告诉讲师。机器人是共享的。</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../executions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 执行">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                执行
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../sap-testing/" class="md-footer__link md-footer__link--next" aria-label="下一页: SAP 测试">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                SAP 测试
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

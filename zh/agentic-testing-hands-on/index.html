@@ -1,0 +1,1595 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/zh/agentic-testing-hands-on/">
+      
+      
+        <link rel="prev" href="../what-is-a-coding-agent/">
+      
+      
+        <link rel="next" href="../requirements/">
+      
+      
+        
+          <link rel="alternate" href="../../agentic-testing-hands-on/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>测试环境准备 - UiPath Agentic Testing 与编码智能体</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#agentic-testing-hands-on-session" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-header__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing 与编码智能体
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              测试环境准备
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../agentic-testing-hands-on/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  议程
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  智能体测试与编码智能体
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  需求
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试用例
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  执行
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-sets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试集
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP 测试
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  资源
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  后续步骤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing 与编码智能体
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    议程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能体测试与编码智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试环境准备
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你将完成的内容
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-design-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计文档
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设计文档">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是 Test Manager？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="环境准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project-in-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 Test Manager 中新建项目
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-test-automation-project-in-uipath-studio-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 UiPath Studio Desktop 中新建测试自动化项目
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-it-to-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将其连接到 Test Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-youre-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        检查是否准备就绪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后续步骤
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas-youll-hit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你会遇到的坑
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    执行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP 测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后续步骤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">动手实践 · 测试环境准备</p>
+<h1 id="agentic-testing-hands-on-session">🧭 智能体测试：动手实践课<a class="headerlink" href="#agentic-testing-hands-on-session" title="Permanent link">&para;</a></h1>
+<p><strong>借助 Autopilot for Testers、Autopilot for Developers 和编码智能体，在 UiPath Test Cloud 中把 UiBank 设计文档一路变成需求、测试用例、自动化、测试集和执行。</strong></p>
+<h2 id="overview">👋 概述<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>一家银行的 QA 团队每个迭代都会拿到一份新的应用说明。有人把它整理成需求。有人在 <strong>Test Manager</strong> 里手动录入测试用例。另一个人在 <strong>Studio</strong> 中逐个重建，捕获每个字段和按钮。第四个人把它们分组成测试集、运行，再把结果复制到状态邮件里。这就是四次交接和数小时的点击操作，而且不到一个月，文档、需求、测试用例和自动化之间就会彼此脱节。</p>
+<p>在本课中，你会借助 AI 智能体完成上述每一项工作，并看到哪些地方仍然需要人来做决定。<strong>Autopilot</strong> 在产品内部工作：在 <strong>Studio</strong> 中，它创建需求、测试用例、测试集和表达式；在 <strong>Test Manager</strong> 中，它评估需求、生成测试用例，并自主运行测试用例。<strong>编码智能体</strong>（例如 <strong>Codex</strong> 或 <strong>Claude Code</strong>）在你的终端中工作，通过 <strong><code>uip</code> CLI</strong> 和 <strong>UiPath skills</strong> 完成同样的自动化工作。你会先手动构建一个测试用例，这样才能判断智能体为你构建的内容。</p>
+<div class="admonition tip">
+<p class="admonition-title">培训环境</p>
+<p>使用租户 <strong>AgenticTestingWorkshop</strong> 登录 <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong>。本课中的 Autopilot 功能位于 <strong>UiPath Automation Cloud</strong>，所以请确保 Studio、<code>uip</code> CLI 和浏览器都指向这里。</p>
+</div>
+<h2 id="what-youll-do">🗺️ 你将完成的内容<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
+<p>动手实践部分遵循<a href="../agenda/">议程</a>：</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">⚙️</span>
+<span class="f-title" markdown="span"><strong><a href="#setup">环境准备</a></strong></span></p>
+<p>在 Test Manager 中新建项目，在 Studio 中新建测试自动化项目，并将两者连接起来</p>
+<p>👤 你</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📋</span>
+<span class="f-title" markdown="span"><strong><a href="../requirements/">需求</a></strong></span></p>
+<p>把 UiBank 设计文档变成需求，讨论这些需求，评估其质量，改进后再次评估</p>
+<p>👤 <strong>Autopilot in Studio Desktop</strong>、<strong>Autopilot in Test Manager</strong>、你</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span"><strong><a href="../test-cases/">测试用例</a></strong></span></p>
+<p>根据需求生成测试用例，手动自动化 Login 测试用例，生成下一个测试用例，观看测试用例自主运行，再添加几个</p>
+<p>👤 <strong>Autopilot in Test Manager</strong>、你、<strong>Autopilot in Studio Desktop</strong> 或<strong>编码智能体</strong></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">▶️</span>
+<span class="f-title" markdown="span"><strong><a href="../executions/">执行</a></strong></span></p>
+<p>查看每次运行留下的结果</p>
+<p>👤 你</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span"><strong><a href="../test-sets/">测试集</a></strong></span></p>
+<p>用你的测试用例创建测试集，运行它们，并查看其执行</p>
+<p>👤 <strong>Autopilot in Studio Desktop</strong>、你</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🚀</span>
+<span class="f-title" markdown="span"><strong><a href="#next-steps">后续步骤</a></strong></span></p>
+<p>把所学带回你自己的应用</p>
+<p>👤 你</p>
+</div>
+</div>
+<h2 id="the-scenario">🏦 场景<a class="headerlink" href="#the-scenario" title="Permanent link">&para;</a></h2>
+<div style="font-family: inherit; margin: 1.5rem 0 2rem;">
+
+  <div style="background: #16213e; border-left: 10px solid #FA4616; padding: 26px 32px; margin-bottom: 22px;">
+    <div style="font-size: 20px; font-weight: 700; color: #ffffff; line-height: 1.35;">一家银行的 QA 团队正在把回归测试套件迁移到智能体测试。</div>
+    <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 10px; line-height: 1.45;">一份设计文档。借助 Autopilot 和编码智能体构建需求、测试用例、测试集和执行，由测试人员决定什么算通过。</div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch;">
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">📋</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">需求</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio Desktop 根据文档编写需求，Autopilot in Test Manager 为其评分。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 个已评估的需求</div>
+  </div>
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">🧪</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">测试用例</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">在 Test Manager 中生成，由你、Autopilot 或编码智能体实现自动化。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 已自动化的测试用例</div>
+  </div>
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">🔎</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">执行</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">每一次运行（手动、自动或自主），连同其结果和证据。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 一目了然的结果</div>
+  </div>
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">📦</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">测试集</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot 为你的测试用例分组。你来运行并查看结果。</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 一个已执行的测试集</div>
+  </div>
+  </div>
+
+</div>
+
+<p>工作在本课中的流转方式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>UiBank design document (.docx)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Setup          New {YourName}_UIB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ▼
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Requirements   Autopilot in Studio Desktop ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   ▼
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                 ├─ Login: you automate it by hand in Studio
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                 ├─ Next one: Autopilot in Studio Desktop, or your coding agent, automates it
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                 ├─ Run Autonomously: Autopilot runs a manual test case itself
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                 └─ A few more
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>   ▼
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Executions     Executions tab ──▶ every run so far
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>   │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>   ▼
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Test Sets      Autopilot in Studio Desktop ──▶ Test sets ──▶ publish ──▶ run ──▶ executions
+</code></pre></div>
+<h2 id="the-design-document">📄 设计文档<a class="headerlink" href="#the-design-document" title="Permanent link">&para;</a></h2>
+<p>本课的一切都来自 UiBank Web 应用的一份设计文档：<strong>E2E UiBank Online Banking</strong>。下载 <code>E2E UiBank Online Banking.docx</code>，并保存到你的工作坊文件夹中。</p>
+<p><a class="md-button md-button--primary" href="../../resources.assets/E2E%20UiBank%20Online%20Banking.docx">下载设计文档 (.docx)</a></p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🏦</span>
+<span class="f-title" markdown="span">应用</span></p>
+<p>UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">环境</span></p>
+<p>在 Google Chrome 中打开 <code>https://uibank.uipath.com</code>。备用地址：<code>https://purple-dune-0af054403.6.azurestaticapps.net</code></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📝</span>
+<span class="f-title" markdown="span">文档内容</span></p>
+<p>登录，开立一个 Checking 账户和一个 Savings 账户，在两者之间转账，申请贷款，通过 Loan ID 查询贷款，并验证用户资料</p>
+</div>
+</div>
+<p>文档用八个步骤描述了客户旅程。你不会把它作为一次很长的端到端运行来测试。每个步骤都会成为<strong>一个需求</strong>以及<strong>它自己的测试用例</strong>，这样一旦失败，就能直接定位到出问题的功能，而且一个页面出错也不会掩盖其他步骤的结果。</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">0</span></p>
+<div class="ci-body">
+<p><strong>Login and Initial Account State</strong></p>
+<p><code>/login</code>, <code>/accounts</code></p>
+<p>✅ 登录成功；已记录初始账户状态</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Checking Account Creation</strong></p>
+<p><code>/accounts/account-apply</code></p>
+<p>✅ Checking 账户出现在账户汇总中</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Savings Account Creation</strong></p>
+<p><code>/accounts/account-apply</code></p>
+<p>✅ Savings 账户出现在账户汇总中</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>Funds Transfer Between Accounts</strong></p>
+<p><code>/accounts/transfer-money</code></p>
+<p>✅ 两个账户的余额变动恰好等于转账金额</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>Loan Application Submission</strong></p>
+<p><code>/loans/apply</code></p>
+<p>✅ 已生成 Loan ID</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">5</span></p>
+<div class="ci-body">
+<p><strong>Loan Status Lookup</strong></p>
+<p><code>/loans/lookup</code></p>
+<p>✅ 金额和期限与提交的内容一致</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">6</span></p>
+<div class="ci-body">
+<p><strong>User Profile Identity Verification</strong></p>
+<p><code>/userprofile</code></p>
+<p>✅ 用户名和邮箱与当前登录用户一致</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">7</span></p>
+<div class="ci-body">
+<p><strong>Logout and Evidence Collection</strong></p>
+<p><code>/</code></p>
+<p>✅ 会话已关闭；截图已附加到报告中</p>
+</div>
+</div>
+</div>
+<h3 id="the-test-data">🔢 测试数据<a class="headerlink" href="#the-test-data" title="Permanent link">&para;</a></h3>
+<p>以下是设计文档定义的变量。在你的提示词和自动化中使用它们，让需求、测试用例和结果描述的都是同一件事。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">变量</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">值 / 规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>var_Username</code>, <code>var_Password</code></td>
+<td style="text-align: left;">UiBank 登录信息</td>
+<td style="text-align: left;">来自 Orchestrator 凭据资产 <code>{YourName}_UiBankCredential</code>。绝不硬编码。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_CheckingNickname</code></td>
+<td style="text-align: left;">新的 Checking 账户</td>
+<td style="text-align: left;"><code>AutoChecking_&lt;yyyyMMddHHmmss&gt;</code>，每次运行唯一</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_SavingsNickname</code></td>
+<td style="text-align: left;">新的 Savings 账户</td>
+<td style="text-align: left;"><code>AutoSavings_&lt;yyyyMMddHHmmss&gt;</code>，每次运行唯一</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_TransferAmount</code></td>
+<td style="text-align: left;">转账金额</td>
+<td style="text-align: left;"><code>10</code>，绝不超过转出账户余额</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanEmail</code></td>
+<td style="text-align: left;">贷款申请人邮箱</td>
+<td style="text-align: left;">你在 UiBank 上注册的邮箱</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanAmount</code></td>
+<td style="text-align: left;">贷款金额</td>
+<td style="text-align: left;"><code>5000</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanTerm</code></td>
+<td style="text-align: left;">贷款期限（年）</td>
+<td style="text-align: left;"><code>3</code>（允许值：1、3、5、10）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_YearlyIncome</code></td>
+<td style="text-align: left;">税前年收入</td>
+<td style="text-align: left;"><code>60000</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_Age</code></td>
+<td style="text-align: left;">申请人年龄</td>
+<td style="text-align: left;"><code>35</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanID</code></td>
+<td style="text-align: left;">UiBank 返回的 Loan ID</td>
+<td style="text-align: left;">提交贷款后提取</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">每个测试用例都必须处理的三件事</p>
+<ul>
+<li><strong>独立运行</strong>。测试用例可能以任意顺序、在任意机器人上运行。在文档中，转账使用步骤 1 和步骤 2 创建的账户，查询使用步骤 4 生成的 Loan ID。作为测试用例，转账会在开始时自己开立两个账户，查询会在开始时自己提交一笔贷款。</li>
+<li><strong>尚无账户</strong>。新的 UiBank 用户看到的不是表格，而是 <em>"No accounts at this time, apply for a new account today!"</em>。这是有效的初始状态，不是失败。</li>
+<li><strong>未知规则</strong>。UiBank 是一个演示应用。余额和贷款审批规则没有文档说明，数据也可能被重置。请检查贷款结果，而不要假定一定会获批。</li>
+</ul>
+</div>
+<h3 id="whats-test-manager">📋 什么是 Test Manager？<a class="headerlink" href="#whats-test-manager" title="Permanent link">&para;</a></h3>
+<div style="background: #16213e; border-left: 10px solid #FA4616; padding: 22px 28px; margin: 1.2rem 0 1.4rem;">
+  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">UiPath Test Cloud 的规划与报告中心。</div>
+  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">需求说明什么必须能正常工作。测试用例说明你将如何证明。测试集和执行说明它是否做到了。</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">需求</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">应用必须做到的事情，以及验收标准</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">测试用例</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">一个包含手动步骤的场景，关联到它所覆盖的需求，也可以关联到一个自动化</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">测试集</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">一起执行的一组测试用例</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">执行</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">一次运行，每个测试用例都有日志、结果和证据</div>
+  </div>
+</div>
+
+<h2 id="setup">⚙️ 环境准备<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">一个 Test Manager 项目，以及一个与之连接的测试自动化项目</div>
+
+<div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
+  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">你需要准备</div>
+  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">在浏览器中打开 <strong>AgenticTestingWorkshop</strong> 租户上的 <strong>Test Manager</strong>。</li></ul>
+</div>
+
+<h3 id="create-a-new-project-in-test-manager">🆕 在 Test Manager 中新建项目<a class="headerlink" href="#create-a-new-project-in-test-manager" title="Permanent link">&para;</a></h3>
+<p>需求、测试用例、测试集和执行都存放在一个 Test Manager 项目中。先创建你的项目：后续各部分中 Autopilot 生成的所有内容都会放进去。</p>
+<ol>
+<li>打开 <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong>，选择 <strong>AgenticTestingWorkshop</strong> 租户，然后打开 <strong>Test Manager</strong>。</li>
+<li>在 <strong>Projects</strong> 页面上，选择 <strong>Create new project</strong>。</li>
+<li>
+<p>在 <strong>Create new project</strong> 对话框中填写：</p>
+<ul>
+<li><strong>Name：</strong> <code>{YourName}_UIB_Test</code></li>
+<li><strong>Prefix：</strong> <code>{YourPrefix}</code>，一个由 3 到 5 个字母和数字组成的唯一代码：你的姓名首字母加一个数字，例如 <code>VC1</code>。所有人都在同一个租户中工作，每个前缀在租户中只能使用一次。创建后无法更改。</li>
+<li><strong>Description：</strong> 可选，例如 <em>UiBank online banking tests</em>。</li>
+</ul>
+<p><img alt="Test Manager 中的 Create new project 对话框，包含项目名称、示例前缀 UIB、空的描述以及 Create 按钮" class="screenshot" src="../../agentic-testing-hands-on.images/test-manager-create-new-project-W.png" width="900" />
+<em>Create new project 对话框。截图中使用的前缀是 UIB：请使用你自己的前缀。</em></p>
+<div class="admonition info">
+<p class="admonition-title">前缀的用途</p>
+<p>项目中的每个对象都会获得一个以前缀开头的键：如果前缀是 <code>VC1</code>，第一个需求就是 <code>VC1:1</code>，下一个是 <code>VC1:2</code>，依此类推，需求、测试用例和测试集都是如此。简短易认比描述性更重要。</p>
+</div>
+</li>
+<li>
+<p>选择 <strong>Create</strong>，然后打开项目。它目前是空的。</p>
+</li>
+<li>
+<p>设置项目的默认 Orchestrator 文件夹。测试集稍后运行已自动化的测试用例时需要用到它。</p>
+<ol>
+<li>在项目左侧菜单中，选择 <strong>Project Settings</strong>，然后选择 <strong>Automation</strong> 选项卡。</li>
+<li>在 <strong>Default Folder</strong> 中，选择 <code>AgenticTesting</code>。</li>
+<li>选择 <strong>Save</strong>。</li>
+</ol>
+<p><img alt="Test Manager 中 Project Settings 的 Automation 选项卡，Default Folder 选择了 AgenticTesting，以及 Save 按钮" class="screenshot" src="../../agentic-testing-hands-on.images/test-manager-default-folder.png" width="800" />
+<em>Project Settings &gt; Automation，默认文件夹为 <code>AgenticTesting</code>。</em></p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">为什么在项目名称中加入你的名字</p>
+<p>本课所有人都在同一个租户中工作。加上你的名字，便于你在 <strong>Projects</strong> 列表中找到自己的项目，也能把你的需求、测试用例和结果与其他人的区分开。</p>
+</div>
+<h3 id="create-a-new-test-automation-project-in-uipath-studio-desktop">🛠️ 在 UiPath Studio Desktop 中新建测试自动化项目<a class="headerlink" href="#create-a-new-test-automation-project-in-uipath-studio-desktop" title="Permanent link">&para;</a></h3>
+<ol>
+<li>打开 <strong>Studio</strong>。在 <strong>Start</strong> 界面的 <strong>New Project</strong> 下，选择 <strong>Test Automation</strong>。</li>
+<li>
+<p>在 <strong>New Blank Test Project</strong> 对话框中填写：</p>
+<ul>
+<li><strong>Name：</strong> <code>{YourName}UiBankTests</code></li>
+<li><strong>Description：</strong> 可选，例如 <em>Test Automation Project</em></li>
+</ul>
+<p><img alt="Studio 中的 New Blank Test Project 对话框，名称为 {YourName}UiBankTests，包含描述以及高级选项 Location、Compatibility Cross-platform、Language VB 和 Minimum Robot version" class="screenshot" src="../../agentic-testing-hands-on.images/studio-new-test-project-W.png" width="900" /></p>
+</li>
+<li>
+<p>选择 <strong>Create</strong>。</p>
+</li>
+<li>Studio 会打开新项目。在 <strong>Project</strong> 面板中展开 <strong>Dependencies</strong>，检查测试相关的包是否存在，例如 <code>UiPath.Testing.Activities</code> 和 <code>UiPath.UIAutomation.Activities</code>。</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">为什么使用测试自动化项目</p>
+<p>测试自动化项目专为测试用例而设计：它包含测试活动、Given / When / Then 模板以及 <strong>Test Explorer</strong> 面板。其中的每个测试用例都可以关联到 Test Manager 中的测试用例，在那里运行时，结果会回传到 Test Manager。</p>
+</div>
+<h3 id="connect-it-to-test-manager">🔗 将其连接到 Test Manager<a class="headerlink" href="#connect-it-to-test-manager" title="Permanent link">&para;</a></h3>
+<p>项目需要知道它的需求、测试用例和结果属于哪个 Test Manager 项目。任选一种方式：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">在 Studio 中</label><label for="__tabbed_1_2">使用你的编码智能体</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>在 <strong>Explorer</strong> 面板中，右键单击项目名称，选择 <strong>Project Settings</strong>。</li>
+<li>选择 <strong>Test Manager Configuration</strong>。</li>
+<li>在 <strong>Test Manager Settings</strong> 下，输入 Test Manager URL <code>https://cloud.uipath.com/tpenlabs/AgenticTestingWorkshop/testmanager_</code>，然后选择 <strong>Connect</strong>。状态变为 <strong>Connected</strong>。</li>
+<li>在 <strong>Default Project</strong> 中，输入你的前缀并选择 <strong>{YourName}_UIB_Test ({YourPrefix})</strong>。</li>
+<li>选择 <strong>OK</strong>。</li>
+</ol>
+<p><video src="../../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="将 Studio 项目连接到 Test Manager：Project Settings、Test Manager Configuration、输入 Test Manager URL、Connect、选择默认项目，然后 OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video></p>
+</div>
+<div class="tabbed-block">
+<p>在 Studio 中关闭项目，在工作坊文件夹中启动你的编码智能体，并给它以下提示词：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Connect the Studio project in ./{YourName}UiBankTests to Test Manager at
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>https://cloud.uipath.com/tpenlabs/AgenticTestingWorkshop/testmanager_ with my {YourName}_UIB_Test project
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>(prefix {YourPrefix}) as the default project, and show me uip rpa tm status.
+</code></pre></div>
+<p>然后在 Studio 中重新打开项目。连接信息存储在项目的 <code>.tmh/config.json</code> 中，因此 Studio、Autopilot 和 CLI 使用的都是同一个连接。</p>
+</div>
+</div>
+</div>
+<h3 id="check-youre-ready">✅ 检查是否准备就绪<a class="headerlink" href="#check-youre-ready" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Studio 显示 <strong>{YourName}_UIB_Test</strong> 为默认的 Test Manager 项目。</li>
+<li>Studio 中的 <strong>Autopilot</strong> 面板可以打开。</li>
+<li>浏览器中已打开 <strong>Test Manager</strong>，并位于 <strong>{YourName}_UIB_Test</strong> 项目。</li>
+</ul>
+<p>你的工作坊文件夹现在是这样的：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>workshop/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── {YourName}UiBankTests/           ← Studio test automation project, connected to Test Manager
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>└── E2E UiBank Online Banking.docx   ← the design document
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">环境准备完成</p>
+<p>Test Manager 中有了一个新的 <strong>{YourName}_UIB_Test</strong> 项目，Studio 中有了一个与之连接的新测试自动化项目。Autopilot 现在可以直接把需求写入其中。</p>
+</div>
+<h2 id="next-steps">🚀 后续步骤<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">你构建了什么，以及可以带回去的内容</div>
+
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">📋</span>
+<span class="f-title" markdown="span">需求</span></p>
+<p>由 Autopilot in Studio Desktop 根据一份设计文档生成的八个需求，并借助 Autopilot in Test Manager 完成评估和改进</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">测试用例</span></p>
+<p>由 Autopilot in Test Manager 生成的测试用例；手动自动化的 Login；由 Autopilot in Studio Desktop 或编码智能体自动化的更多用例；一次自主运行</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔎</span>
+<span class="f-title" markdown="span">执行</span></p>
+<p>每次运行都记录了结果和证据，并可追溯到对应的需求</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span">测试集</span></p>
+<p>由 Autopilot 创建、在机器人上执行的一个冒烟测试集和一个回归测试集</p>
+</div>
+</div>
+<p><strong>持续进行</strong></p>
+<ul>
+<li>带着你的问题来。没有问题是太基础的，尤其是在刚起步的时候。</li>
+<li>遇到问题时告诉我们。一旦技能猜错、命令失败，或者某个步骤试了三次才成功，就立刻运行 <code>uip feedback send</code>。</li>
+</ul>
+<h2 id="gotchas-youll-hit">⚠️ 你会遇到的坑<a class="headerlink" href="#gotchas-youll-hit" title="Permanent link">&para;</a></h2>
+<p>每个 QA 团队在第一个月都会学到的事。</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🔍</span>
+<span class="f-title" markdown="span">信任，但要验证</span></p>
+<p>Autopilot 和编码智能体速度快、信心足。请阅读生成的需求、测试用例和断言：一个什么都不检查的测试每次都会通过。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🎯</span>
+<span class="f-title" markdown="span">选对智能体</span></p>
+<p>产品中眼前的工作交给 Autopilot。跨文件、跨项目、跨产品的工作交给编码智能体。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span">独立的测试用例</span></p>
+<p>每个测试都在 <strong>Given</strong> 中准备自己的数据。换一种顺序运行一次，就能证明这一点。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">✍️</span>
+<span class="f-title" markdown="span">好的手动步骤，双重回报</span></p>
+<p>每个步骤只有一个操作和一个预期结果，既有助于 Autopilot 生成自动化，也有助于它自主运行测试用例。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🎯</span>
+<span class="f-title" markdown="span">绝不手写选择器</span></p>
+<p>从运行中的应用捕获目标元素到 Object Repository。一个看似合理却匹配不到任何内容的选择器，代价比捕获要高得多。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">同一个环境</span></p>
+<p>Studio、CLI 和浏览器使用同一个租户。大多数“Autopilot 找不到我的项目”的问题，都是因为 Studio 登录到了别的地方。</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../what-is-a-coding-agent/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 智能体测试与编码智能体">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                智能体测试与编码智能体
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../requirements/" class="md-footer__link md-footer__link--next" aria-label="下一页: 需求">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                需求
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1595 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/agentic-testing-hands-on/">
+      
+      
+        <link rel="prev" href="../what-is-a-coding-agent/">
+      
+      
+        <link rel="next" href="../requirements/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../zh/agentic-testing-hands-on/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Testing Setup - UiPath Agentic Testing with Coding Agents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#agentic-testing-hands-on-session" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-header__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing with Coding Agents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Testing Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../zh/agentic-testing-hands-on/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agenda
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agentic Testing & Coding Agents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requirements
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Cases
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Executions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-sets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Sets
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Next Steps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing with Coding Agents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Testing & Coding Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing Setup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The scenario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-design-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The design document
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The design document">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The test data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Test Manager?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project-in-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a new project in Test Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-test-automation-project-in-uipath-studio-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a new test automation project in UiPath Studio Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-it-to-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect it to Test Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-youre-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check you're ready
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas-youll-hit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas you'll hit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">Hands-on · Testing Setup</p>
+<h1 id="agentic-testing-hands-on-session">🧭 Agentic Testing: Hands-On Session<a class="headerlink" href="#agentic-testing-hands-on-session" title="Permanent link">&para;</a></h1>
+<p><strong>Take the UiBank design document to requirements, test cases, automations, test sets, and executions in UiPath Test Cloud, with Autopilot for Testers, Autopilot for Developers, and a coding agent.</strong></p>
+<h2 id="overview">👋 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>A QA team at a bank gets a new application description every sprint. Someone turns it into requirements. Someone types the test cases into <strong>Test Manager</strong> by hand. Someone else rebuilds each one in <strong>Studio</strong>, capturing every field and button. A fourth person groups them into test sets, runs them, and copies the results into a status email. That's four handoffs and hours of clicking, and the document, the requirements, the test cases, and the automations drift apart within a month.</p>
+<p>In this session you'll do each of those jobs with AI agents, and see where a human still makes the call. <strong>Autopilot</strong> works inside the product: in <strong>Studio</strong> it creates requirements, test cases, test sets, and expressions, and in <strong>Test Manager</strong> it evaluates requirements, generates test cases, and runs a test case autonomously. A <strong>coding agent</strong> such as <strong>Codex</strong> or <strong>Claude Code</strong> works from your terminal and does the same automation work through the <strong><code>uip</code> CLI</strong> and the <strong>UiPath skills</strong>. You'll build one test case by hand first, so you can judge what the agents build for you.</p>
+<div class="admonition tip">
+<p class="admonition-title">Training Environment</p>
+<p>Log in at <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong> using tenant <strong>AgenticTestingWorkshop</strong>. The Autopilot features in this session are on <strong>UiPath Automation Cloud</strong>, so make sure Studio, the <code>uip</code> CLI, and your browser all point there.</p>
+</div>
+<h2 id="what-youll-do">🗺️ What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
+<p>The hands-on part follows the <a href="../agenda/">Agenda</a>:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">⚙️</span>
+<span class="f-title" markdown="span"><strong><a href="#setup">Setup</a></strong></span></p>
+<p>Create a new project in Test Manager, a new test automation project in Studio, and connect them</p>
+<p>👤 You</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📋</span>
+<span class="f-title" markdown="span"><strong><a href="../requirements/">Requirements</a></strong></span></p>
+<p>Turn the UiBank design document into requirements, discuss them, evaluate their quality, improve them, and evaluate again</p>
+<p>👤 <strong>Autopilot in Studio Desktop</strong>, <strong>Autopilot in Test Manager</strong>, you</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span"><strong><a href="../test-cases/">Test Cases</a></strong></span></p>
+<p>Generate test cases from a requirement, automate the Login test case by hand, generate the next one, see a test case run autonomously, and add a few more</p>
+<p>👤 <strong>Autopilot in Test Manager</strong>, you, <strong>Autopilot in Studio Desktop</strong> or a <strong>coding agent</strong></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">▶️</span>
+<span class="f-title" markdown="span"><strong><a href="../executions/">Executions</a></strong></span></p>
+<p>Read what every run left behind</p>
+<p>👤 You</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span"><strong><a href="../test-sets/">Test Sets</a></strong></span></p>
+<p>Create test sets from your test cases, run them, and look into their executions</p>
+<p>👤 <strong>Autopilot in Studio Desktop</strong>, you</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🚀</span>
+<span class="f-title" markdown="span"><strong><a href="#next-steps">Next Steps</a></strong></span></p>
+<p>Take it back to your own application</p>
+<p>👤 You</p>
+</div>
+</div>
+<h2 id="the-scenario">🏦 The scenario<a class="headerlink" href="#the-scenario" title="Permanent link">&para;</a></h2>
+<div style="font-family: inherit; margin: 1.5rem 0 2rem;">
+
+  <div style="background: #16213e; border-left: 10px solid #FA4616; padding: 26px 32px; margin-bottom: 22px;">
+    <div style="font-size: 20px; font-weight: 700; color: #ffffff; line-height: 1.35;">A bank's QA team is moving its regression suite to agentic testing.</div>
+    <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 10px; line-height: 1.45;">One design document. Requirements, test cases, test sets, and executions, built with Autopilot and a coding agent, with a tester deciding what counts as a pass.</div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch;">
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">📋</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">01</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Requirements</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio Desktop writes them from the document. Autopilot in Test Manager grades them.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 evaluated requirements</div>
+  </div>
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">🧪</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">02</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Test Cases</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Generated in Test Manager, automated by you, by Autopilot, or by a coding agent.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Automated test cases</div>
+  </div>
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">🔎</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">03</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Executions</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Every run, manual, automated, or autonomous, with its results and evidence.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; Results you can read</div>
+  </div>
+  <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+      <span style="font-size: 40px; line-height: 46px;">📦</span>
+      <span style="font-size: 34px; font-weight: 700; color: #f6c3ab; line-height: 1;">04</span>
+    </div>
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Test Sets</div>
+    <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot groups your test cases. You run them and read the results.</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; An executed test set</div>
+  </div>
+  </div>
+
+</div>
+
+<p>How the work moves through the session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>UiBank design document (.docx)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Setup          New {YourName}_UIB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ▼
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Requirements   Autopilot in Studio Desktop ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   ▼
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                 ├─ Login: you automate it by hand in Studio
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                 ├─ Next one: Autopilot in Studio Desktop, or your coding agent, automates it
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                 ├─ Run Autonomously: Autopilot runs a manual test case itself
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                 └─ A few more
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>   ▼
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Executions     Executions tab ──▶ every run so far
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>   │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>   ▼
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Test Sets      Autopilot in Studio Desktop ──▶ Test sets ──▶ publish ──▶ run ──▶ executions
+</code></pre></div>
+<h2 id="the-design-document">📄 The design document<a class="headerlink" href="#the-design-document" title="Permanent link">&para;</a></h2>
+<p>Everything in this session comes from one design document for the UiBank web application: <strong>E2E UiBank Online Banking</strong>. Download <code>E2E UiBank Online Banking.docx</code> and save it in your workshop folder.</p>
+<p><a class="md-button md-button--primary" href="../resources.assets/E2E%20UiBank%20Online%20Banking.docx">Download the design document (.docx)</a></p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🏦</span>
+<span class="f-title" markdown="span">Application</span></p>
+<p>UiBank Web Application v2.0.0 (Accounts / Transfers / Loans / Profile)</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">Environment</span></p>
+<p><code>https://uibank.uipath.com</code> in Google Chrome. Fallback: <code>https://purple-dune-0af054403.6.azurestaticapps.net</code></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📝</span>
+<span class="f-title" markdown="span">What it describes</span></p>
+<p>Log in, open a Checking and a Savings account, transfer funds between them, apply for a loan, retrieve it by Loan ID, and verify the user profile</p>
+</div>
+</div>
+<p>The document describes the customer journey in eight steps. You won't test it as one long end-to-end run. Each step becomes <strong>a requirement</strong> and <strong>its own test cases</strong>, so a failure points straight at the feature that broke, and one broken screen doesn't hide the results of the others.</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">0</span></p>
+<div class="ci-body">
+<p><strong>Login and Initial Account State</strong></p>
+<p><code>/login</code>, <code>/accounts</code></p>
+<p>✅ Login succeeds; initial account state captured</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Checking Account Creation</strong></p>
+<p><code>/accounts/account-apply</code></p>
+<p>✅ Checking account listed in the summary</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Savings Account Creation</strong></p>
+<p><code>/accounts/account-apply</code></p>
+<p>✅ Savings account listed in the summary</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>Funds Transfer Between Accounts</strong></p>
+<p><code>/accounts/transfer-money</code></p>
+<p>✅ Both balances change by exactly the transferred amount</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>Loan Application Submission</strong></p>
+<p><code>/loans/apply</code></p>
+<p>✅ Loan ID generated</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">5</span></p>
+<div class="ci-body">
+<p><strong>Loan Status Lookup</strong></p>
+<p><code>/loans/lookup</code></p>
+<p>✅ Amount and term match what was submitted</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">6</span></p>
+<div class="ci-body">
+<p><strong>User Profile Identity Verification</strong></p>
+<p><code>/userprofile</code></p>
+<p>✅ Username and email match the logged-in user</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">7</span></p>
+<div class="ci-body">
+<p><strong>Logout and Evidence Collection</strong></p>
+<p><code>/</code></p>
+<p>✅ Session closed; screenshots attached to the report</p>
+</div>
+</div>
+</div>
+<h3 id="the-test-data">🔢 The test data<a class="headerlink" href="#the-test-data" title="Permanent link">&para;</a></h3>
+<p>These are the variables the design document defines. Use them in your prompts and your automations, so the requirements, the test cases, and the results all describe the same thing.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">What it holds</th>
+<th style="text-align: left;">Value / rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>var_Username</code>, <code>var_Password</code></td>
+<td style="text-align: left;">UiBank login</td>
+<td style="text-align: left;">From the Orchestrator credential asset <code>{YourName}_UiBankCredential</code>. Never hard-coded.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_CheckingNickname</code></td>
+<td style="text-align: left;">New Checking account</td>
+<td style="text-align: left;"><code>AutoChecking_&lt;yyyyMMddHHmmss&gt;</code>, unique per run</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_SavingsNickname</code></td>
+<td style="text-align: left;">New Savings account</td>
+<td style="text-align: left;"><code>AutoSavings_&lt;yyyyMMddHHmmss&gt;</code>, unique per run</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_TransferAmount</code></td>
+<td style="text-align: left;">Amount to transfer</td>
+<td style="text-align: left;"><code>10</code>, never more than the source balance</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanEmail</code></td>
+<td style="text-align: left;">Loan requester email</td>
+<td style="text-align: left;">The email you registered on UiBank</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanAmount</code></td>
+<td style="text-align: left;">Loan amount</td>
+<td style="text-align: left;"><code>5000</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanTerm</code></td>
+<td style="text-align: left;">Loan term in years</td>
+<td style="text-align: left;"><code>3</code> (allowed: 1, 3, 5, 10)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_YearlyIncome</code></td>
+<td style="text-align: left;">Yearly income before taxes</td>
+<td style="text-align: left;"><code>60000</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_Age</code></td>
+<td style="text-align: left;">Requester's age</td>
+<td style="text-align: left;"><code>35</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>var_LoanID</code></td>
+<td style="text-align: left;">Loan ID returned by UiBank</td>
+<td style="text-align: left;">Extracted after a loan is submitted</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Three things every test case must handle</p>
+<ul>
+<li><strong>It runs on its own.</strong> Test cases run in any order, on any robot. In the document, the transfer uses the accounts from Steps 1 and 2, and the lookup uses the Loan ID from Step 4. As test cases, the transfer opens its own two accounts and the lookup submits its own loan, at the start.</li>
+<li><strong>No accounts yet.</strong> A fresh UiBank user sees <em>"No accounts at this time, apply for a new account today!"</em> instead of a table. That's a valid starting state, not a failure.</li>
+<li><strong>Unknown rules.</strong> UiBank is a demo app. Balances and loan decision rules aren't documented, and data can be reset. Check the loan outcome rather than assuming approval.</li>
+</ul>
+</div>
+<h3 id="whats-test-manager">📋 What's Test Manager?<a class="headerlink" href="#whats-test-manager" title="Permanent link">&para;</a></h3>
+<div style="background: #16213e; border-left: 10px solid #FA4616; padding: 22px 28px; margin: 1.2rem 0 1.4rem;">
+  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">The planning and reporting hub of UiPath Test Cloud.</div>
+  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">Requirements say what must work. Test cases say how you'll prove it. Test sets and executions say whether it did.</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-bottom: 1.5rem;">
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Requirement</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">What the application must do, and the acceptance criteria</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Test case</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">A scenario with manual steps, linked to the requirement it covers, and optionally to an automation</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Test set</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">The group of test cases you execute together</div>
+  </div>
+  <div style="flex: 1 1 220px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 4px solid #FA4616; padding: 18px 20px; box-sizing: border-box;">
+    <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 9px;">Execution</div>
+    <div style="font-size: 14.5px; color: #4a4a4a; line-height: 1.55;">One run, with a log, result, and evidence per test case</div>
+  </div>
+</div>
+
+<h2 id="setup">⚙️ Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">A Test Manager project, and a test automation project connected to it</div>
+
+<div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
+  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">WHAT YOU NEED</div>
+  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;"><strong>Test Manager</strong> open in your browser on the <strong>AgenticTestingWorkshop</strong> tenant.</li></ul>
+</div>
+
+<h3 id="create-a-new-project-in-test-manager">🆕 Create a new project in Test Manager<a class="headerlink" href="#create-a-new-project-in-test-manager" title="Permanent link">&para;</a></h3>
+<p>Requirements, test cases, test sets, and executions all live in a Test Manager project. Create yours first: everything Autopilot generates in the next parts goes into it.</p>
+<ol>
+<li>Go to <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong>, select the <strong>AgenticTestingWorkshop</strong> tenant, and open <strong>Test Manager</strong>.</li>
+<li>On the <strong>Projects</strong> page, select <strong>Create new project</strong>.</li>
+<li>
+<p>In the <strong>Create new project</strong> dialog, fill in:</p>
+<ul>
+<li><strong>Name:</strong> <code>{YourName}_UIB_Test</code></li>
+<li><strong>Prefix:</strong> <code>{YourPrefix}</code>, a unique code of 3 to 5 letters and numbers: your initials plus a digit, for example <code>VC1</code>. Everyone works in the same tenant, and each prefix can be used only once in it. You can't change it later.</li>
+<li><strong>Description:</strong> optional, for example <em>UiBank online banking tests</em>.</li>
+</ul>
+<p><img alt="The Create new project dialog in Test Manager, with a project name, the example prefix UIB, an empty description, and the Create button" class="screenshot" src="../agentic-testing-hands-on.images/test-manager-create-new-project-W.png" width="900" />
+<em>The Create new project dialog. The screenshot uses the prefix UIB: use your own.</em></p>
+<div class="admonition info">
+<p class="admonition-title">What the prefix is for</p>
+<p>Every object in the project gets a key that starts with the prefix: with the prefix <code>VC1</code>, the first requirement becomes <code>VC1:1</code>, the next <code>VC1:2</code>, and so on, across requirements, test cases, and test sets. Short and recognizable beats descriptive.</p>
+</div>
+</li>
+<li>
+<p>Select <strong>Create</strong>, then open the project. It's empty for now.</p>
+</li>
+<li>
+<p>Set the project's default Orchestrator folder. Test sets need it to run automated test cases later.</p>
+<ol>
+<li>In the project's left menu, select <strong>Project Settings</strong>, then the <strong>Automation</strong> tab.</li>
+<li>In <strong>Default Folder</strong>, select <code>AgenticTesting</code>.</li>
+<li>Select <strong>Save</strong>.</li>
+</ol>
+<p><img alt="The Automation tab of Project Settings in Test Manager, with AgenticTesting selected as the Default Folder and the Save button" class="screenshot" src="../agentic-testing-hands-on.images/test-manager-default-folder.png" width="800" />
+<em>Project Settings &gt; Automation, with <code>AgenticTesting</code> as the default folder.</em></p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Why your name in the project name</p>
+<p>Everyone in the session works in the same tenant. Your name keeps your project easy to find in the <strong>Projects</strong> list, and keeps your requirements, test cases, and results apart from everyone else's.</p>
+</div>
+<h3 id="create-a-new-test-automation-project-in-uipath-studio-desktop">🛠️ Create a new test automation project in UiPath Studio Desktop<a class="headerlink" href="#create-a-new-test-automation-project-in-uipath-studio-desktop" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Studio</strong>. On the <strong>Start</strong> screen, under <strong>New Project</strong>, select <strong>Test Automation</strong>.</li>
+<li>
+<p>In the <strong>New Blank Test Project</strong> dialog, fill in:</p>
+<ul>
+<li><strong>Name:</strong> <code>{YourName}UiBankTests</code></li>
+<li><strong>Description:</strong> optional, for example <em>Test Automation Project</em></li>
+</ul>
+<p><img alt="The New Blank Test Project dialog in Studio, with the name {YourName}UiBankTests, a description, and the advanced options Location, Compatibility Cross-platform, Language VB, and Minimum Robot version" class="screenshot" src="../agentic-testing-hands-on.images/studio-new-test-project-W.png" width="900" /></p>
+</li>
+<li>
+<p>Select <strong>Create</strong>.</p>
+</li>
+<li>Studio opens the new project. In the <strong>Project</strong> panel, expand <strong>Dependencies</strong> and check that the testing packages are there, such as <code>UiPath.Testing.Activities</code> and <code>UiPath.UIAutomation.Activities</code>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Why a test automation project</p>
+<p>A test automation project is built for test cases: it has the testing activities, the Given / When / Then template, and the <strong>Test Explorer</strong> panel. Each test case in it can be linked to a test case in Test Manager, and its results go back to Test Manager when it runs there.</p>
+</div>
+<h3 id="connect-it-to-test-manager">🔗 Connect it to Test Manager<a class="headerlink" href="#connect-it-to-test-manager" title="Permanent link">&para;</a></h3>
+<p>The project needs to know which Test Manager project its requirements, test cases, and results belong to. Pick one way:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">In Studio</label><label for="__tabbed_1_2">With your coding agent</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>In the <strong>Explorer</strong> panel, right-click your project name and select <strong>Project Settings</strong>.</li>
+<li>Select <strong>Test Manager Configuration</strong>.</li>
+<li>Under <strong>Test Manager Settings</strong>, enter the Test Manager URL <code>https://cloud.uipath.com/tpenlabs/AgenticTestingWorkshop/testmanager_</code>, then select <strong>Connect</strong>. The status changes to <strong>Connected</strong>.</li>
+<li>In <strong>Default Project</strong>, type your prefix and select <strong>{YourName}_UIB_Test ({YourPrefix})</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+<p><video src="../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="Connecting the Studio project to Test Manager: Project Settings, Test Manager Configuration, entering the Test Manager URL, Connect, selecting the default project, and OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video></p>
+</div>
+<div class="tabbed-block">
+<p>Close the project in Studio, start your coding agent in your workshop folder, and give it this prompt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Connect the Studio project in ./{YourName}UiBankTests to Test Manager at
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>https://cloud.uipath.com/tpenlabs/AgenticTestingWorkshop/testmanager_ with my {YourName}_UIB_Test project
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>(prefix {YourPrefix}) as the default project, and show me uip rpa tm status.
+</code></pre></div>
+<p>Then reopen the project in Studio. The connection is stored in the project's <code>.tmh/config.json</code>, so Studio, Autopilot, and the CLI all use the same one.</p>
+</div>
+</div>
+</div>
+<h3 id="check-youre-ready">✅ Check you're ready<a class="headerlink" href="#check-youre-ready" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Studio shows <strong>{YourName}_UIB_Test</strong> as the default Test Manager project.</li>
+<li>The <strong>Autopilot</strong> panel opens in Studio.</li>
+<li><strong>Test Manager</strong> is open in your browser, on the <strong>{YourName}_UIB_Test</strong> project.</li>
+</ul>
+<p>Your workshop folder now looks like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>workshop/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── {YourName}UiBankTests/           ← Studio test automation project, connected to Test Manager
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>└── E2E UiBank Online Banking.docx   ← the design document
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Setup done</p>
+<p>A new <strong>{YourName}_UIB_Test</strong> project in Test Manager, and a new test automation project in Studio connected to it. Autopilot can now write requirements straight into it.</p>
+</div>
+<h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">What you built, and what to take home</div>
+
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">📋</span>
+<span class="f-title" markdown="span">Requirements</span></p>
+<p>Eight requirements generated by Autopilot in Studio Desktop from one design document, evaluated and improved with Autopilot in Test Manager</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Test Cases</span></p>
+<p>Test cases generated by Autopilot in Test Manager; Login automated by hand; more automated by Autopilot in Studio Desktop or a coding agent; one autonomous run</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔎</span>
+<span class="f-title" markdown="span">Executions</span></p>
+<p>Every run recorded with results and evidence, traceable to its requirement</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">📦</span>
+<span class="f-title" markdown="span">Test Sets</span></p>
+<p>A smoke set and a regression set created by Autopilot and executed on a robot</p>
+</div>
+</div>
+<p><strong>Ongoing</strong></p>
+<ul>
+<li>Bring your questions. No question is too basic, especially this early.</li>
+<li>Tell us when something doesn't work. Run <code>uip feedback send</code> the moment a skill guesses wrong, a command fails, or a step takes three tries.</li>
+</ul>
+<h2 id="gotchas-youll-hit">⚠️ Gotchas you'll hit<a class="headerlink" href="#gotchas-youll-hit" title="Permanent link">&para;</a></h2>
+<p>Things every QA team learns in the first month.</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🔍</span>
+<span class="f-title" markdown="span">Trust but verify</span></p>
+<p>Autopilot and coding agents are fast and confident. Read the generated requirements, test cases, and assertions: a test that checks nothing passes every time.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🎯</span>
+<span class="f-title" markdown="span">Pick the right agent</span></p>
+<p>Autopilot for what's in front of you in the product. A coding agent for work that spans files, projects, and products.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧩</span>
+<span class="f-title" markdown="span">Independent test cases</span></p>
+<p>Every test sets up its own data in <strong>Given</strong>. Run them in a different order once to prove it.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">✍️</span>
+<span class="f-title" markdown="span">Good manual steps pay twice</span></p>
+<p>One action and one expected result per step helps Autopilot generate the automation, and run the test case autonomously.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🎯</span>
+<span class="f-title" markdown="span">Never hand-write selectors</span></p>
+<p>Capture targets from the live app into the Object Repository. A plausible-looking selector that matches nothing costs more than the capture.</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🌐</span>
+<span class="f-title" markdown="span">One environment</span></p>
+<p>Studio, the CLI, and the browser on the same tenant. Most "Autopilot can't find my project" problems are a Studio signed in somewhere else.</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../what-is-a-coding-agent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Agentic Testing &amp; Coding Agents">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Agentic Testing & Coding Agents
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../requirements/" class="md-footer__link md-footer__link--next" aria-label="Next: Requirements">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Requirements
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

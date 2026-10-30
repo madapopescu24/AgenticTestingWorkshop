@@ -1,0 +1,1260 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/test-cases/">
+      
+      
+        <link rel="prev" href="../requirements/">
+      
+      
+        <link rel="next" href="../executions/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../zh/test-cases/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Test Cases - UiPath Agentic Testing with Coding Agents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#test-cases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-header__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing with Coding Agents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Test Cases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../zh/test-cases/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agenda
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agentic Testing & Coding Agents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agentic-testing-hands-on/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Testing Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requirements
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Cases
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Executions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-sets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Sets
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP Testing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Next Steps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="UiPath Agentic Testing with Coding Agents" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing with Coding Agents" data-md-component="logo">
+      
+  <img src="../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing with Coding Agents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Testing & Coding Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-testing-hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ask-autopilot-in-test-manager-to-create-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask Autopilot in Test Manager to create test cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implement-the-login-test-case-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implement the Login test case by hand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-the-next-test-case-with-autopilot-or-a-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generate the next test case with Autopilot or a coding agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-autonomously-in-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run Autonomously in Test Manager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implement-a-few-more-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implement a few more test cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Executions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">Hands-on · Part 2 of 4</p>
+<h1 id="test-cases">🧪 Test Cases<a class="headerlink" href="#test-cases" title="Permanent link">&para;</a></h1>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">Generate them, automate one by hand, then let the agents do the rest</div>
+
+<h2 id="ask-autopilot-in-test-manager-to-create-test-cases">🤖 Ask Autopilot in Test Manager to create test cases<a class="headerlink" href="#ask-autopilot-in-test-manager-to-create-test-cases" title="Permanent link">&para;</a></h2>
+<p>The <strong>Test Case Generation Agent</strong> writes test cases from a requirement, with manual steps and expected results.</p>
+<ol>
+<li>In Test Manager, under <strong>Requirements</strong>, open a requirement, for example <strong>Login and Initial Account State</strong>.</li>
+<li>Ask Autopilot to generate test cases for it. To steer it, pick a prompt from the <strong>Prompt Library</strong>: <strong>Valid E2E Scenario Testing</strong> for valid end-to-end scenarios, or <strong>Boundary-Value Testing</strong> for edge cases.</li>
+<li>Review the suggestions. Keep the happy path, and name it <strong>Login and Initial Account State</strong>. Keep one or two negative cases too, such as a wrong password. Discard the rest.</li>
+<li>Open <strong>Login and Initial Account State</strong> and read its manual steps. Each one needs an action and an expected result you could check on screen.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Prompt Library</p>
+<p>The Prompt Library holds predefined prompts, such as <strong>Valid E2E Scenario Testing</strong>, <strong>End-to-End Flow Verification</strong>, <strong>Rapid Test Idea Generation</strong>, <strong>Elusive Issue Detection</strong>, and <strong>Boundary-Value Testing</strong>, plus the custom ones your team saves. A prompt that works well for one requirement usually works for the next, so save the good ones.</p>
+</div>
+<h2 id="implement-the-login-test-case-by-hand">✍️ Implement the Login test case by hand<a class="headerlink" href="#implement-the-login-test-case-by-hand" title="Permanent link">&para;</a></h2>
+<p>Before any agent automates a test for you, build one yourself. It takes longer, and that's the point: you'll know exactly what to check when an agent does it in five minutes.</p>
+<div style="background: #16213e; border-left: 10px solid #FA4616; padding: 22px 28px; margin: 1.2rem 0 1.4rem;">
+  <div style="font-size: 19px; font-weight: 700; color: #ffffff; line-height: 1.35;">Every UiPath test case has three parts: Given, When, Then.</div>
+  <div style="font-size: 15px; font-style: italic; color: #f6c3ab; margin-top: 9px;">Set up what the test needs. Do the one thing under test. Check what the application shows.</div>
+</div>
+
+<p><strong>Create the test case</strong></p>
+<ol>
+<li>In <strong>Studio</strong>, find <strong>Login and Initial Account State</strong> among your Test Manager test cases, and create a Studio test case linked to it. Name the file <code>T0_LoginAndInitialAccountState.xaml</code>, the same name as in the trainer's reference package.</li>
+<li>The new test case opens with three sequences: <strong>Given</strong>, <strong>When</strong>, and <strong>Then</strong>.</li>
+</ol>
+<p><strong>Given: set up</strong></p>
+<ol>
+<li>Nothing to add for this test: it needs only your registered UiBank user and your credential asset. Leave <strong>Given</strong> empty. The credential is read in <strong>When</strong>, inside the browser card that types it.</li>
+</ol>
+<p><strong>When: log in and open Accounts</strong></p>
+<ol>
+<li>Open <code>https://uibank.uipath.com/login</code> in Chrome. If it doesn't load, use the <a href="../setup/#4-register-your-uibank-test-user">fallback</a>: <code>https://purple-dune-0af054403.6.azurestaticapps.net/login</code>.</li>
+<li>Add a <strong>Use Application/Browser</strong> activity and indicate the UiBank login page.</li>
+<li>Inside the <strong>Use Application/Browser</strong> card, before any <strong>Type Into</strong>, add a <strong>Get Credential</strong> activity. Set the asset name to <code>{YourName}_UiBankCredential</code> and the folder to <code>AgenticTesting</code>. Store the outputs in <code>var_Username</code> (String) and <code>var_Password</code> (SecureString).</li>
+<li>Add <strong>Type Into</strong> for the <strong>Enter username</strong> field with <code>var_Username</code>, and <strong>Type Into</strong> for the <strong>Enter password</strong> field with <code>var_Password</code> as secure text.</li>
+<li>Add <strong>Click</strong> on <strong>Sign In</strong>.</li>
+<li>Add <strong>Check App State</strong> on the <strong>I agree to the Privacy Policy</strong> button of UiBank's <strong>Important Notice</strong> dialog, with a short timeout. If it appears, <strong>Click</strong> it. If it doesn't, carry on.</li>
+<li>Add <strong>Check App State</strong> on the <strong>Welcome!</strong> heading above <em>"Here is your account summary"</em>. UiBank opens <strong>Accounts</strong> right after Sign In, so this heading proves the login worked. Store the result in <code>var_WelcomeShown</code> (Boolean).</li>
+<li>Add <strong>Get Text</strong> on the account summary area, and store it in <code>var_AccountSummary</code>.</li>
+</ol>
+<p><strong>Then: verify</strong></p>
+<ol>
+<li>Add <strong>Verify Expression</strong> with <code>var_WelcomeShown</code>.</li>
+<li>Add <strong>Verify Expression</strong> that checks <code>var_AccountSummary</code> either contains <em>"No accounts at this time"</em> or lists at least one account.</li>
+<li>On each verification, turn on the screenshot option, so the evidence is attached to the result.</li>
+</ol>
+<p><strong>Run it</strong></p>
+<ol>
+<li>In <strong>Test Explorer</strong>, run the test case. Both verifications must pass.</li>
+<li>Run it a second time. It must pass again.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Keep the password inside the browser card</p>
+<p>Workflow Analyzer rule <strong>ST-SEC-008</strong> fails the build when a SecureString is used outside the scope that created it. If <strong>Get Credential</strong> sits in <strong>Given</strong>, or the password is passed to another workflow as an argument, <code>uip rpa validate</code> may still pass, but Studio's build and <code>uip rpa build</code> fail with <em>"SecureString variable used outside of the creation scope"</em>. Read the credential inside the <strong>Use Application/Browser</strong> card that types it.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">The Important Notice dialog</p>
+<p>From the second sign-in on, UiBank may show an <strong>Important Notice</strong> with <strong>I agree to the Privacy Policy →</strong> and ✕. Closing it with ✕ leaves you logged out, and every later step fails. Accept it once by hand before you automate, and keep step 9 in every test that logs in.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Use the Object Repository</p>
+<p>When you indicate a target, save it to the <strong>Object Repository</strong>. The agents you use for the next test case reuse those targets, so the login fields you capture by hand are the ones Autopilot and your coding agent build on.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Login test case done</p>
+<p><code>T0_LoginAndInitialAccountState.xaml</code> is linked to its Test Manager test case and passes twice, with a screenshot on each verification. Note how long it took. You'll compare with the next test case.</p>
+</div>
+<h2 id="generate-the-next-test-case-with-autopilot-or-a-coding-agent">🪄 Generate the next test case with Autopilot or a coding agent<a class="headerlink" href="#generate-the-next-test-case-with-autopilot-or-a-coding-agent" title="Permanent link">&para;</a></h2>
+<p>Now let an agent automate the next one. Pick a requirement after Login, for example <strong>Checking Account Creation</strong>. First generate its test cases in Test Manager the same way you did for Login, and keep the happy path as <strong>Checking Account Creation</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Use the test case name Autopilot actually generated</p>
+<p>Autopilot in Test Manager doesn't always name test cases the same way. Yours may be called <strong>Open a Checking Account</strong>, <strong>Step 1: Open a Checking Account</strong>, or something else. Check the exact name in Test Manager under <strong>Test Cases</strong>, and use it in the prompt below wherever it says <strong>Checking Account Creation</strong>. Otherwise Studio, Autopilot, or your coding agent links the automation to the wrong test case, or doesn't find one.</p>
+</div>
+<p>Then automate it with this prompt. You can give it to Autopilot in Studio Desktop or to a coding agent. The prompt is the same, only where you type it changes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>In this test automation project, which is connected to my
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>{YourName}_UIB_Test Test Manager project, automate the Test Manager test
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>case "Checking Account Creation" as T1_CheckingAccountCreation.xaml,
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>linked to that test case.
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Use Given / When / Then. Given logs in, reusing the login steps and Object
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Repository targets from T0_LoginAndInitialAccountState.xaml. Read the
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>credential asset {YourName}_UiBankCredential from the AgenticTesting
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>folder inside the browser scope that types it, and don't pass the password
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>as an argument. After Sign In, click "I agree to the Privacy Policy" only
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>if UiBank's Important Notice appears. When applies for a Checking account
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>with the nickname AutoChecking_&lt;yyyyMMddHHmmss&gt;. Then verifies that the
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>confirmation page shows that nickname, and that the account is listed in
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>the account summary with its nickname, with a screenshot on every
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>verification. UiBank doesn't display the account type after creation, so
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>don't check it.
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>Capture any new UI targets from the live UiBank site into the Object
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Repository. Don't write selectors by hand. Inspect the project before you
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>edit it, then validate and build it. Ask me before you run it.
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Autopilot in Studio Desktop</label><label for="__tabbed_1_2">Coding agent (Codex, Claude Code)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>In <strong>Studio</strong>, with your <code>{YourName}UiBankTests</code> project open, open the <strong>Autopilot</strong> panel.</li>
+<li>Paste the prompt into <strong>Ask Autopilot anything</strong> and send it.</li>
+<li>Review what Autopilot proposes before you accept it: does <strong>Given</strong> log in first? Does <strong>Then</strong> check the confirmation page and the account summary show the new nickname?</li>
+<li>Accept the changes, then run the test case from <strong>Test Explorer</strong>, twice.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>In <strong>Studio</strong>, with your <code>{YourName}UiBankTests</code> project open, open the <strong>Terminal</strong> panel at the bottom of the window. It opens in your project folder.</li>
+<li>
+<p>Start your coding agent there:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>claude
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># or</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>codex
+</code></pre></div>
+</li>
+<li>
+<p>Paste the prompt into the terminal and press <strong>Enter</strong>.</p>
+</li>
+<li>Answer its questions, and read each command it proposes before you approve it.</li>
+<li>When it's done, run the test case from <strong>Test Explorer</strong>, twice.</li>
+</ol>
+<p>The coding agent loads the <code>uipath-rpa</code> skill, reads the project and your Login test case first, then writes the new one. If it can't reach UiBank in the browser, it doesn't guess selectors: it names the activities it couldn't target <code>TODO Indicate — …</code>. Indicate those in Studio, or open UiBank in Chrome and ask it to try again.</p>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Check, validate, and correct the generated test case</p>
+<p>Whichever agent built it, the test case is yours to sign off. Before you move on, open it in Studio and check it against its Test Manager test case and the design document:</p>
+<ul>
+<li><strong>Given</strong> logs in and sets up everything the test needs, so it runs on its own.</li>
+<li><strong>When</strong> does what the manual steps describe, on the right screens and fields.</li>
+<li><strong>Then</strong> verifies every expected result, with the right values, and a screenshot on each verification.</li>
+<li>It runs and passes in <strong>Test Explorer</strong>, twice.</li>
+</ul>
+<p>Where something is wrong or missing, correct it: edit it yourself in Studio, use Autopilot on a single expression, or ask the agent to fix it, telling it exactly what's wrong.</p>
+</div>
+<p>Compare with the Login test case you built by hand:</p>
+<ul>
+<li>How long did it take?</li>
+<li>Is the result as readable as yours? Would you trust its <strong>Then</strong> section without reading it?</li>
+<li>Did it reuse your login targets, or capture new ones?</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Make changes in one place at a time</p>
+<p>Studio, Autopilot, and your coding agent can all edit the same files. Close a file in Studio before your coding agent changes it, and tell your coding agent when you've changed something in Studio, so it re-reads the project instead of overwriting your work.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Autopilot for Developers</p>
+<p>While you review the generated test case, use Autopilot on single expressions. In the <strong>Expression Editor</strong>, select <strong>Fix</strong> (the magic wand) on any expression with a validation error, or type an instruction into the Autopilot box at the bottom, for example <em>"Build the nickname AutoChecking_ followed by the current time as yyyyMMddHHmmss."</em></p>
+</div>
+<h2 id="run-autonomously-in-test-manager">🎬 Run Autonomously in Test Manager<a class="headerlink" href="#run-autonomously-in-test-manager" title="Permanent link">&para;</a></h2>
+<p>Not every test case needs an automation before it can run. In Test Manager, Autopilot can run a test case <strong>autonomously</strong>: it reads the manual steps and carries them out on the application itself, then records a result for each step, with evidence.</p>
+<p>Try it on one of the negative login test cases you kept when Autopilot generated them:</p>
+<ol>
+<li>In Test Manager, under <strong>Test Cases</strong>, open a test case that has manual steps but no automation.</li>
+<li>If a step logs in, write the password as <code>{{credential:{YourName}_UiBankCredential}}</code> instead of typing it into the step.</li>
+<li>Open the <strong>Manual Steps</strong> tab and select <strong>Run autonomously</strong>. Depending on the release, the button may be labeled <strong>Run with Autopilot</strong>.</li>
+<li>Enter the target URL <code>https://uibank.uipath.com/login</code>, or <code>https://purple-dune-0af054403.6.azurestaticapps.net/login</code> if you use the fallback. <strong>Run</strong> stays disabled until you do.</li>
+<li>Pick the model the trainer names.</li>
+<li>Turn on <strong>live streaming</strong> now, before you select <strong>Run</strong>, if you want to watch the test case run as it happens.</li>
+<li>Select <strong>Run</strong>.</li>
+<li>When it finishes, open the result. Every step's execution is documented with a screenshot of what Autopilot saw, next to the step's outcome.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Autonomous runs need Test Cloud and a Windows robot</p>
+<p>Autonomous test execution is available only when Test Manager is delivered through <strong>Test Cloud</strong>, and it's supported on <strong>Windows</strong> environments only. It runs as a job on a Windows robot in the <code>AgenticTesting</code> folder. With only a macOS robot connected, the run stays <strong>Pending</strong> and no Orchestrator job is created. If yours stays Pending, tell the trainer, and start a new run once a Windows robot is available. See <a href="../executions/#why-does-my-execution-stay-pending">Why does my execution stay Pending?</a></p>
+</div>
+<p>Discuss as a group:</p>
+<ul>
+<li>When would you run a test case autonomously instead of automating it? A one-off check of a new feature, or a test case that changes every sprint, are good candidates.</li>
+<li>What makes a manual step easy for Autopilot to follow? The same thing that makes it easy for a person: one action, one expected result, the exact labels on screen.</li>
+</ul>
+<h2 id="implement-a-few-more-test-cases">➕ Implement a few more test cases<a class="headerlink" href="#implement-a-few-more-test-cases" title="Permanent link">&para;</a></h2>
+<p>Pick two or three more requirements and repeat the cycle: generate the test cases in Test Manager, keep the happy path, and automate it with Autopilot in Studio Desktop or your coding agent. Suggested order, with what each test case's <strong>Given</strong> must set up so it runs on its own:</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Savings Account Creation</span></p>
+<p>📄 <code>T2_SavingsAccountCreation.xaml</code></p>
+<p><strong>Given:</strong> Log in</p>
+<p><strong>Then:</strong> Confirmation page and account summary show the Savings nickname</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Funds Transfer Between Accounts</span></p>
+<p>📄 <code>T3_FundsTransferBetweenAccounts.xaml</code></p>
+<p><strong>Given:</strong> Log in, open a Checking and a Savings account, read both balances</p>
+<p><strong>Then:</strong> Checking = before − <code>var_TransferAmount</code>; Savings = before + <code>var_TransferAmount</code></p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Loan Application Submission</span></p>
+<p>📄 <code>T4_LoanApplicationSubmission.xaml</code></p>
+<p><strong>Given:</strong> Log in</p>
+<p><strong>Then:</strong> Result message captured; Loan ID returned</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Loan Status Lookup</span></p>
+<p>📄 <code>T5_LoanStatusLookup.xaml</code></p>
+<p><strong>Given:</strong> Log in, submit a loan, keep <code>var_LoanID</code></p>
+<p><strong>Then:</strong> Amount and term match</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">User Profile Identity Verification</span></p>
+<p>📄 <code>T6_UserProfileIdentityVerification.xaml</code></p>
+<p><strong>Given:</strong> Log in</p>
+<p><strong>Then:</strong> Username and email match</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧪</span>
+<span class="f-title" markdown="span">Logout and Evidence Collection</span></p>
+<p>📄 <code>T7_LogoutAndEvidenceCollection.xaml</code></p>
+<p><strong>Given:</strong> Log in</p>
+<p><strong>Then:</strong> Session closed; top menu no longer available</p>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Don't assume the loan is approved</p>
+<p>UiBank's loan decision rules aren't documented. The loan tests must pass whether the loan is approved or rejected, as long as a Loan ID comes back and the lookup shows the same amount and term.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">A balance check fails?</p>
+<p>Read the screenshot before you read the code. The usual causes are a balance read as text with a currency sign (<code>$1,000.00</code> isn't a number until you parse it), or a balance read before the account summary refreshed. Autopilot in the Expression Editor is quick at the conversion: <em>"Convert this text, for example "$1,000.00", to a Decimal."</em></p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Test cases done</p>
+<p>At least four automated test cases, each linked to its Test Manager test case and passing on its own: Login built by hand, the rest built by Autopilot or your coding agent. Plus a few manual-only test cases from Autopilot, and one autonomous run.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Your automations don't build yet?</p>
+<p>You can still do the Test Sets part. Link the trainer's <code>DemoUiBankTests</code> package to your test cases, one per step from T0 to T7. See <a href="../test-sets/#run-the-test-sets">Not enough automated test cases?</a> in Test Sets.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../requirements/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Requirements">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Requirements
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../executions/" class="md-footer__link md-footer__link--next" aria-label="Next: Executions">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Executions
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

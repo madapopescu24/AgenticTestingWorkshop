@@ -1,0 +1,1159 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/zh/requirements/">
+      
+      
+        <link rel="prev" href="../agentic-testing-hands-on/">
+      
+      
+        <link rel="next" href="../test-cases/">
+      
+      
+        
+          <link rel="alternate" href="../../requirements/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>需求 - UiPath Agentic Testing 与编码智能体</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#requirements" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-header__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing 与编码智能体
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              需求
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../requirements/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  议程
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  智能体测试与编码智能体
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agentic-testing-hands-on/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  需求
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试用例
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  执行
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-sets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试集
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sap-testing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP 测试
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  资源
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  后续步骤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing 与编码智能体
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    议程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能体测试与编码智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-testing-hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ask-autopilot-in-studio-desktop-to-create-the-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        让 Autopilot in Studio Desktop 创建需求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discuss-the-requirements-in-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 Test Manager 中讨论需求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluate-improve-and-re-evaluate-with-autopilot-in-test-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 Autopilot in Test Manager 评估、改进并重新评估
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    执行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sap-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP 测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后续步骤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">动手实践 · 第 1 部分，共 4 部分</p>
+<h1 id="requirements">📋 需求<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h1>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">从设计文档到你愿意签字确认的需求</div>
+
+<div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
+  <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">你需要准备</div>
+  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">在 <strong>Studio</strong> 中打开你的 <code>{YourName}UiBankTests</code> 项目，并已连接到你的 <strong>{YourName}_UIB_Test</strong> Test Manager 项目。参见<a href="../agentic-testing-hands-on/#setup">环境准备</a>。</li><li style="margin-bottom: 5px;">在浏览器中打开同一租户上的 <strong>Test Manager</strong>。</li></ul>
+</div>
+
+<h2 id="ask-autopilot-in-studio-desktop-to-create-the-requirements">🪄 让 Autopilot in Studio Desktop 创建需求<a class="headerlink" href="#ask-autopilot-in-studio-desktop-to-create-the-requirements" title="Permanent link">&para;</a></h2>
+<p>输入设计文档，输出需求，没人需要手动输入。后面的每个部分都基于这些需求，所以如果一种方式失败，就换下一种。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Autopilot in Studio Desktop</label><label for="__tabbed_1_2">使用你的编码智能体</label><label for="__tabbed_1_3">手动创建</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>在 Studio 中打开 <strong>Autopilot</strong> 面板。</li>
+<li>
+<p>把 <code>E2E UiBank Online Banking.docx</code> 附加到对话中，然后给 Autopilot 这个提示词：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Generate the requirements for the UiBank web application from the
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>attached design document, in my {YourName}_UIB_Test Test Manager
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>project. Create one requirement per step in section 3, Step 0 to
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Step 7, in that order.
+</code></pre></div>
+</li>
+<li>
+<p>检查 Autopilot 提出的内容，然后接受这些需求，让它们保存到你的 Test Manager 项目中。</p>
+</li>
+</ol>
+<p>从文档创建需求目前还不在 Studio 中已记录的 Autopilot 测试工具之列。如果 Autopilot 无法保存它们，请使用你的编码智能体。</p>
+<div class="admonition warning">
+<p class="admonition-title">Autopilot 不见了，或者无法保存需求？</p>
+<p>通常有两个原因。一是 Studio 登录到了错误的环境：本课程中的 Autopilot 功能在 <strong>UiPath Automation Cloud</strong> 上，所以请让 Studio 登录到 <strong>https://cloud.uipath.com</strong>、组织 <strong>tpenlabs</strong>、租户 <strong>AgenticTestingWorkshop</strong>。二是项目没有连接到你的 Test Manager 项目：检查 Studio 中的 Test Manager 设置，或者让你的编码智能体在项目文件夹中运行 <code>uip rpa tm status</code>。</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>在你的 workshop 文件夹中启动编码智能体，并给它这个提示词：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Read ./E2E UiBank Online Banking.docx and create one requirement per step
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>in section 3, Step 0 to Step 7, in order, in my {YourName}_UIB_Test
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Test Manager project, with the step's acceptance criteria in the
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>description. Confirm `uip login status` first.
+</code></pre></div>
+<p>编码智能体会加载 <code>uipath-test</code> 技能。由于没有导入命令，它会为每个步骤运行一次 <code>uip tm requirements create</code>，共八次。</p>
+</div>
+<div class="tabbed-block">
+<p>在 Test Manager 中打开 <strong>Requirements</strong>，为每个步骤选择 <strong>Create</strong>。用步骤标题为每个需求命名，并把该步骤的验证内容复制到描述中。这样更慢，但能让当天剩下的内容继续进行。</p>
+</div>
+</div>
+</div>
+<h2 id="discuss-the-requirements-in-test-manager">💬 在 Test Manager 中讨论需求<a class="headerlink" href="#discuss-the-requirements-in-test-manager" title="Permanent link">&para;</a></h2>
+<p>在 Test Manager 中刷新 <strong>Requirements</strong>。你应该能看到八个需求，每个对应设计文档的一个步骤，键为 <code>{YourPrefix}:1</code> 到 <code>{YourPrefix}:8</code>。Autopilot 生成的名称和措辞可能与下面不同：</p>
+<div class="circles">
+<div class="circle-item">
+<p><span class="num">0</span></p>
+<div class="ci-body">
+<p><strong>Login and Initial Account State</strong></p>
+<p><code>{YourPrefix}:1</code> · Step 0</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>Checking Account Creation</strong></p>
+<p><code>{YourPrefix}:2</code> · Step 1</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>Savings Account Creation</strong></p>
+<p><code>{YourPrefix}:3</code> · Step 2</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>Funds Transfer Between Accounts</strong></p>
+<p><code>{YourPrefix}:4</code> · Step 3</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>Loan Application Submission</strong></p>
+<p><code>{YourPrefix}:5</code> · Step 4</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">5</span></p>
+<div class="ci-body">
+<p><strong>Loan Status Lookup</strong></p>
+<p><code>{YourPrefix}:6</code> · Step 5</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">6</span></p>
+<div class="ci-body">
+<p><strong>User Profile Identity Verification</strong></p>
+<p><code>{YourPrefix}:7</code> · Step 6</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">7</span></p>
+<div class="ci-body">
+<p><strong>Logout and Evidence Collection</strong></p>
+<p><code>{YourPrefix}:8</code> · Step 7</p>
+</div>
+</div>
+</div>
+<p>打开其中两三个，并以小组形式讨论：</p>
+<ul>
+<li><strong>可追溯性。</strong> 从每个需求能否看出它来自文档的哪个步骤？</li>
+<li><strong>可测试性。</strong> 你能为每条验收标准写出通过/失败检查吗？哪些比较含糊？</li>
+<li><strong>缺口。</strong> 文档没有说明转账金额大于余额时会怎样，也没有说明贷款审批规则。Autopilot 注意到了吗，还是跳过了？它有没有编造文档中没有的内容？</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">为什么每个步骤一个需求</p>
+<p>八个小需求比一个大需求更容易评估、覆盖和报告。之后某个测试失败时，你能准确知道它影响的是哪个步骤、哪个需求。</p>
+</div>
+<h2 id="evaluate-improve-and-re-evaluate-with-autopilot-in-test-manager">🔍 使用 Autopilot in Test Manager 评估、改进并重新评估<a class="headerlink" href="#evaluate-improve-and-re-evaluate-with-autopilot-in-test-manager" title="Permanent link">&para;</a></h2>
+<p>Test Manager 的 <strong>Evaluation Agent</strong> 会检查需求的清晰度、完整性和可测试性。</p>
+<ol>
+<li>在 <strong>Requirements</strong> 下打开 <strong>Funds Transfer Between Accounts</strong>。</li>
+<li>
+<p>选择 <strong>Description</strong> 旁边的 <strong>Evaluate Requirement</strong>。阅读 Autopilot 的发现和建议。</p>
+<p><img alt="Test Manager 中的一个需求 Step 3: Transfer Funds Between Accounts，显示其描述以及 Description 旁边的 Evaluate Requirement 按钮" class="screenshot" src="../../requirements.images/test-manager-evaluate-requirement-W.png" width="900" />
+<em>转账需求，Description 旁边是 Evaluate Requirement。</em></p>
+</li>
+<li>
+<p>选择两三条你认同的建议，通过编辑需求来落实。典型的一条是：转账金额大于源账户余额时的规则。如果文档没有回答某个问题，就把它写成待解决问题，而不是自己编一个答案。</p>
+</li>
+<li>再次评估该需求。结果改善了吗？Autopilot 有没有提出新的问题？</li>
+<li>对 <strong>Loan Application Submission</strong> 重复上述操作，它是未记录规则最多的需求。</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">添加你自己的提示词</p>
+<p>Autopilot 使用项目 <strong>Prompt Library</strong> 中的提示词来评估需求。除了预定义的提示词（例如 <strong>Multifaceted Audit</strong>、<strong>Performance Evaluation</strong> 和 <strong>Security Assessment</strong>），你还可以为团队自己的质量规则添加自定义提示词：</p>
+<ol>
+<li>在 Test Manager 中，在项目左侧菜单选择 <strong>Project Settings</strong>，然后选择 <strong>Prompt library</strong> 选项卡。</li>
+<li>选择 <strong>Add prompt</strong>。</li>
+<li>在 <strong>Create prompt</strong> 中填写：<ul>
+<li><strong>Name</strong> 和 <strong>Description</strong>，让其他人知道何时使用它。</li>
+<li><strong>Mode of use</strong>：评估类提示词选择 <strong>Evaluate requirement quality</strong>。其他模式包括 <strong>Create tests from requirement</strong>、<strong>Import test cases</strong> 和 <strong>Autonomous Exploration</strong>。</li>
+<li><strong>Prompt</strong>：给 Autopilot 的指令，尽可能具体、详细。</li>
+</ul>
+</li>
+<li>选择 <strong>Create</strong>。</li>
+</ol>
+<p>之后，当你评估或重新评估需求时，你的提示词会出现在预定义提示词旁边。</p>
+<p><video src="../../requirements.images/test-manager-add-custom-prompt.mp4" autoplay loop muted playsinline controls aria-label="在 Test Manager 中添加自定义提示词：Project Settings、Prompt library、Add prompt，填写 Name、Description、Mode of use 和 Prompt，然后选择 Create" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video></p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">需求完成</p>
+<p>Autopilot 根据设计文档生成了八个需求，你们讨论过它们，并对其中至少两个进行了评估、改进和重新评估。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Autopilot 起草，你来决定</p>
+<p>Evaluation Agent 擅长发现含糊的措辞和遗漏的情况，但它无法知道你的业务规则。你接受的每一条建议都是关于 UiBank 必须做什么的决定，所以应该得到产品负责人的认可。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../agentic-testing-hands-on/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 测试环境准备">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                测试环境准备
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../test-cases/" class="md-footer__link md-footer__link--next" aria-label="下一页: 测试用例">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                测试用例
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

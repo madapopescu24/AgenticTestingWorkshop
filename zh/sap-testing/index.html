@@ -1,0 +1,1386 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on learner's handbook for planning, automating, executing, and reporting UiPath tests with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://madapopescu24.github.io/AgenticTestingWorkshop/zh/sap-testing/">
+      
+      
+        <link rel="prev" href="../test-sets/">
+      
+      
+        <link rel="next" href="../resources/">
+      
+      
+        
+          <link rel="alternate" href="../../sap-testing/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>SAP 测试 - UiPath Agentic Testing 与编码智能体</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sap-testing" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-header__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UiPath Agentic Testing 与编码智能体
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SAP 测试
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../sap-testing/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agenda/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  议程
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-a-coding-agent/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  智能体测试与编码智能体
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../agentic-testing-hands-on/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试环境准备
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requirements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  需求
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-cases/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试用例
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../executions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  执行
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test-sets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  测试集
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  SAP 测试
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  资源
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  后续步骤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="UiPath Agentic Testing 与编码智能体" class="md-nav__button md-logo" aria-label="UiPath Agentic Testing 与编码智能体" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    UiPath Agentic Testing 与编码智能体
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    议程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-a-coding-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能体测试与编码智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-testing-hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试环境准备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试用例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../executions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    执行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP 测试
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAP 测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sap-in-two-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两分钟了解 SAP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-sap-testing-is-hard-the-coverage-illusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SAP 测试为什么难：覆盖率假象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-customers-use-test-cloud-for-sap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        客户在哪些场景用 Test Cloud 测试 SAP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-test-cloud-does-for-sap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Cloud 能为 SAP 做什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Cloud 能为 SAP 做什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decide-what-to-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        决定测试什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-automate-the-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建测试并实现自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-them-right-away" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        立即运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fit-into-sap-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        融入 SAP 交付流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-under-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        负载下测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演示时间
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measure-processes-not-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        衡量流程，而不是测试用例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-maps-to-what-you-did-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与你今天所做内容的对应关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        了解更多
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    后续步骤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="eyebrow">演示讲解 + 演示</p>
+<h1 id="sap-testing">🧩 SAP 测试<a class="headerlink" href="#sap-testing" title="Permanent link">&para;</a></h1>
+<div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">同一个 Test Cloud，用于 SAP</div>
+
+<p>今天一整天，你测试的是一个小型 Web 应用 UiBank。现在你会看到，同一个 <strong>Test Cloud</strong>——<strong>Test Manager</strong>、<strong>Autopilot for Testers</strong>、机器人和编码智能体——如何测试 SAP，这是企业运行的最关键的业务系统之一。你不需要 SAP 经验：关键术语都列在下面。</p>
+<h2 id="sap-in-two-minutes">📖 两分钟了解 SAP<a class="headerlink" href="#sap-in-two-minutes" title="Permanent link">&para;</a></h2>
+<p><strong>SAP</strong> 开发 ERP 软件：企业用来运行财务、销售、采购、人力资源和生产的系统，所有业务共享同一套数据。</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SAP ECC / SAP S/4HANA</strong></td>
+<td>SAP ERP 的上一代和当前一代产品。许多企业正在从 ECC 迁移到 S/4HANA。</td>
+</tr>
+<tr>
+<td><strong>RISE with SAP</strong></td>
+<td>SAP 提供的、迁移到云端 SAP S/4HANA 的方案。</td>
+</tr>
+<tr>
+<td><strong>SAP GUI / SAP Fiori</strong></td>
+<td>经典的 Windows 桌面客户端，以及现代的 Web 界面。</td>
+</tr>
+<tr>
+<td><strong>Transaction（事务）</strong></td>
+<td>在 SAP 中通过代码打开的一项功能，例如用 VA01 创建销售订单。</td>
+</tr>
+<tr>
+<td><strong>Transport（传输）</strong></td>
+<td>一组 SAP 变更，从开发环境移到测试环境，再到生产环境。每次传输都是需要重新测试的理由。</td>
+</tr>
+<tr>
+<td><strong>Order-to-Cash / Procure-to-Pay</strong></td>
+<td>端到端业务流程：从客户下单到收款，以及从采购申请到向供应商付款。</td>
+</tr>
+<tr>
+<td><strong>Clean Core</strong></td>
+<td>SAP 的原则：保持标准系统不被修改，把自定义逻辑放到系统外部的扩展和 API 中。</td>
+</tr>
+<tr>
+<td><strong>SAP Cloud ALM</strong></td>
+<td>SAP 用于管理实施项目的工具，包括需求和测试。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-sap-testing-is-hard-the-coverage-illusion">🤔 SAP 测试为什么难：覆盖率假象<a class="headerlink" href="#why-sap-testing-is-hard-the-coverage-illusion" title="Permanent link">&para;</a></h2>
+<p>SAP 团队长期以来报告的是<strong>覆盖率</strong>：已运行的事务或测试用例所占的百分比。但覆盖率衡量的是容易统计的东西，而不是可能出问题的地方。如今出问题的地方往往不在 SAP 内部，而在 SAP 与周边系统的衔接处。</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🧼</span>
+<span class="f-title" markdown="span">Clean Core</span></p>
+<p>自定义逻辑从 ERP 中移出，放到扩展、SAP BTP 服务和 API 中。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">☁️</span>
+<span class="f-title" markdown="span">SAP 周边的 SaaS</span></p>
+<p>Salesforce、ServiceNow 和 Workday 现在承担了过去在 SAP 中运行的部分业务。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">⏩</span>
+<span class="f-title" markdown="span">更快的发布节奏</span></p>
+<p>SAP 每季度发布一次，其他厂商每周发布。流经企业的变更远多于十年前。</p>
+</div>
+</div>
+<p>发布后期的典型故障包括：集成交接单独测试都通过，但同时运行时超时；季度发布后 SAP Fiori 界面发生偏移；权限变更悄无声息地产生错误结果。一份“100% SAP 覆盖率”的报告一个也发现不了。</p>
+<h2 id="where-customers-use-test-cloud-for-sap">💼 客户在哪些场景用 Test Cloud 测试 SAP<a class="headerlink" href="#where-customers-use-test-cloud-for-sap" title="Permanent link">&para;</a></h2>
+<div class="feature-grid cols-4">
+<div class="feature">
+<p><span class="f-icon">🔁</span>
+<span class="f-title" markdown="span">回归测试</span></p>
+<p>跟上 SAP 的季度更新，只运行每次变更所影响的测试。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🚚</span>
+<span class="f-title" markdown="span">S/4HANA 迁移</span></p>
+<p>测试从数据准备到切换上线的每个阶段，并在各批次迁移中复用测试。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🖥️</span>
+<span class="f-title" markdown="span">SAP GUI 和 SAP Fiori</span></p>
+<p>自动化每一种 SAP 界面，界面变化时可以自愈。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔗</span>
+<span class="f-title" markdown="span">跨系统流程</span></p>
+<p>测试横跨 SAP、Salesforce、Oracle、Workday 和自定义应用的端到端流程。</p>
+</div>
+</div>
+<p><strong>客户获得的成果：</strong> 3 年 529% 的 ROI，六个月回本；测试执行速度提升 62%，手动工作量减少 52%，测试覆盖率提高 55%。<strong>EDF Renewables</strong> 在五个月内实现了 90% SAP 测试的自动化。</p>
+<h2 id="what-test-cloud-does-for-sap">🚀 Test Cloud 能为 SAP 做什么<a class="headerlink" href="#what-test-cloud-does-for-sap" title="Permanent link">&para;</a></h2>
+<h3 id="decide-what-to-test">🎯 决定测试什么<a class="headerlink" href="#decide-what-to-test" title="Permanent link">&para;</a></h3>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🔥</span>
+<span class="f-title" markdown="span">SAP Heatmap</span></p>
+<p>连接生产 SAP 系统，显示用户实际使用了哪些事务，让你优先测试关键业务事务。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🎯</span>
+<span class="f-title" markdown="span">Change Impact Analysis</span></p>
+<p>当一个传输被暂存时，AI 会找出它影响的流程，并给出一份按风险排序的待重跑测试清单，不必全部重跑。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🕳️</span>
+<span class="f-title" markdown="span">Test Gap Analysis</span></p>
+<p>找出还没有任何测试的关键 SAP 流程。</p>
+</div>
+</div>
+<p><img alt="SAP Application Usage Heatmap：SAP 组件和事务以方块显示，大小取决于使用频率" class="screenshot full" src="../../sap-testing.images/sap-usage-heatmap-W.png" />
+<em>使用热图：方块越大，表示该 SAP 组件或事务的使用越多。</em></p>
+<p><img alt="SAP Change Impact Dashboard，包含三个区域：SAP UI 变更、SAP API 变更和 SAP 安全" class="screenshot full" src="../../sap-testing.images/change-impact-analysis-W.png" />
+<em>Change Impact Analysis 涵盖 UI 变更、API 变更和安全变更。</em></p>
+<h3 id="create-and-automate-the-tests">🤖 创建测试并实现自动化<a class="headerlink" href="#create-and-automate-the-tests" title="Permanent link">&para;</a></h3>
+<div class="feature-grid cols-4">
+<div class="feature">
+<p><span class="f-icon">📝</span>
+<span class="f-title" markdown="span">生成测试用例</span></p>
+<p>Autopilot 根据需求或 Heatmap 数据为 SAP 事务创建测试用例，就像它为 UiBank 所做的那样。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🧮</span>
+<span class="f-title" markdown="span">生成测试数据</span></p>
+<p>SAP Test Data Agents 按需创建逼真的数据，例如客户、物料和销售订单。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🛠️</span>
+<span class="f-title" markdown="span">低代码或编码方式自动化</span></p>
+<p>业务用户和开发人员都可以构建自动化，在 Studio 中或借助编码智能体，就像你今天做的那样。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🩹</span>
+<span class="f-title" markdown="span">自愈</span></p>
+<p>当 SAP 界面变化时，自动化会实时修复选择器，而不是直接失败。</p>
+</div>
+</div>
+<div class="img-pair">
+<p><img alt="Autopilot 为 VA01 事务建议了十个测试用例，都是创建销售订单的不同变体" class="screenshot" src="../../sap-testing.images/test-case-creation-suggestions.png" /></p>
+<p><img alt="一个生成的测试用例 Verify Sales Order Creation with Standard Material 的手动步骤，从导航到 SAP Easy Access 界面到检查订单号" class="screenshot" src="../../sap-testing.images/test-case-creation-manual-steps.png" /></p>
+</div>
+<p class="img-pair-caption"><em>为 VA01（创建销售订单）生成的测试用例：左侧为建议列表，右侧为其中一个用例的手动步骤。</em></p>
+<h3 id="run-them-right-away">▶️ 立即运行<a class="headerlink" href="#run-them-right-away" title="Permanent link">&para;</a></h3>
+<p><strong>Autonomous Test Execution</strong> 根据手动 SAP 测试的自然语言步骤直接运行它——就是你在<a href="../test-cases/">测试用例</a>中用过的 <strong>Run Autonomously</strong>。你从项目第一天起就可以开始测试，无需先有任何自动化。</p>
+<p><img alt="在 Test Manager 中用 Autopilot 运行 SAP-Create Sales Orders 测试用例：左侧是手动步骤，右侧是正在运行的检查" class="screenshot" src="../../sap-testing.images/autonomous-test-execution-W.png" width="900" />
+<em>在一个 SAP Fiori 测试用例上使用 Run Autonomously。</em></p>
+<h3 id="fit-into-sap-delivery">🔗 融入 SAP 交付流程<a class="headerlink" href="#fit-into-sap-delivery" title="Permanent link">&para;</a></h3>
+<p>Test Cloud 可以连接 <strong>SAP Cloud ALM</strong>：Cloud ALM 管理需求，Test Cloud 在 SAP 和非 SAP 系统中自动化并运行测试，每个结果都会关联回对应的需求。它也能连接 CI/CD 工具。借助 <strong>Maestro</strong>，一条流水线就能测试整个流程——SAP 传输、Fiori 审批、Salesforce 同步以及发票——并给出一个统一的结论。</p>
+<p><img alt="SAP Cloud ALM 与 UiPath 如何协同：Cloud ALM 保存流程、需求、用户故事、缺陷和手动测试用例；UiPath 通过 API 提供自动化测试用例、测试数据和执行" class="screenshot" src="../../sap-testing.images/cloud-alm-integration-W.png" width="900" />
+<em>SAP Cloud ALM 编排测试；UiPath 自动化并运行测试，然后回传结果。请在解决方案设计阶段确认每个项目的集成选项。</em></p>
+<h3 id="test-under-load">📈 负载下测试<a class="headerlink" href="#test-under-load" title="Permanent link">&para;</a></h3>
+<p>性能测试已内置于 Test Cloud。你可以复用已有的 UI 和 API 自动化，因此一套自动化同时覆盖功能测试和性能测试。</p>
+<div class="vs">
+<div class="vs-side">
+<p><span class="f-title" markdown="span">🧰 专用负载测试工具</span></p>
+<ul>
+<li>由性能工程师编写的一套独立脚本</li>
+<li>协议层面的模拟 HTTP 流量</li>
+</ul>
+</div>
+<div class="vs-mid">VS</div>
+<div class="vs-side alt">
+<p><span class="f-title" markdown="span">📈 Test Cloud 中的性能测试</span></p>
+<ul>
+<li>复用你的功能自动化，由 Autopilot 规划场景</li>
+<li>通过 UI 体现真实用户体验，包括页面渲染</li>
+</ul>
+</div>
+</div>
+<p>你可以在云端或本地运行负载测试、尖峰测试、压力测试和耐久测试，并由 CI/CD 流水线触发。结果显示在 Test Manager 中，与功能测试结果并列。</p>
+<p><img alt="Test Manager 左侧菜单中的 Performance Scenarios，位于 Requirements、Test Cases 和 Test Sets 旁边" class="screenshot" src="../../sap-testing.images/performance-testing-test-manager-W.png" width="900" />
+<em>Test Manager 中的 Performance Scenarios，就在你熟悉的 Test Cases 旁边。</em></p>
+<h2 id="demo-time">🎬 演示时间<a class="headerlink" href="#demo-time" title="Permanent link">&para;</a></h2>
+<p>讲师会在 Test Manager 中演示 <strong>SAP Heatmap</strong>，使用从 CSV 文件上传的演示用使用数据，而不是真实的 SAP 系统：</p>
+<div class="circles cols-5">
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>加载使用数据</strong>到一个 Heatmap 连接中</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>解读 Heatmap</strong>：方块大小表示测试相关性，颜色表示覆盖率</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>确定优先级</strong>：排名前 10 的事务，例如 Change Purchase Order (ME22N)</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>让方块变绿</strong>：为事务创建测试用例，放进测试集并运行</p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">5</span></p>
+<div class="ci-body">
+<p><strong>找出测试缺口</strong>：仍然没有测试用例的重要事务</p>
+</div>
+</div>
+</div>
+<h2 id="measure-processes-not-test-cases">📏 衡量流程，而不是测试用例<a class="headerlink" href="#measure-processes-not-test-cases" title="Permanent link">&para;</a></h2>
+<p>今天你按测试用例报告结果。在 SAP 环境中，业务方关心的是另一个问题：<strong>order-to-cash</strong> 能否从头到尾、在它涉及的每个系统中正常运行？</p>
+<div class="feature-grid">
+<div class="feature">
+<p><span class="f-icon">🧭</span>
+<span class="f-title" markdown="span">按业务流程报告</span></p>
+<p>“430 个测试中通过了 412 个”变成“Order-to-cash：Salesforce 交接环节有两个失败，都源于季度发布。”</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🔺</span>
+<span class="f-title" markdown="span">端到端测试变得低成本</span></p>
+<p>生成的测试、自愈和编排运行，让端到端测试成为每次回归的基线。人的时间用于探索智能体无法预测的部分。</p>
+</div>
+<div class="feature">
+<p><span class="f-icon">🛡️</span>
+<span class="f-title" markdown="span">QA 负责治理，智能体负责执行</span></p>
+<p>智能体生成、运行和分析测试。测试人员决定哪些流程必须保持通过，哪些风险可以接受。</p>
+</div>
+</div>
+<h2 id="how-it-maps-to-what-you-did-today">🔄 与你今天所做内容的对应关系<a class="headerlink" href="#how-it-maps-to-what-you-did-today" title="Permanent link">&para;</a></h2>
+<div class="circles cols-5">
+<div class="circle-item">
+<p><span class="num">1</span></p>
+<div class="ci-body">
+<p><strong>决定测试什么：</strong> Heatmap 和 Change Impact Analysis。<em>今天：来自设计文档的需求。</em></p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">2</span></p>
+<div class="ci-body">
+<p><strong>创建测试用例和数据：</strong> Autopilot 和 Test Data Agents。<em>今天：Autopilot 生成了测试用例。</em></p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">3</span></p>
+<div class="ci-body">
+<p><strong>立即运行：</strong> Autonomous Test Execution。<em>今天：Run Autonomously。</em></p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">4</span></p>
+<div class="ci-body">
+<p><strong>自动化并在机器人上运行。</strong> <em>今天：Autopilot 或编码智能体自动化了测试用例，并由测试集运行它们。</em></p>
+</div>
+</div>
+<div class="circle-item">
+<p><span class="num">5</span></p>
+<div class="ci-body">
+<p><strong>保持稳定运行并解释结果：</strong> 自愈和测试洞察。<em>今天：对测试集结果使用 Generate Insights。</em></p>
+</div>
+</div>
+</div>
+<h2 id="learn-more">📚 了解更多<a class="headerlink" href="#learn-more" title="Permanent link">&para;</a></h2>
+<div class="link-grid">
+<p><a class="link-card" href="https://www.uipath.com/platform/agentic-testing/sap-testing" target="_blank" rel="noopener"><span class="f-icon">🧩</span><span class="f-title">使用 Test Cloud 进行 SAP 测试</span><span class="f-text" markdown="span">用例、价值和常见问题</span></a>
+<a class="link-card" href="https://www.uipath.com/platform/agentic-testing/performance-testing" target="_blank" rel="noopener"><span class="f-icon">📈</span><span class="f-title">性能测试</span><span class="f-text" markdown="span">基于现有自动化的负载、尖峰、压力和耐久测试</span></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">培训环境</p>
+<p>在 <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong> 登录，使用租户 <strong>AgenticTestingWorkshop</strong>。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../test-sets/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 测试集">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                测试集
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="下一页: 资源">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                资源
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
