@@ -37,7 +37,7 @@
 
 **When：登录并打开 Accounts**
 
-4. 在 Chrome 中打开 `https://uibank.uipath.com/login`。如果无法打开，请使用[备用地址](setup.md#7-register-your-uibank-test-user)：`https://purple-dune-0af054403.6.azurestaticapps.net/login`。
+4. 在 Chrome 中打开 `https://uibank.uipath.com/login`。如果无法打开，请使用[备用地址](setup.md#4-register-your-uibank-test-user)：`https://purple-dune-0af054403.6.azurestaticapps.net/login`。
 5. 添加一个 **Use Application/Browser** 活动，并指定 UiBank 登录页面。
 6. 在 **Use Application/Browser** 卡片内、任何 **Type Into** 之前，添加一个 **Get Credential** 活动。将资产名称设为 `{YourName}_UiBankCredential`，文件夹设为 `{{ training_folder }}`。把输出保存到 `var_Username`（String）和 `var_Password`（SecureString）。
 7. 为 **Enter username** 字段添加 **Type Into**，使用 `var_Username`；为 **Enter password** 字段添加 **Type Into**，以安全文本方式使用 `var_Password`。

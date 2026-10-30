@@ -37,7 +37,7 @@ Before any agent automates a test for you, build one yourself. It takes longer, 
 
 **When: log in and open Accounts**
 
-4. Open `https://uibank.uipath.com/login` in Chrome. If it doesn't load, use the [fallback](setup.md#7-register-your-uibank-test-user): `https://purple-dune-0af054403.6.azurestaticapps.net/login`.
+4. Open `https://uibank.uipath.com/login` in Chrome. If it doesn't load, use the [fallback](setup.md#4-register-your-uibank-test-user): `https://purple-dune-0af054403.6.azurestaticapps.net/login`.
 5. Add a **Use Application/Browser** activity and indicate the UiBank login page.
 6. Inside the **Use Application/Browser** card, before any **Type Into**, add a **Get Credential** activity. Set the asset name to `{YourName}_UiBankCredential` and the folder to `{{ training_folder }}`. Store the outputs in `var_Username` (String) and `var_Password` (SecureString).
 7. Add **Type Into** for the **Enter username** field with `var_Username`, and **Type Into** for the **Enter password** field with `var_Password` as secure text.

@@ -11,26 +11,7 @@ Hands-on · First step
 !!! tip "Training Environment"
     Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.
 
-## 🖥️ 1. Connect to Your VM
-
-Each participant gets a virtual machine (VM) with the tools already installed. You'll do the rest of this page, and the whole session, inside it.
-
-1. Open the VM details you received. They show the VM's **Username** and **Password**, with copy buttons.
-2. Select **Connect via Azure Bastion**. It opens the VM in a browser tab, so you don't need an RDP client.
-
-    ![The VM details: a Username and a masked Password with copy buttons, and the Download RDP File and Connect via Azure Bastion buttons](setup.images/vm-connect-options.png){ .screenshot width="320" }
-
-3. In the **Azure Bastion** form, keep **Protocol** on **RDP** and **Port** on **3389**. Enter the VM's username and password, pick your **Keyboard Language**, and select **Login**.
-
-    ![The Azure Bastion login form with Protocol RDP, Port 3389, Username, Password, Keyboard Language, and the Login button](setup.images/azure-bastion-login.png){ .screenshot width="420" }
-
-4. When your browser asks whether to allow clipboard access, accept it. You'll paste prompts into the VM all day.
-5. Wait for the VM's Windows desktop to load in the browser tab.
-
-!!! tip "Can't paste into the VM with Ctrl+V?"
-    In the Chrome browser on your own machine, open `chrome://settings/content/clipboard` and make sure the Bastion site isn't under **Not allowed to see your clipboard**.
-
-## 🔑 2. Sign In to the Training Environment
+## 🔑 1. Sign In to the Training Environment
 
 From here on, work **inside the VM**.
 
@@ -43,55 +24,22 @@ From here on, work **inside the VM**.
 
     ![The Microsoft Sign in page with the Email, phone, or Skype field and the Next button](setup.images/microsoft-sign-in.png){ .screenshot width="420" }
 
-## ✅ 3. Confirm the Tenant
+## ✅ 2. Confirm the Tenant
 
 Once you're in, open **Studio Web**. In the upper-right corner, check that the tenant picker shows **{{ training_tenant }}**. If it shows another tenant, switch to **{{ training_tenant }}** before you go on.
-
-## 💻 4. Open the Terminal
-
-1. In the VM, open the Windows search and type `terminal`.
-2. Select the **Terminal** app.
-
-    ![Windows search with terminal typed in, and the Terminal app as the best match](setup.images/windows-terminal-search.png){ .screenshot width="500" }
-
-The VM already has your coding agent, the `uip` CLI, and the UiPath skills installed, so there's nothing else to install. You'll use this terminal in the next sections.
-
-## 🔐 5. Authenticate with Your Tenant
-
-The workshop runs on **{{ env_label }}**, where the newest Autopilot for Testers and Autopilot for Developers features are available. Point the CLI there:
-
-```bash
-uip login --authority {{ training_authority }} --organization {{ training_org }} -t {{ training_tenant }}
-```
-
-Verify you're pointed at the right place:
-
-```bash
-uip login status --output json
-```
-
-Then open **Test Manager** once in the browser at **[{{ training_url }}]({{ training_url }})** and check you can see the **Projects** page. If you can't, ask the trainer to give you access.
-
-Check that a robot can run your tests in the `{{ training_folder }}` folder. Ask your coding agent to run:
-
-```bash
-uip or folders runtimes {{ training_folder }}
-```
-
-It must show a runtime that's **Available**. Later, a test job must not stay Pending with the reason `RobotNoCredentials`. If either check fails, tell the trainer.
 
 !!! info "Trainer checklist: the tenant side"
     The trainer sets these up before the session. Participants can't fix them themselves:
 
-    - An **App Test Developer** licence for every participant.
+    - An **App Test Developer** license for every participant.
     - An **AI Trust Layer** policy that allows Autopilot.
     - The **{{ training_folder }}** folder, with rights to create assets and to run test sets.
     - A robot in that folder with a **Testing** or **Production** runtime, and a **robot account with stored credentials** assigned to the folder. Without the credentials, a test set job stays Pending with `RobotNoCredentials`, even when the runtime shows Connected and Available.
     - A **Windows** robot in the folder for **Run autonomously**: autonomous runs are supported on Windows only.
 
-## 🔗 6. Connect Studio to the Training Tenant
+## 🔗 3. Connect Studio to the Training Tenant
 
-Autopilot in Studio Desktop works against the tenant Studio is signed in to. Sign Studio in to the same place as the CLI:
+Autopilot in Studio Desktop works against the tenant Studio is signed in to. Sign Studio in to the training tenant:
 
 1. Open **Studio**. If you're signed in to another environment, such as `cloud.uipath.com`, sign out.
 2. Before signing in again, change the cloud URL to `{{ training_authority }}`. In **UiPath Assistant**, it's under **Preferences** > **Orchestrator Settings**, as the **Service URL**.
@@ -101,7 +49,7 @@ Autopilot in Studio Desktop works against the tenant Studio is signed in to. Sig
 !!! warning "One environment for everything"
     Studio, the `uip` CLI, and your browser must all point at **{{ training_url }}**. If one of them is still on another environment, Autopilot saves requirements to a project your coding agent can't see.
 
-## 🏦 7. Register Your UiBank Test User
+## 🏦 4. Register Your UiBank Test User
 
 The test cases log in as a registered UiBank user. Create yours now, so they have an account to run against.
 
@@ -126,7 +74,7 @@ The tests never store your password in the project. They read it from an Orchest
 !!! warning "Write down your UiBank email"
     You'll need it as `var_LoanEmail` in the hands-on session — the profile check in Step 6 compares it with the email UiBank shows.
 
-## 📄 8. Download the Design Document
+## 📄 5. Download the Design Document
 
 Create a folder named `workshop`, and download the [design document](resources.md#the-design-document) into it. It should look like this:
 
@@ -138,4 +86,4 @@ workshop/
 You'll create your Test Manager project and your Studio project at the start of the session.
 
 !!! success "You're set up"
-    Your VM, signed in to {{ training_tenant }} in the browser, in Studio, and in the `uip` CLI, with a UiBank test user and the design document. Time to test something.
+    Your VM, signed in to {{ training_tenant }} in the browser and in Studio, with a UiBank test user and the design document. Time to test something.

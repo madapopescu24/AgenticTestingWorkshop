@@ -46,7 +46,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-通过 Azure Bastion <a href="../setup/#1-connect-to-your-vm">连接到你的虚拟机</a> <span class="pill orange">动手实践</span>
+使用你的工作坊账号<a href="../setup/#1-sign-in-to-the-training-environment">登录培训环境</a> <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -55,7 +55,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-使用你的工作坊账号<a href="../setup/#2-sign-in-to-the-training-environment">登录培训环境</a> <span class="pill orange">动手实践</span>
+在 Studio Web 中<a href="../setup/#2-confirm-the-tenant">确认租户</a> <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -64,7 +64,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-在 Studio Web 中<a href="../setup/#3-confirm-the-tenant">确认租户</a> <span class="pill orange">动手实践</span>
+<a href="../setup/#3-connect-studio-to-the-training-tenant">将 Studio 连接</a>到培训租户，并检查 Autopilot 面板 <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -73,7 +73,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-在虚拟机上<a href="../setup/#4-open-the-terminal">打开终端</a> <span class="pill orange">动手实践</span>
+<a href="../setup/#4-register-your-uibank-test-user">注册你的 UiBank 测试用户</a>，并创建凭据资产 <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -82,34 +82,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#5-authenticate-with-your-tenant">让 `uip` CLI 通过你的租户认证</a>，并确认有机器人可以运行你的测试 <span class="pill orange">动手实践</span>
-
-</div>
-</div>
-
-<div class="tl-item" markdown>
-<div class="tl-time"></div>
-<div class="tl-body" markdown>
-
-<a href="../setup/#6-connect-studio-to-the-training-tenant">将 Studio 连接</a>到培训租户，并检查 Autopilot 面板 <span class="pill orange">动手实践</span>
-
-</div>
-</div>
-
-<div class="tl-item" markdown>
-<div class="tl-time"></div>
-<div class="tl-body" markdown>
-
-<a href="../setup/#7-register-your-uibank-test-user">注册你的 UiBank 测试用户</a>，并创建凭据资产 <span class="pill orange">动手实践</span>
-
-</div>
-</div>
-
-<div class="tl-item" markdown>
-<div class="tl-time"></div>
-<div class="tl-body" markdown>
-
-<a href="../setup/#8-download-the-design-document">下载设计文档</a>到你的工作坊文件夹 <span class="pill orange">动手实践</span>
+<a href="../setup/#5-download-the-design-document">下载设计文档</a>到你的工作坊文件夹 <span class="pill orange">动手实践</span>
 
 </div>
 </div>

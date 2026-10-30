@@ -46,7 +46,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#1-connect-to-your-vm">Connect to your VM</a> through Azure Bastion <span class="pill orange">Hands-on</span>
+<a href="../setup/#1-sign-in-to-the-training-environment">Sign in to the training environment</a> with your workshop account <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -55,7 +55,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#2-sign-in-to-the-training-environment">Sign in to the training environment</a> with your workshop account <span class="pill orange">Hands-on</span>
+<a href="../setup/#2-confirm-the-tenant">Confirm the tenant</a> in Studio Web <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -64,7 +64,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#3-confirm-the-tenant">Confirm the tenant</a> in Studio Web <span class="pill orange">Hands-on</span>
+<a href="../setup/#3-connect-studio-to-the-training-tenant">Connect Studio</a> to the training tenant, and check the Autopilot panel <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -73,7 +73,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#4-open-the-terminal">Open the terminal</a> on your VM <span class="pill orange">Hands-on</span>
+<a href="../setup/#4-register-your-uibank-test-user">Register your UiBank test user</a> and create your credential asset <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -82,34 +82,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#5-authenticate-with-your-tenant">Authenticate the `uip` CLI</a> with your tenant, and check a robot can run your tests <span class="pill orange">Hands-on</span>
-
-</div>
-</div>
-
-<div class="tl-item" markdown>
-<div class="tl-time"></div>
-<div class="tl-body" markdown>
-
-<a href="../setup/#6-connect-studio-to-the-training-tenant">Connect Studio</a> to the training tenant, and check the Autopilot panel <span class="pill orange">Hands-on</span>
-
-</div>
-</div>
-
-<div class="tl-item" markdown>
-<div class="tl-time"></div>
-<div class="tl-body" markdown>
-
-<a href="../setup/#7-register-your-uibank-test-user">Register your UiBank test user</a> and create your credential asset <span class="pill orange">Hands-on</span>
-
-</div>
-</div>
-
-<div class="tl-item" markdown>
-<div class="tl-time"></div>
-<div class="tl-body" markdown>
-
-<a href="../setup/#8-download-the-design-document">Download the design document</a> into your workshop folder <span class="pill orange">Hands-on</span>
+<a href="../setup/#5-download-the-design-document">Download the design document</a> into your workshop folder <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
