@@ -58,9 +58,9 @@ The system against the business requirements, to judge whether it's ready for de
 
 </div>
 
-UiPath Test Cloud brings the most value in the middle: **integration** and **end-to-end** testing, which is exactly what the UiBank test cases in this session are. Two more ideas you'll use all day:
+UiPath Test Cloud brings the most value in the middle: **integration** and **end-to-end** testing, which is exactly what the ParaBank test cases in this session are. Two more ideas you'll use all day:
 
-- **Black-box testing.** Application testing checks that the software meets its requirements from the outside, through inputs and expected outputs, without access to its code. That's how every UiBank test works.
+- **Black-box testing.** Application testing checks that the software meets its requirements from the outside, through inputs and expected outputs, without access to its code. That's how every ParaBank test works.
 - **Test early.** A defect found while testing costs far less than a hot-fix after it reaches production. Automation doesn't replace people: it takes the repetitive checks, so testers can focus on exploratory and usability testing.
 
 ### ☁️ What UiPath Test Cloud is

@@ -10,25 +10,25 @@ Resources
 
 ## 📄 The design document
 
-The whole hands-on part starts from the same document: **E2E UiBank Online Banking**. Download it and save `E2E UiBank Online Banking.docx` in your workshop folder.
+The whole hands-on part starts from the same document: **E2E ParaBank Online Banking**. Download it and save `E2E ParaBank Online Banking.docx` in your workshop folder.
 
-[Download the design document (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
+[Download the design document (.docx)](resources.assets/E2E%20ParaBank%20Online%20Banking.docx){ .md-button .md-button--primary }
 
 [The hands-on page](agentic-testing-hands-on.md#the-design-document) summarizes its steps, the requirements they become, and the test data.
 
 ## 🎁 Trainer's reference package
 
-The trainer's `DemoUiBankTests` is a working test automation project with all eight test cases automated. It's already published in the `{{ training_folder }}` folder, so you can link it to your Test Manager test cases and run it in [Test Sets](test-sets.md) if your own automations aren't ready.
+The trainer's `DemoParaBankTests` is a working test automation project with all nine test cases automated. It's already published in the `{{ training_folder }}` folder, so you can link it to your Test Manager test cases and run it in [Test Sets](test-sets.md) if your own automations aren't ready.
 
 <div class="feature-grid" markdown>
 
 <div class="feature" markdown>
 <span class="f-icon">🎁</span>
-<span class="f-title" markdown="span">`DemoUiBankTests`</span>
+<span class="f-title" markdown="span">`DemoParaBankTests`</span>
 
 Test automation project, reference solution for the Test Cases part
 
-🧪 `T0_LoginAndInitialAccountState` to `T7_LogoutAndEvidenceCollection`
+🧪 `T0_LoginAndInitialStateCheck` to `T8_LogoutAndEvidenceCollection`
 
 📁 `{{ training_folder }}` folder
 
@@ -62,8 +62,7 @@ Commands you'll see a coding agent run with the `uip` CLI, if you use one to gen
 <div class="link-grid" markdown>
 
 <a class="link-card" href="https://github.com/UiPath/skills" target="_blank" rel="noopener"><span class="f-icon">🧩</span><span class="f-title">UiPath/skills</span><span class="f-text" markdown="span">The skill repository. Read the `SKILL.md` of `uipath-test` and `uipath-rpa`.</span></a>
-<a class="link-card" href="https://uibank.uipath.com" target="_blank" rel="noopener"><span class="f-icon">🏦</span><span class="f-title">UiBank</span><span class="f-text" markdown="span">The demo banking application under test</span></a>
-<a class="link-card" href="https://purple-dune-0af054403.6.azurestaticapps.net" target="_blank" rel="noopener"><span class="f-icon">🏦</span><span class="f-title">UiBank (fallback)</span><span class="f-text" markdown="span">The same UiBank application, if uibank.uipath.com doesn't load</span></a>
+<a class="link-card" href="https://parabank.parasoft.com/parabank/index.htm" target="_blank" rel="noopener"><span class="f-icon">🏦</span><span class="f-title">ParaBank</span><span class="f-text" markdown="span">The Parasoft demo banking application under test</span></a>
 <a class="link-card" href="https://meera-uipath.github.io/software-testing-ilt-guide" target="_blank" rel="noopener"><span class="f-icon">🎓</span><span class="f-title">Test Cloud & Agentic Testing ILT Guide</span><span class="f-text" markdown="span">The click-by-click Test Manager and Studio course: Object Repository, data-driven testing, publishing, and executing test cases</span></a>
 <a class="link-card" href="https://docs.uipath.com/test-manager" target="_blank" rel="noopener"><span class="f-icon">📋</span><span class="f-title">Test Manager documentation</span><span class="f-text" markdown="span">Requirements, test cases, test sets, executions, and Autopilot for Testers</span></a>
 

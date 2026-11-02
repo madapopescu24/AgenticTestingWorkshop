@@ -73,7 +73,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#4-register-your-uibank-test-user">注册你的 UiBank 测试用户</a>，并创建凭据资产 <span class="pill orange">动手实践</span>
+<a href="../setup/#4-register-your-parabank-test-user">注册你的 ParaBank 测试用户</a>，并创建凭据资产 <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -91,7 +91,7 @@
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../agentic-testing-hands-on/#create-a-new-project-in-test-manager">在 Test Manager 中创建新项目</a>（例如项目名称 `{YourName}_UIB_Test`，以及一个你自己独有的前缀，比如姓名首字母加一个数字） <span class="pill orange">动手实践</span>
+<a href="../agentic-testing-hands-on/#create-a-new-project-in-test-manager">在 Test Manager 中创建新项目</a>（例如项目名称 `{YourName}_PB_Test`，以及一个你自己独有的前缀，比如姓名首字母加一个数字） <span class="pill orange">动手实践</span>
 
 </div>
 </div>
@@ -203,6 +203,15 @@
 </div>
 </div>
 
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+用 Autopilot in Test Manager <a href="../test-cases/#find-obsolete-test-cases">找出过时的测试用例</a> <span class="pill orange">动手实践</span>
+
+</div>
+</div>
+
 </div>
 
 ### ☕ 休息 { #break_1 }
@@ -306,7 +315,7 @@
     - **计划是灵活的。** 我们可以在工作坊期间调整安排，包括休息时间。
     - **智能体构建的时间就是你审阅的时间。** 当 Autopilot 或你的编码智能体在工作时，看看它正在生成什么，或者提前阅读下一个选项卡。
     - **休息时间也可以用来追赶进度。** 如果休息开始时你的编码智能体还在构建，就让它继续运行，你先去休息。
-    - **测试集有备用方案。** 讲师会在共享文件夹中发布 `DemoUiBankTests` 包。如果你自己的测试用例没能及时完成自动化，在创建和运行测试集时使用讲师的包即可——你仍然会运行一个测试集并查看它的执行。
+    - **测试集有备用方案。** 讲师会在共享文件夹中发布 `DemoParaBankTests` 包。如果你自己的测试用例没能及时完成自动化，在创建和运行测试集时使用讲师的包即可——你仍然会运行一个测试集并查看它的执行。
 
 !!! tip "培训环境"
     在 **[{{ training_url }}]({{ training_url }})** 登录，使用租户 **{{ training_tenant }}**。

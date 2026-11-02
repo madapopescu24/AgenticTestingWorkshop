@@ -3,7 +3,7 @@
 
 # 🧭 智能体测试：动手实践课 { #agentic-testing-hands-on-session }
 
-**借助 Autopilot for Testers、Autopilot for Developers 和编码智能体，在 UiPath Test Cloud 中把 UiBank 设计文档一路变成需求、测试用例、自动化、测试集和执行。**
+**借助 Autopilot for Testers、Autopilot for Developers 和编码智能体，在 UiPath Test Cloud 中把 ParaBank 设计文档一路变成需求、测试用例、自动化、测试集和执行。**
 
 ## 👋 概述 { #overview }
 
@@ -34,7 +34,7 @@
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">**[需求](requirements.md)**</span>
 
-把 UiBank 设计文档变成需求，讨论这些需求，评估其质量，改进后再次评估
+把 ParaBank 设计文档变成需求，讨论这些需求，评估其质量，改进后再次评估
 
 👤 **Autopilot in Studio Desktop**、**Autopilot in Test Manager**、你
 
@@ -44,7 +44,7 @@
 <span class="f-icon">🧪</span>
 <span class="f-title" markdown="span">**[测试用例](test-cases.md)**</span>
 
-根据需求生成测试用例，手动自动化 Login 测试用例，生成下一个测试用例，观看测试用例自主运行，再添加几个
+根据需求生成测试用例，手动自动化 Login 测试用例，生成下一个测试用例，观看测试用例自主运行，再添加几个，并找出过时的测试用例
 
 👤 **Autopilot in Test Manager**、你、**Autopilot in Studio Desktop** 或**编码智能体**
 
@@ -99,7 +99,7 @@
     </div>
     <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">需求</div>
     <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio Desktop 根据文档编写需求，Autopilot in Test Manager 为其评分。</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 个已评估的需求</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 9 个已评估的需求</div>
   </div>
   <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
@@ -135,10 +135,10 @@
 工作在本课中的流转方式：
 
 ```text
-UiBank design document (.docx)
+ParaBank design document (.docx)
    │
    ▼
-Setup          New {YourName}_UIB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
+Setup          New {YourName}_PB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
    │
    ▼
 Requirements   Autopilot in Studio Desktop ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
@@ -148,7 +148,8 @@ Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
                  ├─ Login: you automate it by hand in Studio
                  ├─ Next one: Autopilot in Studio Desktop, or your coding agent, automates it
                  ├─ Run Autonomously: Autopilot runs a manual test case itself
-                 └─ A few more
+                 ├─ A few more
+                 └─ Find obsolete tests: Autopilot flags regression test cases that no longer fit
    │
    ▼
 Executions     Executions tab ──▶ every run so far
@@ -159,9 +160,9 @@ Test Sets      Autopilot in Studio Desktop ──▶ Test sets ──▶ publish
 
 ## 📄 设计文档 { #the-design-document }
 
-本课的一切都来自 UiBank Web 应用的一份设计文档：**E2E UiBank Online Banking**。下载 `E2E UiBank Online Banking.docx`，并保存到你的工作坊文件夹中。
+本课的一切都来自 ParaBank Web 应用的一份设计文档：**E2E ParaBank Online Banking**。下载 `E2E ParaBank Online Banking.docx`，并保存到你的工作坊文件夹中。
 
-[下载设计文档 (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
+[下载设计文档 (.docx)](resources.assets/E2E%20ParaBank%20Online%20Banking.docx){ .md-button .md-button--primary }
 
 <div class="feature-grid" markdown>
 
@@ -169,7 +170,7 @@ Test Sets      Autopilot in Studio Desktop ──▶ Test sets ──▶ publish
 <span class="f-icon">🏦</span>
 <span class="f-title" markdown="span">应用</span>
 
-UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
+ParaBank，Parasoft 的演示银行（Open New Account / Accounts Overview / Transfer Funds / Bill Pay / Find Transactions / Update Contact Info / Request Loan）
 
 </div>
 
@@ -177,7 +178,7 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="f-icon">🌐</span>
 <span class="f-title" markdown="span">环境</span>
 
-在 Google Chrome 中打开 `https://uibank.uipath.com`。备用地址：`https://purple-dune-0af054403.6.azurestaticapps.net`
+在 Google Chrome 中打开 `https://parabank.parasoft.com/parabank/index.htm`
 
 </div>
 
@@ -185,13 +186,13 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="f-icon">📝</span>
 <span class="f-title" markdown="span">文档内容</span>
 
-登录，开立一个 Checking 账户和一个 Savings 账户，在两者之间转账，申请贷款，通过 Loan ID 查询贷款，并验证用户资料
+登录，开设一个 Checking 账户和一个 Savings 账户，在两者之间转账，支付账单，查找交易，申请贷款，更新联系信息，然后退出登录
 
 </div>
 
 </div>
 
-文档用八个步骤描述了客户旅程。你不会把它作为一次很长的端到端运行来测试。每个步骤都会成为**一个需求**以及**它自己的测试用例**，这样一旦失败，就能直接定位到出问题的功能，而且一个页面出错也不会掩盖其他步骤的结果。
+文档用九个步骤描述了客户旅程。你不会把它作为一次很长的端到端运行来测试。每个步骤都会成为**一个需求**以及**它自己的测试用例**，这样一旦失败，就能直接定位到出问题的功能，而且一个页面出错也不会掩盖其他步骤的结果。
 
 <div class="circles" markdown>
 
@@ -199,11 +200,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">0</span>
 <div class="ci-body" markdown>
 
-**Login and Initial Account State**
+**Login & Initial State Check**
 
-`/login`, `/accounts`
+`/index.htm`, `/overview.htm`
 
-✅ 登录成功；已记录初始账户状态
+✅ 登录成功；记录初始账户状态
 
 </div>
 </div>
@@ -212,11 +213,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Checking Account Creation**
+**Open a Checking Account**
 
-`/accounts/account-apply`
+`/openaccount.htm`
 
-✅ Checking 账户出现在账户汇总中
+✅ CHECKING 账户已开设，并列在 Accounts Overview 中
 
 </div>
 </div>
@@ -225,11 +226,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Savings Account Creation**
+**Open a Savings Account**
 
-`/accounts/account-apply`
+`/openaccount.htm`
 
-✅ Savings 账户出现在账户汇总中
+✅ SAVINGS 账户已开设；资金账户扣除了开户存款
 
 </div>
 </div>
@@ -238,11 +239,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Funds Transfer Between Accounts**
+**Transfer Funds Between Accounts**
 
-`/accounts/transfer-money`
+`/transfer.htm`
 
-✅ 两个账户的余额变动恰好等于转账金额
+✅ Transfer Complete；两个余额都恰好变动转账金额
 
 </div>
 </div>
@@ -251,11 +252,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Loan Application Submission**
+**Pay a Bill**
 
-`/loans/apply`
+`/billpay.htm`
 
-✅ 已生成 Loan ID
+✅ Bill Payment Complete；付款从 Savings 账户扣除
 
 </div>
 </div>
@@ -264,11 +265,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">5</span>
 <div class="ci-body" markdown>
 
-**Loan Status Lookup**
+**Find Transactions & Account Activity**
 
-`/loans/lookup`
+`/findtrans.htm`, `/activity.htm`
 
-✅ 金额和期限与提交的内容一致
+✅ 找到账单付款和转账，金额正确
 
 </div>
 </div>
@@ -277,11 +278,11 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">6</span>
 <div class="ci-body" markdown>
 
-**User Profile Identity Verification**
+**Request a Loan**
 
-`/userprofile`
+`/requestloan.htm`
 
-✅ 用户名和邮箱与当前登录用户一致
+✅ 贷款获批；新贷款账户余额 = 贷款金额
 
 </div>
 </div>
@@ -290,11 +291,24 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 <span class="num">7</span>
 <div class="ci-body" markdown>
 
-**Logout and Evidence Collection**
+**Update Contact Info**
 
-`/`
+`/updateprofile.htm`
 
-✅ 会话已关闭；截图已附加到报告中
+✅ Profile Updated；新电话号码已保存
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">8</span>
+<div class="ci-body" markdown>
+
+**Logout & Evidence Collection**
+
+`/index.htm`
+
+✅ 会话已关闭；截图已附加到报告
 
 </div>
 </div>
@@ -303,26 +317,49 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 
 ### 🔢 测试数据 { #the-test-data }
 
-以下是设计文档定义的变量。在你的提示词和自动化中使用它们，让需求、测试用例和结果描述的都是同一件事。
+这些是设计文档定义的变量。在你的提示词和自动化中使用它们，让需求、测试用例和结果描述的都是同一件事。
 
-| 变量 | 含义 | 值 / 规则 |
+| 变量 | 内容 | 值 / 规则 |
 | :--- | :--- | :--- |
-| `var_Username`, `var_Password` | UiBank 登录信息 | 来自 Orchestrator 凭据资产 `{YourName}_UiBankCredential`。绝不硬编码。 |
-| `var_CheckingNickname` | 新的 Checking 账户 | `AutoChecking_<yyyyMMddHHmmss>`，每次运行唯一 |
-| `var_SavingsNickname` | 新的 Savings 账户 | `AutoSavings_<yyyyMMddHHmmss>`，每次运行唯一 |
-| `var_TransferAmount` | 转账金额 | `10`，绝不超过转出账户余额 |
-| `var_LoanEmail` | 贷款申请人邮箱 | 你在 UiBank 上注册的邮箱 |
-| `var_LoanAmount` | 贷款金额 | `5000` |
-| `var_LoanTerm` | 贷款期限（年） | `3`（允许值：1、3、5、10） |
-| `var_YearlyIncome` | 税前年收入 | `60000` |
-| `var_Age` | 申请人年龄 | `35` |
-| `var_LoanID` | UiBank 返回的 Loan ID | 提交贷款后提取 |
+| `var_Username`, `var_Password` | ParaBank 登录信息 | 来自 Orchestrator 凭据资产 `{YourName}_ParaBankCredential`。绝不硬编码。 |
+| `var_FundingAccountId` | 为新账户注资的现有账户 | 在 Step 0 中提取：**Accounts Overview** 中的第一个账户 |
+| `var_CheckingAccountId` | 新的 CHECKING 账户 | 在 Step 1 中提取 |
+| `var_SavingsAccountId` | 新的 SAVINGS 账户 | 在 Step 2 中提取 |
+| `var_TransferAmount` | 转账金额 | `10`，绝不超过源账户的可用金额 |
+| `var_PayeeName` | Bill Pay 收款人 | `AutoPayee_<yyyyMMddHHmm>`，每次运行唯一 |
+| `var_PayeeAddress` / `City` / `State` / `Zip` / `Phone` | 收款人联系信息 | `1 Main St` / `Bucharest` / `RO` / `010101` / `0700000000` |
+| `var_PayeeAccount` | 收款人账号，填在 **Account #** 和 **Verify Account #** 中 | `12345` |
+| `var_BillAmount` | 账单付款金额 | `25` |
+| `var_LoanAmount` | 贷款金额 | `1000` |
+| `var_DownPayment` | 贷款首付 | `100`，绝不超过源账户的可用金额 |
+| `var_LoanAccountId` | 贷款获批后创建的账户 | 在 Step 6 中提取 |
+| `var_NewPhone` | **Update Contact Info** 中的新电话号码 | `07<MMddHHmm>`，每次运行唯一 |
 
 !!! warning "每个测试用例都必须处理的三件事"
 
-    - **独立运行**。测试用例可能以任意顺序、在任意机器人上运行。在文档中，转账使用步骤 1 和步骤 2 创建的账户，查询使用步骤 4 生成的 Loan ID。作为测试用例，转账会在开始时自己开立两个账户，查询会在开始时自己提交一笔贷款。
-    - **尚无账户**。新的 UiBank 用户看到的不是表格，而是 *"No accounts at this time, apply for a new account today!"*。这是有效的初始状态，不是失败。
-    - **未知规则**。UiBank 是一个演示应用。余额和贷款审批规则没有文档说明，数据也可能被重置。请检查贷款结果，而不要假定一定会获批。
+    - **独立运行**。测试用例可以按任意顺序、在任意机器人上运行。在文档中，转账使用 Step 1 和 Step 2 开设的账户，账单付款和查询也会复用它们。作为测试用例，每个测试都会在开始时自己开设所需的账户，并自己完成要查询的付款或转账。
+    - **共享的演示数据库**。ParaBank 是一个很多人共用的公开演示应用，它的数据库会不时被重置。如果登录失败并显示 *"The username and password could not be verified."*，请重新注册你的用户。账号由 ParaBank 生成：始终在运行时读取，绝不硬编码。
+    - **未知的贷款规则**。贷款审批结果取决于演示环境的配置和可用资金。让贷款金额和首付保持较小，并读取屏幕上的 **Status**，而不要假定一定会获批。
+
+### 🗂️ 回归测试用例 { #the-regression-test-cases }
+
+设计文档的第 6 节新增了十个回归测试用例，**TC-PB-002** 到 **TC-PB-011**，与端到端场景放在同一个测试集中。每一个都可以在 Step 0 的登录之后独立运行。
+
+| ID | 测试用例 | 预期结果 | 需求 |
+| :--- | :--- | :--- | :--- |
+| TC-PB-002 | Customer Registration | 新客户注册成功并已登录 | Login & Initial State Check |
+| TC-PB-003 | Login with Invalid Credentials | 登录被拒绝，并显示错误消息 | Login & Initial State Check |
+| TC-PB-004 | Forgot Login Info | 根据客户数据找回用户名和密码 | Login & Initial State Check |
+| TC-PB-005 | Rename Account Nickname | 账户显示新的昵称 | Open a Checking Account |
+| TC-PB-006 | Bill Pay - Account Number Mismatch | 字段验证阻止了付款 | Pay a Bill |
+| TC-PB-007 | Loan Status Lookup by Loan ID | 通过 Loan ID 找到贷款详情 | Request a Loan |
+| TC-PB-008 | Transfer Funds - Review & Confirm | 只有在确认后才执行转账 | Transfer Funds Between Accounts |
+| TC-PB-009 | Loan Request - Insufficient Down Payment | 贷款被拒绝，并附有说明 | Request a Loan |
+| TC-PB-010 | Login with SMS One-Time Password | 需要第二个身份验证因素 | Login & Initial State Check |
+| TC-PB-011 | Download Account Statement (PDF) | 月度对账单以 PDF 格式下载 | Find Transactions & Account Activity |
+
+!!! warning "并不是每一个都还适用于 ParaBank"
+    和大多数真实的测试套件一样，这份列表已经过时了。其中一些测试用例描述的界面或功能是 ParaBank 并不具备的。先不要修改它们：在[测试用例](test-cases.md#find-obsolete-test-cases)中，你会让 Autopilot 把它们找出来，然后自己检查它的答案。
 
 ### 📋 什么是 Test Manager？ { #whats-test-manager }
 
@@ -366,12 +403,12 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 1. 打开 **[{{ training_url }}]({{ training_url }})**，选择 **{{ training_tenant }}** 租户，然后打开 **Test Manager**。
 2. 在 **Projects** 页面上，选择 **Create new project**。
 3. 在 **Create new project** 对话框中填写：
-    - **Name：** `{YourName}_UIB_Test`
+    - **Name：** `{YourName}_PB_Test`
     - **Prefix：** `{YourPrefix}`，一个由 3 到 5 个字母和数字组成的唯一代码：你的姓名首字母加一个数字，例如 `VC1`。所有人都在同一个租户中工作，每个前缀在租户中只能使用一次。创建后无法更改。
-    - **Description：** 可选，例如 *UiBank online banking tests*。
+    - **Description：** 可选，例如 *ParaBank online banking tests*。
 
-    ![Test Manager 中的 Create new project 对话框，包含项目名称、示例前缀 UIB、空的描述以及 Create 按钮](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
-    *Create new project 对话框。截图中使用的前缀是 UIB：请使用你自己的前缀。*
+    ![Test Manager 中的 Create new project 对话框，包含项目名称、示例前缀 PB1、空的描述以及 Create 按钮](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
+    *Create new project 对话框。截图中使用的前缀是 PB1：请使用你自己的前缀。*
 
     !!! info "前缀的用途"
         项目中的每个对象都会获得一个以前缀开头的键：如果前缀是 `VC1`，第一个需求就是 `VC1:1`，下一个是 `VC1:2`，依此类推，需求、测试用例和测试集都是如此。简短易认比描述性更重要。
@@ -392,10 +429,10 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 
 1. 打开 **Studio**。在 **Start** 界面的 **New Project** 下，选择 **Test Automation**。
 2. 在 **New Blank Test Project** 对话框中填写：
-    - **Name：** `{YourName}UiBankTests`
+    - **Name：** `{YourName}ParaBankTests`
     - **Description：** 可选，例如 *Test Automation Project*
 
-    ![Studio 中的 New Blank Test Project 对话框，名称为 {YourName}UiBankTests，包含描述以及高级选项 Location、Compatibility Cross-platform、Language VB 和 Minimum Robot version](agentic-testing-hands-on.images/studio-new-test-project-W.png){ .screenshot width="900" }
+    ![Studio 中的 New Blank Test Project 对话框，名称为 {YourName}ParaBankTests，包含描述以及高级选项 Location、Compatibility Cross-platform、Language VB 和 Minimum Robot version](agentic-testing-hands-on.images/studio-new-test-project-W.png){ .screenshot width="900" }
 
 3. 选择 **Create**。
 4. Studio 会打开新项目。在 **Project** 面板中展开 **Dependencies**，检查测试相关的包是否存在，例如 `UiPath.Testing.Activities` 和 `UiPath.UIAutomation.Activities`。
@@ -412,7 +449,7 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
     1. 在 **Explorer** 面板中，右键单击项目名称，选择 **Project Settings**。
     2. 选择 **Test Manager Configuration**。
     3. 在 **Test Manager Settings** 下，输入 Test Manager URL `{{ training_url }}/{{ training_tenant }}/testmanager_`，然后选择 **Connect**。状态变为 **Connected**。
-    4. 在 **Default Project** 中，输入你的前缀并选择 **{YourName}_UIB_Test ({YourPrefix})**。
+    4. 在 **Default Project** 中，输入你的前缀并选择 **{YourName}_PB_Test ({YourPrefix})**。
     5. 选择 **OK**。
 
     <video src="../../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="将 Studio 项目连接到 Test Manager：Project Settings、Test Manager Configuration、输入 Test Manager URL、Connect、选择默认项目，然后 OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
@@ -422,8 +459,8 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
     在 Studio 中关闭项目，在工作坊文件夹中启动你的编码智能体，并给它以下提示词：
 
     ```text
-    Connect the Studio project in ./{YourName}UiBankTests to Test Manager at
-    {{ training_url }}/{{ training_tenant }}/testmanager_ with my {YourName}_UIB_Test project
+    Connect the Studio project in ./{YourName}ParaBankTests to Test Manager at
+    {{ training_url }}/{{ training_tenant }}/testmanager_ with my {YourName}_PB_Test project
     (prefix {YourPrefix}) as the default project, and show me uip rpa tm status.
     ```
 
@@ -431,20 +468,20 @@ UiBank Web Application v2.0.0（Accounts / Transfers / Loans / Profile）
 
 ### ✅ 检查是否准备就绪 { #check-youre-ready }
 
-- Studio 显示 **{YourName}_UIB_Test** 为默认的 Test Manager 项目。
+- Studio 显示 **{YourName}_PB_Test** 为默认的 Test Manager 项目。
 - Studio 中的 **Autopilot** 面板可以打开。
-- 浏览器中已打开 **Test Manager**，并位于 **{YourName}_UIB_Test** 项目。
+- 浏览器中已打开 **Test Manager**，并位于 **{YourName}_PB_Test** 项目。
 
 你的工作坊文件夹现在是这样的：
 
 ```text
 workshop/
-├── {YourName}UiBankTests/           ← Studio test automation project, connected to Test Manager
-└── E2E UiBank Online Banking.docx   ← the design document
+├── {YourName}ParaBankTests/           ← Studio test automation project, connected to Test Manager
+└── E2E ParaBank Online Banking.docx   ← the design document
 ```
 
 !!! success "环境准备完成"
-    Test Manager 中有了一个新的 **{YourName}_UIB_Test** 项目，Studio 中有了一个与之连接的新测试自动化项目。Autopilot 现在可以直接把需求写入其中。
+    Test Manager 中有了一个新的 **{YourName}_PB_Test** 项目，Studio 中有了一个与之连接的新测试自动化项目。Autopilot 现在可以直接把需求写入其中。
 
 ## 🚀 后续步骤 { #next-steps }
 
@@ -456,7 +493,7 @@ workshop/
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">需求</span>
 
-由 Autopilot in Studio Desktop 根据一份设计文档生成的八个需求，并借助 Autopilot in Test Manager 完成评估和改进
+由 Autopilot in Studio Desktop 根据一份设计文档生成的九个需求，并借助 Autopilot in Test Manager 完成评估和改进
 
 </div>
 
@@ -464,7 +501,7 @@ workshop/
 <span class="f-icon">🧪</span>
 <span class="f-title" markdown="span">测试用例</span>
 
-由 Autopilot in Test Manager 生成的测试用例；手动自动化的 Login；由 Autopilot in Studio Desktop 或编码智能体自动化的更多用例；一次自主运行
+由 Autopilot in Test Manager 生成的测试用例；手动自动化的 Login；由 Autopilot in Studio Desktop 或编码智能体自动化的更多用例；一次自主运行；找出并取消分配的过时回归测试用例
 
 </div>
 

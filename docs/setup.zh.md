@@ -49,30 +49,29 @@ Autopilot in Studio Desktop 作用于 Studio 当前登录的租户。让 Studio 
 !!! warning "所有工具使用同一个环境"
     Studio、`uip` CLI 和你的浏览器都必须指向 **{{ training_url }}**。如果其中某一个仍在其他环境中，Autopilot 会把需求保存到你的编码智能体看不到的项目里。
 
-## 🏦 4. 注册你的 UiBank 测试用户 { #4-register-your-uibank-test-user }
+## 🏦 4. 注册你的 ParaBank 测试用户 { #4-register-your-parabank-test-user }
 
-测试用例会以已注册的 UiBank 用户身份登录。现在就创建你的用户，让测试有账号可用。
+测试用例会以已注册的 ParaBank 用户身份登录。现在就创建你的用户，让测试有账号可用。
 
-1. 访问 **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**；如果无法打开，请访问[备用地址](https://purple-dune-0af054403.6.azurestaticapps.net/register-account)。
-2. 填写表单：名、中间名和姓，性别，邮箱，用户名和密码。请使用一个你在其他地方都没用过的密码，因为 UiBank 是一个公开的演示网站。
-3. 注册后，在 **[uibank.uipath.com/login](https://uibank.uipath.com/login)**（或[备用地址](https://purple-dune-0af054403.6.azurestaticapps.net/login)）登录，确认账号可以使用。
+1. 访问 **[parabank.parasoft.com/parabank/register.htm](https://parabank.parasoft.com/parabank/register.htm)**。
+2. 填写表单：**First Name**、**Last Name**、**Address**、**City**、**State**、**Zip Code**、**Phone #**、**SSN**、**Username**、**Password** 和 **Confirm**。地址、电话和 SSN 请使用虚构的值，并使用一个你在其他地方都没用过的密码，因为 ParaBank 是一个公开的演示网站。
+3. 选择 **Register**。ParaBank 会自动为你登录，并给你一个带有初始余额的默认 checking 账户。测试用例会用它为新账户注资。
+4. 选择 **Log Out**，然后在 **[parabank.parasoft.com/parabank/index.htm](https://parabank.parasoft.com/parabank/index.htm)** 的 **Customer Login** 面板中重新登录，确认账号可以使用。登录后会进入 **Accounts Overview**。
 
-4. 如果登录后 UiBank 显示 **Important Notice** 对话框，请选择 **I agree to the Privacy Policy**。用 ✕ 关闭它会让你处于未登录状态。请在自动化任何操作之前，现在就手动接受它。
-
-!!! tip "如果 uibank.uipath.com 无法打开"
-    请使用备用地址 **[purple-dune-0af054403.6.azurestaticapps.net](https://purple-dune-0af054403.6.azurestaticapps.net)**。它提供相同的 UiBank 应用和相同的页面：在后面加上 `/register-account` 或 `/login` 即可。切换后，请确认你的用户可以在那里登录，如果不能，就重新注册。之后，凡是课程中写 `uibank.uipath.com` 的地方，包括测试用例中的目标 URL，都请改用备用地址。
+!!! tip "如果登录突然不能用了"
+    ParaBank 的演示数据库是共享的，并会不时被重置。如果登录失败并显示 *"The username and password could not be verified."*，请用相同的用户名和密码重新注册。这样你的凭据资产仍然可用。
 
 测试不会在项目中存储你的密码，而是从 Orchestrator 的**凭据资产**中读取。请手动创建它：
 
 1. 在 **Orchestrator** 中打开 `{{ training_folder }}` 文件夹，进入 **Assets**。
-2. 选择 **Add** > **Credential**，命名为 `{YourName}_UiBankCredential`。
-3. 在那里输入你的 UiBank 用户名和密码，然后保存。
+2. 选择 **Add** > **Credential**，命名为 `{YourName}_ParaBankCredential`。
+3. 在那里输入你的 ParaBank 用户名和密码，然后保存。
 
 !!! warning "不要把密码交给你的编码智能体"
     `uip` CLI 只能在命令行中以 `username:password` 的形式接收凭据，所以编码智能体会在聊天中向你索要。这样密码就会出现在对话记录和命令中。请改为在 Orchestrator 中输入。
 
-!!! warning "记下你的 UiBank 邮箱"
-    在动手实践中你会把它用作 `var_LoanEmail`：Step 6 中的个人资料检查会把它与 UiBank 显示的邮箱进行比较。
+!!! warning "记下你的名和姓"
+    登录测试会检查 *"Welcome <First Name> <Last Name>"* 文本，联系信息测试会检查预先填写的姓名，所以你在动手实践中会用到它们。
 
 ## 📄 5. 下载设计文档 { #5-download-the-design-document }
 
@@ -80,10 +79,10 @@ Autopilot in Studio Desktop 作用于 Studio 当前登录的租户。让 Studio 
 
 ```text
 workshop/
-└── E2E UiBank Online Banking.docx   ← the design document
+└── E2E ParaBank Online Banking.docx   ← the design document
 ```
 
 你会在课程开始时创建 Test Manager 项目和 Studio 项目。
 
 !!! success "环境准备完成"
-    你的虚拟机已在浏览器和 Studio 中登录到 {{ training_tenant }}，并且有了 UiBank 测试用户和设计文档。开始测试吧。
+    你的虚拟机已在浏览器和 Studio 中登录到 {{ training_tenant }}，并且有了 ParaBank 测试用户和设计文档。开始测试吧。

@@ -71,7 +71,7 @@ Test Manager 中的每次运行都是一次**执行**，每次执行都有一个
 
 1. 在 Test Manager 中，打开你自主运行过的那个测试用例。
 2. 选择 **Execute** > **Manually**。如果浏览器询问，请允许 Test Manager 弹出窗口：**Manual Execution Assistant** 会在新窗口中打开。
-3. 在 UiBank 上亲自执行每一步，并标记为 **Passed** 或 **Failed**。如果某处与预期结果不同，就添加评论。
+3. 在 ParaBank 上亲自执行每一步，并标记为 **Passed** 或 **Failed**。如果某处与预期结果不同，就添加评论。
 4. 如果连续几步都通过了，选择 **Set Passed Till Here**，而不用逐个标记。
 5. 选择 **Done**。新的手动执行会出现在 **Execution** 选项卡中，位于自主执行旁边。
 
@@ -84,7 +84,7 @@ Test Manager 中的每次运行都是一次**执行**，每次执行都有一个
 2. **用 Autopilot 查找。** 在 Test Manager 中打开 **Autopilot** 面板，用自然语言查询执行，例如：
 
     ```text
-    Show me the executions in my {YourName}_UIB_Test project that have
+    Show me the executions in my {YourName}_PB_Test project that have
     failed test cases this week.
     ```
 
@@ -115,7 +115,7 @@ Test Manager 中的每次运行都是一次**执行**，每次执行都有一个
 你的编码智能体可以通过 `uip` CLI 读取同样的执行，并把它们整理成摘要或供 CI 流水线使用的文件。在 Studio 的 **Terminal** 面板中启动你的编码智能体，并给它这个提示词：
 
 ```text
-In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarize the
+In my {YourName}_PB_Test Test Manager project (prefix {YourPrefix}), summarize the
 latest execution: its type, the result per test case, and which steps
 failed, with links to their screenshots. Then download its JUnit XML
 results into ./results. Confirm `uip login status` first.

@@ -2,8 +2,8 @@
 
 Hands-on course teaching clients & partners UiPath Agentic Testing with coding agents
 (Claude Code) and the `uip` CLI: plan a test case in Test Manager, automate it in
-Studio, execute it, and report on it. The scenario is the UiBank test case design
-document E2E UiBank Online Banking, which becomes eight requirements and eight independent test cases.
+Studio, execute it, and report on it. The scenario is the ParaBank test case design
+document E2E ParaBank Online Banking, which becomes nine requirements and nine independent test cases.
 
 Built on the same MkDocs framework as the
 [Agentic Practice Workshop](https://github.com/uipath-practice/AgenticPracticeCourse),
@@ -97,7 +97,7 @@ Test Manager for the tenant is at
   and record its key here._
 
 Every deployable artifact (test package, credential asset, Test Manager project) is
-named with a `{YourName}` prefix (e.g. `{YourName}UiBankTests`) so
+named with a `{YourName}` prefix (e.g. `{YourName}ParaBankTests`) so
 participants sharing the same tenant/folder don't collide with each other's
 packages, processes, or Orchestrator entities.
 
@@ -119,15 +119,15 @@ Before a cohort starts, invite each participant to the org
 The agentic testing session (about 8 hours) only works if the platform
 prerequisites are ready before it starts:
 
-- [ ] Build and publish the fallback test package `DemoUiBankTests` in the
-      **AgenticTesting** folder. Its test entry points `T0_LoginAndInitialAccountState`
-      to `T7_LogoutAndEvidenceCollection` automate the eight test cases, one each,
+- [ ] Build and publish the fallback test package `DemoParaBankTests` in the
+      **AgenticTesting** folder. Its test entry points `T0_LoginAndInitialStateCheck`
+      to `T8_LogoutAndEvidenceCollection` automate the nine test cases, one each,
       and pass in any order. Anyone whose own automations from Test Cases
       aren't ready links this one to their test cases in Test Sets.
-- [ ] Create a credential asset for the demo package's UiBank user in the folder,
-      and do one full dry run: link `DemoUiBankTests` to a Test Manager test case,
+- [ ] Create a credential asset for the demo package's ParaBank user in the folder,
+      and do one full dry run: link `DemoParaBankTests` to a Test Manager test case,
       run its test set as automated, and check the screenshots arrive.
-- [ ] Give every participant an **App Test Developer** licence, and check an
+- [ ] Give every participant an **App Test Developer** license, and check an
       **AI Trust Layer** policy allows Autopilot on the tenant.
 - [ ] Assign a **robot account with stored credentials** to the **AgenticTesting**
       folder, with a **Testing** or **Production** runtime. Without credentials,
@@ -137,9 +137,10 @@ prerequisites are ready before it starts:
       is supported on Windows only, and needs Test Manager delivered through
       Test Cloud. With only a macOS robot, autonomous runs stay Pending with no
       Orchestrator job.
-- [ ] Ask the UiBank owners whether the **Important Notice** privacy dialog can
-      show once per user. Today it appears from the second sign-in on, and closing
-      it with ✕ logs the user out.
+- [ ] ParaBank is a public demo whose database is reset from time to time. Re-register
+      the demo package's user on the morning of the session, and check its credential
+      asset still logs in. Do one dry run of the loan request: the approval depends on
+      the demo's configuration and the funds available.
 - [ ] Make sure **unattended robots** that can run Chrome browser automation are
       available to the **AgenticTesting** folder — automated test sets AND every
       participant's **Run Autonomously** execution run there. Serverless (the
@@ -155,7 +156,7 @@ prerequisites are ready before it starts:
       Autopilot** in Test Explorer, the Evaluation Agent, Test Case Generation,
       Prompt Library, **Run Autonomously**, and Generate Insights in Test Manager,
       and Fix / generate in Studio's Expression Editor. Do one dry run of the
-      requirements prompt and check it produces eight requirements named
+      requirements prompt and check it produces nine requirements named
       after the steps. Run one test case autonomously end to end, and check
       the live stream and the per-step screenshots work for participants.
 - [ ] Confirm the **CodingAgentsGroup** can create Test Manager projects (the
@@ -164,12 +165,12 @@ prerequisites are ready before it starts:
 - [ ] Check participants can sign Studio in to `cloud.uipath.com/tpenlabs`. Studio signed
       in to another organization or tenant is the most likely Setup failure.
 - [ ] The design document is published on the site as
-      `docs/resources.assets/E2E UiBank Online Banking.docx` (download buttons on
-      the hands-on page and Resources). It's a cleaned copy: leftover images from
-      another project, author metadata, and a real username/email were removed.
+      `docs/resources.assets/E2E ParaBank Online Banking.docx` (download buttons on
+      the hands-on page and Resources). It's a cleaned copy: three leftover summary
+      tables from the UiBank version and the author metadata were removed.
       If you update the original, clean it the same way before replacing it.
 - [ ] Plan time for the [Setup](docs/setup.md) page at the start of the hands-on
-      part, right after the intro: participants do it during the session, including the UiBank
+      part, right after the intro: participants do it during the session, including the ParaBank
       registration and the credential asset. Setup is part of the
       8 hours. Ask Mac users to pair with a Windows user from the Login test case on.
 
@@ -178,7 +179,7 @@ prerequisites are ready before it starts:
 - [ ] Is there a reset/cleanup step needed between cohorts (Test Manager projects,
       packages, credential assets, executions left from the previous run)? Document
       the steps or the script here.
-- [ ] UiBank data can be reset at any time. Do participants need to re-register
+- [ ] ParaBank data can be reset at any time. Do participants need to re-register
       before each cohort?
 - [ ] Who to contact if a participant needs their credentials/tenant access
       re-issued mid-workshop?
@@ -196,8 +197,8 @@ participant-facing schedule is on the Agenda page; the trainer view:
 |---|---|---|
 | 0:00–0:30 | Welcome | Introductions and the plan for the day |
 | 0:30–1:45 | 1. Intro + Theoretical Aspects | Present *Agentic Testing & Coding Agents*: Test Cloud, Autopilot for Testers, Autopilot for Developers, coding agents; when to use which. Check Studio is signed in to `tpenlabs` / `AgenticTestingWorkshop` for everyone. |
-| 1:45–2:00 | Setup | Everyone works through the Setup page (VM, sign-in, tenant, `uip login`, Studio, UiBank user, credential asset, design document), then creates a Test Manager project (name `{YourName}_UIB_Test`, a unique prefix of 3–5 characters, such as their initials plus a digit: prefixes must be free in the tenant and can't be changed) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
-| 2:00–2:15 | Autopilot in Studio Desktop creates requirements | Demo the prompt on screen first; check everyone gets eight requirements named after the steps |
+| 1:45–2:00 | Setup | Everyone works through the Setup page (VM, sign-in, tenant, `uip login`, Studio, ParaBank user, credential asset, design document), then creates a Test Manager project (name `{YourName}_PB_Test`, a unique prefix of 3–5 characters, such as their initials plus a digit: prefixes must be free in the tenant and can't be changed) and sets its default folder, then the Studio test automation project, then connects them; check the Autopilot panel opens for everyone before moving on |
+| 2:00–2:15 | Autopilot in Studio Desktop creates requirements | Demo the prompt on screen first; check everyone gets nine requirements named after the steps |
 | 2:15–2:25 | Discuss the requirements | Traceability, testability, gaps; did Autopilot invent rules? |
 | 2:25–2:45 | Evaluate, improve, re-evaluate | Demo the Evaluation Agent on one requirement before people try |
 | 2:45–3:00 | Break | |
@@ -206,7 +207,7 @@ participant-facing schedule is on the Agenda page; the trainer view:
 | 4:15–4:45 | Implement the Login test case manually | Walk Given / When / Then; make sure targets go into the Object Repository |
 | 4:45–5:15 | Autopilot in Studio Desktop / Codex generates a test case | Split the room between Autopilot and coding agent; compare results at the end |
 | 5:15–5:30 | Run Autonomously | Everyone runs a negative login test case autonomously; point out the live stream and the per-step screenshots |
-| 5:30–6:05 | Implement a few more test cases | Point people at the *Given* column: transfer and lookup set up their own data |
+| 5:30–6:05 | Implement a few more test cases | Point people at the *Given* column: transfer, bill payment, and transaction search set up their own data |
 | 6:05–6:15 | Break | |
 | 6:15–6:25 | Executions tab | Everyone explores their own executions: the autonomous run, its test case log, and the screenshots |
 | 6:25–6:35 | Test Sets | Everyone publishes the testing project to the Orchestrator Tenant Process Feed first; then Autopilot creates smoke + regression sets; run; watch robot capacity; Generate Insights |
@@ -219,7 +220,7 @@ The previous recruitment pipeline session (Coded Agent → RPA → Maestro Flow)
 archived locally under `Archive/recruitment-pipeline/`.
 
 **Time-keeping rule:** when a step's time box ends, move on with what you have.
-Anyone behind links `DemoUiBankTests` in Test Sets and still runs a test set and reads
+Anyone behind links `DemoParaBankTests` in Test Sets and still runs a test set and reads
 its executions.
 
 ### Answer Keys / Expected Outputs

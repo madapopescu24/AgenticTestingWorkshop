@@ -3,7 +3,7 @@ Hands-on · Testing Setup
 
 # 🧭 Agentic Testing: Hands-On Session
 
-**Take the UiBank design document to requirements, test cases, automations, test sets, and executions in UiPath Test Cloud, with Autopilot for Testers, Autopilot for Developers, and a coding agent.**
+**Take the ParaBank design document to requirements, test cases, automations, test sets, and executions in UiPath Test Cloud, with Autopilot for Testers, Autopilot for Developers, and a coding agent.**
 
 ## 👋 Overview
 
@@ -34,7 +34,7 @@ Create a new project in Test Manager, a new test automation project in Studio, a
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">**[Requirements](requirements.md)**</span>
 
-Turn the UiBank design document into requirements, discuss them, evaluate their quality, improve them, and evaluate again
+Turn the ParaBank design document into requirements, discuss them, evaluate their quality, improve them, and evaluate again
 
 👤 **Autopilot in Studio Desktop**, **Autopilot in Test Manager**, you
 
@@ -44,7 +44,7 @@ Turn the UiBank design document into requirements, discuss them, evaluate their 
 <span class="f-icon">🧪</span>
 <span class="f-title" markdown="span">**[Test Cases](test-cases.md)**</span>
 
-Generate test cases from a requirement, automate the Login test case by hand, generate the next one, see a test case run autonomously, and add a few more
+Generate test cases from a requirement, automate the Login test case by hand, generate the next one, see a test case run autonomously, add a few more, and find the obsolete ones
 
 👤 **Autopilot in Test Manager**, you, **Autopilot in Studio Desktop** or a **coding agent**
 
@@ -99,7 +99,7 @@ Take it back to your own application
     </div>
     <div style="font-size: 17px; font-weight: 700; color: #16213e; margin-bottom: 12px;">Requirements</div>
     <div style="font-size: 13.5px; color: #4a4a4a; line-height: 1.55; margin-bottom: 18px;">Autopilot in Studio Desktop writes them from the document. Autopilot in Test Manager grades them.</div>
-    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 8 evaluated requirements</div>
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #FA4616; font-weight: 600;">&rarr; 9 evaluated requirements</div>
   </div>
   <div style="flex: 1 1 200px; background: #ffffff; border: 1px solid #e8e8e8; border-top: 5px solid #FA4616; padding: 20px 22px 22px; box-sizing: border-box;">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
@@ -135,10 +135,10 @@ Take it back to your own application
 How the work moves through the session:
 
 ```text
-UiBank design document (.docx)
+ParaBank design document (.docx)
    │
    ▼
-Setup          New {YourName}_UIB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
+Setup          New {YourName}_PB_Test project in Test Manager ──▶ new test automation project in Studio ──▶ connected
    │
    ▼
 Requirements   Autopilot in Studio Desktop ──▶ Requirements ──▶ Autopilot in Test Manager evaluates ──▶ you improve ──▶ re-evaluate
@@ -148,7 +148,8 @@ Test Cases     Autopilot in Test Manager ──▶ Test cases (manual steps)
                  ├─ Login: you automate it by hand in Studio
                  ├─ Next one: Autopilot in Studio Desktop, or your coding agent, automates it
                  ├─ Run Autonomously: Autopilot runs a manual test case itself
-                 └─ A few more
+                 ├─ A few more
+                 └─ Find obsolete tests: Autopilot flags regression test cases that no longer fit
    │
    ▼
 Executions     Executions tab ──▶ every run so far
@@ -159,9 +160,9 @@ Test Sets      Autopilot in Studio Desktop ──▶ Test sets ──▶ publish
 
 ## 📄 The design document
 
-Everything in this session comes from one design document for the UiBank web application: **E2E UiBank Online Banking**. Download `E2E UiBank Online Banking.docx` and save it in your workshop folder.
+Everything in this session comes from one design document for the ParaBank web application: **E2E ParaBank Online Banking**. Download `E2E ParaBank Online Banking.docx` and save it in your workshop folder.
 
-[Download the design document (.docx)](resources.assets/E2E%20UiBank%20Online%20Banking.docx){ .md-button .md-button--primary }
+[Download the design document (.docx)](resources.assets/E2E%20ParaBank%20Online%20Banking.docx){ .md-button .md-button--primary }
 
 <div class="feature-grid" markdown>
 
@@ -169,7 +170,7 @@ Everything in this session comes from one design document for the UiBank web app
 <span class="f-icon">🏦</span>
 <span class="f-title" markdown="span">Application</span>
 
-UiBank Web Application v2.0.0 (Accounts / Transfers / Loans / Profile)
+ParaBank, the Parasoft demo bank (Open New Account / Accounts Overview / Transfer Funds / Bill Pay / Find Transactions / Update Contact Info / Request Loan)
 
 </div>
 
@@ -177,7 +178,7 @@ UiBank Web Application v2.0.0 (Accounts / Transfers / Loans / Profile)
 <span class="f-icon">🌐</span>
 <span class="f-title" markdown="span">Environment</span>
 
-`https://uibank.uipath.com` in Google Chrome. Fallback: `https://purple-dune-0af054403.6.azurestaticapps.net`
+`https://parabank.parasoft.com/parabank/index.htm` in Google Chrome
 
 </div>
 
@@ -185,13 +186,13 @@ UiBank Web Application v2.0.0 (Accounts / Transfers / Loans / Profile)
 <span class="f-icon">📝</span>
 <span class="f-title" markdown="span">What it describes</span>
 
-Log in, open a Checking and a Savings account, transfer funds between them, apply for a loan, retrieve it by Loan ID, and verify the user profile
+Log in, open a Checking and a Savings account, transfer funds between them, pay a bill, find the transactions, request a loan, update the contact info, and log out
 
 </div>
 
 </div>
 
-The document describes the customer journey in eight steps. You won't test it as one long end-to-end run. Each step becomes **a requirement** and **its own test cases**, so a failure points straight at the feature that broke, and one broken screen doesn't hide the results of the others.
+The document describes the customer journey in nine steps. You won't test it as one long end-to-end run. Each step becomes **a requirement** and **its own test cases**, so a failure points straight at the feature that broke, and one broken screen doesn't hide the results of the others.
 
 <div class="circles" markdown>
 
@@ -199,9 +200,9 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">0</span>
 <div class="ci-body" markdown>
 
-**Login and Initial Account State**
+**Login & Initial State Check**
 
-`/login`, `/accounts`
+`/index.htm`, `/overview.htm`
 
 ✅ Login succeeds; initial account state captured
 
@@ -212,11 +213,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Checking Account Creation**
+**Open a Checking Account**
 
-`/accounts/account-apply`
+`/openaccount.htm`
 
-✅ Checking account listed in the summary
+✅ CHECKING account opened and listed in Accounts Overview
 
 </div>
 </div>
@@ -225,11 +226,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Savings Account Creation**
+**Open a Savings Account**
 
-`/accounts/account-apply`
+`/openaccount.htm`
 
-✅ Savings account listed in the summary
+✅ SAVINGS account opened; funding account reduced by the opening deposits
 
 </div>
 </div>
@@ -238,11 +239,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Funds Transfer Between Accounts**
+**Transfer Funds Between Accounts**
 
-`/accounts/transfer-money`
+`/transfer.htm`
 
-✅ Both balances change by exactly the transferred amount
+✅ Transfer Complete; both balances change by exactly the transferred amount
 
 </div>
 </div>
@@ -251,11 +252,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Loan Application Submission**
+**Pay a Bill**
 
-`/loans/apply`
+`/billpay.htm`
 
-✅ Loan ID generated
+✅ Bill Payment Complete; payment debited from the Savings account
 
 </div>
 </div>
@@ -264,11 +265,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">5</span>
 <div class="ci-body" markdown>
 
-**Loan Status Lookup**
+**Find Transactions & Account Activity**
 
-`/loans/lookup`
+`/findtrans.htm`, `/activity.htm`
 
-✅ Amount and term match what was submitted
+✅ Bill payment and transfer found with the right amounts
 
 </div>
 </div>
@@ -277,11 +278,11 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">6</span>
 <div class="ci-body" markdown>
 
-**User Profile Identity Verification**
+**Request a Loan**
 
-`/userprofile`
+`/requestloan.htm`
 
-✅ Username and email match the logged-in user
+✅ Loan approved; new loan account with balance = the loan amount
 
 </div>
 </div>
@@ -290,9 +291,22 @@ The document describes the customer journey in eight steps. You won't test it as
 <span class="num">7</span>
 <div class="ci-body" markdown>
 
-**Logout and Evidence Collection**
+**Update Contact Info**
 
-`/`
+`/updateprofile.htm`
+
+✅ Profile Updated; the new phone number is saved
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">8</span>
+<div class="ci-body" markdown>
+
+**Logout & Evidence Collection**
+
+`/index.htm`
 
 ✅ Session closed; screenshots attached to the report
 
@@ -307,22 +321,45 @@ These are the variables the design document defines. Use them in your prompts an
 
 | Variable | What it holds | Value / rule |
 | :--- | :--- | :--- |
-| `var_Username`, `var_Password` | UiBank login | From the Orchestrator credential asset `{YourName}_UiBankCredential`. Never hard-coded. |
-| `var_CheckingNickname` | New Checking account | `AutoChecking_<yyyyMMddHHmmss>`, unique per run |
-| `var_SavingsNickname` | New Savings account | `AutoSavings_<yyyyMMddHHmmss>`, unique per run |
-| `var_TransferAmount` | Amount to transfer | `10`, never more than the source balance |
-| `var_LoanEmail` | Loan requester email | The email you registered on UiBank |
-| `var_LoanAmount` | Loan amount | `5000` |
-| `var_LoanTerm` | Loan term in years | `3` (allowed: 1, 3, 5, 10) |
-| `var_YearlyIncome` | Yearly income before taxes | `60000` |
-| `var_Age` | Requester's age | `35` |
-| `var_LoanID` | Loan ID returned by UiBank | Extracted after a loan is submitted |
+| `var_Username`, `var_Password` | ParaBank login | From the Orchestrator credential asset `{YourName}_ParaBankCredential`. Never hard-coded. |
+| `var_FundingAccountId` | Existing account that funds the new accounts | Extracted in Step 0: the first account in **Accounts Overview** |
+| `var_CheckingAccountId` | New CHECKING account | Extracted in Step 1 |
+| `var_SavingsAccountId` | New SAVINGS account | Extracted in Step 2 |
+| `var_TransferAmount` | Amount to transfer | `10`, never more than the source account's available amount |
+| `var_PayeeName` | Bill Pay payee | `AutoPayee_<yyyyMMddHHmm>`, unique per run |
+| `var_PayeeAddress` / `City` / `State` / `Zip` / `Phone` | Payee contact details | `1 Main St` / `Bucharest` / `RO` / `010101` / `0700000000` |
+| `var_PayeeAccount` | Payee account number, in **Account #** and **Verify Account #** | `12345` |
+| `var_BillAmount` | Bill payment amount | `25` |
+| `var_LoanAmount` | Loan amount | `1000` |
+| `var_DownPayment` | Down payment for the loan | `100`, never more than the source account's available amount |
+| `var_LoanAccountId` | Account created for the approved loan | Extracted in Step 6 |
+| `var_NewPhone` | New phone number in **Update Contact Info** | `07<MMddHHmm>`, unique per run |
 
 !!! warning "Three things every test case must handle"
 
-    - **It runs on its own.** Test cases run in any order, on any robot. In the document, the transfer uses the accounts from Steps 1 and 2, and the lookup uses the Loan ID from Step 4. As test cases, the transfer opens its own two accounts and the lookup submits its own loan, at the start.
-    - **No accounts yet.** A fresh UiBank user sees *"No accounts at this time, apply for a new account today!"* instead of a table. That's a valid starting state, not a failure.
-    - **Unknown rules.** UiBank is a demo app. Balances and loan decision rules aren't documented, and data can be reset. Check the loan outcome rather than assuming approval.
+    - **It runs on its own.** Test cases run in any order, on any robot. In the document, the transfer uses the accounts from Steps 1 and 2, and the bill payment and the search reuse them. As test cases, each one opens the accounts it needs, and makes the payment or transfer it searches for, at the start.
+    - **A shared demo database.** ParaBank is a public demo used by many people, and its database is reset from time to time. If login fails with *"The username and password could not be verified."*, register your user again. Account numbers are generated by ParaBank: always read them at run time, never hard-code them.
+    - **Unknown loan rules.** The loan decision depends on how the demo is configured and on the funds available. Keep the loan amount and the down payment small, and read the **Status** on screen rather than assuming approval.
+
+### 🗂️ The regression test cases
+
+Section 6 of the design document adds ten regression test cases, **TC-PB-002** to **TC-PB-011**, kept in the same test set as the end-to-end scenario. Each one runs on its own after the login in Step 0.
+
+| ID | Test case | Expected result | Requirement |
+| :--- | :--- | :--- | :--- |
+| TC-PB-002 | Customer Registration | New customer registered and logged in | Login & Initial State Check |
+| TC-PB-003 | Login with Invalid Credentials | Login rejected with an error message | Login & Initial State Check |
+| TC-PB-004 | Forgot Login Info | Username and password recovered from customer data | Login & Initial State Check |
+| TC-PB-005 | Rename Account Nickname | Account shown with the new nickname | Open a Checking Account |
+| TC-PB-006 | Bill Pay - Account Number Mismatch | Payment blocked by field validation | Pay a Bill |
+| TC-PB-007 | Loan Status Lookup by Loan ID | Loan details retrieved by Loan ID | Request a Loan |
+| TC-PB-008 | Transfer Funds - Review & Confirm | Transfer runs only after confirmation | Transfer Funds Between Accounts |
+| TC-PB-009 | Loan Request - Insufficient Down Payment | Loan denied with an explanation | Request a Loan |
+| TC-PB-010 | Login with SMS One-Time Password | Second authentication factor required | Login & Initial State Check |
+| TC-PB-011 | Download Account Statement (PDF) | Monthly statement downloaded as PDF | Find Transactions & Account Activity |
+
+!!! warning "Not all of them still fit ParaBank"
+    Like most real test suites, this list has aged. Some of these test cases describe screens or features ParaBank doesn't have. Don't fix them yet: in [Test Cases](test-cases.md#find-obsolete-test-cases), you'll ask Autopilot to find them, then check its answer yourself.
 
 ### 📋 What's Test Manager?
 
@@ -366,12 +403,12 @@ Requirements, test cases, test sets, and executions all live in a Test Manager p
 1. Go to **[{{ training_url }}]({{ training_url }})**, select the **{{ training_tenant }}** tenant, and open **Test Manager**.
 2. On the **Projects** page, select **Create new project**.
 3. In the **Create new project** dialog, fill in:
-    - **Name:** `{YourName}_UIB_Test`
+    - **Name:** `{YourName}_PB_Test`
     - **Prefix:** `{YourPrefix}`, a unique code of 3 to 5 letters and numbers: your initials plus a digit, for example `VC1`. Everyone works in the same tenant, and each prefix can be used only once in it. You can't change it later.
-    - **Description:** optional, for example *UiBank online banking tests*.
+    - **Description:** optional, for example *ParaBank online banking tests*.
 
-    ![The Create new project dialog in Test Manager, with a project name, the example prefix UIB, an empty description, and the Create button](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
-    *The Create new project dialog. The screenshot uses the prefix UIB: use your own.*
+    ![The Create new project dialog in Test Manager, with a project name, the example prefix PB1, an empty description, and the Create button](agentic-testing-hands-on.images/test-manager-create-new-project-W.png){ .screenshot width="900" }
+    *The Create new project dialog. The screenshot uses the prefix PB1: use your own.*
 
     !!! info "What the prefix is for"
         Every object in the project gets a key that starts with the prefix: with the prefix `VC1`, the first requirement becomes `VC1:1`, the next `VC1:2`, and so on, across requirements, test cases, and test sets. Short and recognizable beats descriptive.
@@ -392,10 +429,10 @@ Requirements, test cases, test sets, and executions all live in a Test Manager p
 
 1. Open **Studio**. On the **Start** screen, under **New Project**, select **Test Automation**.
 2. In the **New Blank Test Project** dialog, fill in:
-    - **Name:** `{YourName}UiBankTests`
+    - **Name:** `{YourName}ParaBankTests`
     - **Description:** optional, for example *Test Automation Project*
 
-    ![The New Blank Test Project dialog in Studio, with the name {YourName}UiBankTests, a description, and the advanced options Location, Compatibility Cross-platform, Language VB, and Minimum Robot version](agentic-testing-hands-on.images/studio-new-test-project-W.png){ .screenshot width="900" }
+    ![The New Blank Test Project dialog in Studio, with the name {YourName}ParaBankTests, a description, and the advanced options Location, Compatibility Cross-platform, Language VB, and Minimum Robot version](agentic-testing-hands-on.images/studio-new-test-project-W.png){ .screenshot width="900" }
 
 3. Select **Create**.
 4. Studio opens the new project. In the **Project** panel, expand **Dependencies** and check that the testing packages are there, such as `UiPath.Testing.Activities` and `UiPath.UIAutomation.Activities`.
@@ -412,7 +449,7 @@ The project needs to know which Test Manager project its requirements, test case
     1. In the **Explorer** panel, right-click your project name and select **Project Settings**.
     2. Select **Test Manager Configuration**.
     3. Under **Test Manager Settings**, enter the Test Manager URL `{{ training_url }}/{{ training_tenant }}/testmanager_`, then select **Connect**. The status changes to **Connected**.
-    4. In **Default Project**, type your prefix and select **{YourName}_UIB_Test ({YourPrefix})**.
+    4. In **Default Project**, type your prefix and select **{YourName}_PB_Test ({YourPrefix})**.
     5. Select **OK**.
 
     <video src="../agentic-testing-hands-on.images/studio-connect-test-manager.mp4" autoplay loop muted playsinline controls aria-label="Connecting the Studio project to Test Manager: Project Settings, Test Manager Configuration, entering the Test Manager URL, Connect, selecting the default project, and OK" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
@@ -422,8 +459,8 @@ The project needs to know which Test Manager project its requirements, test case
     Close the project in Studio, start your coding agent in your workshop folder, and give it this prompt:
 
     ```text
-    Connect the Studio project in ./{YourName}UiBankTests to Test Manager at
-    {{ training_url }}/{{ training_tenant }}/testmanager_ with my {YourName}_UIB_Test project
+    Connect the Studio project in ./{YourName}ParaBankTests to Test Manager at
+    {{ training_url }}/{{ training_tenant }}/testmanager_ with my {YourName}_PB_Test project
     (prefix {YourPrefix}) as the default project, and show me uip rpa tm status.
     ```
 
@@ -431,20 +468,20 @@ The project needs to know which Test Manager project its requirements, test case
 
 ### ✅ Check you're ready
 
-- Studio shows **{YourName}_UIB_Test** as the default Test Manager project.
+- Studio shows **{YourName}_PB_Test** as the default Test Manager project.
 - The **Autopilot** panel opens in Studio.
-- **Test Manager** is open in your browser, on the **{YourName}_UIB_Test** project.
+- **Test Manager** is open in your browser, on the **{YourName}_PB_Test** project.
 
 Your workshop folder now looks like this:
 
 ```text
 workshop/
-├── {YourName}UiBankTests/           ← Studio test automation project, connected to Test Manager
-└── E2E UiBank Online Banking.docx   ← the design document
+├── {YourName}ParaBankTests/           ← Studio test automation project, connected to Test Manager
+└── E2E ParaBank Online Banking.docx   ← the design document
 ```
 
 !!! success "Setup done"
-    A new **{YourName}_UIB_Test** project in Test Manager, and a new test automation project in Studio connected to it. Autopilot can now write requirements straight into it.
+    A new **{YourName}_PB_Test** project in Test Manager, and a new test automation project in Studio connected to it. Autopilot can now write requirements straight into it.
 
 ## 🚀 Next Steps
 
@@ -456,7 +493,7 @@ workshop/
 <span class="f-icon">📋</span>
 <span class="f-title" markdown="span">Requirements</span>
 
-Eight requirements generated by Autopilot in Studio Desktop from one design document, evaluated and improved with Autopilot in Test Manager
+Nine requirements generated by Autopilot in Studio Desktop from one design document, evaluated and improved with Autopilot in Test Manager
 
 </div>
 
@@ -464,7 +501,7 @@ Eight requirements generated by Autopilot in Studio Desktop from one design docu
 <span class="f-icon">🧪</span>
 <span class="f-title" markdown="span">Test Cases</span>
 
-Test cases generated by Autopilot in Test Manager; Login automated by hand; more automated by Autopilot in Studio Desktop or a coding agent; one autonomous run
+Test cases generated by Autopilot in Test Manager; Login automated by hand; more automated by Autopilot in Studio Desktop or a coding agent; one autonomous run; obsolete regression test cases found and un-assigned
 
 </div>
 

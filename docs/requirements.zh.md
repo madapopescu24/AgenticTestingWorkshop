@@ -7,7 +7,7 @@
 
 <div style="background: #faf8f6; border: 1px solid #eee3dc; border-left: 4px solid #FA4616; padding: 18px 22px; margin: 1.4rem 0;">
   <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.09em; color: #FA4616; margin-bottom: 9px;">你需要准备</div>
-  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">在 <strong>Studio</strong> 中打开你的 <code>{YourName}UiBankTests</code> 项目，并已连接到你的 <strong>{YourName}_UIB_Test</strong> Test Manager 项目。参见<a href="../agentic-testing-hands-on/#setup">环境准备</a>。</li><li style="margin-bottom: 5px;">在浏览器中打开同一租户上的 <strong>Test Manager</strong>。</li></ul>
+  <ul style="margin: 0; padding-left: 18px; font-size: 15px; color: #4a4a4a; line-height: 1.55;"><li style="margin-bottom: 5px;">在 <strong>Studio</strong> 中打开你的 <code>{YourName}ParaBankTests</code> 项目，并已连接到你的 <strong>{YourName}_PB_Test</strong> Test Manager 项目。参见<a href="../agentic-testing-hands-on/#setup">环境准备</a>。</li><li style="margin-bottom: 5px;">在浏览器中打开同一租户上的 <strong>Test Manager</strong>。</li></ul>
 </div>
 
 ## 🪄 让 Autopilot in Studio Desktop 创建需求 { #ask-autopilot-in-studio-desktop-to-create-the-requirements }
@@ -17,13 +17,13 @@
 === "Autopilot in Studio Desktop"
 
     1. 在 Studio 中打开 **Autopilot** 面板。
-    2. 把 `E2E UiBank Online Banking.docx` 附加到对话中，然后给 Autopilot 这个提示词：
+    2. 把 `E2E ParaBank Online Banking.docx` 附加到对话中，然后给 Autopilot 这个提示词：
 
         ```text
-        Generate the requirements for the UiBank web application from the
-        attached design document, in my {YourName}_UIB_Test Test Manager
+        Generate the requirements for the ParaBank web application from the
+        attached design document, in my {YourName}_PB_Test Test Manager
         project. Create one requirement per step in section 3, Step 0 to
-        Step 7, in that order.
+        Step 8, in that order.
         ```
 
     3. 检查 Autopilot 提出的内容，然后接受这些需求，让它们保存到你的 Test Manager 项目中。
@@ -38,13 +38,13 @@
     在你的 workshop 文件夹中启动编码智能体，并给它这个提示词：
 
     ```text
-    Read ./E2E UiBank Online Banking.docx and create one requirement per step
-    in section 3, Step 0 to Step 7, in order, in my {YourName}_UIB_Test
+    Read ./E2E ParaBank Online Banking.docx and create one requirement per step
+    in section 3, Step 0 to Step 8, in order, in my {YourName}_PB_Test
     Test Manager project, with the step's acceptance criteria in the
     description. Confirm `uip login status` first.
     ```
 
-    编码智能体会加载 `uipath-test` 技能。由于没有导入命令，它会为每个步骤运行一次 `uip tm requirements create`，共八次。
+    编码智能体会加载 `uipath-test` 技能。由于没有导入命令，它会为每个步骤运行一次 `uip tm requirements create`，共九次。
 
 === "手动创建"
 
@@ -52,7 +52,7 @@
 
 ## 💬 在 Test Manager 中讨论需求 { #discuss-the-requirements-in-test-manager }
 
-在 Test Manager 中刷新 **Requirements**。你应该能看到八个需求，每个对应设计文档的一个步骤，键为 `{YourPrefix}:1` 到 `{YourPrefix}:8`。Autopilot 生成的名称和措辞可能与下面不同：
+在 Test Manager 中刷新 **Requirements**。你应该能看到九个需求，每个对应设计文档的一个步骤，键为 `{YourPrefix}:1` 到 `{YourPrefix}:9`。Autopilot 生成的名称和措辞可能与下面不同：
 
 <div class="circles" markdown>
 
@@ -60,7 +60,7 @@
 <span class="num">0</span>
 <div class="ci-body" markdown>
 
-**Login and Initial Account State**
+**Login & Initial State Check**
 
 `{YourPrefix}:1` · Step 0
 
@@ -71,7 +71,7 @@
 <span class="num">1</span>
 <div class="ci-body" markdown>
 
-**Checking Account Creation**
+**Open a Checking Account**
 
 `{YourPrefix}:2` · Step 1
 
@@ -82,7 +82,7 @@
 <span class="num">2</span>
 <div class="ci-body" markdown>
 
-**Savings Account Creation**
+**Open a Savings Account**
 
 `{YourPrefix}:3` · Step 2
 
@@ -93,7 +93,7 @@
 <span class="num">3</span>
 <div class="ci-body" markdown>
 
-**Funds Transfer Between Accounts**
+**Transfer Funds Between Accounts**
 
 `{YourPrefix}:4` · Step 3
 
@@ -104,7 +104,7 @@
 <span class="num">4</span>
 <div class="ci-body" markdown>
 
-**Loan Application Submission**
+**Pay a Bill**
 
 `{YourPrefix}:5` · Step 4
 
@@ -115,7 +115,7 @@
 <span class="num">5</span>
 <div class="ci-body" markdown>
 
-**Loan Status Lookup**
+**Find Transactions & Account Activity**
 
 `{YourPrefix}:6` · Step 5
 
@@ -126,7 +126,7 @@
 <span class="num">6</span>
 <div class="ci-body" markdown>
 
-**User Profile Identity Verification**
+**Request a Loan**
 
 `{YourPrefix}:7` · Step 6
 
@@ -137,9 +137,20 @@
 <span class="num">7</span>
 <div class="ci-body" markdown>
 
-**Logout and Evidence Collection**
+**Update Contact Info**
 
 `{YourPrefix}:8` · Step 7
+
+</div>
+</div>
+
+<div class="circle-item" markdown>
+<span class="num">8</span>
+<div class="ci-body" markdown>
+
+**Logout & Evidence Collection**
+
+`{YourPrefix}:9` · Step 8
 
 </div>
 </div>
@@ -153,7 +164,7 @@
 - **缺口。** 文档没有说明转账金额大于余额时会怎样，也没有说明贷款审批规则。Autopilot 注意到了吗，还是跳过了？它有没有编造文档中没有的内容？
 
 !!! tip "为什么每个步骤一个需求"
-    八个小需求比一个大需求更容易评估、覆盖和报告。之后某个测试失败时，你能准确知道它影响的是哪个步骤、哪个需求。
+    九个小需求比一个大需求更容易评估、覆盖和报告。之后某个测试失败时，你能准确知道它影响的是哪个步骤、哪个需求。
 
 ## 🔍 使用 Autopilot in Test Manager 评估、改进并重新评估 { #evaluate-improve-and-re-evaluate-with-autopilot-in-test-manager }
 
@@ -167,7 +178,7 @@ Test Manager 的 **Evaluation Agent** 会检查需求的清晰度、完整性和
 
 3. 选择两三条你认同的建议，通过编辑需求来落实。典型的一条是：转账金额大于源账户余额时的规则。如果文档没有回答某个问题，就把它写成待解决问题，而不是自己编一个答案。
 4. 再次评估该需求。结果改善了吗？Autopilot 有没有提出新的问题？
-5. 对 **Loan Application Submission** 重复上述操作，它是未记录规则最多的需求。
+5. 对 **Request a Loan** 重复上述操作，它是未记录规则最多的需求。
 
 !!! tip "添加你自己的提示词"
     Autopilot 使用项目 **Prompt Library** 中的提示词来评估需求。除了预定义的提示词（例如 **Multifaceted Audit**、**Performance Evaluation** 和 **Security Assessment**），你还可以为团队自己的质量规则添加自定义提示词：
@@ -184,8 +195,37 @@ Test Manager 的 **Evaluation Agent** 会检查需求的清晰度、完整性和
 
     <video src="../../requirements.images/test-manager-add-custom-prompt.mp4" autoplay loop muted playsinline controls aria-label="在 Test Manager 中添加自定义提示词：Project Settings、Prompt library、Add prompt，填写 Name、Description、Mode of use 和 Prompt，然后选择 Create" style="display: block; width: 100%; margin: 1.5rem auto; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);"></video>
 
+    **动手试试：为 ParaBank 需求编写的自定义提示词**
+
+    把下面这个提示词添加到你的项目中。它会根据本课程测试用例所依赖的规则来检查需求：
+
+    - **Name:** `ParaBank Requirement Readiness`
+    - **Description:** 检查 ParaBank 需求的可追溯性、验收标准是否可测试、是否使用设计文档中的测试数据、是否独立、是否包含负面场景，以及是否有含糊措辞。
+    - **Mode of use：** **Evaluate requirement quality**
+    - **Prompt：**
+
+        ```text
+        Generate the top 10 enhancement suggestions for this ParaBank requirement from diverse test-readiness perspectives:
+
+        -Traceability: Check that it names the design document step (Step 0 to Step 8) and the ParaBank screen it covers
+        -Testability: Check that every acceptance criterion is a pass/fail check on something visible on screen
+        -Expected Results: Check for the exact confirmation texts and values to verify, such as "Account Opened!", "Transfer Complete!", or a balance in Accounts Overview
+        -Test Data: Check that it uses the design document's variables (var_...) instead of literal numbers or names
+        -Generated Data: Note values ParaBank generates at run time, such as account numbers, that must be read and never hard-coded
+        -Independence: Check that the test can set up its own data, without relying on the results of another step
+        -Prerequisites: Note missing preconditions, such as a logged-in user or a funded source account
+        -Negative Cases: Check for invalid input and broken business rules, such as an amount above the available amount or a denied loan
+        -Field Validation: Check for the messages expected on empty or mismatched fields
+        -Data Consistency: Check that the data entered on one screen is verified on the next
+        -Evidence: Check that it says which screenshots or results prove the outcome
+        -Ambiguity: Check for vague words such as "correctly", "properly", or "should work", and for rules the design document doesn't state
+        -Open Questions: List what the design document doesn't answer, without inventing the answers
+        ```
+
+    然后再次评估 **Transfer Funds Between Accounts**，并选择 **ParaBank Requirement Readiness**。把它的结果与某个预定义提示词的结果进行比较：你更愿意把哪一份交给产品负责人？
+
 !!! success "需求完成"
-    Autopilot 根据设计文档生成了八个需求，你们讨论过它们，并对其中至少两个进行了评估、改进和重新评估。
+    Autopilot 根据设计文档生成了九个需求，你们讨论过它们，并对其中至少两个进行了评估、改进和重新评估。
 
 !!! info "Autopilot 起草，你来决定"
-    Evaluation Agent 擅长发现含糊的措辞和遗漏的情况，但它无法知道你的业务规则。你接受的每一条建议都是关于 UiBank 必须做什么的决定，所以应该得到产品负责人的认可。
+    Evaluation Agent 擅长发现含糊的措辞和遗漏的情况，但它无法知道你的业务规则。你接受的每一条建议都是关于 ParaBank 必须做什么的决定，所以应该得到产品负责人的认可。

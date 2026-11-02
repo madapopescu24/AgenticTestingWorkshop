@@ -5,7 +5,7 @@
 
 <div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">同一个 Test Cloud，用于 SAP</div>
 
-今天一整天，你测试的是一个小型 Web 应用 UiBank。现在你会看到，同一个 **Test Cloud**——**Test Manager**、**Autopilot for Testers**、机器人和编码智能体——如何测试 SAP，这是企业运行的最关键的业务系统之一。你不需要 SAP 经验：关键术语都列在下面。
+今天一整天，你测试的是一个小型 Web 应用 ParaBank。现在你会看到，同一个 **Test Cloud**——**Test Manager**、**Autopilot for Testers**、机器人和编码智能体——如何测试 SAP，这是企业运行的最关键的业务系统之一。你不需要 SAP 经验：关键术语都列在下面。
 
 ## 📖 两分钟了解 SAP { #sap-in-two-minutes }
 
@@ -142,7 +142,7 @@ SAP 每季度发布一次，其他厂商每周发布。流经企业的变更远�
 <span class="f-icon">📝</span>
 <span class="f-title" markdown="span">生成测试用例</span>
 
-Autopilot 根据需求或 Heatmap 数据为 SAP 事务创建测试用例，就像它为 UiBank 所做的那样。
+Autopilot 根据需求或 Heatmap 数据为 SAP 事务创建测试用例，就像它为 ParaBank 所做的那样。
 
 </div>
 

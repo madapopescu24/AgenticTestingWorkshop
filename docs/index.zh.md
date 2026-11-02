@@ -16,7 +16,7 @@ UiPath Partner Success · 工作坊
 
 - 🤖 **Autopilot** 在产品内部工作。在 **Studio** 中，它创建需求、测试用例和测试集。在 **Test Manager** 中，它评估需求、生成测试用例，并自主运行测试用例。
 - 💻 像 **Codex** 或 **Claude Code** 这样的**编码智能体**在你的终端中工作。借助 **`uip` CLI** 和 **UiPath 技能**，它在你的 Studio 项目中自动化测试用例，并运行测试集。
-- 🏦 你从 **UiBank** 演示应用的一份真实设计文档开始。
+- 🏦 你从 **ParaBank** 演示应用的一份真实设计文档开始。
 
 ## 🗺️ 课程安排 { #the-session }
 
@@ -50,7 +50,7 @@ UiPath Partner Success · 工作坊
 
     ---
 
-    第一个动手步骤：你的虚拟机、登录、`uip` CLI、Studio，以及你的 UiBank 测试用户。
+    第一个动手步骤：你的虚拟机、登录、`uip` CLI、Studio，以及你的 ParaBank 测试用户。
 
     [:octicons-arrow-right-24: 环境准备](setup.md)
 

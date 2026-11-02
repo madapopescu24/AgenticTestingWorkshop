@@ -71,7 +71,7 @@ Add a manual execution next to your autonomous one, so you can compare how a per
 
 1. In Test Manager, open the test case you ran autonomously.
 2. Select **Execute** > **Manually**. Allow pop-ups for Test Manager if your browser asks: the **Manual Execution Assistant** opens in a new window.
-3. Carry out each step on UiBank yourself, and mark it **Passed** or **Failed**. Add a comment where something looks different from the expected result.
+3. Carry out each step on ParaBank yourself, and mark it **Passed** or **Failed**. Add a comment where something looks different from the expected result.
 4. If several steps in a row pass, select **Set Passed Till Here** instead of marking them one by one.
 5. Select **Done**. The new manual execution appears in the **Execution** tab, next to the autonomous one.
 
@@ -84,7 +84,7 @@ Add a manual execution next to your autonomous one, so you can compare how a per
 2. **Find with Autopilot.** Open the **Autopilot** panel in Test Manager and ask for executions in plain English, for example:
 
     ```text
-    Show me the executions in my {YourName}_UIB_Test project that have
+    Show me the executions in my {YourName}_PB_Test project that have
     failed test cases this week.
     ```
 
@@ -115,7 +115,7 @@ An execution you started as **Pending** shows *None* for every test case by desi
 Your coding agent can read the same executions through the `uip` CLI, and turn them into a summary or a file for a CI pipeline. In Studio's **Terminal** panel, start your coding agent and give it this prompt:
 
 ```text
-In my {YourName}_UIB_Test Test Manager project (prefix {YourPrefix}), summarize the
+In my {YourName}_PB_Test Test Manager project (prefix {YourPrefix}), summarize the
 latest execution: its type, the result per test case, and which steps
 failed, with links to their screenshots. Then download its JUnit XML
 results into ./results. Confirm `uip login status` first.

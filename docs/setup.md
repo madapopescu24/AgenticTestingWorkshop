@@ -49,30 +49,29 @@ Autopilot in Studio Desktop works against the tenant Studio is signed in to. Sig
 !!! warning "One environment for everything"
     Studio, the `uip` CLI, and your browser must all point at **{{ training_url }}**. If one of them is still on another environment, Autopilot saves requirements to a project your coding agent can't see.
 
-## 🏦 4. Register Your UiBank Test User
+## 🏦 4. Register Your ParaBank Test User
 
-The test cases log in as a registered UiBank user. Create yours now, so they have an account to run against.
+The test cases log in as a registered ParaBank user. Create yours now, so they have an account to run against.
 
-1. Go to **[uibank.uipath.com/register-account](https://uibank.uipath.com/register-account)**, or [the fallback](https://purple-dune-0af054403.6.azurestaticapps.net/register-account) if it doesn't load.
-2. Fill in the form: first, middle, and last name, sex, email, username, and a password. Use a password you don't use anywhere else — UiBank is a public demo site.
-3. Register, then log in at **[uibank.uipath.com/login](https://uibank.uipath.com/login)**, or [the fallback](https://purple-dune-0af054403.6.azurestaticapps.net/login), to check the account works.
+1. Go to **[parabank.parasoft.com/parabank/register.htm](https://parabank.parasoft.com/parabank/register.htm)**.
+2. Fill in the form: **First Name**, **Last Name**, **Address**, **City**, **State**, **Zip Code**, **Phone #**, **SSN**, **Username**, **Password**, and **Confirm**. Use made-up values for the address, phone, and SSN, and a password you don't use anywhere else — ParaBank is a public demo site.
+3. Select **Register**. ParaBank signs you in and gives you a default checking account with a starting balance. The test cases use it to fund the new accounts.
+4. Select **Log Out**, then log in again in the **Customer Login** panel at **[parabank.parasoft.com/parabank/index.htm](https://parabank.parasoft.com/parabank/index.htm)**, to check the account works. You land on **Accounts Overview**.
 
-4. If UiBank shows an **Important Notice** dialog after you sign in, select **I agree to the Privacy Policy**. Closing it with ✕ leaves you logged out. Accept it now, by hand, before you automate anything.
-
-!!! tip "If uibank.uipath.com doesn't load"
-    Use the fallback, **[purple-dune-0af054403.6.azurestaticapps.net](https://purple-dune-0af054403.6.azurestaticapps.net)**. It serves the same UiBank application, with the same pages: add `/register-account` or `/login` to it. If you switch, check that your user can log in there, and register it again if it can't. Then use the fallback everywhere the course says `uibank.uipath.com`, including the target URL in your test cases.
+!!! tip "If your login stops working"
+    ParaBank's demo database is shared and reset from time to time. If login fails with *"The username and password could not be verified."*, register again with the same username and password. Your credential asset then keeps working.
 
 The tests never store your password in the project. They read it from an Orchestrator **credential asset**. Create it by hand:
 
 1. In **Orchestrator**, open the `{{ training_folder }}` folder and go to **Assets**.
-2. Select **Add** > **Credential**, and name it `{YourName}_UiBankCredential`.
-3. Type your UiBank username and password there, then save.
+2. Select **Add** > **Credential**, and name it `{YourName}_ParaBankCredential`.
+3. Type your ParaBank username and password there, then save.
 
 !!! warning "Don't give the password to your coding agent"
     The `uip` CLI takes a credential only as `username:password` on the command line, so a coding agent asks for it in the chat. The password then ends up in the transcript and in a command. Type it in Orchestrator instead.
 
-!!! warning "Write down your UiBank email"
-    You'll need it as `var_LoanEmail` in the hands-on session — the profile check in Step 6 compares it with the email UiBank shows.
+!!! warning "Write down your first and last name"
+    The login test checks the *"Welcome <First Name> <Last Name>"* text, and the contact info test checks the pre-filled names, so you'll need them in the hands-on session.
 
 ## 📄 5. Download the Design Document
 
@@ -80,10 +79,10 @@ Create a folder named `workshop`, and download the [design document](resources.m
 
 ```text
 workshop/
-└── E2E UiBank Online Banking.docx   ← the design document
+└── E2E ParaBank Online Banking.docx   ← the design document
 ```
 
 You'll create your Test Manager project and your Studio project at the start of the session.
 
 !!! success "You're set up"
-    Your VM, signed in to {{ training_tenant }} in the browser and in Studio, with a UiBank test user and the design document. Time to test something.
+    Your VM, signed in to {{ training_tenant }} in the browser and in Studio, with a ParaBank test user and the design document. Time to test something.

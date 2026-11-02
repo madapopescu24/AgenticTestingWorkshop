@@ -73,7 +73,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../setup/#4-register-your-uibank-test-user">Register your UiBank test user</a> and create your credential asset <span class="pill orange">Hands-on</span>
+<a href="../setup/#4-register-your-parabank-test-user">Register your ParaBank test user</a> and create your credential asset <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -91,7 +91,7 @@ The hands-on part starts right after the intro, with Setup: you get your VM, you
 <div class="tl-time"></div>
 <div class="tl-body" markdown>
 
-<a href="../agentic-testing-hands-on/#create-a-new-project-in-test-manager">Create a new project in Test Manager</a> (for example, project name `{YourName}_UIB_Test`, and a unique prefix of your own, such as your initials plus a digit) <span class="pill orange">Hands-on</span>
+<a href="../agentic-testing-hands-on/#create-a-new-project-in-test-manager">Create a new project in Test Manager</a> (for example, project name `{YourName}_PB_Test`, and a unique prefix of your own, such as your initials plus a digit) <span class="pill orange">Hands-on</span>
 
 </div>
 </div>
@@ -203,6 +203,15 @@ Step away from the screen. If your coding agent is still building, let it carry 
 </div>
 </div>
 
+<div class="tl-item" markdown>
+<div class="tl-time"></div>
+<div class="tl-body" markdown>
+
+<a href="../test-cases/#find-obsolete-test-cases">Find obsolete test cases</a> with Autopilot in Test Manager <span class="pill orange">Hands-on</span>
+
+</div>
+</div>
+
 </div>
 
 ### ☕ Break
@@ -306,7 +315,7 @@ Tell us what worked and what to improve.
     - **The plan is flexible.** We can adapt it during the workshop, including the breaks.
     - **Agents' build time is your review time.** While Autopilot or your coding agent works, read what it's producing, or read ahead in the next tab.
     - **The breaks are catch-up time too.** If your coding agent is still building when the break starts, let it carry on while you step away.
-    - **Test sets have a fallback.** The trainer publishes the `DemoUiBankTests` package in the shared folder. If your own test cases aren't automated in time, use the trainer's when you create and run test sets — you still run a test set and read its executions.
+    - **Test sets have a fallback.** The trainer publishes the `DemoParaBankTests` package in the shared folder. If your own test cases aren't automated in time, use the trainer's when you create and run test sets — you still run a test set and read its executions.
 
 !!! tip "Training Environment"
     Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**.

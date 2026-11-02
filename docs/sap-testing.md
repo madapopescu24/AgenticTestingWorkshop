@@ -5,7 +5,7 @@ Presentation + demo
 
 <div style="font-size: 15px; font-style: italic; color: #d1603a; margin: -0.6rem 0 1rem;">The same Test Cloud, applied to SAP</div>
 
-All day you've tested a small web app, UiBank. Now you'll see how the same **Test Cloud** — **Test Manager**, **Autopilot for Testers**, robots, and coding agents — tests SAP, one of the most business-critical systems a company runs. You don't need SAP experience: the key terms are below.
+All day you've tested a small web app, ParaBank. Now you'll see how the same **Test Cloud** — **Test Manager**, **Autopilot for Testers**, robots, and coding agents — tests SAP, one of the most business-critical systems a company runs. You don't need SAP experience: the key terms are below.
 
 ## 📖 SAP in two minutes
 
@@ -142,7 +142,7 @@ Finds the critical SAP processes that have no tests yet.
 <span class="f-icon">📝</span>
 <span class="f-title" markdown="span">Generate test cases</span>
 
-Autopilot creates test cases for SAP transactions from the requirements or the Heatmap data, like it did for UiBank.
+Autopilot creates test cases for SAP transactions from the requirements or the Heatmap data, like it did for ParaBank.
 
 </div>
 

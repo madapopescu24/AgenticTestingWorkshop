@@ -16,7 +16,7 @@ This workshop shows you how AI agents work across **UiPath Test Cloud** for you,
 
 - 🤖 **Autopilot** works inside the product. In **Studio** it creates requirements, test cases, and test sets. In **Test Manager** it evaluates requirements, generates test cases, and runs a test case autonomously.
 - 💻 A **coding agent** like **Codex** or **Claude Code** works from your terminal. With the **`uip` CLI** and the **UiPath skills**, it automates test cases in your Studio project and runs test sets.
-- 🏦 You start from a real design document for the **UiBank** demo app.
+- 🏦 You start from a real design document for the **ParaBank** demo app.
 
 ## 🗺️ The session
 
@@ -50,7 +50,7 @@ The session runs from 9:00 to 17:00, about 8 hours, with two breaks and lunch. A
 
     ---
 
-    The first hands-on step: your VM, your sign-in, the `uip` CLI, Studio, and your UiBank test user.
+    The first hands-on step: your VM, your sign-in, the `uip` CLI, Studio, and your ParaBank test user.
 
     [:octicons-arrow-right-24: Setup](setup.md)
 
